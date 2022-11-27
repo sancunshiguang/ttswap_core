@@ -1,0 +1,12 @@
+pool->shop
+tick->unit
+tickspacing->unitSpacing
+position->proof
+liquidity->investment
+slot0->state0
+oracle ->PriceLog 
+ 
+ticket / stamp 
+
+
+remixd -s ../MoonExchangerV1 --remix-ide https://remix.ethereum.org
