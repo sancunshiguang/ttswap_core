@@ -31,12 +31,12 @@ contract MoonV1Shop is IMoonV1Shop, NoDelegateCall {
     using LProof for LProof.Info;
     using LPriceLog for LPriceLog.PriceLog[65535];
 
-    address public immutable market;
-    address public immutable coin;
-    address public immutable thing;
-    uint24 public immutable profit;
-    int24 public immutable unitSpacing;
-    uint128 public immutable maxInvestionPerUnit;
+    address public immutable override market;
+    address public immutable override coin;
+    address public immutable override thing;
+    uint24 public immutable override profit;
+    int24 public override unitSpacing;
+    uint128 public override maxInvestionPerUnit;
     LProfitShares.Info public profitshares;
     //思考,关于门店的创建者
     address public gater;
@@ -1116,7 +1116,7 @@ contract MoonV1Shop is IMoonV1Shop, NoDelegateCall {
     }
 
     //// @inheritdoc IUniswapV3PoolOwnerActions
-    function setFeeProtocolbyMarketor(
+    function setShopFeeProtocolbyMarketor(
         uint8 profitProtocol0,
         uint8 profitProtocol1
     ) external override lock onlyMarketManager {
@@ -1136,12 +1136,12 @@ contract MoonV1Shop is IMoonV1Shop, NoDelegateCall {
         );
     }
 
-    function setFeeProfitSharesbyMarketor(
+    function setShopFeeProfitSharesbyMarketor(
         uint8 _marketshare,
         uint8 _gatershare,
         uint8 _commandershare,
         uint8 _usershare
-    ) external lock onlyMarketManager {
+    ) external override lock onlyMarketManager {
         require(
             (_marketshare + _gatershare + _commandershare + _usershare) == 100,
             "profitshare config error"
@@ -1157,6 +1157,7 @@ contract MoonV1Shop is IMoonV1Shop, NoDelegateCall {
     //// @inheritdoc IMoonV1ShopOwnerActions
     function collectProtocol()
         external
+        override
         lock
         returns (uint128 coinamount, uint128 thingamount)
     {

@@ -7,7 +7,7 @@ interface IMoonV1ShopOwnerActions {
     /// @notice Set the denominator of the protocol's % share of the fees
     /// @param profitProtocol0 new protocol fee for token0 of the pool
     /// @param profitProtocol1 new protocol fee for token1 of the pool
-    function setFeeProtocolbyMarketor(
+    function setShopFeeProtocolbyMarketor(
         uint8 profitProtocol0,
         uint8 profitProtocol1
     ) external;
@@ -19,7 +19,7 @@ interface IMoonV1ShopOwnerActions {
         external
         returns (uint128 amount0, uint128 amount1);
 
-    function setFeeProfitSharesbyMarketor(
+    function setShopFeeProfitSharesbyMarketor(
         uint8 _marketshare,
         uint8 _gatershare,
         uint8 _commandershare,

@@ -84,7 +84,7 @@ interface IMoonV1ShopState {
 
     /// @notice Returns the information about a position by the position's key
     /// @param key The position's key is a hash of a preimage composed by the owner, tickLower and tickUpper
-    /// @return _liquidity The amount of liquidity in the position,
+    /// @return liquidity The amount of liquidity in the position,
     /// Returns feeGrowthInside0LastX128 fee growth of token0 inside the tick range as of the last mint/burn/poke,
     /// Returns feeGrowthInside1LastX128 fee growth of token1 inside the tick range as of the last mint/burn/poke,
     /// Returns tokensOwed0 the computed amount of token0 owed to the position as of the last mint/burn/poke,
@@ -93,7 +93,7 @@ interface IMoonV1ShopState {
         external
         view
         returns (
-            uint128 _liquidity,
+            uint128 liquidity,
             uint256 feeGrowthInside0LastX128,
             uint256 feeGrowthInside1LastX128,
             uint128 tokensOwed0,
