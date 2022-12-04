@@ -2,12 +2,18 @@
 pragma solidity ^0.8.0;
 
 import "./libraries/base/LGate.sol";
+import "./libraries/base/LCustomer.sol";
 import "./MoonV1Manager.sol";
+import "./MoonV1Customer.sol";
 
 contract MoonV1Gater {
     //门户信息
     //Gate Parameter
-    address public immutable override marketCreator;
+    address public immutable marketCreator;
+
+    mapping(address => uint32) public gateCustomerNextKey;
+    mapping(address => mapping(uint32 => address)) public gateCustomerList;
+    mapping(address => LGate.Info) public gateList;
 
     constructor() {
         marketCreator = msg.sender;
@@ -21,9 +27,7 @@ contract MoonV1Gater {
     /// @notice Explain to an end user what this does
     /// @dev Explain to a developer any extra details
     modifier onlyMarketManager() {
-        require(
-            MoonV1Manager(marketCreator).ismarketManager[msg.sender] == true
-        );
+        require(MoonV1Manager(marketCreator).ismarketManager() == true);
         _;
     }
 
@@ -127,5 +131,29 @@ contract MoonV1Gater {
         _gater.unlock = false; //默认是被冻结状态
         gateCustomerNextKey[_gater.gateAddress] = 0; //初始化门户用户数据为0
         gateList[_gater.gateAddress] = _gater; //添加门户信息到门户列表
+    }
+
+    function isValidGater() external view returns (bool) {
+        return gateList[msg.sender].marketunlock;
+    }
+
+    function addCustomer(LCustomer.Info memory _customer, address _gater)
+        external
+    {
+        require(
+            MoonV1Customer(marketCreator).isValidCustomer(
+                _customer.contractAddress
+            ) !=
+                true &&
+                _customer.contractAddress == msg.sender,
+            "customer is exists"
+        );
+        if (gateCustomerNextKey[_gater] >= 1) {
+            gateCustomerNextKey[_gater] += 1;
+        } else gateCustomerNextKey[_gater] = 1;
+        _customer.Gater = _gater;
+        _customer.GaterKey = gateCustomerNextKey[_gater];
+        MoonV1Customer(marketCreator).addCustomer(_customer);
+        gateCustomerList[_gater][gateCustomerNextKey[_gater]] = msg.sender;
     }
 }

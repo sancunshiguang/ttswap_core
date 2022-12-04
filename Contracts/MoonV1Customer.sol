@@ -1,14 +1,17 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity ^0.8.0;
 
+import "./libraries/base/LCustomer.sol";
 import "./MoonV1Manager.sol";
 import "./MoonV1Gater.sol";
 
-contract MoonV1User {
+contract MoonV1Customer {
     /////////////////////////用户管理-市场////////////////////////////
     /////////////////////////user Manage/////////////////////
-    mapping(address => uint32) public gateCustomerNextKey;
-    mapping(address => mapping(uint32 => address)) public gatecustomerList;
+
+    //客户地址=>客户信息
+    //customeraddress =>customer detail info
+    mapping(address => LCustomer.Info) public customerList;
 
     mapping(uint40 => address) public customerUniKey; //用户号
     uint40 public customerUniNextKey; //用户下个编号
@@ -41,7 +44,6 @@ contract MoonV1User {
     /////////////////////////user Manage/////////////////////
     function lockCustomerbyMarketor(address _CustomerAddress)
         external
-        override
         onlyMarketManager
     {
         require(
@@ -53,7 +55,6 @@ contract MoonV1User {
 
     function unlockCustomerbyMarketor(address _CustomerAddress)
         external
-        override
         onlyMarketManager
     {
         require(
@@ -82,25 +83,17 @@ contract MoonV1User {
     }
 
     //用户增加
-    function addCustomer(LCustomer.Info memory _customer, address _gater)
-        external
-    {
+    function addCustomer(LCustomer.Info memory _customer) external {
         require(
             customerList[_customer.contractAddress].isUsed != true &&
                 _customer.contractAddress == msg.sender,
             "customer is exists"
         );
-        if (gateCustomerNextKey[_gater] >= 1) {
-            gateCustomerNextKey[_gater] += 1;
-        } else gateCustomerNextKey[_gater] = 1;
 
         customerUniNextKey += 1;
         customerUniKey[customerUniNextKey] = msg.sender;
         _customer.customerKey = customerUniNextKey;
-        _customer.Gater = _gater;
-        _customer.GaterKey = gateCustomerNextKey[_gater];
         customerList[_customer.contractAddress] = _customer;
-        gatecustomerList[_gater][gateCustomerNextKey[_gater]] = msg.sender;
     }
 
     function updateCustomerNeckName(bytes32 _newname) external {
@@ -116,7 +109,6 @@ contract MoonV1User {
     function getCustomer(address _CustomerAddress)
         external
         view
-        override
         returns (LCustomer.Info memory)
     {
         require(
@@ -126,10 +118,17 @@ contract MoonV1User {
         return customerList[_CustomerAddress];
     }
 
+    function isValidCustomer(address _CustomerAddress)
+        external
+        view
+        returns (bool)
+    {
+        return customerList[_CustomerAddress].isUsed;
+    }
+
     function getCustomerRecommander(address _customer)
         external
         view
-        override
         returns (address)
     {
         require(

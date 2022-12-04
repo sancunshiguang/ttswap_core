@@ -5,17 +5,12 @@ import "./interfaces/IMoonV1Market.sol";
 import "./MoonV1ShopCreate.sol";
 
 import "./NoDelegateCall.sol";
-import "./libraries/base/LCustomer.sol";
 import "./libraries/base/LShop.sol";
 
 contract MoonV1Market is IMoonV1Market, MoonV1ShopCreate, NoDelegateCall {
     //市场拥有者
     //marketCreator
     address public immutable override marketCreator;
-
-    //市场管理员
-    //marketManagers
-    mapping(address => bool) public marketManagers;
 
     //市场门店信息
     //币种-物品-店铺地址
@@ -32,11 +27,26 @@ contract MoonV1Market is IMoonV1Market, MoonV1ShopCreate, NoDelegateCall {
 
     mapping(address => LShop.Info) public shopList;
 
-    //客户地址=>客户信息
-    //customeraddress =>customer detail info
-    mapping(address => LCustomer.Info) public customerList;
-
     mapping(uint24 => int24) public profitUnitSpacing;
+
+    modifier onlyMarketCreator() {
+        require(msg.sender == marketCreator);
+        _;
+    }
+
+    /// @notice Explain to an end user what this does
+    /// @dev Explain to a developer any extra details
+    modifier onlyMarketManager() {
+        require(MoonV1Manager(marketCreator).ismarketManager() == true);
+        _;
+    }
+
+    /// @notice Explain to an end user what this does
+    /// @dev Explain to a developer any extra details
+    modifier onlyGator() {
+        require(MoonV1Gater(marketCreator).isValidGater() == true);
+        _;
+    }
 
     //记录手费费分配方式
     //config the default fee share'pay

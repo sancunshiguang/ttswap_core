@@ -36,18 +36,14 @@ contract MoonV1Coin {
     /// @notice Explain to an end user what this does
     /// @dev Explain to a developer any extra details
     modifier onlyMarketManager() {
-        require(
-            MoonV1Manager(marketCreator).ismarketManager[msg.sender] == true
-        );
+        require(MoonV1Manager(marketCreator).ismarketManager() == true);
         _;
     }
 
     /// @notice Explain to an end user what this does
     /// @dev Explain to a developer any extra details
     modifier onlyGator() {
-        require(
-            MoonV1Gater(marketCreator).gateList[msg.sender].marketunlock == true
-        );
+        require(MoonV1Gater(marketCreator).isValidGater() == true);
         _;
     }
 
@@ -58,7 +54,6 @@ contract MoonV1Coin {
     /// @dev Explain to a developer any extra details
     function addCoinbyMarketor(LCoin.Info memory _coinInfo)
         external
-        override
         onlyMarketManager
     {
         if (coinList[_coinInfo.contractAddress].isUsed != true) {
@@ -82,13 +77,12 @@ contract MoonV1Coin {
     function changeCoinScopebyMarketor(
         address _internalCoinAddress,
         uint8 _scope
-    ) external override onlyMarketManager {
+    ) external onlyMarketManager {
         coinList[_internalCoinAddress].scope = _scope;
     }
 
     function lockCoinbyMarketor(address _internalCoinAddress)
         external
-        override
         onlyMarketManager
     {
         coinList[_internalCoinAddress].marketunlock = false;
@@ -96,7 +90,6 @@ contract MoonV1Coin {
 
     function unlockCoinbyMarketor(address _internalCoinAddress)
         external
-        override
         onlyMarketManager
     {
         coinList[_internalCoinAddress].marketunlock = true;
@@ -104,7 +97,6 @@ contract MoonV1Coin {
 
     function updateCoinbyMarketor(LCoin.Info memory _coinInfo)
         external
-        override
         onlyMarketManager
     {
         require(marketCoinList[_coinInfo.contractAddress] != address(0));
@@ -118,7 +110,7 @@ contract MoonV1Coin {
     function impoveGateCoinbyMarketor(
         address _contractaddress,
         address _gateaddress
-    ) external override onlyMarketManager {
+    ) external onlyMarketManager {
         require(
             gateCoinList[_gateaddress][_contractaddress] != address(0),
             "the coin is not exists"
@@ -136,7 +128,6 @@ contract MoonV1Coin {
 
     function delCoinbyMarketor(address _contractaddress)
         external
-        override
         onlyMarketManager
     {
         require(
@@ -149,7 +140,7 @@ contract MoonV1Coin {
     function delGateCoinbyMarketor(
         address _contractaddress,
         address _gateaddress
-    ) external override onlyMarketManager {
+    ) external onlyMarketManager {
         require(
             gateCoinList[_gateaddress][_contractaddress] == address(0),
             "the coin is not exists"
@@ -159,11 +150,7 @@ contract MoonV1Coin {
 
     /////////////////////////币种设置-门户/////////////////////
     /////////////////////////Coin Manage/////////////////////
-    function addCoinbyGator(LCoin.Info memory _coinInfo)
-        external
-        override
-        onlyGator
-    {
+    function addCoinbyGator(LCoin.Info memory _coinInfo) external onlyGator {
         if (coinList[_coinInfo.contractAddress].isUsed != true) {
             _coinInfo.creator = msg.sender;
             _coinInfo.marketunlock = false;
@@ -189,7 +176,6 @@ contract MoonV1Coin {
 
     function unlockCoinbyGator(address _internalCoinAddress)
         external
-        override
         onlyGator
     {
         require(
@@ -199,11 +185,7 @@ contract MoonV1Coin {
         coinList[_internalCoinAddress].unlock = true;
     }
 
-    function lockCoinbyGator(address _internalCoinAddress)
-        external
-        override
-        onlyGator
-    {
+    function lockCoinbyGator(address _internalCoinAddress) external onlyGator {
         require(
             coinList[_internalCoinAddress].creator == msg.sender,
             "you have not the right"
@@ -211,11 +193,7 @@ contract MoonV1Coin {
         coinList[_internalCoinAddress].unlock = false;
     }
 
-    function updateCoinbyGator(LCoin.Info memory _coinInfo)
-        external
-        override
-        onlyGator
-    {
+    function updateCoinbyGator(LCoin.Info memory _coinInfo) external onlyGator {
         require(
             coinList[_coinInfo.contractAddress].creator == msg.sender,
             "you have not the right"
@@ -231,7 +209,6 @@ contract MoonV1Coin {
     function getCoinInfo(address _contractaddress)
         external
         view
-        override
         returns (LCoin.Info memory)
     {
         require(
