@@ -13,8 +13,6 @@ contract MoonV1Gater {
         marketCreator = msg.sender;
     }
 
-    mapping(address => LGate.Info) public gateList;
-
     modifier onlyMarketCreator() {
         require(msg.sender == marketCreator);
         _;
@@ -40,7 +38,6 @@ contract MoonV1Gater {
     ///////////////////////// Gate Manage///////////////////////////
     function lockGatebyMarketor(address _gateraddress)
         external
-        override
         onlyMarketManager
     {
         require(
@@ -52,7 +49,6 @@ contract MoonV1Gater {
 
     function unlockGatebyMarketor(address _gateraddress)
         external
-        override
         onlyMarketManager
     {
         require(
@@ -67,7 +63,6 @@ contract MoonV1Gater {
     //更新门户内容
     function updateGatebyMarketor(LGate.Info memory _gater)
         external
-        override
         onlyMarketManager
     {
         require(
@@ -79,11 +74,7 @@ contract MoonV1Gater {
         gateList[_gater.gateAddress] = _gater;
     }
 
-    function delGatebyMarketor(address _gater)
-        external
-        override
-        onlyMarketManager
-    {
+    function delGatebyMarketor(address _gater) external onlyMarketManager {
         require(gateList[_gater].isUsed == true, "the gater is exister");
 
         delete gateList[_gater];
@@ -92,7 +83,7 @@ contract MoonV1Gater {
     ///////////////////////// 门户管理-门户////////////////////////////
     ///////////////////////// Gate Manage///////////////////////////
 
-    function lockGatebyGater() external override onlyGator {
+    function lockGatebyGater() external onlyGator {
         require(
             gateList[msg.sender].isUsed == true &&
                 gateList[msg.sender].gateAddress == msg.sender,
@@ -101,7 +92,7 @@ contract MoonV1Gater {
         gateList[msg.sender].unlock = true;
     }
 
-    function unlockGatebyGater() external override onlyGator {
+    function unlockGatebyGater() external onlyGator {
         require(
             gateList[msg.sender].isUsed == true &&
                 gateList[msg.sender].gateAddress == msg.sender,
@@ -111,11 +102,7 @@ contract MoonV1Gater {
     }
 
     //更新门户内容
-    function updateGatebyGator(LGate.Info memory _gater)
-        external
-        override
-        onlyGator
-    {
+    function updateGatebyGator(LGate.Info memory _gater) external onlyGator {
         require(
             gateList[_gater.gateAddress].isUsed == true,
             "the gater is exister"
@@ -129,7 +116,7 @@ contract MoonV1Gater {
         gateList[_gater.gateAddress] = _gater;
     }
 
-    function addGater(LGate.Info memory _gater) external override {
+    function addGater(LGate.Info memory _gater) external {
         require(
             gateList[_gater.gateAddress].isUsed != true,
             "the gater is exister"
