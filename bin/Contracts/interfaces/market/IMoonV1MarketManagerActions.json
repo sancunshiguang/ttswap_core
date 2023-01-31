@@ -1,0 +1,2633 @@
+{
+    "contractName": "IMoonV1MarketManagerActions",
+    "abi": [
+        {
+            "inputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "bytes32",
+                            "name": "coinFullName",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "bytes6",
+                            "name": "symbol",
+                            "type": "bytes6"
+                        },
+                        {
+                            "internalType": "uint8",
+                            "name": "scope",
+                            "type": "uint8"
+                        },
+                        {
+                            "internalType": "uint8",
+                            "name": "decimals",
+                            "type": "uint8"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "maxSupply",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "totalSupply",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "uint32",
+                            "name": "supplytimestamp",
+                            "type": "uint32"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "supplyPrice",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "contractAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "bytes32",
+                            "name": "WhitePaperUrl",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "bytes32",
+                            "name": "OfficalWebsite",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "bytes32",
+                            "name": "blockExplorerUrl",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "marketunlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "unlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "creator",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "isUsed",
+                            "type": "bool"
+                        }
+                    ],
+                    "internalType": "struct LCoin.Info",
+                    "name": "_coinInfo",
+                    "type": "tuple"
+                }
+            ],
+            "name": "addCoinbyMarketor",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "bytes32",
+                            "name": "name",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "ownerAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "bytes32",
+                            "name": "LSTThingsFullName",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "bytes6",
+                            "name": "symbol",
+                            "type": "bytes6"
+                        },
+                        {
+                            "internalType": "uint8",
+                            "name": "scope",
+                            "type": "uint8"
+                        },
+                        {
+                            "internalType": "uint8",
+                            "name": "decimals",
+                            "type": "uint8"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "maxSupply",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "totalSupply",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "contractAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "WhitePaperUrl",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "OfficalWebsite",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "blockExplorerUrl",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "uint32",
+                            "name": "createtimestamp",
+                            "type": "uint32"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "marketunlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "unlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "createrunlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "isUsed",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "addfromgater",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "creator",
+                            "type": "address"
+                        }
+                    ],
+                    "internalType": "struct LSTThings.Info",
+                    "name": "_STThingInfo",
+                    "type": "tuple"
+                }
+            ],
+            "name": "addSTGoodsbyMarketor",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_internalCoinAddress",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint8",
+                    "name": "_scope",
+                    "type": "uint8"
+                }
+            ],
+            "name": "changeCoinScopebyMarketor",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_internalSTGoodsAddress",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint8",
+                    "name": "_scope",
+                    "type": "uint8"
+                }
+            ],
+            "name": "changeSTGoodsScopebyMarketor",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_coin",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "_thing",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint24",
+                    "name": "_profit",
+                    "type": "uint24"
+                }
+            ],
+            "name": "createShopbyMarketor",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "shop",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_contractaddress",
+                    "type": "address"
+                }
+            ],
+            "name": "delCoinbyMarketor",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_contractaddress",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "_gateaddress",
+                    "type": "address"
+                }
+            ],
+            "name": "delGateCoinbyMarketor",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_contractaddress",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "_gateaddress",
+                    "type": "address"
+                }
+            ],
+            "name": "delGateSTGoodsbyMarketor",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_gater",
+                    "type": "address"
+                }
+            ],
+            "name": "delGatebyMarketor",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "bytes32",
+                            "name": "name",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "ownerAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "bytes32",
+                            "name": "LSTThingsFullName",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "bytes6",
+                            "name": "symbol",
+                            "type": "bytes6"
+                        },
+                        {
+                            "internalType": "uint8",
+                            "name": "scope",
+                            "type": "uint8"
+                        },
+                        {
+                            "internalType": "uint8",
+                            "name": "decimals",
+                            "type": "uint8"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "maxSupply",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "totalSupply",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "contractAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "WhitePaperUrl",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "OfficalWebsite",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "blockExplorerUrl",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "uint32",
+                            "name": "createtimestamp",
+                            "type": "uint32"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "marketunlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "unlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "createrunlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "isUsed",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "addfromgater",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "creator",
+                            "type": "address"
+                        }
+                    ],
+                    "internalType": "struct LSTThings.Info",
+                    "name": "_STThingInfo",
+                    "type": "tuple"
+                }
+            ],
+            "name": "delSTGoodsbyMarketor",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_contractaddress",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "_gateaddress",
+                    "type": "address"
+                }
+            ],
+            "name": "impoveGateCoinbyMarketor",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_contractaddress",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "_gateaddress",
+                    "type": "address"
+                }
+            ],
+            "name": "impoveGateSTGoodsbyMarketor",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_internalCoinAddress",
+                    "type": "address"
+                }
+            ],
+            "name": "lockCoinbyMarketor",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_CustomerAddress",
+                    "type": "address"
+                }
+            ],
+            "name": "lockCustomerbyMarketor",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_gateraddress",
+                    "type": "address"
+                }
+            ],
+            "name": "lockGatebyMarketor",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_internalSTGoodsAddress",
+                    "type": "address"
+                }
+            ],
+            "name": "lockSTGoodsbyMarketor",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "shop",
+                    "type": "address"
+                }
+            ],
+            "name": "raiseShopLevelbyMarketor",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_internalCoinAddress",
+                    "type": "address"
+                }
+            ],
+            "name": "unlockCoinbyMarketor",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_CustomerAddress",
+                    "type": "address"
+                }
+            ],
+            "name": "unlockCustomerbyMarketor",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_gateraddress",
+                    "type": "address"
+                }
+            ],
+            "name": "unlockGatebyMarketor",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_internalSTGoodsAddress",
+                    "type": "address"
+                }
+            ],
+            "name": "unlockSTGoodsbyMarketor",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "bytes32",
+                            "name": "coinFullName",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "bytes6",
+                            "name": "symbol",
+                            "type": "bytes6"
+                        },
+                        {
+                            "internalType": "uint8",
+                            "name": "scope",
+                            "type": "uint8"
+                        },
+                        {
+                            "internalType": "uint8",
+                            "name": "decimals",
+                            "type": "uint8"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "maxSupply",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "totalSupply",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "uint32",
+                            "name": "supplytimestamp",
+                            "type": "uint32"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "supplyPrice",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "contractAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "bytes32",
+                            "name": "WhitePaperUrl",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "bytes32",
+                            "name": "OfficalWebsite",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "bytes32",
+                            "name": "blockExplorerUrl",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "marketunlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "unlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "creator",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "isUsed",
+                            "type": "bool"
+                        }
+                    ],
+                    "internalType": "struct LCoin.Info",
+                    "name": "_coinInfo",
+                    "type": "tuple"
+                }
+            ],
+            "name": "updateCoinbyMarketor",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "address",
+                            "name": "market",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "gateAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "uint160",
+                            "name": "authority",
+                            "type": "uint160"
+                        },
+                        {
+                            "internalType": "bytes32",
+                            "name": "name",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "bytes32",
+                            "name": "website",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "bytes32[10]",
+                            "name": "webserverip",
+                            "type": "bytes32[10]"
+                        },
+                        {
+                            "internalType": "uint32",
+                            "name": "createtimestamp",
+                            "type": "uint32"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "marketunlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "unlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "isUsed",
+                            "type": "bool"
+                        }
+                    ],
+                    "internalType": "struct LGate.Info",
+                    "name": "_gater",
+                    "type": "tuple"
+                }
+            ],
+            "name": "updateGatebyMarketor",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "bytes32",
+                            "name": "name",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "ownerAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "bytes32",
+                            "name": "LSTThingsFullName",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "bytes6",
+                            "name": "symbol",
+                            "type": "bytes6"
+                        },
+                        {
+                            "internalType": "uint8",
+                            "name": "scope",
+                            "type": "uint8"
+                        },
+                        {
+                            "internalType": "uint8",
+                            "name": "decimals",
+                            "type": "uint8"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "maxSupply",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "totalSupply",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "contractAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "WhitePaperUrl",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "OfficalWebsite",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "blockExplorerUrl",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "uint32",
+                            "name": "createtimestamp",
+                            "type": "uint32"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "marketunlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "unlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "createrunlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "isUsed",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "addfromgater",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "creator",
+                            "type": "address"
+                        }
+                    ],
+                    "internalType": "struct LSTThings.Info",
+                    "name": "_STThingInfo",
+                    "type": "tuple"
+                }
+            ],
+            "name": "updateSTGoodsbyMarketor",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"coinFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"decimals\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"maxSupply\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"totalSupply\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"supplytimestamp\",\"type\":\"uint32\"},{\"internalType\":\"uint256\",\"name\":\"supplyPrice\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"WhitePaperUrl\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"OfficalWebsite\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"blockExplorerUrl\",\"type\":\"bytes32\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"}],\"internalType\":\"struct LCoin.Info\",\"name\":\"_coinInfo\",\"type\":\"tuple\"}],\"name\":\"addCoinbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"decimals\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"maxSupply\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"totalSupply\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"WhitePaperUrl\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"OfficalWebsite\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"blockExplorerUrl\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"createtimestamp\",\"type\":\"uint32\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LSTThings.Info\",\"name\":\"_STThingInfo\",\"type\":\"tuple\"}],\"name\":\"addSTGoodsbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalCoinAddress\",\"type\":\"address\"},{\"internalType\":\"uint8\",\"name\":\"_scope\",\"type\":\"uint8\"}],\"name\":\"changeCoinScopebyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalSTGoodsAddress\",\"type\":\"address\"},{\"internalType\":\"uint8\",\"name\":\"_scope\",\"type\":\"uint8\"}],\"name\":\"changeSTGoodsScopebyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_coin\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_thing\",\"type\":\"address\"},{\"internalType\":\"uint24\",\"name\":\"_profit\",\"type\":\"uint24\"}],\"name\":\"createShopbyMarketor\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"shop\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_contractaddress\",\"type\":\"address\"}],\"name\":\"delCoinbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_contractaddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_gateaddress\",\"type\":\"address\"}],\"name\":\"delGateCoinbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_contractaddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_gateaddress\",\"type\":\"address\"}],\"name\":\"delGateSTGoodsbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_gater\",\"type\":\"address\"}],\"name\":\"delGatebyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"decimals\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"maxSupply\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"totalSupply\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"WhitePaperUrl\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"OfficalWebsite\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"blockExplorerUrl\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"createtimestamp\",\"type\":\"uint32\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LSTThings.Info\",\"name\":\"_STThingInfo\",\"type\":\"tuple\"}],\"name\":\"delSTGoodsbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_contractaddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_gateaddress\",\"type\":\"address\"}],\"name\":\"impoveGateCoinbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_contractaddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_gateaddress\",\"type\":\"address\"}],\"name\":\"impoveGateSTGoodsbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalCoinAddress\",\"type\":\"address\"}],\"name\":\"lockCoinbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_CustomerAddress\",\"type\":\"address\"}],\"name\":\"lockCustomerbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_gateraddress\",\"type\":\"address\"}],\"name\":\"lockGatebyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalSTGoodsAddress\",\"type\":\"address\"}],\"name\":\"lockSTGoodsbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"shop\",\"type\":\"address\"}],\"name\":\"raiseShopLevelbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalCoinAddress\",\"type\":\"address\"}],\"name\":\"unlockCoinbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_CustomerAddress\",\"type\":\"address\"}],\"name\":\"unlockCustomerbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_gateraddress\",\"type\":\"address\"}],\"name\":\"unlockGatebyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalSTGoodsAddress\",\"type\":\"address\"}],\"name\":\"unlockSTGoodsbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"coinFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"decimals\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"maxSupply\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"totalSupply\",\"type\":\"uint256\"},{\"internalType\":\"uint32\",\"name\":\"supplytimestamp\",\"type\":\"uint32\"},{\"internalType\":\"uint256\",\"name\":\"supplyPrice\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"WhitePaperUrl\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"OfficalWebsite\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"blockExplorerUrl\",\"type\":\"bytes32\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"}],\"internalType\":\"struct LCoin.Info\",\"name\":\"_coinInfo\",\"type\":\"tuple\"}],\"name\":\"updateCoinbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"market\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"gateAddress\",\"type\":\"address\"},{\"internalType\":\"uint160\",\"name\":\"authority\",\"type\":\"uint160\"},{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"website\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32[10]\",\"name\":\"webserverip\",\"type\":\"bytes32[10]\"},{\"internalType\":\"uint32\",\"name\":\"createtimestamp\",\"type\":\"uint32\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"}],\"internalType\":\"struct LGate.Info\",\"name\":\"_gater\",\"type\":\"tuple\"}],\"name\":\"updateGatebyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"decimals\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"maxSupply\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"totalSupply\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"WhitePaperUrl\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"OfficalWebsite\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"blockExplorerUrl\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"createtimestamp\",\"type\":\"uint32\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LSTThings.Info\",\"name\":\"_STThingInfo\",\"type\":\"tuple\"}],\"name\":\"updateSTGoodsbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"title\":\"Permissionless pool actions\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Contains market methods that can be called by MarketManagers\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/market/IMoonV1MarketManagerActions.sol\":\"IMoonV1MarketManagerActions\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/market/IMoonV1MarketManagerActions.sol\":{\"keccak256\":\"0x978dea973bf5e53af45f7e72f6a356c6896eed4ce6910644bbd1bd231601c9c9\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://3669d2dd96a0a6c470abfb46d292895a58e581931dbfba1091193af68865b09f\",\"dweb:/ipfs/QmTH4Z4sQfzc3xQ9VdtiY2RQDgzueJ9kfcqNkxE46LhEcJ\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LCoin.sol\":{\"keccak256\":\"0x50df80f333abf9be9cc7b810a6871ec1f72c4804c71bd7b996c8435b30ae0c78\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://3443b81681f1063b0d23b77229634ddf89f6fecc414ef13ae436755e55bed6fc\",\"dweb:/ipfs/QmbREhzqoB7u2bpjgpmAQvbWJm1Fky36s1fiPyGbLvZe5U\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LGate.sol\":{\"keccak256\":\"0xdbbcc3e545cc8d7d8eebe4b1dbaccee4d2adbce4785cb7ac5f4712093c72db52\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://1d7251ca8ee12ad7009fe9f280aa8be028502f51e7465fe5314b85b9a2815991\",\"dweb:/ipfs/QmRQ5Z78r3qDKhBbRbDs8d4ThNk5fLN5S5g6tosHwa6jdo\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LSTThings.sol\":{\"keccak256\":\"0x56d8e7747782ebb5c20fb0f72eb03cf13c3c975d6ca2be61df51309d1d6f0788\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://68d01c86b149fa66667660da9d569452d5a2d6286e46710a88075ccc4dcffef1\",\"dweb:/ipfs/Qmd9tNT3L1fDhwmkvgPw71eHc14NABzxMmBvN8Nw1ijXJE\"]}},\"version\":1}",
+    "bytecode": "",
+    "deployedBytecode": "",
+    "sourceMap": "",
+    "deployedSourceMap": "",
+    "sourcePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/market/IMoonV1MarketManagerActions.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.15+commit.e14f2714"
+    },
+    "ast": {
+        "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/market/IMoonV1MarketManagerActions.sol",
+        "exportedSymbols": {
+            "IMoonV1MarketManagerActions": [
+                150
+            ],
+            "LCoin": [
+                186
+            ],
+            "LGate": [
+                212
+            ],
+            "LSTThings": [
+                254
+            ]
+        },
+        "id": 151,
+        "license": "GPL-2.0-or-later",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 1,
+                "literals": [
+                    "solidity",
+                    "^",
+                    "0.8",
+                    ".0"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "45:23:0"
+            },
+            {
+                "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LCoin.sol",
+                "file": "../../libraries/base/LCoin.sol",
+                "id": 2,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 151,
+                "sourceUnit": 187,
+                "src": "69:40:0",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LSTThings.sol",
+                "file": "../../libraries/base/LSTThings.sol",
+                "id": 3,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 151,
+                "sourceUnit": 255,
+                "src": "110:44:0",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LGate.sol",
+                "file": "../../libraries/base/LGate.sol",
+                "id": 4,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 151,
+                "sourceUnit": 213,
+                "src": "155:40:0",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "abstract": false,
+                "baseContracts": [],
+                "canonicalName": "IMoonV1MarketManagerActions",
+                "contractDependencies": [],
+                "contractKind": "interface",
+                "documentation": {
+                    "id": 5,
+                    "nodeType": "StructuredDocumentation",
+                    "src": "197:112:0",
+                    "text": "@title Permissionless pool actions\n @notice Contains market methods that can be called by MarketManagers"
+                },
+                "fullyImplemented": false,
+                "id": 150,
+                "linearizedBaseContracts": [
+                    150
+                ],
+                "name": "IMoonV1MarketManagerActions",
+                "nameLocation": "319:27:0",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "functionSelector": "bd903e87",
+                        "id": 11,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "addCoinbyMarketor",
+                        "nameLocation": "409:17:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 9,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 8,
+                                    "mutability": "mutable",
+                                    "name": "_coinInfo",
+                                    "nameLocation": "445:9:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 11,
+                                    "src": "427:27:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "memory",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_struct$_Info_$185_memory_ptr",
+                                        "typeString": "struct LCoin.Info"
+                                    },
+                                    "typeName": {
+                                        "id": 7,
+                                        "nodeType": "UserDefinedTypeName",
+                                        "pathNode": {
+                                            "id": 6,
+                                            "name": "LCoin.Info",
+                                            "nodeType": "IdentifierPath",
+                                            "referencedDeclaration": 185,
+                                            "src": "427:10:0"
+                                        },
+                                        "referencedDeclaration": 185,
+                                        "src": "427:10:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_struct$_Info_$185_storage_ptr",
+                                            "typeString": "struct LCoin.Info"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "426:29:0"
+                        },
+                        "returnParameters": {
+                            "id": 10,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "464:0:0"
+                        },
+                        "scope": 150,
+                        "src": "400:65:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "functionSelector": "5385cbf5",
+                        "id": 18,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "changeCoinScopebyMarketor",
+                        "nameLocation": "480:25:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 16,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 13,
+                                    "mutability": "mutable",
+                                    "name": "_internalCoinAddress",
+                                    "nameLocation": "523:20:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 18,
+                                    "src": "515:28:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 12,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "515:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 15,
+                                    "mutability": "mutable",
+                                    "name": "_scope",
+                                    "nameLocation": "559:6:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 18,
+                                    "src": "553:12:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint8",
+                                        "typeString": "uint8"
+                                    },
+                                    "typeName": {
+                                        "id": 14,
+                                        "name": "uint8",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "553:5:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint8",
+                                            "typeString": "uint8"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "505:66:0"
+                        },
+                        "returnParameters": {
+                            "id": 17,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "580:0:0"
+                        },
+                        "scope": 150,
+                        "src": "471:110:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "functionSelector": "b20be2b4",
+                        "id": 23,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "lockCoinbyMarketor",
+                        "nameLocation": "596:18:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 21,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 20,
+                                    "mutability": "mutable",
+                                    "name": "_internalCoinAddress",
+                                    "nameLocation": "623:20:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 23,
+                                    "src": "615:28:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 19,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "615:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "614:30:0"
+                        },
+                        "returnParameters": {
+                            "id": 22,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "653:0:0"
+                        },
+                        "scope": 150,
+                        "src": "587:67:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "functionSelector": "1d3b8f67",
+                        "id": 28,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "unlockCoinbyMarketor",
+                        "nameLocation": "669:20:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 26,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 25,
+                                    "mutability": "mutable",
+                                    "name": "_internalCoinAddress",
+                                    "nameLocation": "698:20:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 28,
+                                    "src": "690:28:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 24,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "690:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "689:30:0"
+                        },
+                        "returnParameters": {
+                            "id": 27,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "728:0:0"
+                        },
+                        "scope": 150,
+                        "src": "660:69:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "functionSelector": "fa071e2c",
+                        "id": 34,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "updateCoinbyMarketor",
+                        "nameLocation": "744:20:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 32,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 31,
+                                    "mutability": "mutable",
+                                    "name": "_coinInfo",
+                                    "nameLocation": "783:9:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 34,
+                                    "src": "765:27:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "memory",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_struct$_Info_$185_memory_ptr",
+                                        "typeString": "struct LCoin.Info"
+                                    },
+                                    "typeName": {
+                                        "id": 30,
+                                        "nodeType": "UserDefinedTypeName",
+                                        "pathNode": {
+                                            "id": 29,
+                                            "name": "LCoin.Info",
+                                            "nodeType": "IdentifierPath",
+                                            "referencedDeclaration": 185,
+                                            "src": "765:10:0"
+                                        },
+                                        "referencedDeclaration": 185,
+                                        "src": "765:10:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_struct$_Info_$185_storage_ptr",
+                                            "typeString": "struct LCoin.Info"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "764:29:0"
+                        },
+                        "returnParameters": {
+                            "id": 33,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "802:0:0"
+                        },
+                        "scope": 150,
+                        "src": "735:68:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "functionSelector": "cfcdca52",
+                        "id": 41,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "impoveGateCoinbyMarketor",
+                        "nameLocation": "818:24:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 39,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 36,
+                                    "mutability": "mutable",
+                                    "name": "_contractaddress",
+                                    "nameLocation": "860:16:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 41,
+                                    "src": "852:24:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 35,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "852:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 38,
+                                    "mutability": "mutable",
+                                    "name": "_gateaddress",
+                                    "nameLocation": "894:12:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 41,
+                                    "src": "886:20:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 37,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "886:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "842:70:0"
+                        },
+                        "returnParameters": {
+                            "id": 40,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "921:0:0"
+                        },
+                        "scope": 150,
+                        "src": "809:113:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "functionSelector": "eaec0112",
+                        "id": 48,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "delGateCoinbyMarketor",
+                        "nameLocation": "937:21:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 46,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 43,
+                                    "mutability": "mutable",
+                                    "name": "_contractaddress",
+                                    "nameLocation": "976:16:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 48,
+                                    "src": "968:24:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 42,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "968:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 45,
+                                    "mutability": "mutable",
+                                    "name": "_gateaddress",
+                                    "nameLocation": "1010:12:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 48,
+                                    "src": "1002:20:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 44,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "1002:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "958:70:0"
+                        },
+                        "returnParameters": {
+                            "id": 47,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "1037:0:0"
+                        },
+                        "scope": 150,
+                        "src": "928:110:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "functionSelector": "7c3e2f02",
+                        "id": 53,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "delCoinbyMarketor",
+                        "nameLocation": "1053:17:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 51,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 50,
+                                    "mutability": "mutable",
+                                    "name": "_contractaddress",
+                                    "nameLocation": "1079:16:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 53,
+                                    "src": "1071:24:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 49,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "1071:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "1070:26:0"
+                        },
+                        "returnParameters": {
+                            "id": 52,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "1105:0:0"
+                        },
+                        "scope": 150,
+                        "src": "1044:62:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "functionSelector": "802b83fe",
+                        "id": 59,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "addSTGoodsbyMarketor",
+                        "nameLocation": "1172:20:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 57,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 56,
+                                    "mutability": "mutable",
+                                    "name": "_STThingInfo",
+                                    "nameLocation": "1215:12:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 59,
+                                    "src": "1193:34:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "memory",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_struct$_Info_$253_memory_ptr",
+                                        "typeString": "struct LSTThings.Info"
+                                    },
+                                    "typeName": {
+                                        "id": 55,
+                                        "nodeType": "UserDefinedTypeName",
+                                        "pathNode": {
+                                            "id": 54,
+                                            "name": "LSTThings.Info",
+                                            "nodeType": "IdentifierPath",
+                                            "referencedDeclaration": 253,
+                                            "src": "1193:14:0"
+                                        },
+                                        "referencedDeclaration": 253,
+                                        "src": "1193:14:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_struct$_Info_$253_storage_ptr",
+                                            "typeString": "struct LSTThings.Info"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "1192:36:0"
+                        },
+                        "returnParameters": {
+                            "id": 58,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "1237:0:0"
+                        },
+                        "scope": 150,
+                        "src": "1163:75:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "functionSelector": "73152a97",
+                        "id": 66,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "changeSTGoodsScopebyMarketor",
+                        "nameLocation": "1253:28:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 64,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 61,
+                                    "mutability": "mutable",
+                                    "name": "_internalSTGoodsAddress",
+                                    "nameLocation": "1299:23:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 66,
+                                    "src": "1291:31:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 60,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "1291:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 63,
+                                    "mutability": "mutable",
+                                    "name": "_scope",
+                                    "nameLocation": "1338:6:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 66,
+                                    "src": "1332:12:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint8",
+                                        "typeString": "uint8"
+                                    },
+                                    "typeName": {
+                                        "id": 62,
+                                        "name": "uint8",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "1332:5:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint8",
+                                            "typeString": "uint8"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "1281:69:0"
+                        },
+                        "returnParameters": {
+                            "id": 65,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "1359:0:0"
+                        },
+                        "scope": 150,
+                        "src": "1244:116:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "functionSelector": "9b14e56c",
+                        "id": 71,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "lockSTGoodsbyMarketor",
+                        "nameLocation": "1375:21:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 69,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 68,
+                                    "mutability": "mutable",
+                                    "name": "_internalSTGoodsAddress",
+                                    "nameLocation": "1405:23:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 71,
+                                    "src": "1397:31:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 67,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "1397:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "1396:33:0"
+                        },
+                        "returnParameters": {
+                            "id": 70,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "1438:0:0"
+                        },
+                        "scope": 150,
+                        "src": "1366:73:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "functionSelector": "8327bf59",
+                        "id": 76,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "unlockSTGoodsbyMarketor",
+                        "nameLocation": "1454:23:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 74,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 73,
+                                    "mutability": "mutable",
+                                    "name": "_internalSTGoodsAddress",
+                                    "nameLocation": "1486:23:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 76,
+                                    "src": "1478:31:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 72,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "1478:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "1477:33:0"
+                        },
+                        "returnParameters": {
+                            "id": 75,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "1519:0:0"
+                        },
+                        "scope": 150,
+                        "src": "1445:75:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "functionSelector": "8c711ac3",
+                        "id": 82,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "updateSTGoodsbyMarketor",
+                        "nameLocation": "1535:23:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 80,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 79,
+                                    "mutability": "mutable",
+                                    "name": "_STThingInfo",
+                                    "nameLocation": "1581:12:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 82,
+                                    "src": "1559:34:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "memory",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_struct$_Info_$253_memory_ptr",
+                                        "typeString": "struct LSTThings.Info"
+                                    },
+                                    "typeName": {
+                                        "id": 78,
+                                        "nodeType": "UserDefinedTypeName",
+                                        "pathNode": {
+                                            "id": 77,
+                                            "name": "LSTThings.Info",
+                                            "nodeType": "IdentifierPath",
+                                            "referencedDeclaration": 253,
+                                            "src": "1559:14:0"
+                                        },
+                                        "referencedDeclaration": 253,
+                                        "src": "1559:14:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_struct$_Info_$253_storage_ptr",
+                                            "typeString": "struct LSTThings.Info"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "1558:36:0"
+                        },
+                        "returnParameters": {
+                            "id": 81,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "1611:0:0"
+                        },
+                        "scope": 150,
+                        "src": "1526:86:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "functionSelector": "d8d21cb9",
+                        "id": 89,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "impoveGateSTGoodsbyMarketor",
+                        "nameLocation": "1627:27:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 87,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 84,
+                                    "mutability": "mutable",
+                                    "name": "_contractaddress",
+                                    "nameLocation": "1672:16:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 89,
+                                    "src": "1664:24:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 83,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "1664:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 86,
+                                    "mutability": "mutable",
+                                    "name": "_gateaddress",
+                                    "nameLocation": "1706:12:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 89,
+                                    "src": "1698:20:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 85,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "1698:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "1654:70:0"
+                        },
+                        "returnParameters": {
+                            "id": 88,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "1733:0:0"
+                        },
+                        "scope": 150,
+                        "src": "1618:116:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "functionSelector": "4c7f0cfe",
+                        "id": 95,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "delSTGoodsbyMarketor",
+                        "nameLocation": "1749:20:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 93,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 92,
+                                    "mutability": "mutable",
+                                    "name": "_STThingInfo",
+                                    "nameLocation": "1792:12:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 95,
+                                    "src": "1770:34:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "memory",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_struct$_Info_$253_memory_ptr",
+                                        "typeString": "struct LSTThings.Info"
+                                    },
+                                    "typeName": {
+                                        "id": 91,
+                                        "nodeType": "UserDefinedTypeName",
+                                        "pathNode": {
+                                            "id": 90,
+                                            "name": "LSTThings.Info",
+                                            "nodeType": "IdentifierPath",
+                                            "referencedDeclaration": 253,
+                                            "src": "1770:14:0"
+                                        },
+                                        "referencedDeclaration": 253,
+                                        "src": "1770:14:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_struct$_Info_$253_storage_ptr",
+                                            "typeString": "struct LSTThings.Info"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "1769:36:0"
+                        },
+                        "returnParameters": {
+                            "id": 94,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "1814:0:0"
+                        },
+                        "scope": 150,
+                        "src": "1740:75:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "functionSelector": "50620b4d",
+                        "id": 102,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "delGateSTGoodsbyMarketor",
+                        "nameLocation": "1830:24:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 100,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 97,
+                                    "mutability": "mutable",
+                                    "name": "_contractaddress",
+                                    "nameLocation": "1872:16:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 102,
+                                    "src": "1864:24:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 96,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "1864:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 99,
+                                    "mutability": "mutable",
+                                    "name": "_gateaddress",
+                                    "nameLocation": "1906:12:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 102,
+                                    "src": "1898:20:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 98,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "1898:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "1854:70:0"
+                        },
+                        "returnParameters": {
+                            "id": 101,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "1933:0:0"
+                        },
+                        "scope": 150,
+                        "src": "1821:113:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "functionSelector": "0138a661",
+                        "id": 107,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "lockCustomerbyMarketor",
+                        "nameLocation": "2000:22:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 105,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 104,
+                                    "mutability": "mutable",
+                                    "name": "_CustomerAddress",
+                                    "nameLocation": "2031:16:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 107,
+                                    "src": "2023:24:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 103,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "2023:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "2022:26:0"
+                        },
+                        "returnParameters": {
+                            "id": 106,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "2057:0:0"
+                        },
+                        "scope": 150,
+                        "src": "1991:67:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "functionSelector": "be5fdac8",
+                        "id": 112,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "unlockCustomerbyMarketor",
+                        "nameLocation": "2073:24:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 110,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 109,
+                                    "mutability": "mutable",
+                                    "name": "_CustomerAddress",
+                                    "nameLocation": "2106:16:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 112,
+                                    "src": "2098:24:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 108,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "2098:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "2097:26:0"
+                        },
+                        "returnParameters": {
+                            "id": 111,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "2132:0:0"
+                        },
+                        "scope": 150,
+                        "src": "2064:69:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "functionSelector": "a4786088",
+                        "id": 117,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "lockGatebyMarketor",
+                        "nameLocation": "2199:18:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 115,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 114,
+                                    "mutability": "mutable",
+                                    "name": "_gateraddress",
+                                    "nameLocation": "2226:13:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 117,
+                                    "src": "2218:21:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 113,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "2218:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "2217:23:0"
+                        },
+                        "returnParameters": {
+                            "id": 116,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "2249:0:0"
+                        },
+                        "scope": 150,
+                        "src": "2190:60:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "functionSelector": "76941300",
+                        "id": 122,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "unlockGatebyMarketor",
+                        "nameLocation": "2265:20:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 120,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 119,
+                                    "mutability": "mutable",
+                                    "name": "_gateraddress",
+                                    "nameLocation": "2294:13:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 122,
+                                    "src": "2286:21:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 118,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "2286:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "2285:23:0"
+                        },
+                        "returnParameters": {
+                            "id": 121,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "2317:0:0"
+                        },
+                        "scope": 150,
+                        "src": "2256:62:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "functionSelector": "71271f4d",
+                        "id": 128,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "updateGatebyMarketor",
+                        "nameLocation": "2333:20:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 126,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 125,
+                                    "mutability": "mutable",
+                                    "name": "_gater",
+                                    "nameLocation": "2372:6:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 128,
+                                    "src": "2354:24:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "memory",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_struct$_Info_$211_memory_ptr",
+                                        "typeString": "struct LGate.Info"
+                                    },
+                                    "typeName": {
+                                        "id": 124,
+                                        "nodeType": "UserDefinedTypeName",
+                                        "pathNode": {
+                                            "id": 123,
+                                            "name": "LGate.Info",
+                                            "nodeType": "IdentifierPath",
+                                            "referencedDeclaration": 211,
+                                            "src": "2354:10:0"
+                                        },
+                                        "referencedDeclaration": 211,
+                                        "src": "2354:10:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_struct$_Info_$211_storage_ptr",
+                                            "typeString": "struct LGate.Info"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "2353:26:0"
+                        },
+                        "returnParameters": {
+                            "id": 127,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "2388:0:0"
+                        },
+                        "scope": 150,
+                        "src": "2324:65:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "functionSelector": "b614984d",
+                        "id": 133,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "delGatebyMarketor",
+                        "nameLocation": "2404:17:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 131,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 130,
+                                    "mutability": "mutable",
+                                    "name": "_gater",
+                                    "nameLocation": "2430:6:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 133,
+                                    "src": "2422:14:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 129,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "2422:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "2421:16:0"
+                        },
+                        "returnParameters": {
+                            "id": 132,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "2446:0:0"
+                        },
+                        "scope": 150,
+                        "src": "2395:52:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "functionSelector": "1b0582ed",
+                        "id": 144,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "createShopbyMarketor",
+                        "nameLocation": "2462:20:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 140,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 135,
+                                    "mutability": "mutable",
+                                    "name": "_coin",
+                                    "nameLocation": "2500:5:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 144,
+                                    "src": "2492:13:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 134,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "2492:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 137,
+                                    "mutability": "mutable",
+                                    "name": "_thing",
+                                    "nameLocation": "2523:6:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 144,
+                                    "src": "2515:14:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 136,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "2515:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 139,
+                                    "mutability": "mutable",
+                                    "name": "_profit",
+                                    "nameLocation": "2546:7:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 144,
+                                    "src": "2539:14:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint24",
+                                        "typeString": "uint24"
+                                    },
+                                    "typeName": {
+                                        "id": 138,
+                                        "name": "uint24",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "2539:6:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint24",
+                                            "typeString": "uint24"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "2482:77:0"
+                        },
+                        "returnParameters": {
+                            "id": 143,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 142,
+                                    "mutability": "mutable",
+                                    "name": "shop",
+                                    "nameLocation": "2586:4:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 144,
+                                    "src": "2578:12:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 141,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "2578:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "2577:14:0"
+                        },
+                        "scope": 150,
+                        "src": "2453:139:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "functionSelector": "7bde7ed1",
+                        "id": 149,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "raiseShopLevelbyMarketor",
+                        "nameLocation": "2607:24:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 147,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 146,
+                                    "mutability": "mutable",
+                                    "name": "shop",
+                                    "nameLocation": "2640:4:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 149,
+                                    "src": "2632:12:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 145,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "2632:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "2631:14:0"
+                        },
+                        "returnParameters": {
+                            "id": 148,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "2654:0:0"
+                        },
+                        "scope": 150,
+                        "src": "2598:57:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    }
+                ],
+                "scope": 151,
+                "src": "309:2348:0",
+                "usedErrors": []
+            }
+        ],
+        "src": "45:2613:0"
+    },
+    "functionHashes": {
+        "addCoinbyMarketor((bytes32,bytes6,uint8,uint8,uint256,uint256,uint32,uint256,address,bytes32,bytes32,bytes32,bool,bool,address,bool))": "bd903e87",
+        "addSTGoodsbyMarketor((bytes32,address,bytes32,bytes6,uint8,uint8,uint256,uint256,address,address,address,address,uint32,bool,bool,bool,bool,address,address))": "802b83fe",
+        "changeCoinScopebyMarketor(address,uint8)": "5385cbf5",
+        "changeSTGoodsScopebyMarketor(address,uint8)": "73152a97",
+        "createShopbyMarketor(address,address,uint24)": "1b0582ed",
+        "delCoinbyMarketor(address)": "7c3e2f02",
+        "delGateCoinbyMarketor(address,address)": "eaec0112",
+        "delGateSTGoodsbyMarketor(address,address)": "50620b4d",
+        "delGatebyMarketor(address)": "b614984d",
+        "delSTGoodsbyMarketor((bytes32,address,bytes32,bytes6,uint8,uint8,uint256,uint256,address,address,address,address,uint32,bool,bool,bool,bool,address,address))": "4c7f0cfe",
+        "impoveGateCoinbyMarketor(address,address)": "cfcdca52",
+        "impoveGateSTGoodsbyMarketor(address,address)": "d8d21cb9",
+        "lockCoinbyMarketor(address)": "b20be2b4",
+        "lockCustomerbyMarketor(address)": "0138a661",
+        "lockGatebyMarketor(address)": "a4786088",
+        "lockSTGoodsbyMarketor(address)": "9b14e56c",
+        "raiseShopLevelbyMarketor(address)": "7bde7ed1",
+        "unlockCoinbyMarketor(address)": "1d3b8f67",
+        "unlockCustomerbyMarketor(address)": "be5fdac8",
+        "unlockGatebyMarketor(address)": "76941300",
+        "unlockSTGoodsbyMarketor(address)": "8327bf59",
+        "updateCoinbyMarketor((bytes32,bytes6,uint8,uint8,uint256,uint256,uint32,uint256,address,bytes32,bytes32,bytes32,bool,bool,address,bool))": "fa071e2c",
+        "updateGatebyMarketor((address,address,uint160,bytes32,bytes32,bytes32[10],uint32,bool,bool,bool))": "71271f4d",
+        "updateSTGoodsbyMarketor((bytes32,address,bytes32,bytes6,uint8,uint8,uint256,uint256,address,address,address,address,uint32,bool,bool,bool,bool,address,address))": "8c711ac3"
+    },
+    "gasEstimates": null
+}

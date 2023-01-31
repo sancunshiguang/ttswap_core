@@ -17,15 +17,15 @@ library LUnit {
     struct Info {
         // the total position liquidity that references this unit
         //流动性总量
-        uint128 liquidityGross;
+        uint128 InvestGross;
         // amount of net liquidity added (subtracted) when unit is crossed from left to right (right to left),
         // 穿越边界后流动性净增量或减量
-        int128 liquidityNet;
+        int128 InvestNet;
         // fee growth per unit of liquidity on the _other_ side of this unit (relative to the current unit)
         // only has relative meaning, not absolute — the value depends on when the unit is initialized
         // 仅具有相对含义，而非绝对含义 — 值取决于刻度的初始化时间
-        uint256 feeGrowthOutside0X128;
-        uint256 feeGrowthOutside1X128;
+        uint256 coinFeeGrowthOutsideX128;
+        //uint256 feeGrowthOutside1X128;
         // the cumulative unit value on the other side of the unit
         // 刻度另一侧的累积刻度值
         int56 unitCumulativeOutside;
@@ -36,7 +36,7 @@ library LUnit {
         // only has relative meaning, not absolute — the value depends on when the unit is initialized
         // 仅具有相对含义，而非绝对含义 — 值取决于刻度的初始化时间
         uint32 secondsOutside;
-        // true iff the unit is initialized, i.e. the value is exactly equivalent to the expression liquidityGross != 0
+        // true iff the unit is initialized, i.e. the value is exactly equivalent to the expression InvestGross != 0
         // these 8 bits are set to prevent fresh sstores when crossing newly initialized units
         // 设置这 8 位以防止在跨越新初始化的刻度时出现新的存储
         bool initialized;
@@ -63,63 +63,42 @@ library LUnit {
     /// @param unitLower The lower unit boundary of the position
     /// @param unitUpper The upper unit boundary of the position
     /// @param unitCurrent The current unit
-    /// @param feeGrowthGlobal0X128 The all-time global fee growth, per unit of liquidity, in token0
-    /// @param feeGrowthGlobal1X128 The all-time global fee growth, per unit of liquidity, in token1
-    /// @return feeGrowthInside0X128 The all-time fee growth in token0, per unit of liquidity, inside the position's unit boundaries
-    /// @return feeGrowthInside1X128 The all-time fee growth in token1, per unit of liquidity, inside the position's unit boundaries
+    /// @param coinFeeGrowthGlobalX128 The all-time global fee growth, per unit of liquidity, in token0
+    /// @return coinFeeGrowthInsideX128 The all-time fee growth in token0, per unit of liquidity, inside the position's unit boundaries
     function getFeeGrowthInside(
         mapping(int24 => LUnit.Info) storage self,
         int24 unitLower,
         int24 unitUpper,
         int24 unitCurrent,
-        uint256 feeGrowthGlobal0X128,
-        uint256 feeGrowthGlobal1X128
-    )
-        internal
-        view
-        returns (uint256 feeGrowthInside0X128, uint256 feeGrowthInside1X128)
-    {
+        uint256 coinFeeGrowthGlobalX128
+    ) internal view returns (uint256 coinFeeGrowthInsideX128) {
         Info storage lower = self[unitLower];
         Info storage upper = self[unitUpper];
 
         // calculate fee growth below
-        uint256 feeGrowthBelow0X128;
-        uint256 feeGrowthBelow1X128;
+        uint256 coinFeeGrowthBelowX128;
         if (unitCurrent >= unitLower) {
-            feeGrowthBelow0X128 = lower.feeGrowthOutside0X128;
-            feeGrowthBelow1X128 = lower.feeGrowthOutside1X128;
+            coinFeeGrowthBelowX128 = lower.coinFeeGrowthOutsideX128;
         } else {
-            feeGrowthBelow0X128 =
-                feeGrowthGlobal0X128 -
-                lower.feeGrowthOutside0X128;
-            feeGrowthBelow1X128 =
-                feeGrowthGlobal1X128 -
-                lower.feeGrowthOutside1X128;
+            coinFeeGrowthBelowX128 =
+                coinFeeGrowthGlobalX128 -
+                lower.coinFeeGrowthOutsideX128;
         }
 
         // calculate fee growth above
-        uint256 feeGrowthAbove0X128;
-        uint256 feeGrowthAbove1X128;
+        uint256 coinFeeGrowthAboveX128;
         if (unitCurrent < unitUpper) {
-            feeGrowthAbove0X128 = upper.feeGrowthOutside0X128;
-            feeGrowthAbove1X128 = upper.feeGrowthOutside1X128;
+            coinFeeGrowthAboveX128 = upper.coinFeeGrowthOutsideX128;
         } else {
-            feeGrowthAbove0X128 =
-                feeGrowthGlobal0X128 -
-                upper.feeGrowthOutside0X128;
-            feeGrowthAbove1X128 =
-                feeGrowthGlobal1X128 -
-                upper.feeGrowthOutside1X128;
+            coinFeeGrowthAboveX128 =
+                coinFeeGrowthGlobalX128 -
+                upper.coinFeeGrowthOutsideX128;
         }
 
-        feeGrowthInside0X128 =
-            feeGrowthGlobal0X128 -
-            feeGrowthBelow0X128 -
-            feeGrowthAbove0X128;
-        feeGrowthInside1X128 =
-            feeGrowthGlobal1X128 -
-            feeGrowthBelow1X128 -
-            feeGrowthAbove1X128;
+        coinFeeGrowthInsideX128 =
+            coinFeeGrowthGlobalX128 -
+            coinFeeGrowthBelowX128 -
+            coinFeeGrowthAboveX128;
     }
 
     /// @notice Updates a unit and returns true if the unit was flipped from initialized to uninitialized, or vice versa
@@ -128,8 +107,7 @@ library LUnit {
     /// @param unit The unit that will be updated
     /// @param unitCurrent The current unit
     /// @param liquidityDelta A new amount of liquidity to be added (subtracted) when unit is crossed from left to right (right to left)
-    /// @param feeGrowthGlobal0X128 The all-time global fee growth, per unit of liquidity, in token0
-    /// @param feeGrowthGlobal1X128 The all-time global fee growth, per unit of liquidity, in token1
+    /// @param coinFeeGrowthGlobalX128 The all-time global fee growth, per unit of liquidity, in token0
     /// @param secondsPerLiquidityCumulativeX128 The all-time seconds per max(1, liquidity) of the pool
     /// @param unitCumulative The unit * time elapsed since the pool was first initialized
     /// @param time The current block timestamp cast to a uint32
@@ -141,8 +119,7 @@ library LUnit {
         int24 unit,
         int24 unitCurrent,
         int128 liquidityDelta,
-        uint256 feeGrowthGlobal0X128,
-        uint256 feeGrowthGlobal1X128,
+        uint256 coinFeeGrowthGlobalX128,
         uint160 secondsPerLiquidityCumulativeX128,
         int56 unitCumulative,
         uint32 time,
@@ -151,21 +128,20 @@ library LUnit {
     ) internal returns (bool flipped) {
         LUnit.Info storage info = self[unit];
 
-        uint128 liquidityGrossBefore = info.liquidityGross;
-        uint128 liquidityGrossAfter = LInvestionMath.addDelta(
-            liquidityGrossBefore,
+        uint128 InvestGrossBefore = info.InvestGross;
+        uint128 InvestGrossAfter = LInvestionMath.addDelta(
+            InvestGrossBefore,
             liquidityDelta
         );
 
-        require(liquidityGrossAfter <= maxLiquidity, "LO");
+        require(InvestGrossAfter <= maxLiquidity, "LO");
 
-        flipped = (liquidityGrossAfter == 0) != (liquidityGrossBefore == 0);
+        flipped = (InvestGrossAfter == 0) != (InvestGrossBefore == 0);
 
-        if (liquidityGrossBefore == 0) {
+        if (InvestGrossBefore == 0) {
             // by convention, we assume that all growth before a unit was initialized happened _below_ the unit
             if (unit <= unitCurrent) {
-                info.feeGrowthOutside0X128 = feeGrowthGlobal0X128;
-                info.feeGrowthOutside1X128 = feeGrowthGlobal1X128;
+                info.coinFeeGrowthOutsideX128 = coinFeeGrowthGlobalX128;
                 info
                     .secondsPerLiquidityOutsideX128 = secondsPerLiquidityCumulativeX128;
                 info.unitCumulativeOutside = unitCumulative;
@@ -174,12 +150,12 @@ library LUnit {
             info.initialized = true;
         }
 
-        info.liquidityGross = liquidityGrossAfter;
+        info.InvestGross = InvestGrossAfter;
 
         // when the lower (upper) unit is crossed left to right (right to left), liquidity must be added (removed)
-        info.liquidityNet = upper
-            ? int256(info.liquidityNet).sub(liquidityDelta).toInt128()
-            : int256(info.liquidityNet).add(liquidityDelta).toInt128();
+        info.InvestNet = upper
+            ? int256(info.InvestNet).sub(liquidityDelta).toInt128()
+            : int256(info.InvestNet).add(liquidityDelta).toInt128();
     }
 
     /// @notice Clears unit data
@@ -194,28 +170,23 @@ library LUnit {
     /// @notice Transitions to next unit as needed by price movement
     /// @param self The mapping containing all unit information for initialized units
     /// @param unit The destination unit of the transition
-    /// @param feeGrowthGlobal0X128 The all-time global fee growth, per unit of liquidity, in token0
-    /// @param feeGrowthGlobal1X128 The all-time global fee growth, per unit of liquidity, in token1
+    /// @param coinFeeGrowthGlobalX128 The all-time global fee growth, per unit of liquidity, in token0
     /// @param secondsPerLiquidityCumulativeX128 The current seconds per liquidity
     /// @param unitCumulative The unit * time elapsed since the pool was first initialized
     /// @param time The current block.timestamp
-    /// @return liquidityNet The amount of liquidity added (subtracted) when unit is crossed from left to right (right to left)
+    /// @return InvestNet The amount of liquidity added (subtracted) when unit is crossed from left to right (right to left)
     function cross(
         mapping(int24 => LUnit.Info) storage self,
         int24 unit,
-        uint256 feeGrowthGlobal0X128,
-        uint256 feeGrowthGlobal1X128,
+        uint256 coinFeeGrowthGlobalX128,
         uint160 secondsPerLiquidityCumulativeX128,
         int56 unitCumulative,
         uint32 time
-    ) internal returns (int128 liquidityNet) {
+    ) internal returns (int128 InvestNet) {
         LUnit.Info storage info = self[unit];
-        info.feeGrowthOutside0X128 =
-            feeGrowthGlobal0X128 -
-            info.feeGrowthOutside0X128;
-        info.feeGrowthOutside1X128 =
-            feeGrowthGlobal1X128 -
-            info.feeGrowthOutside1X128;
+        info.coinFeeGrowthOutsideX128 =
+            coinFeeGrowthGlobalX128 -
+            info.coinFeeGrowthOutsideX128;
         info.secondsPerLiquidityOutsideX128 =
             secondsPerLiquidityCumulativeX128 -
             info.secondsPerLiquidityOutsideX128;
@@ -223,6 +194,6 @@ library LUnit {
             unitCumulative -
             info.unitCumulativeOutside;
         info.secondsOutside = time - info.secondsOutside;
-        liquidityNet = info.liquidityNet;
+        InvestNet = info.InvestNet;
     }
 }

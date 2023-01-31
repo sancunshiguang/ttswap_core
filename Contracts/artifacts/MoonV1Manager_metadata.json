@@ -1,0 +1,142 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_owner",
+						"type": "address"
+					}
+				],
+				"name": "delMarketManager",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "ismarketManager",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "marketCreator",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "marketManagers",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_owner",
+						"type": "address"
+					}
+				],
+				"name": "setMarketManager",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"delMarketManager(address)": {
+					"details": "Explain to a developer any extra details"
+				},
+				"ismarketManager()": {
+					"details": "Explain to a developer any extra details"
+				},
+				"setMarketManager(address)": {
+					"details": "Explain to a developer any extra details"
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"delMarketManager(address)": {
+					"notice": "Explain to an end user what this does"
+				},
+				"ismarketManager()": {
+					"notice": "Explain to an end user what this does"
+				},
+				"setMarketManager(address)": {
+					"notice": "Explain to an end user what this does"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Contracts/MoonV1Manager.sol": "MoonV1Manager"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Contracts/MoonV1Manager.sol": {
+			"keccak256": "0x5662fd60e643655389e3c190c15a23e45cab9b22f94608083efbefe66775ad84",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://446e14d3a167f49d2a37a079e37e55d64549e08dd41c67a82da2e2372a764768",
+				"dweb:/ipfs/QmbMGtH2HNVBLKhPrauZcDWjDzGtn1vo9J1UtZNqY5n9Nz"
+			]
+		}
+	},
+	"version": 1
+}

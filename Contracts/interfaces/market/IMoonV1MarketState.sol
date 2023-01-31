@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "../../libraries/base/LCoin.sol";
-import "../../libraries/base/LSTGoods.sol";
+import "../../libraries/base/LSTThings.sol";
 import "../../libraries/base/LGate.sol";
 import "../../libraries/base/LCustomer.sol";
 
@@ -22,10 +22,10 @@ interface IMoonV1MarketState {
         view
         returns (LCoin.Info memory);
 
-    function getSTGoodsInfo(address _contractaddress)
+    function getSTThingsInfo(address _contractaddress)
         external
         view
-        returns (LSTGoods.Info memory);
+        returns (LSTThings.Info memory);
 
     function addGater(LGate.Info memory _gater) external;
 

@@ -61,7 +61,7 @@ contract MoonV1Shop is IMoonV1Shop, NoDelegateCall {
 
     //总费用
     uint256 public override profitGrowthGlobalCoinX128;
-    uint256 public override profitGrowthGlobalThingX128;
+    //  uint256 public override profitGrowthGlobalThingX128;
 
     //协议费
     struct ProtocalProfits {
@@ -422,7 +422,7 @@ contract MoonV1Shop is IMoonV1Shop, NoDelegateCall {
         proof = proofs.get(owner, _unitLower, _unitUpper);
 
         uint256 _feeGrowthGlobalCoinX128 = profitGrowthGlobalCoinX128; // SLOAD for gas optimization
-        uint256 _feeGrowthGlobalThingX128 = profitGrowthGlobalThingX128; // SLOAD for gas optimization
+        // uint256 _feeGrowthGlobalThingX128 = profitGrowthGlobalThingX128; // SLOAD for gas optimization
 
         // if we need to update the ticks, do it
         bool flippedLower;
@@ -446,7 +446,7 @@ contract MoonV1Shop is IMoonV1Shop, NoDelegateCall {
                 unit,
                 investionDelta,
                 _feeGrowthGlobalCoinX128,
-                _feeGrowthGlobalThingX128,
+                //_feeGrowthGlobalThingX128,
                 secondsPerInvestionCumulativeX128,
                 unitCumulative,
                 time,
@@ -458,7 +458,7 @@ contract MoonV1Shop is IMoonV1Shop, NoDelegateCall {
                 unit,
                 investionDelta,
                 _feeGrowthGlobalCoinX128,
-                _feeGrowthGlobalThingX128,
+                //  _feeGrowthGlobalThingX128,
                 secondsPerInvestionCumulativeX128,
                 unitCumulative,
                 time,
@@ -549,9 +549,8 @@ contract MoonV1Shop is IMoonV1Shop, NoDelegateCall {
         address recipient,
         int24 _unitLower,
         int24 _unitUpper,
-        uint128 amount0Requested,
-        uint128 amount1Requested
-    ) external override lock returns (uint128 amount0, uint128 amount1) {
+        uint128 amount0Requested
+    ) external override lock returns (uint128 amount0) {
         // we don't need to checkTicks here, because invalid proofs will never have non-zero tokensOwed{0,1}
         LProof.Info storage proof = proofs.get(
             msg.sender,
@@ -562,27 +561,13 @@ contract MoonV1Shop is IMoonV1Shop, NoDelegateCall {
         amount0 = amount0Requested > proof.tokensOwed0
             ? proof.tokensOwed0
             : amount0Requested;
-        amount1 = amount1Requested > proof.tokensOwed1
-            ? proof.tokensOwed1
-            : amount1Requested;
 
         if (amount0 > 0) {
             proof.tokensOwed0 -= amount0;
             TransferHelper.safeTransfer(coin, recipient, amount0);
         }
-        if (amount1 > 0) {
-            proof.tokensOwed1 -= amount1;
-            TransferHelper.safeTransfer(thing, recipient, amount1);
-        }
 
-        emit Collect(
-            msg.sender,
-            recipient,
-            _unitLower,
-            _unitUpper,
-            amount0,
-            amount1
-        );
+        emit Collect(msg.sender, recipient, _unitLower, _unitUpper, amount0);
     }
 
     //// @inheritdoc IUniswapV3PoolActions
@@ -681,7 +666,7 @@ contract MoonV1Shop is IMoonV1Shop, NoDelegateCall {
     /// @return amount1 The delta of the balance of token1 of the pool, exact when negative, minimum when positive
     function swap(
         address recipient,
-        bool zeroForOne,
+        bool zeroForOne, //true :buy,false:sell
         int256 amountSpecified,
         uint160 sqrtPriceLimitX96,
         bytes calldata data
@@ -732,9 +717,7 @@ contract MoonV1Shop is IMoonV1Shop, NoDelegateCall {
             amountCalculated: 0,
             sqrtPriceX96: state0Start.sqrtPriceX96,
             unit: state0Start.unit,
-            profitGrowthGlobalX128: _zeroForOne
-                ? profitGrowthGlobalCoinX128
-                : profitGrowthGlobalThingX128,
+            profitGrowthGlobalX128: profitGrowthGlobalCoinX128,
             protocolFee: 0,
             investion: cache.investionStart
         });

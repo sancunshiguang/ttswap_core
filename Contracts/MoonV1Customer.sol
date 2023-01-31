@@ -2,10 +2,9 @@
 pragma solidity ^0.8.0;
 
 import "./libraries/base/LCustomer.sol";
-import "./MoonV1Manager.sol";
 import "./MoonV1Gater.sol";
 
-contract MoonV1Customer {
+contract MoonV1Customer is MoonV1Gater {
     /////////////////////////用户管理-市场////////////////////////////
     /////////////////////////user Manage/////////////////////
 
@@ -18,27 +17,11 @@ contract MoonV1Customer {
     mapping(address => uint32) public recommenderraltionkey;
     mapping(address => mapping(uint32 => address))
         public recommenderraltionlist;
-    address public immutable marketCreator;
 
-    //市场管理员
-    //marketManagers
-    mapping(address => bool) public marketManagers;
+    mapping(address => uint32) public gateCustomerNextKey;
+    mapping(address => mapping(uint32 => address)) public gateCustomerList;
 
-    constructor() {
-        marketCreator = msg.sender;
-    }
-
-    modifier onlyMarketCreator() {
-        require(msg.sender == marketCreator);
-        _;
-    }
-
-    /// @notice Explain to an end user what this does
-    /// @dev Explain to a developer any extra details
-    modifier onlyMarketManager() {
-        require(marketManagers[msg.sender] == true);
-        _;
-    }
+    constructor() {}
 
     /////////////////////////用户管理-市场////////////////////////////
     /////////////////////////user Manage/////////////////////
@@ -153,5 +136,25 @@ contract MoonV1Customer {
     ) external view returns (address) {
         require(_recommander != address(0), "customer address is null");
         return recommenderraltionlist[_recommander][_cumstomerindex];
+    }
+
+    function addCustomer(LCustomer.Info memory _customer, address _gater)
+        external
+    {
+        require(
+            customerList[_customer.contractAddress].isUsed != true &&
+                _customer.contractAddress == msg.sender,
+            "customer is exists"
+        );
+        if (gateCustomerNextKey[_gater] >= 1) {
+            gateCustomerNextKey[_gater] += 1;
+        } else gateCustomerNextKey[_gater] = 1;
+        _customer.Gater = _gater;
+        _customer.GaterKey = gateCustomerNextKey[_gater];
+        customerUniNextKey += 1;
+        customerUniKey[customerUniNextKey] = msg.sender;
+        _customer.customerKey = customerUniNextKey;
+        customerList[_customer.contractAddress] = _customer;
+        gateCustomerList[_gater][gateCustomerNextKey[_gater]] = msg.sender;
     }
 }

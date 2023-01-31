@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "../../libraries/base/LCoin.sol";
-import "../../libraries/base/LSTGoods.sol";
+import "../../libraries/base/LSTThings.sol";
 import "../../libraries/base/LGate.sol";
 
 /// @title Permissioned pool actions
@@ -26,7 +26,7 @@ interface IMoonV1MarketGatorActions {
 
     function unlockSTGoodsbyGator(address) external;
 
-    function updateSTGoodsbyGator(LSTGoods.Info memory) external;
+    function updateSTGoodsbyGator(LSTThings.Info memory) external;
 
     /*
         门户管理门户

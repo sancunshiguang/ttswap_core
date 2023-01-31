@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity ^0.8.0;
 import "../../libraries/base/LCoin.sol";
-import "../../libraries/base/LSTGoods.sol";
+import "../../libraries/base/LSTThings.sol";
 import "../../libraries/base/LGate.sol";
 
 /// @title Permissionless pool actions
@@ -39,28 +39,29 @@ interface IMoonV1MarketManagerActions {
         市场管理员管理物品
     */
 
-    function addSTGoodsbyMarketor(LSTGoods.Info memory _STGoodsInfo) external;
+    function addSTThingsbyMarketor(LSTThings.Info memory _STThingInfo) external;
 
-    function changeSTGoodsScopebyMarketor(
-        address _internalSTGoodsAddress,
+    function changeSTThingsScopebyMarketor(
+        address _internalSTThingsAddress,
         uint8 _scope
     ) external;
 
-    function lockSTGoodsbyMarketor(address _internalSTGoodsAddress) external;
+    function lockSTThingsbyMarketor(address _internalSTThingsAddress) external;
 
-    function unlockSTGoodsbyMarketor(address _internalSTGoodsAddress) external;
-
-    function updateSTGoodsbyMarketor(LSTGoods.Info memory _STGoodsInfo)
+    function unlockSTThingsbyMarketor(address _internalSTThingsAddress)
         external;
 
-    function impoveGateSTGoodsbyMarketor(
+    function updateSTThingsbyMarketor(LSTThings.Info memory _STThingInfo)
+        external;
+
+    function impoveGateSTThingsbyMarketor(
         address _contractaddress,
         address _gateaddress
     ) external;
 
-    function delSTGoodsbyMarketor(LSTGoods.Info memory _STGoodsInfo) external;
+    function delSTThingsbyMarketor(LSTThings.Info memory _STThingInfo) external;
 
-    function delGateSTGoodsbyMarketor(
+    function delGateSTThingsbyMarketor(
         address _contractaddress,
         address _gateaddress
     ) external;

@@ -1,14 +1,11 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity ^0.8.0;
 
+import "./MoonV1Gater.sol";
 import "./libraries/base/LGate.sol";
 import "./libraries/base/LCoin.sol";
-import "./MoonV1Manager.sol";
-import "./MoonV1Gater.sol";
 
 contract MoonV1Coin {
-    address public immutable marketCreator;
-
     //市场币种信息
     //币种地址 => 币种信息
     //coinaddress => coin detail info
@@ -24,28 +21,7 @@ contract MoonV1Coin {
     //coinaddress => coinInfo
     mapping(address => LCoin.Info) public coinList;
 
-    constructor(address _marketCreator) {
-        marketCreator = _marketCreator;
-    }
-
-    modifier onlyMarketCreator() {
-        require(msg.sender == marketCreator);
-        _;
-    }
-
-    /// @notice Explain to an end user what this does
-    /// @dev Explain to a developer any extra details
-    modifier onlyMarketManager() {
-        require(MoonV1Manager(marketCreator).ismarketManager() == true);
-        _;
-    }
-
-    /// @notice Explain to an end user what this does
-    /// @dev Explain to a developer any extra details
-    modifier onlyGator() {
-        require(MoonV1Gater(marketCreator).isValidGater() == true);
-        _;
-    }
+    constructor() {}
 
     /////////////////////////币种设置-市场/////////////////////
     /////////////////////////Coin Manage/////////////////////
@@ -216,5 +192,9 @@ contract MoonV1Coin {
             "the coin is not exists"
         );
         return coinList[_contractaddress];
+    }
+
+    function isValidCoin(address _coinAddress) public view returns (bool) {
+        return coinList[_coinAddress].marketunlock;
     }
 }

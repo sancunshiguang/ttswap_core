@@ -7,11 +7,15 @@ import "./MoonV1ShopCreate.sol";
 import "./NoDelegateCall.sol";
 import "./libraries/base/LShop.sol";
 
-contract MoonV1Market is IMoonV1Market, MoonV1ShopCreate, NoDelegateCall {
-    //市场拥有者
-    //marketCreator
-    address public immutable override marketCreator;
-
+contract MoonV1Market is
+    MoonV1Gater,
+    MoonV1Customer,
+    MoonV1Thing,
+    MoonV1Coin,
+    IMoonV1Market,
+    MoonV1ShopCreate,
+    NoDelegateCall
+{
     //市场门店信息
     //币种-物品-店铺地址
     //ShopAddress
@@ -249,32 +253,10 @@ contract MoonV1Market is IMoonV1Market, MoonV1ShopCreate, NoDelegateCall {
         uint24 _profit
     ) external override noDelegateCall onlyGator returns (address shop) {
         require(_coin != _thing, "the coin is same as the thing ");
-        require(coinList[_coin].isUsed == true, "the coin  have not config ");
         require(
-            STGoodsList[_thing].isUsed == true,
-            "the thing have not config "
-        );
-        require(
-            marketCoinList[_coin] != address(0) ||
-                gateCoinList[msg.sender][_coin] != address(0),
-            "the coin is not a marketCoin"
-        );
-
-        require(
-            marketSTGoodsList[_thing] != address(0) ||
-                gateSTGoodsList[msg.sender][_thing] != address(0),
-            "the thing is not a valid thing "
-        );
-        require(
-            coinList[_coin].marketunlock == true &&
-                coinList[_coin].unlock == true,
-            "_coin is locked"
-        );
-        require(
-            STGoodsList[_thing].marketunlock == true &&
-                STGoodsList[_thing].unlock == true &&
-                STGoodsList[_thing].createrunlock == true,
-            "_thing is invalid"
+            MoonV1Coin(marketCreator).isValidCoin(_coin) == true &&
+                MoonV1Thing(marketCreator).isValidThing(_thing) == true,
+            "coin or thing is not valid"
         );
 
         if (

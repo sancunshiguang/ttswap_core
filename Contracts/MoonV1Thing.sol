@@ -4,9 +4,7 @@ import "./libraries/base/LSTThings.sol";
 import "./MoonV1Manager.sol";
 import "./MoonV1Gater.sol";
 
-contract MoonV1Thing {
-    address public immutable marketCreator;
-
+contract MoonV1Thing is  MoonV1Gater {
     //标准物品地址 => 标准物品信息
     //standardThingsaddress => standard Things detail info
     mapping(address => address) public marketSTThingsList;
@@ -20,38 +18,12 @@ contract MoonV1Thing {
     //coinaddress => coinInfo
     mapping(address => LSTThings.Info) public STThingsList;
 
-    constructor(address _marketCreator) {
-        marketCreator = _marketCreator;
-    }
-
-    modifier onlyMarketCreator() {
-        require(msg.sender == marketCreator);
-        _;
-    }
-
-    /// @notice Explain to an end user what this does
-    /// @dev Explain to a developer any extra details
-    modifier onlyMarketManager() {
-        require(
-            MoonV1Manager(marketCreator).ismarketManager[msg.sender] == true
-        );
-        _;
-    }
-
-    /// @notice Explain to an end user what this does
-    /// @dev Explain to a developer any extra details
-    modifier onlyGator() {
-        require(
-            MoonV1Gater(marketCreator).gateList[msg.sender].marketunlock == true
-        );
-        _;
-    }
+    constructor() {}
 
     /////////////////////////物品设置-市场/////////////////////
     /////////////////////////things Manage/////////////////////
     function addSTThingsbyMarketor(LSTThings.Info memory _STThingsInfo)
         external
-        override
         onlyMarketManager
     {
         if (STThingsList[_STThingsInfo.contractAddress].isUsed != true) {
@@ -76,13 +48,12 @@ contract MoonV1Thing {
     function changeSTThingsScopebyMarketor(
         address _internalSTThingsAddress,
         uint8 _scope
-    ) external override onlyMarketManager {
+    ) external onlyMarketManager {
         STThingsList[_internalSTThingsAddress].scope = _scope;
     }
 
     function lockSTThingsbyMarketor(address _internalSTThingsAddress)
         external
-        override
         onlyMarketManager
     {
         STThingsList[_internalSTThingsAddress].marketunlock = false;
@@ -90,7 +61,6 @@ contract MoonV1Thing {
 
     function unlockSTThingsbyMarketor(address _internalSTThingsAddress)
         external
-        override
         onlyMarketManager
     {
         STThingsList[_internalSTThingsAddress].marketunlock = true;
@@ -98,7 +68,6 @@ contract MoonV1Thing {
 
     function updateSTThingsbyMarketor(LSTThings.Info memory _STThingsInfo)
         external
-        override
         onlyMarketManager
     {
         require(
@@ -115,7 +84,7 @@ contract MoonV1Thing {
     function impoveGateSTThingsbyMarketor(
         address _contractaddress,
         address _gateaddress
-    ) external override onlyMarketManager {
+    ) external onlyMarketManager {
         require(
             gateSTThingsList[_gateaddress][_contractaddress] != address(0),
             "the STThings is not exists"
@@ -133,7 +102,6 @@ contract MoonV1Thing {
 
     function delSTThingsbyMarketor(LSTThings.Info memory _STThingsInfo)
         external
-        override
         onlyMarketManager
     {
         require(
@@ -146,7 +114,7 @@ contract MoonV1Thing {
     function delGateSTThingsbyMarketor(
         address _contractaddress,
         address _gateaddress
-    ) external override onlyMarketManager {
+    ) external onlyMarketManager {
         require(
             gateSTThingsList[_gateaddress][_contractaddress] == address(0),
             "the STThings is not exists"
@@ -159,7 +127,6 @@ contract MoonV1Thing {
 
     function unlockSTThingsbyGator(address _internalSTThingsAddress)
         external
-        override
         onlyGator
     {
         require(
@@ -171,7 +138,6 @@ contract MoonV1Thing {
 
     function lockSTThingsbyGator(address _internalSTThingsAddress)
         external
-        override
         onlyGator
     {
         require(
@@ -183,7 +149,6 @@ contract MoonV1Thing {
 
     function updateSTThingsbyGator(LSTThings.Info memory _STThingsInfo)
         external
-        override
         onlyGator
     {
         require(
@@ -204,7 +169,7 @@ contract MoonV1Thing {
     function lockGateSTThingsbyCreater(
         address _internalSTThingsAddress,
         address _gateaddress
-    ) external override {
+    ) external {
         require(
             STThingsList[_internalSTThingsAddress].creator == msg.sender &&
                 gateSTThingsList[_gateaddress][_internalSTThingsAddress] ==
@@ -217,7 +182,7 @@ contract MoonV1Thing {
     function unlockGateSTThingsbyCreater(
         address _internalSTThingsAddress,
         address _gateaddress
-    ) external override {
+    ) external {
         require(
             STThingsList[_internalSTThingsAddress].creator == msg.sender &&
                 gateSTThingsList[_gateaddress][_internalSTThingsAddress] ==
@@ -230,7 +195,7 @@ contract MoonV1Thing {
     function addGateSTThingsbyCreator(
         LSTThings.Info memory _STThingsInfo,
         address _gateaddress
-    ) external override {
+    ) external {
         require(
             STThingsList[_STThingsInfo.contractAddress].isUsed != true &&
                 gateSTThingsList[_gateaddress][_STThingsInfo.contractAddress] ==
@@ -253,7 +218,7 @@ contract MoonV1Thing {
     function updateGateSTThingsbyCreator(
         LSTThings.Info memory _STThingsInfo,
         address _gateaddress
-    ) external override {
+    ) external {
         require(
             STThingsList[_STThingsInfo.contractAddress].isUsed != true &&
                 gateSTThingsList[_gateaddress][_STThingsInfo.contractAddress] ==
@@ -276,7 +241,6 @@ contract MoonV1Thing {
     function getSTThingsInfo(address _contractaddress)
         external
         view
-        override
         returns (LSTThings.Info memory)
     {
         require(
