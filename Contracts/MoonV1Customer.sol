@@ -3,8 +3,9 @@ pragma solidity ^0.8.0;
 
 import "./libraries/base/LCustomer.sol";
 import "./MoonV1Gater.sol";
+import "./MoonV1Manager.sol";
 
-contract MoonV1Customer is MoonV1Gater {
+contract MoonV1Customer {
     /////////////////////////用户管理-市场////////////////////////////
     /////////////////////////user Manage/////////////////////
 
@@ -21,7 +22,28 @@ contract MoonV1Customer is MoonV1Gater {
     mapping(address => uint32) public gateCustomerNextKey;
     mapping(address => mapping(uint32 => address)) public gateCustomerList;
 
-    constructor() {}
+    address public gateContractAddress;
+    address public marketorContractAddress;
+
+    constructor(address _gateContractAddress, address _marketorContractAddress)
+    {
+        gateContractAddress = _gateContractAddress;
+        marketorContractAddress = _marketorContractAddress;
+    }
+
+    /// @notice Explain to an end user what this does
+    /// @dev Explain to a developer any extra details
+    modifier onlyGator() {
+        require(MoonV1Gater(gateContractAddress).isValidGater());
+        _;
+    }
+
+    modifier onlyMarketManager() {
+        require(
+            MoonV1Manager(marketorContractAddress).ismarketManager() == true
+        );
+        _;
+    }
 
     /////////////////////////用户管理-市场////////////////////////////
     /////////////////////////user Manage/////////////////////

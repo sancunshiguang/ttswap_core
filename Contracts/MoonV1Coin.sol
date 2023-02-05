@@ -2,6 +2,8 @@
 pragma solidity ^0.8.0;
 
 import "./MoonV1Gater.sol";
+import "./MoonV1Manager.sol";
+
 import "./libraries/base/LGate.sol";
 import "./libraries/base/LCoin.sol";
 
@@ -21,7 +23,30 @@ contract MoonV1Coin {
     //coinaddress => coinInfo
     mapping(address => LCoin.Info) public coinList;
 
-    constructor() {}
+    address public gateContractAddress;
+    address public marketorContractAddress;
+
+    constructor(address _gateContractAddress, address _marketorContractAddress)
+    {
+        gateContractAddress = _gateContractAddress;
+        marketorContractAddress = _marketorContractAddress;
+    }
+
+    /// @notice Explain to an end user what this does
+    /// @dev Explain to a developer any extra details
+    /// @notice Explain to an end user what this does
+    /// @dev Explain to a developer any extra details
+    modifier onlyGator() {
+        require(MoonV1Gater(gateContractAddress).isValidGater());
+        _;
+    }
+
+    modifier onlyMarketManager() {
+        require(
+            MoonV1Manager(marketorContractAddress).ismarketManager() == true
+        );
+        _;
+    }
 
     /////////////////////////币种设置-市场/////////////////////
     /////////////////////////Coin Manage/////////////////////

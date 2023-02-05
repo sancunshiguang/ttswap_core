@@ -13,9 +13,8 @@ import "./libraries/base/LShop.sol";
 import "./libraries/TransferHelper.sol";
 import "./libraries/LSwapMath.sol";
 
-import "./interfaces/market/IMoonV1MarketState.sol";
-import "./interfaces/IMoonV1Market.sol";
-import "./interfaces/IMoonV1MarketShopCreate.sol";
+import "./MoonV1Market.sol";
+import "./MoonV1ShopCreate.sol";
 import "./interfaces/IERC20Minimal.sol";
 
 import "./NoDelegateCall.sol";
@@ -89,7 +88,7 @@ contract MoonV1Shop is IMoonV1Shop, NoDelegateCall {
             profit,
             unitSpacing,
             profitshares
-        ) = IMoonV1MarketShopCreate(msg.sender).inputParas();
+        ) = MoonV1ShopCreate(msg.sender).inputParas();
         marketlock = false;
         gatelock = false;
         maxInvestionPerUnit = LUnit.unitSpacingToMaxinvestionPerUnit(
@@ -109,7 +108,7 @@ contract MoonV1Shop is IMoonV1Shop, NoDelegateCall {
         state0.unlocked = true;
     }
     modifier onlyMarketManager() {
-        require(IMoonV1Market(market).ismarketManager() == true);
+        require(MoonV1Market(market).ismarketManager() == true);
         _;
     }
 

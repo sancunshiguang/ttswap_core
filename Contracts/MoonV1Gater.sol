@@ -2,22 +2,23 @@
 pragma solidity ^0.8.0;
 
 import "./libraries/base/LGate.sol";
-import "./libraries/base/LCustomer.sol";
 import "./MoonV1Manager.sol";
-import "./MoonV1Customer.sol";
 
 contract MoonV1Gater {
-    //市场拥有者
-    //marketCreator
-    address public immutable marketCreator;
-
     //门户信息
     //Gate Parameter
 
     mapping(address => LGate.Info) public gateList;
 
-    constructor() {
-        marketCreator = msg.sender;
+    address public marketContractAddress;
+    address public marketorContractAddress;
+
+    constructor(
+        address _marketContractAddress,
+        address _marketorContractAddress
+    ) {
+        marketContractAddress = _marketContractAddress;
+        marketorContractAddress = _marketorContractAddress;
     }
 
     /// @notice Explain to an end user what this does
@@ -26,41 +27,15 @@ contract MoonV1Gater {
         require(gateList[msg.sender].marketunlock == true);
         _;
     }
-    //市场管理员
-    //marketManagers
-    mapping(address => bool) public marketManagers;
-
-    modifier onlyMarketCreator() {
-        require(msg.sender == marketCreator);
-        _;
-    }
 
     /// @notice Explain to an end user what this does
     /// @dev Explain to a developer any extra details
+
     modifier onlyMarketManager() {
-        require(marketManagers[msg.sender] == true);
+        require(
+            MoonV1Manager(marketorContractAddress).ismarketManager() == true
+        );
         _;
-    }
-
-    /// @notice Explain to an end user what this does
-    /// @dev Explain to a developer any extra details
-
-    /// @notice Explain to an end user what this does
-    /// @dev Explain to a developer any extra details
-    function setMarketManager(address _owner) external onlyMarketCreator {
-        marketManagers[_owner] = true;
-    }
-
-    /// @notice Explain to an end user what this does
-    /// @dev Explain to a developer any extra details
-    function delMarketManager(address _owner) external onlyMarketCreator {
-        delete marketManagers[_owner];
-    }
-
-    /// @notice Explain to an end user what this does
-    /// @dev Explain to a developer any extra details
-    function ismarketManager() external view returns (bool) {
-        return marketManagers[msg.sender];
     }
 
     /////////////////////////门户管理-市场////////////////////////////

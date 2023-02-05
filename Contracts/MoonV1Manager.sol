@@ -2,16 +2,14 @@
 pragma solidity ^0.8.0;
 
 contract MoonV1Manager {
-    //市场拥有者
-    //marketCreator
-    address public immutable marketCreator;
-
     //市场管理员
     //marketManagers
     mapping(address => bool) public marketManagers;
 
-    constructor() {
-        marketCreator = msg.sender;
+    address public marketCreator;
+
+    constructor(address _marketCreator) {
+        marketCreator = _marketCreator;
     }
 
     modifier onlyMarketCreator() {

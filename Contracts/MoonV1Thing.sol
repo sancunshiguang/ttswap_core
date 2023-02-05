@@ -4,7 +4,7 @@ import "./libraries/base/LSTThings.sol";
 import "./MoonV1Manager.sol";
 import "./MoonV1Gater.sol";
 
-contract MoonV1Thing is  MoonV1Gater {
+contract MoonV1Thing {
     //标准物品地址 => 标准物品信息
     //standardThingsaddress => standard Things detail info
     mapping(address => address) public marketSTThingsList;
@@ -18,7 +18,30 @@ contract MoonV1Thing is  MoonV1Gater {
     //coinaddress => coinInfo
     mapping(address => LSTThings.Info) public STThingsList;
 
-    constructor() {}
+    address public gateContractAddress;
+    address public marketorContractAddress;
+
+    constructor(address _gateContractAddress, address _marketorContractAddress)
+    {
+        gateContractAddress = _gateContractAddress;
+        marketorContractAddress = _marketorContractAddress;
+    }
+
+    /// @notice Explain to an end user what this does
+    /// @dev Explain to a developer any extra details
+    /// @notice Explain to an end user what this does
+    /// @dev Explain to a developer any extra details
+    modifier onlyGator() {
+        require(MoonV1Gater(gateContractAddress).isValidGater());
+        _;
+    }
+
+    modifier onlyMarketManager() {
+        require(
+            MoonV1Manager(marketorContractAddress).ismarketManager() == true
+        );
+        _;
+    }
 
     /////////////////////////物品设置-市场/////////////////////
     /////////////////////////things Manage/////////////////////
@@ -249,5 +272,9 @@ contract MoonV1Thing is  MoonV1Gater {
         );
 
         return STThingsList[_contractaddress];
+    }
+
+    function isValidThing(address _thing) external view returns (bool) {
+        return STThingsList[_thing].marketunlock;
     }
 }
