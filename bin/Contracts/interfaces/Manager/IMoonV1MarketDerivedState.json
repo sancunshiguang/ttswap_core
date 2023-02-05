@@ -1,0 +1,66 @@
+{
+    "contractName": "IMoonV1MarketDerivedState",
+    "abi": [],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"title\":\"Pool state that is not stored\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Contains view functions to provide information about the pool that is computed rather than stored on the blockchain. The functions here may have variable gas costs.\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Manager/IManagerDerivedState.sol\":\"IMoonV1MarketDerivedState\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Manager/IManagerDerivedState.sol\":{\"keccak256\":\"0xcb5732dd4e699b777ce45ba3debbd24d31a8b7a0b27e8719c008a92b331eb811\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://add8afc984ca767624a4333fb36dd3771bda7c27d3c6f5484555499e3a50f3d6\",\"dweb:/ipfs/QmSYamdrcE2kHrJEvvHuwf5hCM5gztNU4KtuskR8VjhjUB\"]}},\"version\":1}",
+    "bytecode": "",
+    "deployedBytecode": "",
+    "sourceMap": "",
+    "deployedSourceMap": "",
+    "sourcePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Manager/IManagerDerivedState.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.15+commit.e14f2714"
+    },
+    "ast": {
+        "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Manager/IManagerDerivedState.sol",
+        "exportedSymbols": {
+            "IMoonV1MarketDerivedState": [
+                3
+            ]
+        },
+        "id": 4,
+        "license": "GPL-2.0-or-later",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 1,
+                "literals": [
+                    "solidity",
+                    "^",
+                    "0.8",
+                    ".0"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "45:23:0"
+            },
+            {
+                "abstract": false,
+                "baseContracts": [],
+                "canonicalName": "IMoonV1MarketDerivedState",
+                "contractDependencies": [],
+                "contractKind": "interface",
+                "documentation": {
+                    "id": 2,
+                    "nodeType": "StructuredDocumentation",
+                    "src": "70:222:0",
+                    "text": "@title Pool state that is not stored\n @notice Contains view functions to provide information about the pool that is computed rather than stored on the\n blockchain. The functions here may have variable gas costs."
+                },
+                "fullyImplemented": true,
+                "id": 3,
+                "linearizedBaseContracts": [
+                    3
+                ],
+                "name": "IMoonV1MarketDerivedState",
+                "nameLocation": "302:25:0",
+                "nodeType": "ContractDefinition",
+                "nodes": [],
+                "scope": 4,
+                "src": "292:40:0",
+                "usedErrors": []
+            }
+        ],
+        "src": "45:288:0"
+    },
+    "functionHashes": {},
+    "gasEstimates": null
+}

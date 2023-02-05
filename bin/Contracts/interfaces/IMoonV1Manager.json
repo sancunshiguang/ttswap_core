@@ -1,0 +1,604 @@
+{
+    "contractName": "IMoonV1Manager",
+    "abi": [
+        {
+            "inputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "address",
+                            "name": "market",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "gateAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "uint160",
+                            "name": "authority",
+                            "type": "uint160"
+                        },
+                        {
+                            "internalType": "bytes32",
+                            "name": "name",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "bytes32",
+                            "name": "website",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "bytes32[10]",
+                            "name": "webserverip",
+                            "type": "bytes32[10]"
+                        },
+                        {
+                            "internalType": "uint32",
+                            "name": "createtimestamp",
+                            "type": "uint32"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "marketunlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "unlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "isUsed",
+                            "type": "bool"
+                        }
+                    ],
+                    "internalType": "struct LGate.Info",
+                    "name": "_gater",
+                    "type": "tuple"
+                }
+            ],
+            "name": "addGater",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_owner",
+                    "type": "address"
+                }
+            ],
+            "name": "delMarketManager",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_contractaddress",
+                    "type": "address"
+                }
+            ],
+            "name": "getCoinInfo",
+            "outputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "bytes32",
+                            "name": "coinFullName",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "bytes6",
+                            "name": "symbol",
+                            "type": "bytes6"
+                        },
+                        {
+                            "internalType": "uint8",
+                            "name": "scope",
+                            "type": "uint8"
+                        },
+                        {
+                            "internalType": "uint8",
+                            "name": "decimals",
+                            "type": "uint8"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "maxSupply",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "totalSupply",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "contractAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "bytes32",
+                            "name": "WhitePaperUrl",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "bytes32",
+                            "name": "OfficalWebsite",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "bytes32",
+                            "name": "blockExplorerUrl",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "marketunlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "unlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "creator",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "isUsed",
+                            "type": "bool"
+                        }
+                    ],
+                    "internalType": "struct LCoin.Info",
+                    "name": "",
+                    "type": "tuple"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_CustomerAddress",
+                    "type": "address"
+                }
+            ],
+            "name": "getCustomer",
+            "outputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "bytes32",
+                            "name": "neckname",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "uint32",
+                            "name": "createtimestamp",
+                            "type": "uint32"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "recommender",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "uint40",
+                            "name": "customerKey",
+                            "type": "uint40"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "Gater",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "uint32",
+                            "name": "GaterKey",
+                            "type": "uint32"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "contractAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "isUsed",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "unlock",
+                            "type": "bool"
+                        }
+                    ],
+                    "internalType": "struct LCustomer.Info",
+                    "name": "",
+                    "type": "tuple"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_customer",
+                    "type": "address"
+                }
+            ],
+            "name": "getCustomerRecommander",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_contractaddress",
+                    "type": "address"
+                }
+            ],
+            "name": "getSTThingsInfo",
+            "outputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "bytes32",
+                            "name": "name",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "ownerAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "bytes32",
+                            "name": "LSTThingsFullName",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "bytes6",
+                            "name": "symbol",
+                            "type": "bytes6"
+                        },
+                        {
+                            "internalType": "uint8",
+                            "name": "scope",
+                            "type": "uint8"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "contractAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "marketunlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "unlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "createrunlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "isUsed",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "addfromgater",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "creator",
+                            "type": "address"
+                        }
+                    ],
+                    "internalType": "struct LSTThings.Info",
+                    "name": "",
+                    "type": "tuple"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "ismarketManager",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "marketCreator",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_owner",
+                    "type": "address"
+                }
+            ],
+            "name": "setMarketManager",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"market\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"gateAddress\",\"type\":\"address\"},{\"internalType\":\"uint160\",\"name\":\"authority\",\"type\":\"uint160\"},{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"website\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32[10]\",\"name\":\"webserverip\",\"type\":\"bytes32[10]\"},{\"internalType\":\"uint32\",\"name\":\"createtimestamp\",\"type\":\"uint32\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"}],\"internalType\":\"struct LGate.Info\",\"name\":\"_gater\",\"type\":\"tuple\"}],\"name\":\"addGater\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"}],\"name\":\"delMarketManager\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_contractaddress\",\"type\":\"address\"}],\"name\":\"getCoinInfo\",\"outputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"coinFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"decimals\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"maxSupply\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"totalSupply\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"WhitePaperUrl\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"OfficalWebsite\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"blockExplorerUrl\",\"type\":\"bytes32\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"}],\"internalType\":\"struct LCoin.Info\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_CustomerAddress\",\"type\":\"address\"}],\"name\":\"getCustomer\",\"outputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"neckname\",\"type\":\"bytes32\"},{\"internalType\":\"uint32\",\"name\":\"createtimestamp\",\"type\":\"uint32\"},{\"internalType\":\"address\",\"name\":\"recommender\",\"type\":\"address\"},{\"internalType\":\"uint40\",\"name\":\"customerKey\",\"type\":\"uint40\"},{\"internalType\":\"address\",\"name\":\"Gater\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"GaterKey\",\"type\":\"uint32\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"}],\"internalType\":\"struct LCustomer.Info\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_customer\",\"type\":\"address\"}],\"name\":\"getCustomerRecommander\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_contractaddress\",\"type\":\"address\"}],\"name\":\"getSTThingsInfo\",\"outputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LSTThings.Info\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"ismarketManager\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"marketCreator\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"}],\"name\":\"setMarketManager\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"The pool interface is broken up into many smaller pieces\",\"kind\":\"dev\",\"methods\":{\"delMarketManager(address)\":{\"details\":\"Explain to a developer any extra details\"},\"marketCreator()\":{\"returns\":{\"_0\":\"The contract address\"}}},\"title\":\"The interface for a Uniswap V3 Pool\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"delMarketManager(address)\":{\"notice\":\"Explain to an end user what this does\"},\"marketCreator()\":{\"notice\":\"The contract that deployed the pool, which must adhere to the IUniswapV3Factory interface\"}},\"notice\":\"A Uniswap pool facilitates swapping and automated market making between any two assets that strictly conform to the ERC20 specification\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/IMoonV1Manager.sol\":\"IMoonV1Manager\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/IMoonV1Manager.sol\":{\"keccak256\":\"0xdb90ee5fa0768f0f0895ff0bfb24dc5b80277859075cd171d159437afa17571a\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://97c10abdc224f6f7f899bdb9e6cb720bdaaa5329bf94816ef8917fad3a40ddc3\",\"dweb:/ipfs/QmSXxfDrcTtnVZKPjUda75XLZmRkPB25Gu48itqXNLyv3k\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Manager/IManagerDerivedState.sol\":{\"keccak256\":\"0xb74d578712228c3c5d83237fdb9be4b5f54c05d023a29a47b12808d206e7ab66\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://1df0f1d54273a2d124cf1ce24ab75126a2cfdad8e8afcb1b3bf49ce7b5682fe5\",\"dweb:/ipfs/QmQfUSdRSi8S5FeKxCjAorjLEwvNBvUgkhXTejHbqfD3Sn\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Manager/IManagerEvents.sol\":{\"keccak256\":\"0xd542cc2b20ad44ad9b4852ecc71a1b4938656963e7dfb8cc3bacd2465369d4d4\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://8b29e23bbbf2c46e5bdf2f60ad62ec4e42fcb309ce962ff408a100092e9efa7d\",\"dweb:/ipfs/QmX1AtrocamygzgGPx5DWoqDsPJePiHckTgU9qSx6nSe55\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Manager/IManagerImmutables.sol\":{\"keccak256\":\"0x8ee66d0bd2637af3e81eb62905601246468526835fb6cc12fa0ff32398baa721\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://b5d23c3870370ab41db6a77ea9d532c793972da1bdf562e5ac31c386d3c66392\",\"dweb:/ipfs/QmPF5K2DVQr5PvLcF9RxyiZJk1Dt3wmbFnf38gM9SAc3gF\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Manager/IManagerMarketCreatorActions.sol\":{\"keccak256\":\"0x7491f391621bd8b2272f94a96979a3d9f7ae9a039ecc7ad820d9ba362e0c8f10\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://4b48dc1e6eef6e9e7ace0a830b6010d1a111682139dea3a8254add215b6f122f\",\"dweb:/ipfs/QmdDJ9nU4ZzXZyhFR6ScgSqtdYxAAE5Rap55AJTZQrcFvB\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Manager/IManagerState.sol\":{\"keccak256\":\"0x711dbc1f6986b4a5d08981c4514ea75b56a9bdf2e341c1e6cd7a164ef9e801e9\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://5e07380792736a9831747e3b72176786d3e9d4e8f79aa1a5d15cc40692cc5e61\",\"dweb:/ipfs/Qmb7Apahrd4eR32tQVusLQuqaWhgYT2B6ntPp9hxeQBW8Z\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LCoin.sol\":{\"keccak256\":\"0xe97a3af5ff5d7ca8e86da5f9b1690c76775df561bea92b889d950f0697eb100c\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://29f3a8bac8770d1e1491a4bf4b3906b49952b6a682b7d488a3bccdf994263380\",\"dweb:/ipfs/QmRU8LtZmEM2Rbt2CbW3wcRSSn9z3bvNKnKWW8VtHfWe99\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LCustomer.sol\":{\"keccak256\":\"0x6acb4a762f349ab39bd48ff34c150b55f55aabc4826379838391749136f3aee9\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://58552a104e1a046883cf116fe6748600caf7c8ebe341f82a38aa6fbfb09355cb\",\"dweb:/ipfs/QmQxUAK9fzefN6afoJ2CGyRWtETz1TEcZoJhDFCYJ3WY4V\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LGate.sol\":{\"keccak256\":\"0xdbbcc3e545cc8d7d8eebe4b1dbaccee4d2adbce4785cb7ac5f4712093c72db52\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://1d7251ca8ee12ad7009fe9f280aa8be028502f51e7465fe5314b85b9a2815991\",\"dweb:/ipfs/QmRQ5Z78r3qDKhBbRbDs8d4ThNk5fLN5S5g6tosHwa6jdo\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LSTThings.sol\":{\"keccak256\":\"0x8f10ad7cdca3ab033387dc360617f52dd3b41642cb627866c993e5202bdf8db7\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://56243f8b3bcaeb92c7423aa4b040c0fc22b1975b018e4292e3aa98fc251335e8\",\"dweb:/ipfs/QmW7XoPQKzLNmbU3jfMP3BmX5WwZNrddjtmyb7mYMSdj9E\"]}},\"version\":1}",
+    "bytecode": "",
+    "deployedBytecode": "",
+    "sourceMap": "",
+    "deployedSourceMap": "",
+    "sourcePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/IMoonV1Manager.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.15+commit.e14f2714"
+    },
+    "ast": {
+        "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/IMoonV1Manager.sol",
+        "exportedSymbols": {
+            "IManagerDerivedState": [
+                22
+            ],
+            "IManagerEvents": [
+                26
+            ],
+            "IManagerImmutables": [
+                36
+            ],
+            "IManagerMarketCreatorActions": [
+                54
+            ],
+            "IManagerState": [
+                104
+            ],
+            "IMoonV1Manager": [
+                18
+            ],
+            "LCoin": [
+                136
+            ],
+            "LCustomer": [
+                158
+            ],
+            "LGate": [
+                184
+            ],
+            "LSTThings": [
+                212
+            ]
+        },
+        "id": 19,
+        "license": "GPL-2.0-or-later",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 1,
+                "literals": [
+                    "solidity",
+                    "^",
+                    "0.8",
+                    ".0"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "45:23:0"
+            },
+            {
+                "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Manager/IManagerDerivedState.sol",
+                "file": "./Manager/IManagerDerivedState.sol",
+                "id": 2,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 19,
+                "sourceUnit": 23,
+                "src": "70:44:0",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Manager/IManagerEvents.sol",
+                "file": "./Manager/IManagerEvents.sol",
+                "id": 3,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 19,
+                "sourceUnit": 27,
+                "src": "115:38:0",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Manager/IManagerImmutables.sol",
+                "file": "./Manager/IManagerImmutables.sol",
+                "id": 4,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 19,
+                "sourceUnit": 37,
+                "src": "154:42:0",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Manager/IManagerMarketCreatorActions.sol",
+                "file": "./Manager/IManagerMarketCreatorActions.sol",
+                "id": 5,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 19,
+                "sourceUnit": 55,
+                "src": "197:52:0",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Manager/IManagerState.sol",
+                "file": "./Manager/IManagerState.sol",
+                "id": 6,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 19,
+                "sourceUnit": 105,
+                "src": "250:37:0",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "abstract": false,
+                "baseContracts": [
+                    {
+                        "baseName": {
+                            "id": 8,
+                            "name": "IManagerDerivedState",
+                            "nodeType": "IdentifierPath",
+                            "referencedDeclaration": 22,
+                            "src": "586:20:0"
+                        },
+                        "id": 9,
+                        "nodeType": "InheritanceSpecifier",
+                        "src": "586:20:0"
+                    },
+                    {
+                        "baseName": {
+                            "id": 10,
+                            "name": "IManagerEvents",
+                            "nodeType": "IdentifierPath",
+                            "referencedDeclaration": 26,
+                            "src": "612:14:0"
+                        },
+                        "id": 11,
+                        "nodeType": "InheritanceSpecifier",
+                        "src": "612:14:0"
+                    },
+                    {
+                        "baseName": {
+                            "id": 12,
+                            "name": "IManagerImmutables",
+                            "nodeType": "IdentifierPath",
+                            "referencedDeclaration": 36,
+                            "src": "632:18:0"
+                        },
+                        "id": 13,
+                        "nodeType": "InheritanceSpecifier",
+                        "src": "632:18:0"
+                    },
+                    {
+                        "baseName": {
+                            "id": 14,
+                            "name": "IManagerMarketCreatorActions",
+                            "nodeType": "IdentifierPath",
+                            "referencedDeclaration": 54,
+                            "src": "656:28:0"
+                        },
+                        "id": 15,
+                        "nodeType": "InheritanceSpecifier",
+                        "src": "656:28:0"
+                    },
+                    {
+                        "baseName": {
+                            "id": 16,
+                            "name": "IManagerState",
+                            "nodeType": "IdentifierPath",
+                            "referencedDeclaration": 104,
+                            "src": "690:13:0"
+                        },
+                        "id": 17,
+                        "nodeType": "InheritanceSpecifier",
+                        "src": "690:13:0"
+                    }
+                ],
+                "canonicalName": "IMoonV1Manager",
+                "contractDependencies": [],
+                "contractKind": "interface",
+                "documentation": {
+                    "id": 7,
+                    "nodeType": "StructuredDocumentation",
+                    "src": "289:265:0",
+                    "text": "@title The interface for a Uniswap V3 Pool\n @notice A Uniswap pool facilitates swapping and automated market making between any two assets that strictly conform\n to the ERC20 specification\n @dev The pool interface is broken up into many smaller pieces"
+                },
+                "fullyImplemented": false,
+                "id": 18,
+                "linearizedBaseContracts": [
+                    18,
+                    104,
+                    54,
+                    36,
+                    26,
+                    22
+                ],
+                "name": "IMoonV1Manager",
+                "nameLocation": "564:14:0",
+                "nodeType": "ContractDefinition",
+                "nodes": [],
+                "scope": 19,
+                "src": "554:154:0",
+                "usedErrors": []
+            }
+        ],
+        "src": "45:664:0"
+    },
+    "functionHashes": {
+        "addGater((address,address,uint160,bytes32,bytes32,bytes32[10],uint32,bool,bool,bool))": "d8feb7ff",
+        "delMarketManager(address)": "2b890543",
+        "getCoinInfo(address)": "e8dd4655",
+        "getCustomer(address)": "cb949e51",
+        "getCustomerRecommander(address)": "e71957b9",
+        "getSTThingsInfo(address)": "05d2acb5",
+        "ismarketManager()": "1487f252",
+        "marketCreator()": "27cbaabe",
+        "setMarketManager(address)": "d82aff11"
+    },
+    "gasEstimates": null
+}

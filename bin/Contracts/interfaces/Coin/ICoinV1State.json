@@ -1,0 +1,312 @@
+{
+    "contractName": "ICoinV1State",
+    "abi": [
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_contractaddress",
+                    "type": "address"
+                }
+            ],
+            "name": "getCoinInfo",
+            "outputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "bytes32",
+                            "name": "coinFullName",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "bytes6",
+                            "name": "symbol",
+                            "type": "bytes6"
+                        },
+                        {
+                            "internalType": "uint8",
+                            "name": "scope",
+                            "type": "uint8"
+                        },
+                        {
+                            "internalType": "uint8",
+                            "name": "decimals",
+                            "type": "uint8"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "maxSupply",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "uint256",
+                            "name": "totalSupply",
+                            "type": "uint256"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "contractAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "bytes32",
+                            "name": "WhitePaperUrl",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "bytes32",
+                            "name": "OfficalWebsite",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "bytes32",
+                            "name": "blockExplorerUrl",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "marketunlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "unlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "creator",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "isUsed",
+                            "type": "bool"
+                        }
+                    ],
+                    "internalType": "struct LCoin.Info",
+                    "name": "",
+                    "type": "tuple"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_contractaddress\",\"type\":\"address\"}],\"name\":\"getCoinInfo\",\"outputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"coinFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"uint8\",\"name\":\"decimals\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"maxSupply\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"totalSupply\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"WhitePaperUrl\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"OfficalWebsite\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"blockExplorerUrl\",\"type\":\"bytes32\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"}],\"internalType\":\"struct LCoin.Info\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"title\":\"Pool state that can change\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"These methods compose the pool's state, and can change with any frequency including multiple times per transaction\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Coin/IcoinV1State.sol\":\"ICoinV1State\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Coin/IcoinV1State.sol\":{\"keccak256\":\"0x873b593194faf986a8a57a90a5b74442a25b3b213299ca736fc4ed8c0d56edbc\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://14a9864f6b12eb8fef70ce19dc9716dbe28e7e95029a1f11c9723a699c0a142c\",\"dweb:/ipfs/QmdaFC92U8PZpd8XcnKuyQEhYhQke3D5wbSoqfLfDbY2Jq\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LCoin.sol\":{\"keccak256\":\"0xe97a3af5ff5d7ca8e86da5f9b1690c76775df561bea92b889d950f0697eb100c\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://29f3a8bac8770d1e1491a4bf4b3906b49952b6a682b7d488a3bccdf994263380\",\"dweb:/ipfs/QmRU8LtZmEM2Rbt2CbW3wcRSSn9z3bvNKnKWW8VtHfWe99\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LCustomer.sol\":{\"keccak256\":\"0x6acb4a762f349ab39bd48ff34c150b55f55aabc4826379838391749136f3aee9\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://58552a104e1a046883cf116fe6748600caf7c8ebe341f82a38aa6fbfb09355cb\",\"dweb:/ipfs/QmQxUAK9fzefN6afoJ2CGyRWtETz1TEcZoJhDFCYJ3WY4V\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LGate.sol\":{\"keccak256\":\"0xdbbcc3e545cc8d7d8eebe4b1dbaccee4d2adbce4785cb7ac5f4712093c72db52\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://1d7251ca8ee12ad7009fe9f280aa8be028502f51e7465fe5314b85b9a2815991\",\"dweb:/ipfs/QmRQ5Z78r3qDKhBbRbDs8d4ThNk5fLN5S5g6tosHwa6jdo\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LSTThings.sol\":{\"keccak256\":\"0x8f10ad7cdca3ab033387dc360617f52dd3b41642cb627866c993e5202bdf8db7\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://56243f8b3bcaeb92c7423aa4b040c0fc22b1975b018e4292e3aa98fc251335e8\",\"dweb:/ipfs/QmW7XoPQKzLNmbU3jfMP3BmX5WwZNrddjtmyb7mYMSdj9E\"]}},\"version\":1}",
+    "bytecode": "",
+    "deployedBytecode": "",
+    "sourceMap": "",
+    "deployedSourceMap": "",
+    "sourcePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Coin/IcoinV1State.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.15+commit.e14f2714"
+    },
+    "ast": {
+        "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Coin/IcoinV1State.sol",
+        "exportedSymbols": {
+            "ICoinV1State": [
+                15
+            ],
+            "LCoin": [
+                47
+            ],
+            "LCustomer": [
+                69
+            ],
+            "LGate": [
+                95
+            ],
+            "LSTThings": [
+                123
+            ]
+        },
+        "id": 16,
+        "license": "GPL-2.0-or-later",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 1,
+                "literals": [
+                    "solidity",
+                    "^",
+                    "0.8",
+                    ".0"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "45:23:0"
+            },
+            {
+                "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LCoin.sol",
+                "file": "../../libraries/base/LCoin.sol",
+                "id": 2,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 16,
+                "sourceUnit": 48,
+                "src": "70:40:0",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LSTThings.sol",
+                "file": "../../libraries/base/LSTThings.sol",
+                "id": 3,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 16,
+                "sourceUnit": 124,
+                "src": "111:44:0",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LGate.sol",
+                "file": "../../libraries/base/LGate.sol",
+                "id": 4,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 16,
+                "sourceUnit": 96,
+                "src": "156:40:0",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LCustomer.sol",
+                "file": "../../libraries/base/LCustomer.sol",
+                "id": 5,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 16,
+                "sourceUnit": 70,
+                "src": "197:44:0",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "abstract": false,
+                "baseContracts": [],
+                "canonicalName": "ICoinV1State",
+                "contractDependencies": [],
+                "contractKind": "interface",
+                "documentation": {
+                    "id": 6,
+                    "nodeType": "StructuredDocumentation",
+                    "src": "243:169:0",
+                    "text": "@title Pool state that can change\n @notice These methods compose the pool's state, and can change with any frequency including multiple times\n per transaction"
+                },
+                "fullyImplemented": false,
+                "id": 15,
+                "linearizedBaseContracts": [
+                    15
+                ],
+                "name": "ICoinV1State",
+                "nameLocation": "422:12:0",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "functionSelector": "e8dd4655",
+                        "id": 14,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "getCoinInfo",
+                        "nameLocation": "450:11:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 9,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 8,
+                                    "mutability": "mutable",
+                                    "name": "_contractaddress",
+                                    "nameLocation": "470:16:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 14,
+                                    "src": "462:24:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 7,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "462:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "461:26:0"
+                        },
+                        "returnParameters": {
+                            "id": 13,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 12,
+                                    "mutability": "mutable",
+                                    "name": "",
+                                    "nameLocation": "-1:-1:-1",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 14,
+                                    "src": "535:17:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "memory",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_struct$_Info_$46_memory_ptr",
+                                        "typeString": "struct LCoin.Info"
+                                    },
+                                    "typeName": {
+                                        "id": 11,
+                                        "nodeType": "UserDefinedTypeName",
+                                        "pathNode": {
+                                            "id": 10,
+                                            "name": "LCoin.Info",
+                                            "nodeType": "IdentifierPath",
+                                            "referencedDeclaration": 46,
+                                            "src": "535:10:0"
+                                        },
+                                        "referencedDeclaration": 46,
+                                        "src": "535:10:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_struct$_Info_$46_storage_ptr",
+                                            "typeString": "struct LCoin.Info"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "534:19:0"
+                        },
+                        "scope": 15,
+                        "src": "441:113:0",
+                        "stateMutability": "view",
+                        "virtual": false,
+                        "visibility": "external"
+                    }
+                ],
+                "scope": 16,
+                "src": "412:144:0",
+                "usedErrors": []
+            }
+        ],
+        "src": "45:512:0"
+    },
+    "functionHashes": {
+        "getCoinInfo(address)": "e8dd4655"
+    },
+    "gasEstimates": null
+}
