@@ -32,6 +32,8 @@ contract MoonV1Market is NoDelegateCall {
 
     mapping(uint24 => int24) public profitUnitSpacing;
 
+ 
+
     address public marketContractAddress;
     address public gateContractAddress;
     address public marketorContractAddress;

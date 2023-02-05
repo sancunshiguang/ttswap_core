@@ -14,16 +14,8 @@ library LSTThings {
         //symbol
         bytes6 symbol;
         uint8 scope; //1:货币式加密货币 2:应用型加密货币 3:平台型加密货币
-        uint8 decimals; /*精度*/
-        //external address
-        uint256 maxSupply;
-        uint256 totalSupply;
         //合约地址
         address contractAddress;
-        address WhitePaperUrl;
-        address OfficalWebsite;
-        address blockExplorerUrl;
-        uint32 createtimestamp;
         bool marketunlock;
         bool unlock;
         bool createrunlock;

@@ -1,0 +1,824 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_gateContractAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_marketorContractAddress",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "bytes32",
+								"name": "coinFullName",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes6",
+								"name": "symbol",
+								"type": "bytes6"
+							},
+							{
+								"internalType": "uint8",
+								"name": "scope",
+								"type": "uint8"
+							},
+							{
+								"internalType": "uint8",
+								"name": "decimals",
+								"type": "uint8"
+							},
+							{
+								"internalType": "uint256",
+								"name": "maxSupply",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "totalSupply",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "contractAddress",
+								"type": "address"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "WhitePaperUrl",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "OfficalWebsite",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "blockExplorerUrl",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bool",
+								"name": "marketunlock",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "unlock",
+								"type": "bool"
+							},
+							{
+								"internalType": "address",
+								"name": "creator",
+								"type": "address"
+							},
+							{
+								"internalType": "bool",
+								"name": "isUsed",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct LCoin.Info",
+						"name": "_coinInfo",
+						"type": "tuple"
+					}
+				],
+				"name": "addCoinbyGator",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "bytes32",
+								"name": "coinFullName",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes6",
+								"name": "symbol",
+								"type": "bytes6"
+							},
+							{
+								"internalType": "uint8",
+								"name": "scope",
+								"type": "uint8"
+							},
+							{
+								"internalType": "uint8",
+								"name": "decimals",
+								"type": "uint8"
+							},
+							{
+								"internalType": "uint256",
+								"name": "maxSupply",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "totalSupply",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "contractAddress",
+								"type": "address"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "WhitePaperUrl",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "OfficalWebsite",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "blockExplorerUrl",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bool",
+								"name": "marketunlock",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "unlock",
+								"type": "bool"
+							},
+							{
+								"internalType": "address",
+								"name": "creator",
+								"type": "address"
+							},
+							{
+								"internalType": "bool",
+								"name": "isUsed",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct LCoin.Info",
+						"name": "_coinInfo",
+						"type": "tuple"
+					}
+				],
+				"name": "addCoinbyMarketor",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_internalCoinAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint8",
+						"name": "_scope",
+						"type": "uint8"
+					}
+				],
+				"name": "changeCoinScopebyMarketor",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "coinList",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "coinFullName",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes6",
+						"name": "symbol",
+						"type": "bytes6"
+					},
+					{
+						"internalType": "uint8",
+						"name": "scope",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint8",
+						"name": "decimals",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint256",
+						"name": "maxSupply",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalSupply",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "contractAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "WhitePaperUrl",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "OfficalWebsite",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "blockExplorerUrl",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bool",
+						"name": "marketunlock",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "unlock",
+						"type": "bool"
+					},
+					{
+						"internalType": "address",
+						"name": "creator",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "isUsed",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_contractaddress",
+						"type": "address"
+					}
+				],
+				"name": "delCoinbyMarketor",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_contractaddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_gateaddress",
+						"type": "address"
+					}
+				],
+				"name": "delGateCoinbyMarketor",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "gateCoinList",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "gateContractAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_contractaddress",
+						"type": "address"
+					}
+				],
+				"name": "getCoinInfo",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "bytes32",
+								"name": "coinFullName",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes6",
+								"name": "symbol",
+								"type": "bytes6"
+							},
+							{
+								"internalType": "uint8",
+								"name": "scope",
+								"type": "uint8"
+							},
+							{
+								"internalType": "uint8",
+								"name": "decimals",
+								"type": "uint8"
+							},
+							{
+								"internalType": "uint256",
+								"name": "maxSupply",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "totalSupply",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "contractAddress",
+								"type": "address"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "WhitePaperUrl",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "OfficalWebsite",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "blockExplorerUrl",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bool",
+								"name": "marketunlock",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "unlock",
+								"type": "bool"
+							},
+							{
+								"internalType": "address",
+								"name": "creator",
+								"type": "address"
+							},
+							{
+								"internalType": "bool",
+								"name": "isUsed",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct LCoin.Info",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_contractaddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_gateaddress",
+						"type": "address"
+					}
+				],
+				"name": "impoveGateCoinbyMarketor",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_coinAddress",
+						"type": "address"
+					}
+				],
+				"name": "isValidCoin",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_internalCoinAddress",
+						"type": "address"
+					}
+				],
+				"name": "lockCoinbyGator",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_internalCoinAddress",
+						"type": "address"
+					}
+				],
+				"name": "lockCoinbyMarketor",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "marketCoinList",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "marketorContractAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_internalCoinAddress",
+						"type": "address"
+					}
+				],
+				"name": "unlockCoinbyGator",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_internalCoinAddress",
+						"type": "address"
+					}
+				],
+				"name": "unlockCoinbyMarketor",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "bytes32",
+								"name": "coinFullName",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes6",
+								"name": "symbol",
+								"type": "bytes6"
+							},
+							{
+								"internalType": "uint8",
+								"name": "scope",
+								"type": "uint8"
+							},
+							{
+								"internalType": "uint8",
+								"name": "decimals",
+								"type": "uint8"
+							},
+							{
+								"internalType": "uint256",
+								"name": "maxSupply",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "totalSupply",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "contractAddress",
+								"type": "address"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "WhitePaperUrl",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "OfficalWebsite",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "blockExplorerUrl",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bool",
+								"name": "marketunlock",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "unlock",
+								"type": "bool"
+							},
+							{
+								"internalType": "address",
+								"name": "creator",
+								"type": "address"
+							},
+							{
+								"internalType": "bool",
+								"name": "isUsed",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct LCoin.Info",
+						"name": "_coinInfo",
+						"type": "tuple"
+					}
+				],
+				"name": "updateCoinbyGator",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "bytes32",
+								"name": "coinFullName",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes6",
+								"name": "symbol",
+								"type": "bytes6"
+							},
+							{
+								"internalType": "uint8",
+								"name": "scope",
+								"type": "uint8"
+							},
+							{
+								"internalType": "uint8",
+								"name": "decimals",
+								"type": "uint8"
+							},
+							{
+								"internalType": "uint256",
+								"name": "maxSupply",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "totalSupply",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "contractAddress",
+								"type": "address"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "WhitePaperUrl",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "OfficalWebsite",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "blockExplorerUrl",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bool",
+								"name": "marketunlock",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "unlock",
+								"type": "bool"
+							},
+							{
+								"internalType": "address",
+								"name": "creator",
+								"type": "address"
+							},
+							{
+								"internalType": "bool",
+								"name": "isUsed",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct LCoin.Info",
+						"name": "_coinInfo",
+						"type": "tuple"
+					}
+				],
+				"name": "updateCoinbyMarketor",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"addCoinbyMarketor((bytes32,bytes6,uint8,uint8,uint256,uint256,address,bytes32,bytes32,bytes32,bool,bool,address,bool))": {
+					"details": "Explain to a developer any extra details"
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"addCoinbyMarketor((bytes32,bytes6,uint8,uint8,uint256,uint256,address,bytes32,bytes32,bytes32,bool,bool,address,bool))": {
+					"notice": "Explain to an end user what this does"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Contracts/MoonV1Coin.sol": "MoonV1Coin"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 2000
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Contracts/MoonV1Coin.sol": {
+			"keccak256": "0xd8df10ae9fffe7f391d4e8b58c434a93755e43343735c656b4abdcba94053a68",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://affd424fd8ad82c8a7cde8a0bc9a445d7d427364b58f0c0556f049cbf3ae1930",
+				"dweb:/ipfs/QmPdU9QPghuE28MA4imdDF2BeFD514ppTp6sS9WB1CGdAz"
+			]
+		},
+		"Contracts/MoonV1Gater.sol": {
+			"keccak256": "0x72f7dcac41d734ccacf09b8d033d1cac3c15becb5a91c2707692557714f2bce7",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://f39d490129f9e0ba012c388186628efbede8d9091d8caf85504a8ced2d24ca56",
+				"dweb:/ipfs/QmRhkZGatrNPPH5cvSYoHEFuarfdzuP3intFKRgj3Ryhew"
+			]
+		},
+		"Contracts/MoonV1Manager.sol": {
+			"keccak256": "0xc9d596ec3577394170e99c07a1b4a261a4e88c385425e7c881fabb1783798609",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://77caa39a103780c5eea6009a0acbdc4c1a1a2e668e4508eaf28e04825787fd34",
+				"dweb:/ipfs/QmV7Ap9wqbPAiBpz7WTHFUdSLDDm1RPeHMggxHD6ppoKcD"
+			]
+		},
+		"Contracts/libraries/base/LCoin.sol": {
+			"keccak256": "0xe97a3af5ff5d7ca8e86da5f9b1690c76775df561bea92b889d950f0697eb100c",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://29f3a8bac8770d1e1491a4bf4b3906b49952b6a682b7d488a3bccdf994263380",
+				"dweb:/ipfs/QmRU8LtZmEM2Rbt2CbW3wcRSSn9z3bvNKnKWW8VtHfWe99"
+			]
+		},
+		"Contracts/libraries/base/LGate.sol": {
+			"keccak256": "0xdbbcc3e545cc8d7d8eebe4b1dbaccee4d2adbce4785cb7ac5f4712093c72db52",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://1d7251ca8ee12ad7009fe9f280aa8be028502f51e7465fe5314b85b9a2815991",
+				"dweb:/ipfs/QmRQ5Z78r3qDKhBbRbDs8d4ThNk5fLN5S5g6tosHwa6jdo"
+			]
+		}
+	},
+	"version": 1
+}

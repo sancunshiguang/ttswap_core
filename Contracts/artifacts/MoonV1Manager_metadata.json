@@ -6,7 +6,13 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [],
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_marketCreator",
+						"type": "address"
+					}
+				],
 				"stateMutability": "nonpayable",
 				"type": "constructor"
 			},
@@ -130,11 +136,11 @@
 	},
 	"sources": {
 		"Contracts/MoonV1Manager.sol": {
-			"keccak256": "0x5662fd60e643655389e3c190c15a23e45cab9b22f94608083efbefe66775ad84",
+			"keccak256": "0xc9d596ec3577394170e99c07a1b4a261a4e88c385425e7c881fabb1783798609",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://446e14d3a167f49d2a37a079e37e55d64549e08dd41c67a82da2e2372a764768",
-				"dweb:/ipfs/QmbMGtH2HNVBLKhPrauZcDWjDzGtn1vo9J1UtZNqY5n9Nz"
+				"bzz-raw://77caa39a103780c5eea6009a0acbdc4c1a1a2e668e4508eaf28e04825787fd34",
+				"dweb:/ipfs/QmV7Ap9wqbPAiBpz7WTHFUdSLDDm1RPeHMggxHD6ppoKcD"
 			]
 		}
 	},

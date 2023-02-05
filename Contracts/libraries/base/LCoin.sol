@@ -9,8 +9,6 @@ library LCoin {
         uint8 decimals; //精度
         uint256 maxSupply; //流通量
         uint256 totalSupply; //发行量
-        uint32 supplytimestamp; //发行时间 2022*9*10
-        uint256 supplyPrice; //发行价格
         address contractAddress; //合约地址
         bytes32 WhitePaperUrl; //白皮书地址
         bytes32 OfficalWebsite; //官网

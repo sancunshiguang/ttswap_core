@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 import "./MoonV1Gater.sol";
 import "./MoonV1Manager.sol";
 
-import "./libraries/base/LGate.sol";
+
 import "./libraries/base/LCoin.sol";
 
 contract MoonV1Coin {
@@ -21,6 +21,7 @@ contract MoonV1Coin {
     //币种信息
     //币种地址 => 币种信息
     //coinaddress => coinInfo
+   
     mapping(address => LCoin.Info) public coinList;
 
     address public gateContractAddress;
@@ -43,7 +44,7 @@ contract MoonV1Coin {
 
     modifier onlyMarketManager() {
         require(
-            MoonV1Manager(marketorContractAddress).ismarketManager() == true
+            MoonV1Manager(marketorContractAddress).ismarketManager()
         );
         _;
     }

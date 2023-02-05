@@ -6,7 +6,18 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [],
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_marketContractAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_marketorContractAddress",
+						"type": "address"
+					}
+				],
 				"stateMutability": "nonpayable",
 				"type": "constructor"
 			},
@@ -92,19 +103,6 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "_owner",
-						"type": "address"
-					}
-				],
-				"name": "delMarketManager",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
 						"name": "",
 						"type": "address"
 					}
@@ -175,19 +173,6 @@
 			},
 			{
 				"inputs": [],
-				"name": "ismarketManager",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
 				"name": "lockGatebyGater",
 				"outputs": [],
 				"stateMutability": "nonpayable",
@@ -208,7 +193,7 @@
 			},
 			{
 				"inputs": [],
-				"name": "marketCreator",
+				"name": "marketContractAddress",
 				"outputs": [
 					{
 						"internalType": "address",
@@ -220,35 +205,16 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
+				"inputs": [],
+				"name": "marketorContractAddress",
+				"outputs": [
 					{
 						"internalType": "address",
 						"name": "",
 						"type": "address"
-					}
-				],
-				"name": "marketManagers",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
 					}
 				],
 				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_owner",
-						"type": "address"
-					}
-				],
-				"name": "setMarketManager",
-				"outputs": [],
-				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -404,32 +370,12 @@
 		],
 		"devdoc": {
 			"kind": "dev",
-			"methods": {
-				"delMarketManager(address)": {
-					"details": "Explain to a developer any extra details"
-				},
-				"ismarketManager()": {
-					"details": "Explain to a developer any extra details"
-				},
-				"setMarketManager(address)": {
-					"details": "Explain to a developer any extra details"
-				}
-			},
+			"methods": {},
 			"version": 1
 		},
 		"userdoc": {
 			"kind": "user",
-			"methods": {
-				"delMarketManager(address)": {
-					"notice": "Explain to an end user what this does"
-				},
-				"ismarketManager()": {
-					"notice": "Explain to an end user what this does"
-				},
-				"setMarketManager(address)": {
-					"notice": "Explain to an end user what this does"
-				}
-			},
+			"methods": {},
 			"version": 1
 		}
 	},
@@ -449,36 +395,20 @@
 		"remappings": []
 	},
 	"sources": {
-		"Contracts/MoonV1Customer.sol": {
-			"keccak256": "0xfd4336f1df3faa788277687548289c9bfd9e6eaf80a253e9585b1185a31766fa",
-			"license": "GPL-2.0-or-later",
-			"urls": [
-				"bzz-raw://ebccda8dbff74c929a4c35c421dfdb27241aa68e3ed84d835e87dc62410a1c3e",
-				"dweb:/ipfs/QmX83aiwaMr5jpbQpZb2r6h9G4bsXxjpQHKjB3v9uC32Ec"
-			]
-		},
 		"Contracts/MoonV1Gater.sol": {
-			"keccak256": "0xdeacafc06a8de1570130800a362df9bc88823d62f62a5142d75e4f68c493e900",
+			"keccak256": "0x72f7dcac41d734ccacf09b8d033d1cac3c15becb5a91c2707692557714f2bce7",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://ae4a6e2e67a68fbd8248c5ef9078ef4621cae2d61a399c2d385723e2860b027a",
-				"dweb:/ipfs/QmS3svShxinmUAJk2hdxGzoUxb7dqVjpWDarADdLpqp2pg"
+				"bzz-raw://f39d490129f9e0ba012c388186628efbede8d9091d8caf85504a8ced2d24ca56",
+				"dweb:/ipfs/QmRhkZGatrNPPH5cvSYoHEFuarfdzuP3intFKRgj3Ryhew"
 			]
 		},
 		"Contracts/MoonV1Manager.sol": {
-			"keccak256": "0x5662fd60e643655389e3c190c15a23e45cab9b22f94608083efbefe66775ad84",
+			"keccak256": "0xc9d596ec3577394170e99c07a1b4a261a4e88c385425e7c881fabb1783798609",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://446e14d3a167f49d2a37a079e37e55d64549e08dd41c67a82da2e2372a764768",
-				"dweb:/ipfs/QmbMGtH2HNVBLKhPrauZcDWjDzGtn1vo9J1UtZNqY5n9Nz"
-			]
-		},
-		"Contracts/libraries/base/LCustomer.sol": {
-			"keccak256": "0x6acb4a762f349ab39bd48ff34c150b55f55aabc4826379838391749136f3aee9",
-			"license": "GPL-2.0-or-later",
-			"urls": [
-				"bzz-raw://58552a104e1a046883cf116fe6748600caf7c8ebe341f82a38aa6fbfb09355cb",
-				"dweb:/ipfs/QmQxUAK9fzefN6afoJ2CGyRWtETz1TEcZoJhDFCYJ3WY4V"
+				"bzz-raw://77caa39a103780c5eea6009a0acbdc4c1a1a2e668e4508eaf28e04825787fd34",
+				"dweb:/ipfs/QmV7Ap9wqbPAiBpz7WTHFUdSLDDm1RPeHMggxHD6ppoKcD"
 			]
 		},
 		"Contracts/libraries/base/LGate.sol": {

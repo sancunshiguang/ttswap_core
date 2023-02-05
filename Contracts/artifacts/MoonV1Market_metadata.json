@@ -1,0 +1,564 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "coinContractAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_coin",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_thing",
+						"type": "address"
+					},
+					{
+						"internalType": "uint24",
+						"name": "_profit",
+						"type": "uint24"
+					}
+				],
+				"name": "createShopbyGator",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "shop",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_coin",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_thing",
+						"type": "address"
+					},
+					{
+						"internalType": "uint24",
+						"name": "_profit",
+						"type": "uint24"
+					}
+				],
+				"name": "createShopbyMarketor",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "shop",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "customerContractAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "gateContractAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "gateShopList",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "marketContractAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "marketCreator",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "marketProfitshares",
+				"outputs": [
+					{
+						"internalType": "uint8",
+						"name": "marketshare",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint8",
+						"name": "gatershare",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint8",
+						"name": "commandershare",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint8",
+						"name": "usershare",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "marketShopList",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "marketorContractAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint24",
+						"name": "",
+						"type": "uint24"
+					}
+				],
+				"name": "profitUnitSpacing",
+				"outputs": [
+					{
+						"internalType": "int24",
+						"name": "",
+						"type": "int24"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "shop",
+						"type": "address"
+					}
+				],
+				"name": "raiseShopLevelbyMarketor",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint8",
+								"name": "marketshare",
+								"type": "uint8"
+							},
+							{
+								"internalType": "uint8",
+								"name": "gatershare",
+								"type": "uint8"
+							},
+							{
+								"internalType": "uint8",
+								"name": "commandershare",
+								"type": "uint8"
+							},
+							{
+								"internalType": "uint8",
+								"name": "usershare",
+								"type": "uint8"
+							}
+						],
+						"internalType": "struct LProfitShares.Info",
+						"name": "_profitshare",
+						"type": "tuple"
+					}
+				],
+				"name": "setMarketProfitshare",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "shopList",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "Market",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "coin",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "thing",
+						"type": "address"
+					},
+					{
+						"internalType": "uint24",
+						"name": "profit",
+						"type": "uint24"
+					},
+					{
+						"internalType": "int24",
+						"name": "unitSpacing",
+						"type": "int24"
+					},
+					{
+						"components": [
+							{
+								"internalType": "uint8",
+								"name": "marketshare",
+								"type": "uint8"
+							},
+							{
+								"internalType": "uint8",
+								"name": "gatershare",
+								"type": "uint8"
+							},
+							{
+								"internalType": "uint8",
+								"name": "commandershare",
+								"type": "uint8"
+							},
+							{
+								"internalType": "uint8",
+								"name": "usershare",
+								"type": "uint8"
+							}
+						],
+						"internalType": "struct LProfitShares.Info",
+						"name": "profitshares",
+						"type": "tuple"
+					},
+					{
+						"internalType": "address",
+						"name": "gater",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "isUsed",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "shopaddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "thingContractAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"createShopbyGator(address,address,uint24)": {
+					"details": "Explain to a developer any extra details",
+					"params": {
+						"_coin": "the coin of the shop",
+						"_profit": "交易手续费费率fee percentage of swap",
+						"_thing": "the things of the shop"
+					}
+				},
+				"createShopbyMarketor(address,address,uint24)": {
+					"details": "Explain to a developer any extra details",
+					"params": {
+						"_coin": "the coin of the shop",
+						"_profit": "交易手续费费率fee percentage of swap",
+						"_thing": "the things of the shop"
+					}
+				},
+				"setMarketProfitshare((uint8,uint8,uint8,uint8))": {
+					"details": "Explain to a developer any extra details"
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"createShopbyGator(address,address,uint24)": {
+					"notice": "Explain to an end user what this does"
+				},
+				"createShopbyMarketor(address,address,uint24)": {
+					"notice": "Explain to an end user what this does"
+				},
+				"setMarketProfitshare((uint8,uint8,uint8,uint8))": {
+					"notice": "Explain to an end user what this does"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Contracts/MoonV1Market.sol": "MoonV1Market"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 2000
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Contracts/MoonV1Coin.sol": {
+			"keccak256": "0xd8df10ae9fffe7f391d4e8b58c434a93755e43343735c656b4abdcba94053a68",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://affd424fd8ad82c8a7cde8a0bc9a445d7d427364b58f0c0556f049cbf3ae1930",
+				"dweb:/ipfs/QmPdU9QPghuE28MA4imdDF2BeFD514ppTp6sS9WB1CGdAz"
+			]
+		},
+		"Contracts/MoonV1Customer.sol": {
+			"keccak256": "0x831633093c973fabbacdc942b3d9178f19102d58cf9f11703cd5542e70394630",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://c6705b63b8521ad7330f062397d2a4e12faac67fd1951820db8e8c516181f62a",
+				"dweb:/ipfs/QmNpt7YXo5fyCFrEN8wwudUhapRbQB5GWL8MdywmZML1o1"
+			]
+		},
+		"Contracts/MoonV1Gater.sol": {
+			"keccak256": "0x72f7dcac41d734ccacf09b8d033d1cac3c15becb5a91c2707692557714f2bce7",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://f39d490129f9e0ba012c388186628efbede8d9091d8caf85504a8ced2d24ca56",
+				"dweb:/ipfs/QmRhkZGatrNPPH5cvSYoHEFuarfdzuP3intFKRgj3Ryhew"
+			]
+		},
+		"Contracts/MoonV1Manager.sol": {
+			"keccak256": "0xc9d596ec3577394170e99c07a1b4a261a4e88c385425e7c881fabb1783798609",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://77caa39a103780c5eea6009a0acbdc4c1a1a2e668e4508eaf28e04825787fd34",
+				"dweb:/ipfs/QmV7Ap9wqbPAiBpz7WTHFUdSLDDm1RPeHMggxHD6ppoKcD"
+			]
+		},
+		"Contracts/MoonV1Market.sol": {
+			"keccak256": "0x647f90a79fec695cc1afc0dc7c1691aab511e577350cbd83f7856461ccf528c9",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://ae7e904448ad9273ab77b41e6cb00140ddb2c8ef31b980c198f3ed67af615b18",
+				"dweb:/ipfs/QmPfCHWYmp95td4NhYAsQmojWHUsZRPHvXF5kWFPMADwK6"
+			]
+		},
+		"Contracts/MoonV1Thing.sol": {
+			"keccak256": "0xfd81d20994767a494ede7e3ca3632b4bd783ed2b9233ac9073773d0bd859781d",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://45b9cea28e836b5410b7ee90ea6aa844d070ca5d9f4c9f5998b27f03e36f7167",
+				"dweb:/ipfs/QmZUhYxDzbHm3e3dGs9sCFN83XB9Xnczq51GMNpC9Z8GN4"
+			]
+		},
+		"Contracts/NoDelegateCall.sol": {
+			"keccak256": "0x2ab29a2d0765c68425e211acb66687eb1955b77396fc051bb0a0f6ea5786d6b1",
+			"license": "BUSL-1.1",
+			"urls": [
+				"bzz-raw://2c2ed438b9a3b74f0b38adc33085e1383861eb4948f3501327fb4e72a778bb94",
+				"dweb:/ipfs/Qmf6WNNJSP69fJWGbSQvA6GPdvyJFSP6oTfLbwiiAJ1zKj"
+			]
+		},
+		"Contracts/libraries/LProfitShares.sol": {
+			"keccak256": "0x99649085faf6e49c76506927ae3e225b7f73f1f3a5fa5ad2e8aac77824c1cf2b",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://4c4de3f3a397ebca7a4656c53292cf49cdddbfd908858a2cd4070654c6e1b481",
+				"dweb:/ipfs/QmWVYMxuhVomPwk92oSBb2tuAhxG14MKPtETigqHvxyvaS"
+			]
+		},
+		"Contracts/libraries/base/LCoin.sol": {
+			"keccak256": "0xe97a3af5ff5d7ca8e86da5f9b1690c76775df561bea92b889d950f0697eb100c",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://29f3a8bac8770d1e1491a4bf4b3906b49952b6a682b7d488a3bccdf994263380",
+				"dweb:/ipfs/QmRU8LtZmEM2Rbt2CbW3wcRSSn9z3bvNKnKWW8VtHfWe99"
+			]
+		},
+		"Contracts/libraries/base/LCustomer.sol": {
+			"keccak256": "0x6acb4a762f349ab39bd48ff34c150b55f55aabc4826379838391749136f3aee9",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://58552a104e1a046883cf116fe6748600caf7c8ebe341f82a38aa6fbfb09355cb",
+				"dweb:/ipfs/QmQxUAK9fzefN6afoJ2CGyRWtETz1TEcZoJhDFCYJ3WY4V"
+			]
+		},
+		"Contracts/libraries/base/LGate.sol": {
+			"keccak256": "0xdbbcc3e545cc8d7d8eebe4b1dbaccee4d2adbce4785cb7ac5f4712093c72db52",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://1d7251ca8ee12ad7009fe9f280aa8be028502f51e7465fe5314b85b9a2815991",
+				"dweb:/ipfs/QmRQ5Z78r3qDKhBbRbDs8d4ThNk5fLN5S5g6tosHwa6jdo"
+			]
+		},
+		"Contracts/libraries/base/LSTThings.sol": {
+			"keccak256": "0x8f10ad7cdca3ab033387dc360617f52dd3b41642cb627866c993e5202bdf8db7",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://56243f8b3bcaeb92c7423aa4b040c0fc22b1975b018e4292e3aa98fc251335e8",
+				"dweb:/ipfs/QmW7XoPQKzLNmbU3jfMP3BmX5WwZNrddjtmyb7mYMSdj9E"
+			]
+		},
+		"Contracts/libraries/base/LShop.sol": {
+			"keccak256": "0xb8f7b47345b022ecbd97491b79385ee69c226a62c832048df9ad74c6e4132102",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://a821cb2570143bb2c30910d7949ddb1846be13451024c341ea8a59512609d202",
+				"dweb:/ipfs/QmQg5uxtJaYg4JMVaQZRugK2m92t9fCcrPcXHbx1sqkJVS"
+			]
+		}
+	},
+	"version": 1
+}

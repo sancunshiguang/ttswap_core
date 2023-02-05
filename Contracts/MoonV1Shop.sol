@@ -478,8 +478,8 @@ contract MoonV1Shop is IMoonV1Shop, NoDelegateCall {
                 _unitLower,
                 _unitUpper,
                 unit,
-                _feeGrowthGlobalCoinX128,
-                _feeGrowthGlobalThingX128
+                _feeGrowthGlobalCoinX128
+                //_feeGrowthGlobalThingX128
             );
 
         proof.update(
@@ -680,10 +680,10 @@ contract MoonV1Shop is IMoonV1Shop, NoDelegateCall {
         require(amountSpecified != 0, "AS");
         require(marketlock == false, "market lock");
         State0 memory state0Start = state0;
-        address commanderaddress = IMoonV1Market(market).getCustomerRecommander(
+        address commanderaddress = MoonV1Market(market).getCustomerRecommander(
             msg.sender
         );
-        address gateraddress = IMoonV1Market(market).getCustomerRecommander(
+        address gateraddress = MoonV1Market(market).getCustomerRecommander(
             msg.sender
         ); //这个还要处理一下
         require(state0Start.unlocked, "LOK");
@@ -1003,10 +1003,10 @@ contract MoonV1Shop is IMoonV1Shop, NoDelegateCall {
     ) external override lock noDelegateCall {
         uint128 _investion = investion;
         require(_investion > 0, "L");
-        address commanderaddress = IMoonV1Market(market).getCustomerRecommander(
+        address commanderaddress = MoonV1Market(market).getCustomerRecommander(
             msg.sender
         );
-        address gateraddress = IMoonV1Market(market).getCustomerRecommander(
+        address gateraddress = MoonV1Market(market).getCustomerRecommander(
             msg.sender
         );
         uint256 fee0 = LFullMath.mulDivRoundingUp(amount0, profit, 1e6);
@@ -1144,20 +1144,13 @@ contract MoonV1Shop is IMoonV1Shop, NoDelegateCall {
         returns (uint128 coinamount, uint128 thingamount)
     {
         coinamount = shopfee[msg.sender].coin;
-        thingamount = shopfee[msg.sender].thing;
 
         if (coinamount > 0) {
             if (coinamount == protocolProfits.coin) coinamount = coinamount - 1; // ensure that the slot is not cleared, for gas savings
             shopfee[msg.sender].coin -= coinamount;
             TransferHelper.safeTransfer(coin, msg.sender, coinamount);
         }
-        if (thingamount > 0) {
-            if (thingamount == protocolProfits.thing)
-                thingamount = thingamount - 1; // ensure that the slot is not cleared, for gas savings
-            shopfee[msg.sender].thing -= thingamount;
-            TransferHelper.safeTransfer(thing, msg.sender, thingamount);
-        }
 
-        emit CollectProtocol(msg.sender, msg.sender, coinamount, thingamount);
+        emit CollectProtocol(msg.sender, msg.sender, coinamount);
     }
 }
