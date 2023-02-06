@@ -8,10 +8,12 @@ import "./NoDelegateCall.sol";
 import "./libraries/base/LShop.sol";
 
 import "./interfaces/Marketor/IMarketorV1State.sol";
+import "./interfaces/Gator/IGatorV1State.sol";
 import "./TTSwapV1Gator.sol";
 import "./TTSwapV1Coin.sol";
 import "./TTSwapV1Thing.sol";
 import "./TTSwapV1Customer.sol";
+import "./TTSwapV1Marketor.sol";
 
 contract TTSwapV1Market is NoDelegateCall {
     //市场门店信息
@@ -54,7 +56,7 @@ contract TTSwapV1Market is NoDelegateCall {
     /// @notice Explain to an end user what this does
     /// @dev Explain to a developer any extra details
     modifier onlyGator() {
-        require(TTSwapV1Gator(gateContractAddress).isValidGator());
+        require(IGatorV1State(gateContractAddress).isValidGator());
         _;
     }
 

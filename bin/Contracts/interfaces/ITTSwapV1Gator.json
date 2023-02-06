@@ -1,0 +1,527 @@
+{
+    "contractName": "ITTSwapV1Gator",
+    "abi": [
+        {
+            "inputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "address",
+                            "name": "market",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "gateAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "uint160",
+                            "name": "authority",
+                            "type": "uint160"
+                        },
+                        {
+                            "internalType": "bytes32",
+                            "name": "name",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "bytes32",
+                            "name": "website",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "bytes32[10]",
+                            "name": "webserverip",
+                            "type": "bytes32[10]"
+                        },
+                        {
+                            "internalType": "uint32",
+                            "name": "createtimestamp",
+                            "type": "uint32"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "marketunlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "unlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "isUsed",
+                            "type": "bool"
+                        }
+                    ],
+                    "internalType": "struct LGate.Info",
+                    "name": "_gator",
+                    "type": "tuple"
+                }
+            ],
+            "name": "addGater",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_gator",
+                    "type": "address"
+                }
+            ],
+            "name": "delGatebyMarketor",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "isValidGator",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "lockGatebyGater",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_gatoraddress",
+                    "type": "address"
+                }
+            ],
+            "name": "lockGatebyMarketor",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "marketorContractAddress",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "unlockGatebyGater",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_gatoraddress",
+                    "type": "address"
+                }
+            ],
+            "name": "unlockGatebyMarketor",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "address",
+                            "name": "market",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "gateAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "uint160",
+                            "name": "authority",
+                            "type": "uint160"
+                        },
+                        {
+                            "internalType": "bytes32",
+                            "name": "name",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "bytes32",
+                            "name": "website",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "bytes32[10]",
+                            "name": "webserverip",
+                            "type": "bytes32[10]"
+                        },
+                        {
+                            "internalType": "uint32",
+                            "name": "createtimestamp",
+                            "type": "uint32"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "marketunlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "unlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "isUsed",
+                            "type": "bool"
+                        }
+                    ],
+                    "internalType": "struct LGate.Info",
+                    "name": "_gator",
+                    "type": "tuple"
+                }
+            ],
+            "name": "updateGatebyGator",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "address",
+                            "name": "market",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "gateAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "uint160",
+                            "name": "authority",
+                            "type": "uint160"
+                        },
+                        {
+                            "internalType": "bytes32",
+                            "name": "name",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "bytes32",
+                            "name": "website",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "bytes32[10]",
+                            "name": "webserverip",
+                            "type": "bytes32[10]"
+                        },
+                        {
+                            "internalType": "uint32",
+                            "name": "createtimestamp",
+                            "type": "uint32"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "marketunlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "unlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "isUsed",
+                            "type": "bool"
+                        }
+                    ],
+                    "internalType": "struct LGate.Info",
+                    "name": "_gator",
+                    "type": "tuple"
+                }
+            ],
+            "name": "updateGatebyMarketor",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"market\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"gateAddress\",\"type\":\"address\"},{\"internalType\":\"uint160\",\"name\":\"authority\",\"type\":\"uint160\"},{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"website\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32[10]\",\"name\":\"webserverip\",\"type\":\"bytes32[10]\"},{\"internalType\":\"uint32\",\"name\":\"createtimestamp\",\"type\":\"uint32\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"}],\"internalType\":\"struct LGate.Info\",\"name\":\"_gator\",\"type\":\"tuple\"}],\"name\":\"addGater\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_gator\",\"type\":\"address\"}],\"name\":\"delGatebyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isValidGator\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"lockGatebyGater\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_gatoraddress\",\"type\":\"address\"}],\"name\":\"lockGatebyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"marketorContractAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"unlockGatebyGater\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_gatoraddress\",\"type\":\"address\"}],\"name\":\"unlockGatebyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"market\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"gateAddress\",\"type\":\"address\"},{\"internalType\":\"uint160\",\"name\":\"authority\",\"type\":\"uint160\"},{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"website\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32[10]\",\"name\":\"webserverip\",\"type\":\"bytes32[10]\"},{\"internalType\":\"uint32\",\"name\":\"createtimestamp\",\"type\":\"uint32\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"}],\"internalType\":\"struct LGate.Info\",\"name\":\"_gator\",\"type\":\"tuple\"}],\"name\":\"updateGatebyGator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"market\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"gateAddress\",\"type\":\"address\"},{\"internalType\":\"uint160\",\"name\":\"authority\",\"type\":\"uint160\"},{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32\",\"name\":\"website\",\"type\":\"bytes32\"},{\"internalType\":\"bytes32[10]\",\"name\":\"webserverip\",\"type\":\"bytes32[10]\"},{\"internalType\":\"uint32\",\"name\":\"createtimestamp\",\"type\":\"uint32\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"}],\"internalType\":\"struct LGate.Info\",\"name\":\"_gator\",\"type\":\"tuple\"}],\"name\":\"updateGatebyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"The pool interface is broken up into many smaller pieces\",\"kind\":\"dev\",\"methods\":{\"marketorContractAddress()\":{\"returns\":{\"_0\":\"The contract address\"}}},\"title\":\"The interface for a Uniswap V3 Pool\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"marketorContractAddress()\":{\"notice\":\"The contract that deployed the pool, which must adhere to the IUniswapV3Factory interface\"}},\"notice\":\"A Uniswap pool facilitates swapping and automated market making between any two assets that strictly conform to the ERC20 specification\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/ITTSwapV1Gator.sol\":\"ITTSwapV1Gator\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Gator/IGatorV1CustomerActions.sol\":{\"keccak256\":\"0x5166995889ad764ce7379845df7e6f55f5114294f18795a07da173466418c010\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://c101332272e023fd17dd3e96270424a42aa257e02f14650314bf133ff3105221\",\"dweb:/ipfs/QmUznHitEEPeBRc7PxrUMggmyLveBtW2MJyKGUt8KDrjUn\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Gator/IGatorV1Events.sol\":{\"keccak256\":\"0xcddaf97a05e7a5b4706705dd9618ad9a97ebe6559365deaa3bcbe21eef84d462\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://0432642546822e3e6bb77c89815cda36aea85154bb8431c0837db1b5fb199dcd\",\"dweb:/ipfs/QmYSkG65spVSpN1WDkF5iFtPSBvYeDWvSNRVpYygR9iJkr\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Gator/IGatorV1GatorActions.sol\":{\"keccak256\":\"0x43e783a765bf4f5a4de8591ceb9556c215372e068e80827637f22aec41460359\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://23b287fe77c961c6f7dc7b7a1591eddd0772b687faf41e7c0400c66114e8a452\",\"dweb:/ipfs/QmVKaaxjY7ya3HSkdUt7zqw2J8BqxMDGvUbUjobVCcUsHk\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Gator/IGatorV1Immutables.sol\":{\"keccak256\":\"0x8cbeb007a8321dee1ef73ed11e1af76c30acb64c6829d2c0d02c6f6cb4e8fdc3\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://00b5dc4c7cbcec92fdfa6e6d512209d63cf2cac6a1ae6969b853172fc9fb8319\",\"dweb:/ipfs/QmYoRZuN8XvT6eESqy5BFEDxbs12beWtBHgkjxna3Jy7CF\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Gator/IGatorV1MarketorActions.sol\":{\"keccak256\":\"0xcd27934c7288dbf950975c629280d20b5d2b79f3f1d4cda94e866f2b24255fa9\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://7ea87e856a6e52e3171e4395b05feff4264454f7e5a106117f4f49328aa72492\",\"dweb:/ipfs/QmYZkYNsqvEnKsqN5HLjo2JsWJqksniSkRXkC8bJsPKGJp\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Gator/IGatorV1State.sol\":{\"keccak256\":\"0xe3c37b988423c5989fce2b078a598788c052dc23403dff95509d57464bb1c12f\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://5c3766825c2fa5442d265a5524ae150626d18e235be99d1b485182ebbc9c0e1e\",\"dweb:/ipfs/Qme7hkgr2K3vEUst6YPBaq55dycpXBaffWLKXDSPX3QnvK\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/ITTSwapV1Gator.sol\":{\"keccak256\":\"0xcc6a9f594874f75e8f19b2d65a3d0892bd9d3f75636e93e8d52cf4aea6703652\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://c434a90d0ac2d2afc87a43147c85d3f9d48530eb2cd8fd2b491262be8a7238db\",\"dweb:/ipfs/QmWyyaWVvSVVduUiS3vKQ4guLHnP4ugcCQp46kNvLsz2iJ\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LCustomer.sol\":{\"keccak256\":\"0x6acb4a762f349ab39bd48ff34c150b55f55aabc4826379838391749136f3aee9\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://58552a104e1a046883cf116fe6748600caf7c8ebe341f82a38aa6fbfb09355cb\",\"dweb:/ipfs/QmQxUAK9fzefN6afoJ2CGyRWtETz1TEcZoJhDFCYJ3WY4V\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LGate.sol\":{\"keccak256\":\"0xdbbcc3e545cc8d7d8eebe4b1dbaccee4d2adbce4785cb7ac5f4712093c72db52\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://1d7251ca8ee12ad7009fe9f280aa8be028502f51e7465fe5314b85b9a2815991\",\"dweb:/ipfs/QmRQ5Z78r3qDKhBbRbDs8d4ThNk5fLN5S5g6tosHwa6jdo\"]}},\"version\":1}",
+    "bytecode": "",
+    "deployedBytecode": "",
+    "sourceMap": "",
+    "deployedSourceMap": "",
+    "sourcePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/ITTSwapV1Gator.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.15+commit.e14f2714"
+    },
+    "ast": {
+        "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/ITTSwapV1Gator.sol",
+        "exportedSymbols": {
+            "IGatorV1CustomerActions": [
+                10
+            ],
+            "IGatorV1Events": [
+                14
+            ],
+            "IGatorV1GatorActions": [
+                31
+            ],
+            "IGatorV1Immutables": [
+                41
+            ],
+            "IGatorV1MarketorActions": [
+                67
+            ],
+            "IGatorV1State": [
+                77
+            ],
+            "ITTSwapV1Gator": [
+                99
+            ],
+            "LCustomer": [
+                121
+            ],
+            "LGate": [
+                147
+            ]
+        },
+        "id": 100,
+        "license": "GPL-2.0-or-later",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 79,
+                "literals": [
+                    "solidity",
+                    "^",
+                    "0.8",
+                    ".0"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "45:23:6"
+            },
+            {
+                "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Gator/IGatorV1CustomerActions.sol",
+                "file": "./Gator/IGatorV1CustomerActions.sol",
+                "id": 80,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 100,
+                "sourceUnit": 11,
+                "src": "70:45:6",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Gator/IGatorV1Events.sol",
+                "file": "./Gator/IGatorV1Events.sol",
+                "id": 81,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 100,
+                "sourceUnit": 15,
+                "src": "116:36:6",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Gator/IGatorV1GatorActions.sol",
+                "file": "./Gator/IGatorV1GatorActions.sol",
+                "id": 82,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 100,
+                "sourceUnit": 32,
+                "src": "153:42:6",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Gator/IGatorV1Immutables.sol",
+                "file": "./Gator/IGatorV1Immutables.sol",
+                "id": 83,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 100,
+                "sourceUnit": 42,
+                "src": "196:40:6",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Gator/IGatorV1MarketorActions.sol",
+                "file": "./Gator/IGatorV1MarketorActions.sol",
+                "id": 84,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 100,
+                "sourceUnit": 68,
+                "src": "237:45:6",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Gator/IGatorV1State.sol",
+                "file": "./Gator/IGatorV1State.sol",
+                "id": 85,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 100,
+                "sourceUnit": 78,
+                "src": "283:35:6",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "abstract": false,
+                "baseContracts": [
+                    {
+                        "baseName": {
+                            "id": 87,
+                            "name": "IGatorV1CustomerActions",
+                            "nodeType": "IdentifierPath",
+                            "referencedDeclaration": 10,
+                            "src": "617:23:6"
+                        },
+                        "id": 88,
+                        "nodeType": "InheritanceSpecifier",
+                        "src": "617:23:6"
+                    },
+                    {
+                        "baseName": {
+                            "id": 89,
+                            "name": "IGatorV1Events",
+                            "nodeType": "IdentifierPath",
+                            "referencedDeclaration": 14,
+                            "src": "646:14:6"
+                        },
+                        "id": 90,
+                        "nodeType": "InheritanceSpecifier",
+                        "src": "646:14:6"
+                    },
+                    {
+                        "baseName": {
+                            "id": 91,
+                            "name": "IGatorV1GatorActions",
+                            "nodeType": "IdentifierPath",
+                            "referencedDeclaration": 31,
+                            "src": "666:20:6"
+                        },
+                        "id": 92,
+                        "nodeType": "InheritanceSpecifier",
+                        "src": "666:20:6"
+                    },
+                    {
+                        "baseName": {
+                            "id": 93,
+                            "name": "IGatorV1Immutables",
+                            "nodeType": "IdentifierPath",
+                            "referencedDeclaration": 41,
+                            "src": "692:18:6"
+                        },
+                        "id": 94,
+                        "nodeType": "InheritanceSpecifier",
+                        "src": "692:18:6"
+                    },
+                    {
+                        "baseName": {
+                            "id": 95,
+                            "name": "IGatorV1MarketorActions",
+                            "nodeType": "IdentifierPath",
+                            "referencedDeclaration": 67,
+                            "src": "716:23:6"
+                        },
+                        "id": 96,
+                        "nodeType": "InheritanceSpecifier",
+                        "src": "716:23:6"
+                    },
+                    {
+                        "baseName": {
+                            "id": 97,
+                            "name": "IGatorV1State",
+                            "nodeType": "IdentifierPath",
+                            "referencedDeclaration": 77,
+                            "src": "745:13:6"
+                        },
+                        "id": 98,
+                        "nodeType": "InheritanceSpecifier",
+                        "src": "745:13:6"
+                    }
+                ],
+                "canonicalName": "ITTSwapV1Gator",
+                "contractDependencies": [],
+                "contractKind": "interface",
+                "documentation": {
+                    "id": 86,
+                    "nodeType": "StructuredDocumentation",
+                    "src": "320:265:6",
+                    "text": "@title The interface for a Uniswap V3 Pool\n @notice A Uniswap pool facilitates swapping and automated market making between any two assets that strictly conform\n to the ERC20 specification\n @dev The pool interface is broken up into many smaller pieces"
+                },
+                "fullyImplemented": false,
+                "id": 99,
+                "linearizedBaseContracts": [
+                    99,
+                    77,
+                    67,
+                    41,
+                    31,
+                    14,
+                    10
+                ],
+                "name": "ITTSwapV1Gator",
+                "nameLocation": "595:14:6",
+                "nodeType": "ContractDefinition",
+                "nodes": [],
+                "scope": 100,
+                "src": "585:178:6",
+                "usedErrors": []
+            }
+        ],
+        "src": "45:719:6"
+    },
+    "functionHashes": {
+        "addGater((address,address,uint160,bytes32,bytes32,bytes32[10],uint32,bool,bool,bool))": "d8feb7ff",
+        "delGatebyMarketor(address)": "b614984d",
+        "isValidGator()": "54a460f6",
+        "lockGatebyGater()": "3bbae141",
+        "lockGatebyMarketor(address)": "a4786088",
+        "marketorContractAddress()": "492b7107",
+        "unlockGatebyGater()": "f1c9f40f",
+        "unlockGatebyMarketor(address)": "76941300",
+        "updateGatebyGator((address,address,uint160,bytes32,bytes32,bytes32[10],uint32,bool,bool,bool))": "f3a42537",
+        "updateGatebyMarketor((address,address,uint160,bytes32,bytes32,bytes32[10],uint32,bool,bool,bool))": "71271f4d"
+    },
+    "gasEstimates": null
+}

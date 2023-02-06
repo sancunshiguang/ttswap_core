@@ -1,0 +1,966 @@
+{
+    "contractName": "TTSwapV1Marketor",
+    "abi": [
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_marketCreator",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "nonpayable",
+            "type": "constructor"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "name": "Marketors",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_owner",
+                    "type": "address"
+                }
+            ],
+            "name": "delMarketorByMarketCreator",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "isValidMarketor",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "marketCreator",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_owner",
+                    "type": "address"
+                }
+            ],
+            "name": "setMarketorByMarketCreator",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_marketCreator\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"name\":\"Marketors\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"}],\"name\":\"delMarketorByMarketCreator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"isValidMarketor\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"marketCreator\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"}],\"name\":\"setMarketorByMarketCreator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"delMarketorByMarketCreator(address)\":{\"details\":\"Explain to a developer any extra details\"},\"isValidMarketor()\":{\"details\":\"Explain to a developer any extra details\"},\"setMarketorByMarketCreator(address)\":{\"details\":\"Explain to a developer any extra details\"}},\"stateVariables\":{\"marketCreator\":{\"return\":\"The contract address\",\"returns\":{\"_0\":\"The contract address\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"delMarketorByMarketCreator(address)\":{\"notice\":\"Explain to an end user what this does\"},\"isValidMarketor()\":{\"notice\":\"Explain to an end user what this does\"},\"marketCreator()\":{\"notice\":\"The contract that deployed the pool, which must adhere to the IUniswapV3Factory interface\"},\"setMarketorByMarketCreator(address)\":{\"notice\":\"Explain to an end user what this does\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/TTSwapV1Marketor.sol\":\"TTSwapV1Marketor\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/TTSwapV1Marketor.sol\":{\"keccak256\":\"0x57129b68012b22ba3f1cf375ced0b8f98fbe7ebd31c8959733ca3cb750e9d361\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://2aa8b27a0c3841496c7f39f744da75b0bd7e303a2d329f97b4f5a8a4a61b4fc5\",\"dweb:/ipfs/QmbvTGeDbPaYT27M399A7cADbXT5zWb2CQktVBySvG98JT\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/ITTSwapV1Marketor.sol\":{\"keccak256\":\"0xcec6819c6010fada016d2adffd3ae7973365e768c6144df626506c5a00873565\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://59feb2895b8fda46ab09fd4b63605aef2bd315169102ef43898501dcdb92b3da\",\"dweb:/ipfs/QmWxs1ftk6xYceq2dRKZ3m5zwrvNYHdLt1xPo1Ntauii9g\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Marketor/IMarketorV1Events.sol\":{\"keccak256\":\"0x1019146e8e3c5f553f93a5f1f7d31c0a7227b25ce87d8d76124fbdaae200615f\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://11113d24362e6a66e5e897ad597992660a06e8641cb5bdaebe74823504b0e225\",\"dweb:/ipfs/QmZY3dqUFb6DkxHUveC3BpyxsyrTHujoSg7q9mWUnwNYzc\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Marketor/IMarketorV1Immutables.sol\":{\"keccak256\":\"0xc6fe9db9aafa196283670e6f83a876df0e6fe84074b06012865db8efd0581aa3\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://be174ba35045eeee018680400cd4cc238125664b0c23bc28f68ef27b1f8f5201\",\"dweb:/ipfs/QmXGdMa25gG1A4FEctyXn7vkB7VUnJaqY5NHpTgzbHZbbi\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Marketor/IMarketorV1MarketCreatorActions.sol\":{\"keccak256\":\"0x85fe030c431f4ce0818038e673a58d35b30ac6fdb6760b24c105afbd0b94cc15\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://08d50a6cd32a067e30d45964d7d018fbec1b0b34b00529548815b6a98d4e9ee5\",\"dweb:/ipfs/QmaRBpH3M7vt628KB1UqonAoUD1UcqNXSEsPdeyThZ55VC\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Marketor/IMarketorV1State.sol\":{\"keccak256\":\"0xaad87d4ddb4502c8908f30707db6628834d3df7bef3d68d6d50179d0db672ee7\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://905d7e65de99ddf8edc93aac5a9e6139e7813ac472abefa987b4ea85c73e4803\",\"dweb:/ipfs/QmNbEzweLBYEuiTbURiPuoyyqgmx59XtA5Ugo7uEvQXRCS\"]}},\"version\":1}",
+    "bytecode": "608060405234801561001057600080fd5b5060405161026b38038061026b83398101604081905261002f91610054565b600180546001600160a01b0319166001600160a01b0392909216919091179055610084565b60006020828403121561006657600080fd5b81516001600160a01b038116811461007d57600080fd5b9392505050565b6101d8806100936000396000f3fe608060405234801561001057600080fd5b50600436106100575760003560e01c806327cbaabe1461005c5780633855cc651461008c5780635bffec62146100bf578063ad87d2ba146100d4578063b4f3824d146100ec575b600080fd5b60015461006f906001600160a01b031681565b6040516001600160a01b0390911681526020015b60405180910390f35b6100af61009a366004610172565b60006020819052908152604090205460ff1681565b6040519015158152602001610083565b6100d26100cd366004610172565b6100ff565b005b3360009081526020819052604090205460ff166100af565b6100d26100fa366004610172565b61013a565b6001546001600160a01b0316331461011657600080fd5b6001600160a01b03166000908152602081905260409020805460ff19166001179055565b6001546001600160a01b0316331461015157600080fd5b6001600160a01b03166000908152602081905260409020805460ff19169055565b60006020828403121561018457600080fd5b81356001600160a01b038116811461019b57600080fd5b939250505056fea2646970667358221220fe20c2cc2093ab311a64947ae138872b526bdce812fb90118d202c4c0844ef3b64736f6c634300080f0033",
+    "deployedBytecode": "608060405234801561001057600080fd5b50600436106100575760003560e01c806327cbaabe1461005c5780633855cc651461008c5780635bffec62146100bf578063ad87d2ba146100d4578063b4f3824d146100ec575b600080fd5b60015461006f906001600160a01b031681565b6040516001600160a01b0390911681526020015b60405180910390f35b6100af61009a366004610172565b60006020819052908152604090205460ff1681565b6040519015158152602001610083565b6100d26100cd366004610172565b6100ff565b005b3360009081526020819052604090205460ff166100af565b6100d26100fa366004610172565b61013a565b6001546001600160a01b0316331461011657600080fd5b6001600160a01b03166000908152602081905260409020805460ff19166001179055565b6001546001600160a01b0316331461015157600080fd5b6001600160a01b03166000908152602081905260409020805460ff19169055565b60006020828403121561018457600080fd5b81356001600160a01b038116811461019b57600080fd5b939250505056fea2646970667358221220fe20c2cc2093ab311a64947ae138872b526bdce812fb90118d202c4c0844ef3b64736f6c634300080f0033",
+    "sourceMap": "116:1130:0:-:0;;;296:83;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;342:13;:30;;-1:-1:-1;;;;;;342:30:0;-1:-1:-1;;;;;342:30:0;;;;;;;;;;116:1130;;14:290:6;84:6;137:2;125:9;116:7;112:23;108:32;105:52;;;153:1;150;143:12;105:52;179:16;;-1:-1:-1;;;;;224:31:6;;214:42;;204:70;;270:1;267;260:12;204:70;293:5;14:290;-1:-1:-1;;;14:290:6:o;:::-;116:1130:0;;;;;;",
+    "deployedSourceMap": "116:1130:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;261:28;;;;;-1:-1:-1;;;;;261:28:0;;;;;;-1:-1:-1;;;;;178:32:6;;;160:51;;148:2;133:18;261:28:0;;;;;;;;213:41;;;;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;678:14:6;;671:22;653:41;;641:2;626:18;213:41:0;513:187:6;592:157:0;;;;;;:::i;:::-;;:::i;:::-;;1134:110;1226:10;1193:4;1216:21;;;;;;;;;;;;;1134:110;;863:157;;;;;;:::i;:::-;;:::i;592:::-;446:13;;-1:-1:-1;;;;;446:13:0;432:10;:27;424:36;;;;;;-1:-1:-1;;;;;718:17:0::1;:9;:17:::0;;;::::1;::::0;;;;;;:24;;-1:-1:-1;;718:24:0::1;738:4;718:24;::::0;;592:157::o;863:::-;446:13;;-1:-1:-1;;;;;446:13:0;432:10;:27;424:36;;;;;;-1:-1:-1;;;;;996:17:0::1;:9;:17:::0;;;::::1;::::0;;;;;;989:24;;-1:-1:-1;;989:24:0::1;::::0;;863:157::o;222:286:6:-;281:6;334:2;322:9;313:7;309:23;305:32;302:52;;;350:1;347;340:12;302:52;376:23;;-1:-1:-1;;;;;428:31:6;;418:42;;408:70;;474:1;471;464:12;408:70;497:5;222:286;-1:-1:-1;;;222:286:6:o",
+    "sourcePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/TTSwapV1Marketor.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.15+commit.e14f2714"
+    },
+    "ast": {
+        "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/TTSwapV1Marketor.sol",
+        "exportedSymbols": {
+            "IMarketorV1Events": [
+                96
+            ],
+            "IMarketorV1Immutables": [
+                106
+            ],
+            "IMarketorV1MarketCreatorActions": [
+                121
+            ],
+            "IMarketorV1State": [
+                130
+            ],
+            "ITTSwapV1Marketor": [
+                92
+            ],
+            "TTSwapV1Marketor": [
+                76
+            ]
+        },
+        "id": 77,
+        "license": "GPL-2.0-or-later",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 1,
+                "literals": [
+                    "solidity",
+                    "^",
+                    "0.8",
+                    ".0"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "45:23:0"
+            },
+            {
+                "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/ITTSwapV1Marketor.sol",
+                "file": "./interfaces/ITTSwapV1Marketor.sol",
+                "id": 2,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 77,
+                "sourceUnit": 93,
+                "src": "70:44:0",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "abstract": false,
+                "baseContracts": [
+                    {
+                        "baseName": {
+                            "id": 3,
+                            "name": "ITTSwapV1Marketor",
+                            "nodeType": "IdentifierPath",
+                            "referencedDeclaration": 92,
+                            "src": "145:17:0"
+                        },
+                        "id": 4,
+                        "nodeType": "InheritanceSpecifier",
+                        "src": "145:17:0"
+                    }
+                ],
+                "canonicalName": "TTSwapV1Marketor",
+                "contractDependencies": [],
+                "contractKind": "contract",
+                "fullyImplemented": true,
+                "id": 76,
+                "linearizedBaseContracts": [
+                    76,
+                    92,
+                    130,
+                    121,
+                    106,
+                    96
+                ],
+                "name": "TTSwapV1Marketor",
+                "nameLocation": "125:16:0",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "constant": false,
+                        "functionSelector": "3855cc65",
+                        "id": 8,
+                        "mutability": "mutable",
+                        "name": "Marketors",
+                        "nameLocation": "245:9:0",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 76,
+                        "src": "213:41:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                            "typeString": "mapping(address => bool)"
+                        },
+                        "typeName": {
+                            "id": 7,
+                            "keyType": {
+                                "id": 5,
+                                "name": "address",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "221:7:0",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_address",
+                                    "typeString": "address"
+                                }
+                            },
+                            "nodeType": "Mapping",
+                            "src": "213:24:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                                "typeString": "mapping(address => bool)"
+                            },
+                            "valueType": {
+                                "id": 6,
+                                "name": "bool",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "232:4:0",
+                                "typeDescriptions": {
+                                    "typeIdentifier": "t_bool",
+                                    "typeString": "bool"
+                                }
+                            }
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "baseFunctions": [
+                            105
+                        ],
+                        "constant": false,
+                        "functionSelector": "27cbaabe",
+                        "id": 10,
+                        "mutability": "mutable",
+                        "name": "marketCreator",
+                        "nameLocation": "276:13:0",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 76,
+                        "src": "261:28:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                        },
+                        "typeName": {
+                            "id": 9,
+                            "name": "address",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "261:7:0",
+                            "stateMutability": "nonpayable",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                            }
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "body": {
+                            "id": 19,
+                            "nodeType": "Block",
+                            "src": "332:47:0",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "id": 17,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "id": 15,
+                                            "name": "marketCreator",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 10,
+                                            "src": "342:13:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "id": 16,
+                                            "name": "_marketCreator",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 12,
+                                            "src": "358:14:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            }
+                                        },
+                                        "src": "342:30:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "id": 18,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "342:30:0"
+                                }
+                            ]
+                        },
+                        "id": 20,
+                        "implemented": true,
+                        "kind": "constructor",
+                        "modifiers": [],
+                        "name": "",
+                        "nameLocation": "-1:-1:-1",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 13,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 12,
+                                    "mutability": "mutable",
+                                    "name": "_marketCreator",
+                                    "nameLocation": "316:14:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 20,
+                                    "src": "308:22:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 11,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "308:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "307:24:0"
+                        },
+                        "returnParameters": {
+                            "id": 14,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "332:0:0"
+                        },
+                        "scope": 76,
+                        "src": "296:83:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "public"
+                    },
+                    {
+                        "body": {
+                            "id": 30,
+                            "nodeType": "Block",
+                            "src": "414:64:0",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "arguments": [
+                                            {
+                                                "commonType": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                },
+                                                "id": 26,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "leftExpression": {
+                                                    "expression": {
+                                                        "id": 23,
+                                                        "name": "msg",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 4294967281,
+                                                        "src": "432:3:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_magic_message",
+                                                            "typeString": "msg"
+                                                        }
+                                                    },
+                                                    "id": 24,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "lValueRequested": false,
+                                                    "memberName": "sender",
+                                                    "nodeType": "MemberAccess",
+                                                    "src": "432:10:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_address",
+                                                        "typeString": "address"
+                                                    }
+                                                },
+                                                "nodeType": "BinaryOperation",
+                                                "operator": "==",
+                                                "rightExpression": {
+                                                    "id": 25,
+                                                    "name": "marketCreator",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 10,
+                                                    "src": "446:13:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_address",
+                                                        "typeString": "address"
+                                                    }
+                                                },
+                                                "src": "432:27:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            ],
+                                            "id": 22,
+                                            "name": "require",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [
+                                                4294967278,
+                                                4294967278
+                                            ],
+                                            "referencedDeclaration": 4294967278,
+                                            "src": "424:7:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_require_pure$_t_bool_$returns$__$",
+                                                "typeString": "function (bool) pure"
+                                            }
+                                        },
+                                        "id": 27,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "424:36:0",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 28,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "424:36:0"
+                                },
+                                {
+                                    "id": 29,
+                                    "nodeType": "PlaceholderStatement",
+                                    "src": "470:1:0"
+                                }
+                            ]
+                        },
+                        "id": 31,
+                        "name": "onlyMarketCreator",
+                        "nameLocation": "394:17:0",
+                        "nodeType": "ModifierDefinition",
+                        "parameters": {
+                            "id": 21,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "411:2:0"
+                        },
+                        "src": "385:93:0",
+                        "virtual": false,
+                        "visibility": "internal"
+                    },
+                    {
+                        "baseFunctions": [
+                            114
+                        ],
+                        "body": {
+                            "id": 46,
+                            "nodeType": "Block",
+                            "src": "708:41:0",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "id": 44,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "baseExpression": {
+                                                "id": 40,
+                                                "name": "Marketors",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 8,
+                                                "src": "718:9:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                                                    "typeString": "mapping(address => bool)"
+                                                }
+                                            },
+                                            "id": 42,
+                                            "indexExpression": {
+                                                "id": 41,
+                                                "name": "_owner",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 34,
+                                                "src": "728:6:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "isConstant": false,
+                                            "isLValue": true,
+                                            "isPure": false,
+                                            "lValueRequested": true,
+                                            "nodeType": "IndexAccess",
+                                            "src": "718:17:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_bool",
+                                                "typeString": "bool"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "hexValue": "74727565",
+                                            "id": 43,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": true,
+                                            "kind": "bool",
+                                            "lValueRequested": false,
+                                            "nodeType": "Literal",
+                                            "src": "738:4:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_bool",
+                                                "typeString": "bool"
+                                            },
+                                            "value": "true"
+                                        },
+                                        "src": "718:24:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bool",
+                                            "typeString": "bool"
+                                        }
+                                    },
+                                    "id": 45,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "718:24:0"
+                                }
+                            ]
+                        },
+                        "documentation": {
+                            "id": 32,
+                            "nodeType": "StructuredDocumentation",
+                            "src": "484:103:0",
+                            "text": "@notice Explain to an end user what this does\n @dev Explain to a developer any extra details"
+                        },
+                        "functionSelector": "5bffec62",
+                        "id": 47,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [
+                            {
+                                "id": 38,
+                                "kind": "modifierInvocation",
+                                "modifierName": {
+                                    "id": 37,
+                                    "name": "onlyMarketCreator",
+                                    "nodeType": "IdentifierPath",
+                                    "referencedDeclaration": 31,
+                                    "src": "686:17:0"
+                                },
+                                "nodeType": "ModifierInvocation",
+                                "src": "686:17:0"
+                            }
+                        ],
+                        "name": "setMarketorByMarketCreator",
+                        "nameLocation": "601:26:0",
+                        "nodeType": "FunctionDefinition",
+                        "overrides": {
+                            "id": 36,
+                            "nodeType": "OverrideSpecifier",
+                            "overrides": [],
+                            "src": "669:8:0"
+                        },
+                        "parameters": {
+                            "id": 35,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 34,
+                                    "mutability": "mutable",
+                                    "name": "_owner",
+                                    "nameLocation": "636:6:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 47,
+                                    "src": "628:14:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 33,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "628:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "627:16:0"
+                        },
+                        "returnParameters": {
+                            "id": 39,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "708:0:0"
+                        },
+                        "scope": 76,
+                        "src": "592:157:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "baseFunctions": [
+                            120
+                        ],
+                        "body": {
+                            "id": 61,
+                            "nodeType": "Block",
+                            "src": "979:41:0",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "id": 59,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "nodeType": "UnaryOperation",
+                                        "operator": "delete",
+                                        "prefix": true,
+                                        "src": "989:24:0",
+                                        "subExpression": {
+                                            "baseExpression": {
+                                                "id": 56,
+                                                "name": "Marketors",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 8,
+                                                "src": "996:9:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                                                    "typeString": "mapping(address => bool)"
+                                                }
+                                            },
+                                            "id": 58,
+                                            "indexExpression": {
+                                                "id": 57,
+                                                "name": "_owner",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 50,
+                                                "src": "1006:6:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "isConstant": false,
+                                            "isLValue": true,
+                                            "isPure": false,
+                                            "lValueRequested": true,
+                                            "nodeType": "IndexAccess",
+                                            "src": "996:17:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_bool",
+                                                "typeString": "bool"
+                                            }
+                                        },
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 60,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "989:24:0"
+                                }
+                            ]
+                        },
+                        "documentation": {
+                            "id": 48,
+                            "nodeType": "StructuredDocumentation",
+                            "src": "755:103:0",
+                            "text": "@notice Explain to an end user what this does\n @dev Explain to a developer any extra details"
+                        },
+                        "functionSelector": "b4f3824d",
+                        "id": 62,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [
+                            {
+                                "id": 54,
+                                "kind": "modifierInvocation",
+                                "modifierName": {
+                                    "id": 53,
+                                    "name": "onlyMarketCreator",
+                                    "nodeType": "IdentifierPath",
+                                    "referencedDeclaration": 31,
+                                    "src": "957:17:0"
+                                },
+                                "nodeType": "ModifierInvocation",
+                                "src": "957:17:0"
+                            }
+                        ],
+                        "name": "delMarketorByMarketCreator",
+                        "nameLocation": "872:26:0",
+                        "nodeType": "FunctionDefinition",
+                        "overrides": {
+                            "id": 52,
+                            "nodeType": "OverrideSpecifier",
+                            "overrides": [],
+                            "src": "940:8:0"
+                        },
+                        "parameters": {
+                            "id": 51,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 50,
+                                    "mutability": "mutable",
+                                    "name": "_owner",
+                                    "nameLocation": "907:6:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 62,
+                                    "src": "899:14:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 49,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "899:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "898:16:0"
+                        },
+                        "returnParameters": {
+                            "id": 55,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "979:0:0"
+                        },
+                        "scope": 76,
+                        "src": "863:157:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "baseFunctions": [
+                            129
+                        ],
+                        "body": {
+                            "id": 74,
+                            "nodeType": "Block",
+                            "src": "1199:45:0",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "baseExpression": {
+                                            "id": 69,
+                                            "name": "Marketors",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 8,
+                                            "src": "1216:9:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_mapping$_t_address_$_t_bool_$",
+                                                "typeString": "mapping(address => bool)"
+                                            }
+                                        },
+                                        "id": 72,
+                                        "indexExpression": {
+                                            "expression": {
+                                                "id": 70,
+                                                "name": "msg",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 4294967281,
+                                                "src": "1226:3:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_magic_message",
+                                                    "typeString": "msg"
+                                                }
+                                            },
+                                            "id": 71,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "lValueRequested": false,
+                                            "memberName": "sender",
+                                            "nodeType": "MemberAccess",
+                                            "src": "1226:10:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            }
+                                        },
+                                        "isConstant": false,
+                                        "isLValue": true,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "nodeType": "IndexAccess",
+                                        "src": "1216:21:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bool",
+                                            "typeString": "bool"
+                                        }
+                                    },
+                                    "functionReturnParameters": 68,
+                                    "id": 73,
+                                    "nodeType": "Return",
+                                    "src": "1209:28:0"
+                                }
+                            ]
+                        },
+                        "documentation": {
+                            "id": 63,
+                            "nodeType": "StructuredDocumentation",
+                            "src": "1026:103:0",
+                            "text": "@notice Explain to an end user what this does\n @dev Explain to a developer any extra details"
+                        },
+                        "functionSelector": "ad87d2ba",
+                        "id": 75,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "isValidMarketor",
+                        "nameLocation": "1143:15:0",
+                        "nodeType": "FunctionDefinition",
+                        "overrides": {
+                            "id": 65,
+                            "nodeType": "OverrideSpecifier",
+                            "overrides": [],
+                            "src": "1175:8:0"
+                        },
+                        "parameters": {
+                            "id": 64,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "1158:2:0"
+                        },
+                        "returnParameters": {
+                            "id": 68,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 67,
+                                    "mutability": "mutable",
+                                    "name": "",
+                                    "nameLocation": "-1:-1:-1",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 75,
+                                    "src": "1193:4:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_bool",
+                                        "typeString": "bool"
+                                    },
+                                    "typeName": {
+                                        "id": 66,
+                                        "name": "bool",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "1193:4:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bool",
+                                            "typeString": "bool"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "1192:6:0"
+                        },
+                        "scope": 76,
+                        "src": "1134:110:0",
+                        "stateMutability": "view",
+                        "virtual": false,
+                        "visibility": "external"
+                    }
+                ],
+                "scope": 77,
+                "src": "116:1130:0",
+                "usedErrors": []
+            }
+        ],
+        "src": "45:1202:0"
+    },
+    "functionHashes": {
+        "Marketors(address)": "3855cc65",
+        "delMarketorByMarketCreator(address)": "b4f3824d",
+        "isValidMarketor()": "ad87d2ba",
+        "marketCreator()": "27cbaabe",
+        "setMarketorByMarketCreator(address)": "5bffec62"
+    },
+    "gasEstimates": {
+        "creation": {
+            "codeDepositCost": "94400",
+            "executionCost": "infinite",
+            "totalCost": "infinite"
+        },
+        "external": {
+            "Marketors(address)": "2499",
+            "delMarketorByMarketCreator(address)": "26778",
+            "isValidMarketor()": "2419",
+            "marketCreator()": "2304",
+            "setMarketorByMarketCreator(address)": "26740"
+        }
+    }
+}

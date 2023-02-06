@@ -4,7 +4,9 @@ pragma solidity ^0.8.0;
 import "./libraries/base/LGate.sol";
 import "./interfaces/Marketor/IMarketorV1State.sol";
 
-contract TTSwapV1Gator {
+import "./interfaces/ITTSwapV1Gator.sol";
+
+contract TTSwapV1Gator is ITTSwapV1Gator {
     //门户信息
     //Gate Parameter
 

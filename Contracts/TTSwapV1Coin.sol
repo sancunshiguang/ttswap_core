@@ -1,12 +1,10 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity ^0.8.0;
 
-import "./TTSwapV1Gator.sol";
-import "./TTSwapV1Marketor.sol";
-
 import "./libraries/base/LCoin.sol";
 import "./interfaces/ITTSwapV1Coin.sol";
 import "./interfaces/Marketor/IMarketorV1State.sol";
+import "./interfaces/Gator/IGatorV1State.sol";
 
 contract TTSwapV1Coin is ITTSwapV1Coin {
     //市场币种信息
@@ -39,7 +37,7 @@ contract TTSwapV1Coin is ITTSwapV1Coin {
     /// @notice Explain to an end user what this does
     /// @dev Explain to a developer any extra details
     modifier onlyGator() {
-        require(TTSwapV1Gator(gateContractAddress).isValidGator());
+        require(IGatorV1State(gateContractAddress).isValidGator());
         _;
     }
 

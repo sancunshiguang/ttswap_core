@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "./libraries/base/LCustomer.sol";
-import "./TTSwapV1Gator.sol";
+import "./interfaces/Gator/IGatorV1State.sol";
 import "./interfaces/Marketor/IMarketorV1State.sol";
 import "./interfaces/ITTSwapV1Customer.sol";
 
@@ -35,7 +35,7 @@ contract TTSwapV1Customer is ITTSwapV1Customer {
     /// @notice Explain to an end user what this does
     /// @dev Explain to a developer any extra details
     modifier onlyGator() {
-        require(TTSwapV1Gator(gateContractAddress).isValidGator());
+        require(IGatorV1State(gateContractAddress).isValidGator());
         _;
     }
 
