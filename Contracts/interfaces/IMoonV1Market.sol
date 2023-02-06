@@ -8,7 +8,6 @@ import "./market/IMoonV1MarketCreatorActions.sol";
 import "./market/IMoonV1MarketManagerActions.sol";
 import "./market/IMoonV1MarketGatorActions.sol";
 import "./market/IMoonV1MarketEvents.sol";
-import "./market/IMoonV1MarketSTGoodsCreatorActions.sol";
 
 interface IMoonV1Market is
     IMoonV1MarketImmutables,
@@ -17,6 +16,5 @@ interface IMoonV1Market is
     IMoonV1MarketCreatorActions,
     IMoonV1MarketManagerActions,
     IMoonV1MarketGatorActions,
-    IMoonV1MarketEvents,
-    IMoonV1MarketSTGoodsCreatorActions
+    IMoonV1MarketEvents
 {}

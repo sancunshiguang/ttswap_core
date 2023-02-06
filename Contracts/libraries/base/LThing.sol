@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity ^0.8.0;
 
-library LSTThings {
+library LThing {
     struct Info {
         // recode the neckname (Not Real Name) of customer(length<32)
         // 记录用户别名(长度小于32字节)

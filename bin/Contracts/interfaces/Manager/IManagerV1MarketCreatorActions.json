@@ -1,0 +1,215 @@
+{
+    "contractName": "IManagerV1MarketCreatorActions",
+    "abi": [
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_owner",
+                    "type": "address"
+                }
+            ],
+            "name": "delMarketManager",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_owner",
+                    "type": "address"
+                }
+            ],
+            "name": "setMarketManager",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"}],\"name\":\"delMarketManager\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_owner\",\"type\":\"address\"}],\"name\":\"setMarketManager\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"delMarketManager(address)\":{\"details\":\"Explain to a developer any extra details\"}},\"title\":\"Permissioned pool actions\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"delMarketManager(address)\":{\"notice\":\"Explain to an end user what this does\"}},\"notice\":\"Contains pool methods that may only be called by the factory owner\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Manager/IManagerV1MarketCreatorActions.sol\":\"IManagerV1MarketCreatorActions\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Manager/IManagerV1MarketCreatorActions.sol\":{\"keccak256\":\"0x20f11c260a9a332e6c5c4e6e8af2a579d5c70d81579230c836deb1ca0db48e89\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://c108ff0d5013a18c191a3a197a442f5b388d075017644e6a08d2738dcd44d739\",\"dweb:/ipfs/QmXcujEAxnesyza5vCexafcvoLSdogAshBhf6fhqBKmZmS\"]}},\"version\":1}",
+    "bytecode": "",
+    "deployedBytecode": "",
+    "sourceMap": "",
+    "deployedSourceMap": "",
+    "sourcePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Manager/IManagerV1MarketCreatorActions.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.15+commit.e14f2714"
+    },
+    "ast": {
+        "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Manager/IManagerV1MarketCreatorActions.sol",
+        "exportedSymbols": {
+            "IManagerV1MarketCreatorActions": [
+                14
+            ]
+        },
+        "id": 15,
+        "license": "GPL-2.0-or-later",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 1,
+                "literals": [
+                    "solidity",
+                    "^",
+                    "0.8",
+                    ".0"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "45:23:0"
+            },
+            {
+                "abstract": false,
+                "baseContracts": [],
+                "canonicalName": "IManagerV1MarketCreatorActions",
+                "contractDependencies": [],
+                "contractKind": "interface",
+                "documentation": {
+                    "id": 2,
+                    "nodeType": "StructuredDocumentation",
+                    "src": "70:116:0",
+                    "text": "@title Permissioned pool actions\n @notice Contains pool methods that may only be called by the factory owner"
+                },
+                "fullyImplemented": false,
+                "id": 14,
+                "linearizedBaseContracts": [
+                    14
+                ],
+                "name": "IManagerV1MarketCreatorActions",
+                "nameLocation": "196:30:0",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "functionSelector": "d82aff11",
+                        "id": 7,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "setMarketManager",
+                        "nameLocation": "242:16:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 5,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 4,
+                                    "mutability": "mutable",
+                                    "name": "_owner",
+                                    "nameLocation": "267:6:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 7,
+                                    "src": "259:14:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 3,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "259:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "258:16:0"
+                        },
+                        "returnParameters": {
+                            "id": 6,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "283:0:0"
+                        },
+                        "scope": 14,
+                        "src": "233:51:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "documentation": {
+                            "id": 8,
+                            "nodeType": "StructuredDocumentation",
+                            "src": "290:103:0",
+                            "text": "@notice Explain to an end user what this does\n @dev Explain to a developer any extra details"
+                        },
+                        "functionSelector": "2b890543",
+                        "id": 13,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "delMarketManager",
+                        "nameLocation": "407:16:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 11,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 10,
+                                    "mutability": "mutable",
+                                    "name": "_owner",
+                                    "nameLocation": "432:6:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 13,
+                                    "src": "424:14:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 9,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "424:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "423:16:0"
+                        },
+                        "returnParameters": {
+                            "id": 12,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "448:0:0"
+                        },
+                        "scope": 14,
+                        "src": "398:51:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    }
+                ],
+                "scope": 15,
+                "src": "186:265:0",
+                "usedErrors": []
+            }
+        ],
+        "src": "45:407:0"
+    },
+    "functionHashes": {
+        "delMarketManager(address)": "2b890543",
+        "setMarketManager(address)": "d82aff11"
+    },
+    "gasEstimates": null
+}

@@ -1,0 +1,257 @@
+{
+    "contractName": "IThingV1State",
+    "abi": [
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_contractaddress",
+                    "type": "address"
+                }
+            ],
+            "name": "getThingInfo",
+            "outputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "bytes32",
+                            "name": "name",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "ownerAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "bytes32",
+                            "name": "LSTThingsFullName",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "bytes6",
+                            "name": "symbol",
+                            "type": "bytes6"
+                        },
+                        {
+                            "internalType": "uint8",
+                            "name": "scope",
+                            "type": "uint8"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "contractAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "marketunlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "unlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "createrunlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "isUsed",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "addfromgater",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "creator",
+                            "type": "address"
+                        }
+                    ],
+                    "internalType": "struct LThing.Info",
+                    "name": "",
+                    "type": "tuple"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_contractaddress\",\"type\":\"address\"}],\"name\":\"getThingInfo\",\"outputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LThing.Info\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"title\":\"Pool state that can change\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"These methods compose the pool's state, and can change with any frequency including multiple times per transaction\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1State.sol\":\"IThingV1State\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1State.sol\":{\"keccak256\":\"0xf4d9f339c6cce8a0e773630c87f380ddc935e57c5d120098c51cf03ecd3e27cc\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://92665b8561360dda93d9168a274eb0a57523d02447f4769e2a22e9cb99e5c7af\",\"dweb:/ipfs/QmTF3Q5GfvaUPP1c7Pi4TTqJFQejwhV61vWGGo9krauATL\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LThing.sol\":{\"keccak256\":\"0xc31d6b211c62a7bc924de152039c250d81f24facf1bb6a38d322bafde6e0c19a\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://03ccb965512df288a2065071e49612ce1be0285b743ac2a8bbe92ea0bf0bfa9f\",\"dweb:/ipfs/QmT5SvbqjFRVtAjnSsx6cybCSdGBUBgMioNmh5sLte3wow\"]}},\"version\":1}",
+    "bytecode": "",
+    "deployedBytecode": "",
+    "sourceMap": "",
+    "deployedSourceMap": "",
+    "sourcePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1State.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.15+commit.e14f2714"
+    },
+    "ast": {
+        "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1State.sol",
+        "exportedSymbols": {
+            "IThingV1State": [
+                12
+            ],
+            "LThing": [
+                40
+            ]
+        },
+        "id": 13,
+        "license": "GPL-2.0-or-later",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 1,
+                "literals": [
+                    "solidity",
+                    "^",
+                    "0.8",
+                    ".0"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "45:23:0"
+            },
+            {
+                "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LThing.sol",
+                "file": "../../libraries/base/LThing.sol",
+                "id": 2,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 13,
+                "sourceUnit": 41,
+                "src": "70:41:0",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "abstract": false,
+                "baseContracts": [],
+                "canonicalName": "IThingV1State",
+                "contractDependencies": [],
+                "contractKind": "interface",
+                "documentation": {
+                    "id": 3,
+                    "nodeType": "StructuredDocumentation",
+                    "src": "113:169:0",
+                    "text": "@title Pool state that can change\n @notice These methods compose the pool's state, and can change with any frequency including multiple times\n per transaction"
+                },
+                "fullyImplemented": false,
+                "id": 12,
+                "linearizedBaseContracts": [
+                    12
+                ],
+                "name": "IThingV1State",
+                "nameLocation": "292:13:0",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "functionSelector": "b7228d6f",
+                        "id": 11,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "getThingInfo",
+                        "nameLocation": "321:12:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 6,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 5,
+                                    "mutability": "mutable",
+                                    "name": "_contractaddress",
+                                    "nameLocation": "342:16:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 11,
+                                    "src": "334:24:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 4,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "334:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "333:26:0"
+                        },
+                        "returnParameters": {
+                            "id": 10,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 9,
+                                    "mutability": "mutable",
+                                    "name": "",
+                                    "nameLocation": "-1:-1:-1",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 11,
+                                    "src": "407:18:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "memory",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_struct$_Info_$39_memory_ptr",
+                                        "typeString": "struct LThing.Info"
+                                    },
+                                    "typeName": {
+                                        "id": 8,
+                                        "nodeType": "UserDefinedTypeName",
+                                        "pathNode": {
+                                            "id": 7,
+                                            "name": "LThing.Info",
+                                            "nodeType": "IdentifierPath",
+                                            "referencedDeclaration": 39,
+                                            "src": "407:11:0"
+                                        },
+                                        "referencedDeclaration": 39,
+                                        "src": "407:11:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_struct$_Info_$39_storage_ptr",
+                                            "typeString": "struct LThing.Info"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "406:20:0"
+                        },
+                        "scope": 12,
+                        "src": "312:115:0",
+                        "stateMutability": "view",
+                        "virtual": false,
+                        "visibility": "external"
+                    }
+                ],
+                "scope": 13,
+                "src": "282:147:0",
+                "usedErrors": []
+            }
+        ],
+        "src": "45:385:0"
+    },
+    "functionHashes": {
+        "getThingInfo(address)": "b7228d6f"
+    },
+    "gasEstimates": null
+}

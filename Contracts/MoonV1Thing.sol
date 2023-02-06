@@ -1,22 +1,23 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity ^0.8.0;
-import "./libraries/base/LSTThings.sol";
+import "./libraries/base/LThing.sol";
 import "./MoonV1Manager.sol";
 import "./MoonV1Gater.sol";
+import "./interfaces/IMoonV1Thing.sol";
 
-contract MoonV1Thing {
+contract MoonV1Thing is IMoonV1Thing {
     //标准物品地址 => 标准物品信息
     //standardThingsaddress => standard Things detail info
-    mapping(address => address) public marketSTThingsList;
+    mapping(address => address) public marketThingsList;
 
     //门户标准物品地址 => 标准物品信息
     //gateaddress => standradThingsaddress => standradThingsaddress
-    mapping(address => mapping(address => address)) public gateSTThingsList;
+    mapping(address => mapping(address => address)) public gateThingsList;
 
     //标准物品
     //标准物品地址 => 标准物品信息
     //coinaddress => coinInfo
-    mapping(address => LSTThings.Info) public STThingsList;
+    mapping(address => LThing.Info) public ThingsList;
 
     address public gateContractAddress;
     address public marketorContractAddress;
@@ -45,236 +46,230 @@ contract MoonV1Thing {
 
     /////////////////////////物品设置-市场/////////////////////
     /////////////////////////things Manage/////////////////////
-    function addSTThingsbyMarketor(LSTThings.Info memory _STThingsInfo)
+    function addThingbyMarketor(LThing.Info memory _ThingsInfo)
         external
         onlyMarketManager
     {
-        if (STThingsList[_STThingsInfo.contractAddress].isUsed != true) {
-            _STThingsInfo.addfromgater = msg.sender;
-            _STThingsInfo.creator = msg.sender;
-            _STThingsInfo.marketunlock = false;
-            _STThingsInfo.unlock = false;
-            _STThingsInfo.isUsed = true;
-            STThingsList[_STThingsInfo.contractAddress] = _STThingsInfo;
-            marketSTThingsList[_STThingsInfo.contractAddress] = _STThingsInfo
+        if (ThingsList[_ThingsInfo.contractAddress].isUsed != true) {
+            _ThingsInfo.addfromgater = msg.sender;
+            _ThingsInfo.creator = msg.sender;
+            _ThingsInfo.marketunlock = false;
+            _ThingsInfo.unlock = false;
+            _ThingsInfo.isUsed = true;
+            ThingsList[_ThingsInfo.contractAddress] = _ThingsInfo;
+            marketThingsList[_ThingsInfo.contractAddress] = _ThingsInfo
                 .contractAddress;
         } else {
             require(
-                marketSTThingsList[_STThingsInfo.contractAddress] == address(0),
+                marketThingsList[_ThingsInfo.contractAddress] == address(0),
                 "the stgoods exists in the market"
             );
-            marketSTThingsList[_STThingsInfo.contractAddress] = _STThingsInfo
+            marketThingsList[_ThingsInfo.contractAddress] = _ThingsInfo
                 .contractAddress;
         }
     }
 
-    function changeSTThingsScopebyMarketor(
-        address _internalSTThingsAddress,
+    function changeThingScopebyMarketor(
+        address _internalThingsAddress,
         uint8 _scope
     ) external onlyMarketManager {
-        STThingsList[_internalSTThingsAddress].scope = _scope;
+        ThingsList[_internalThingsAddress].scope = _scope;
     }
 
-    function lockSTThingsbyMarketor(address _internalSTThingsAddress)
+    function lockThingbyMarketor(address _internalThingsAddress)
         external
         onlyMarketManager
     {
-        STThingsList[_internalSTThingsAddress].marketunlock = false;
+        ThingsList[_internalThingsAddress].marketunlock = false;
     }
 
-    function unlockSTThingsbyMarketor(address _internalSTThingsAddress)
+    function unlockThingbyMarketor(address _internalThingsAddress)
         external
         onlyMarketManager
     {
-        STThingsList[_internalSTThingsAddress].marketunlock = true;
+        ThingsList[_internalThingsAddress].marketunlock = true;
     }
 
-    function updateSTThingsbyMarketor(LSTThings.Info memory _STThingsInfo)
+    function updateThingbyMarketor(LThing.Info memory _ThingsInfo)
         external
         onlyMarketManager
     {
-        require(
-            marketSTThingsList[_STThingsInfo.contractAddress] != address(0)
-        );
-        _STThingsInfo.marketunlock = false;
-        _STThingsInfo.unlock = false;
-        _STThingsInfo.isUsed = true;
-        _STThingsInfo.creator = STThingsList[_STThingsInfo.contractAddress]
-            .creator;
-        STThingsList[_STThingsInfo.contractAddress] = _STThingsInfo;
+        require(marketThingsList[_ThingsInfo.contractAddress] != address(0));
+        _ThingsInfo.marketunlock = false;
+        _ThingsInfo.unlock = false;
+        _ThingsInfo.isUsed = true;
+        _ThingsInfo.creator = ThingsList[_ThingsInfo.contractAddress].creator;
+        ThingsList[_ThingsInfo.contractAddress] = _ThingsInfo;
     }
 
-    function impoveGateSTThingsbyMarketor(
+    function impoveGateThingbyMarketor(
         address _contractaddress,
         address _gateaddress
     ) external onlyMarketManager {
         require(
-            gateSTThingsList[_gateaddress][_contractaddress] != address(0),
-            "the STThings is not exists"
+            gateThingsList[_gateaddress][_contractaddress] != address(0),
+            "the Things is not exists"
         );
         require(
-            marketSTThingsList[_contractaddress] == address(0),
-            "the STThings is  exists in market"
+            marketThingsList[_contractaddress] == address(0),
+            "the Things is  exists in market"
         );
-        marketSTThingsList[_contractaddress] = gateSTThingsList[_gateaddress][
+        marketThingsList[_contractaddress] = gateThingsList[_gateaddress][
             _contractaddress
         ];
 
-        delete gateSTThingsList[_gateaddress][_contractaddress];
+        delete gateThingsList[_gateaddress][_contractaddress];
     }
 
-    function delSTThingsbyMarketor(LSTThings.Info memory _STThingsInfo)
+    function delMarketThingbyMarketor(LThing.Info memory _ThingsInfo)
         external
         onlyMarketManager
     {
         require(
-            marketSTThingsList[_STThingsInfo.contractAddress] == address(0),
-            "the STThings is not exists"
+            marketThingsList[_ThingsInfo.contractAddress] == address(0),
+            "the Things is not exists"
         );
-        delete marketSTThingsList[_STThingsInfo.contractAddress];
+        delete marketThingsList[_ThingsInfo.contractAddress];
     }
 
-    function delGateSTThingsbyMarketor(
+    function delGateThingbyMarketor(
         address _contractaddress,
         address _gateaddress
     ) external onlyMarketManager {
         require(
-            gateSTThingsList[_gateaddress][_contractaddress] == address(0),
-            "the STThings is not exists"
+            gateThingsList[_gateaddress][_contractaddress] == address(0),
+            "the Things is not exists"
         );
-        delete gateSTThingsList[_gateaddress][_contractaddress];
+        delete gateThingsList[_gateaddress][_contractaddress];
     }
 
     /////////////////////////物品设置-门户/////////////////////
     /////////////////////////things Manage/////////////////////
 
-    function unlockSTThingsbyGator(address _internalSTThingsAddress)
+    function unlockThingbyGator(address _internalThingsAddress)
         external
         onlyGator
     {
         require(
-            STThingsList[_internalSTThingsAddress].addfromgater == msg.sender,
+            ThingsList[_internalThingsAddress].addfromgater == msg.sender,
             "you have not the right"
         );
-        STThingsList[_internalSTThingsAddress].unlock = true;
+        ThingsList[_internalThingsAddress].unlock = true;
     }
 
-    function lockSTThingsbyGator(address _internalSTThingsAddress)
+    function lockThingbyGator(address _internalThingsAddress)
         external
         onlyGator
     {
         require(
-            STThingsList[_internalSTThingsAddress].addfromgater == msg.sender,
+            ThingsList[_internalThingsAddress].addfromgater == msg.sender,
             "you have not the right"
         );
-        STThingsList[_internalSTThingsAddress].unlock = false;
+        ThingsList[_internalThingsAddress].unlock = false;
     }
 
-    function updateSTThingsbyGator(LSTThings.Info memory _STThingsInfo)
+    function updateThingbyGator(LThing.Info memory _ThingsInfo)
         external
         onlyGator
     {
         require(
-            STThingsList[_STThingsInfo.contractAddress].addfromgater ==
-                msg.sender,
+            ThingsList[_ThingsInfo.contractAddress].addfromgater == msg.sender,
             "you have not the right"
         );
-        require(_STThingsInfo.scope == 4, "the coin scope is not justified ");
-        _STThingsInfo.marketunlock = false;
-        _STThingsInfo.unlock = false;
-        _STThingsInfo.isUsed = true;
-        _STThingsInfo.addfromgater = msg.sender;
-        STThingsList[_STThingsInfo.contractAddress] = _STThingsInfo;
+        require(_ThingsInfo.scope == 4, "the coin scope is not justified ");
+        _ThingsInfo.marketunlock = false;
+        _ThingsInfo.unlock = false;
+        _ThingsInfo.isUsed = true;
+        _ThingsInfo.addfromgater = msg.sender;
+        ThingsList[_ThingsInfo.contractAddress] = _ThingsInfo;
     }
 
     /////////////////////////物品设置-创建者/////////////////////
     /////////////////////////things Manage/////////////////////
-    function lockGateSTThingsbyCreater(
-        address _internalSTThingsAddress,
+    function lockGateThingbyCreater(
+        address _internalThingsAddress,
         address _gateaddress
     ) external {
         require(
-            STThingsList[_internalSTThingsAddress].creator == msg.sender &&
-                gateSTThingsList[_gateaddress][_internalSTThingsAddress] ==
+            ThingsList[_internalThingsAddress].creator == msg.sender &&
+                gateThingsList[_gateaddress][_internalThingsAddress] ==
                 address(0),
             "you have not the privileges of this"
         );
-        STThingsList[_internalSTThingsAddress].createrunlock = false;
+        ThingsList[_internalThingsAddress].createrunlock = false;
     }
 
-    function unlockGateSTThingsbyCreater(
-        address _internalSTThingsAddress,
+    function unlockGateThingbyCreater(
+        address _internalThingsAddress,
         address _gateaddress
     ) external {
         require(
-            STThingsList[_internalSTThingsAddress].creator == msg.sender &&
-                gateSTThingsList[_gateaddress][_internalSTThingsAddress] ==
+            ThingsList[_internalThingsAddress].creator == msg.sender &&
+                gateThingsList[_gateaddress][_internalThingsAddress] ==
                 address(0),
             "you have not the privileges of this"
         );
-        STThingsList[_internalSTThingsAddress].createrunlock = true;
+        ThingsList[_internalThingsAddress].createrunlock = true;
     }
 
-    function addGateSTThingsbyCreator(
-        LSTThings.Info memory _STThingsInfo,
+    function addGateThingbyCreator(
+        LThing.Info memory _ThingsInfo,
         address _gateaddress
     ) external {
         require(
-            STThingsList[_STThingsInfo.contractAddress].isUsed != true &&
-                gateSTThingsList[_gateaddress][_STThingsInfo.contractAddress] ==
+            ThingsList[_ThingsInfo.contractAddress].isUsed != true &&
+                gateThingsList[_gateaddress][_ThingsInfo.contractAddress] ==
                 address(0),
             "you have not the right"
         );
 
-        _STThingsInfo.marketunlock = false;
-        _STThingsInfo.unlock = true;
-        _STThingsInfo.createrunlock = false;
-        _STThingsInfo.isUsed = true;
-        _STThingsInfo.addfromgater = _gateaddress;
-        _STThingsInfo.creator = msg.sender;
-        STThingsList[_STThingsInfo.contractAddress] = _STThingsInfo;
-        gateSTThingsList[_gateaddress][
-            _STThingsInfo.contractAddress
-        ] = _STThingsInfo.contractAddress;
+        _ThingsInfo.marketunlock = false;
+        _ThingsInfo.unlock = true;
+        _ThingsInfo.createrunlock = false;
+        _ThingsInfo.isUsed = true;
+        _ThingsInfo.addfromgater = _gateaddress;
+        _ThingsInfo.creator = msg.sender;
+        ThingsList[_ThingsInfo.contractAddress] = _ThingsInfo;
+        gateThingsList[_gateaddress][_ThingsInfo.contractAddress] = _ThingsInfo
+            .contractAddress;
     }
 
-    function updateGateSTThingsbyCreator(
-        LSTThings.Info memory _STThingsInfo,
+    function updateGateThingbyCreator(
+        LThing.Info memory _ThingsInfo,
         address _gateaddress
     ) external {
         require(
-            STThingsList[_STThingsInfo.contractAddress].isUsed != true &&
-                gateSTThingsList[_gateaddress][_STThingsInfo.contractAddress] ==
+            ThingsList[_ThingsInfo.contractAddress].isUsed != true &&
+                gateThingsList[_gateaddress][_ThingsInfo.contractAddress] ==
                 address(0),
             "you have not the right"
         );
 
-        _STThingsInfo.marketunlock = false;
-        _STThingsInfo.unlock = true;
-        _STThingsInfo.createrunlock = false;
-        _STThingsInfo.isUsed = true;
-        _STThingsInfo.addfromgater = _gateaddress;
-        _STThingsInfo.creator = msg.sender;
-        STThingsList[_STThingsInfo.contractAddress] = _STThingsInfo;
-        gateSTThingsList[_gateaddress][
-            _STThingsInfo.contractAddress
-        ] = _STThingsInfo.contractAddress;
+        _ThingsInfo.marketunlock = false;
+        _ThingsInfo.unlock = true;
+        _ThingsInfo.createrunlock = false;
+        _ThingsInfo.isUsed = true;
+        _ThingsInfo.addfromgater = _gateaddress;
+        _ThingsInfo.creator = msg.sender;
+        ThingsList[_ThingsInfo.contractAddress] = _ThingsInfo;
+        gateThingsList[_gateaddress][_ThingsInfo.contractAddress] = _ThingsInfo
+            .contractAddress;
     }
 
-    function getSTThingsInfo(address _contractaddress)
+    function getThingInfo(address _contractaddress)
         external
         view
-        returns (LSTThings.Info memory)
+        returns (LThing.Info memory)
     {
         require(
-            STThingsList[_contractaddress].isUsed == true,
-            "the STThings is not exists"
+            ThingsList[_contractaddress].isUsed == true,
+            "the Things is not exists"
         );
 
-        return STThingsList[_contractaddress];
+        return ThingsList[_contractaddress];
     }
 
     function isValidThing(address _thing) external view returns (bool) {
-        return STThingsList[_thing].marketunlock;
+        return ThingsList[_thing].marketunlock;
     }
 }
