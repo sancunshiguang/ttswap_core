@@ -71,7 +71,43 @@
                     "type": "tuple"
                 }
             ],
-            "name": "addThingbyGator",
+            "name": "addThingbyMarketor",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_internalThingAddress",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint8",
+                    "name": "_scope",
+                    "type": "uint8"
+                }
+            ],
+            "name": "changeThingScopebyMarketor",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_contractaddress",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "_gateaddress",
+                    "type": "address"
+                }
+            ],
+            "name": "delGateThingbyMarketor",
             "outputs": [],
             "stateMutability": "nonpayable",
             "type": "function"
@@ -142,60 +178,11 @@
                         }
                     ],
                     "internalType": "struct LThing.Info",
-                    "name": "_coinInfo",
+                    "name": "_ThingsInfo",
                     "type": "tuple"
                 }
             ],
-            "name": "addThingbyMarketor",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "_internalThingAddress",
-                    "type": "address"
-                },
-                {
-                    "internalType": "uint8",
-                    "name": "_scope",
-                    "type": "uint8"
-                }
-            ],
-            "name": "changeThingScopebyMarketor",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "_contractaddress",
-                    "type": "address"
-                },
-                {
-                    "internalType": "address",
-                    "name": "_gateaddress",
-                    "type": "address"
-                }
-            ],
-            "name": "delGateThingbyMarketor",
-            "outputs": [],
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "inputs": [
-                {
-                    "internalType": "address",
-                    "name": "_contractaddress",
-                    "type": "address"
-                }
-            ],
-            "name": "delThingbyMarketor",
+            "name": "delMarketThingbyMarketor",
             "outputs": [],
             "stateMutability": "nonpayable",
             "type": "function"
@@ -528,7 +515,7 @@
             "type": "function"
         }
     ],
-    "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LThing.Info\",\"name\":\"_coinInfo\",\"type\":\"tuple\"}],\"name\":\"addThingbyGator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LThing.Info\",\"name\":\"_coinInfo\",\"type\":\"tuple\"}],\"name\":\"addThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalThingAddress\",\"type\":\"address\"},{\"internalType\":\"uint8\",\"name\":\"_scope\",\"type\":\"uint8\"}],\"name\":\"changeThingScopebyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_contractaddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_gateaddress\",\"type\":\"address\"}],\"name\":\"delGateThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_contractaddress\",\"type\":\"address\"}],\"name\":\"delThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"gateContractAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_contractaddress\",\"type\":\"address\"}],\"name\":\"getThingInfo\",\"outputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LThing.Info\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_contractaddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_gateaddress\",\"type\":\"address\"}],\"name\":\"impoveGateThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalThingAddress\",\"type\":\"address\"}],\"name\":\"lockThingbyGator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalThingAddress\",\"type\":\"address\"}],\"name\":\"lockThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"marketorContractAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalThingAddress\",\"type\":\"address\"}],\"name\":\"unlockThingbyGator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalThingAddress\",\"type\":\"address\"}],\"name\":\"unlockThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LThing.Info\",\"name\":\"_coinInfo\",\"type\":\"tuple\"}],\"name\":\"updateThingbyGator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LThing.Info\",\"name\":\"_coinInfo\",\"type\":\"tuple\"}],\"name\":\"updateThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"The pool interface is broken up into many smaller pieces\",\"kind\":\"dev\",\"methods\":{\"gateContractAddress()\":{\"returns\":{\"_0\":\"The contract address\"}},\"marketorContractAddress()\":{\"returns\":{\"_0\":\"The contract address\"}}},\"title\":\"The interface for a Uniswap V3 Pool\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"gateContractAddress()\":{\"notice\":\"The contract that deployed the pool, which must adhere to the IUniswapV3Factory interface\"},\"marketorContractAddress()\":{\"notice\":\"The contract that deployed the pool, which must adhere to the IUniswapV3Factory interface\"}},\"notice\":\"A Uniswap pool facilitates swapping and automated market making between any two assets that strictly conform to the ERC20 specification\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/IMoonV1Thing.sol\":\"IMoonV1Thing\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/IMoonV1Thing.sol\":{\"keccak256\":\"0xa50b3a5a9e2ec154765c30556a44cf5267d023c120356137ee5dfa49536b5740\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://b9016da041e6d6eb1724e3390f1f6822127cb7632e93306bba4202fb9f2ae9e9\",\"dweb:/ipfs/QmNVyR2ZuFxaCgAXaF9TT5rYAMKLkME8JjCtRkDt8pc6nu\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1Events.sol\":{\"keccak256\":\"0x578e73460d0744175b079f189eb3158036522d4a60cab8387f7f01f805769f1b\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://6f0cb6d0b293fdd330b2e8dd312f836bfa02e63225c5154beb77a2d545f582f5\",\"dweb:/ipfs/QmYNKJ9tXE4qZXEttSNWjWs7tnzHYMhjZt1EHQEbQVGQ26\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1GaterActions.sol\":{\"keccak256\":\"0xefa41655e07d95326ed0434daa003501469ae0d5392cbf8ff94c63ba865629d0\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://95928f204e84a9baa71984919d3f02d2106d26510c4248bb835ff797338b92d4\",\"dweb:/ipfs/QmW2MsuWr9wxD4gsFjUZp7u7gsWTQXAbMWumf8p9c3qiwp\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1Immutables.sol\":{\"keccak256\":\"0xd647cafb6f672cbec51709761634f2331876fc6411c38c229be45df3a24f0d44\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://6317034add99e80b7fb5a668199bcdc9391d5ea503a0e1b1376aa8c7cfae0216\",\"dweb:/ipfs/QmRrBi1UV7S9sJ5zX71rh4wKXEVPyi35kwmkyTmc72Nzoo\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1MarketorActions.sol\":{\"keccak256\":\"0xf06e86deb0f53e3ab815eb5d3af658ca2d07ecdba9d774cfa55e4cf77a880ca4\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://db84ed87a50abeecb18ac8e6c9d9ed33a3243bb5b4cc30f884bfd5ede51aa4f5\",\"dweb:/ipfs/QmX7ewFT9FhRfg8zfsbzBHQi6NuBhppYJPDqniZTxepkFr\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1State.sol\":{\"keccak256\":\"0xf4d9f339c6cce8a0e773630c87f380ddc935e57c5d120098c51cf03ecd3e27cc\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://92665b8561360dda93d9168a274eb0a57523d02447f4769e2a22e9cb99e5c7af\",\"dweb:/ipfs/QmTF3Q5GfvaUPP1c7Pi4TTqJFQejwhV61vWGGo9krauATL\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LThing.sol\":{\"keccak256\":\"0xc31d6b211c62a7bc924de152039c250d81f24facf1bb6a38d322bafde6e0c19a\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://03ccb965512df288a2065071e49612ce1be0285b743ac2a8bbe92ea0bf0bfa9f\",\"dweb:/ipfs/QmT5SvbqjFRVtAjnSsx6cybCSdGBUBgMioNmh5sLte3wow\"]}},\"version\":1}",
+    "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LThing.Info\",\"name\":\"_coinInfo\",\"type\":\"tuple\"}],\"name\":\"addThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalThingAddress\",\"type\":\"address\"},{\"internalType\":\"uint8\",\"name\":\"_scope\",\"type\":\"uint8\"}],\"name\":\"changeThingScopebyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_contractaddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_gateaddress\",\"type\":\"address\"}],\"name\":\"delGateThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LThing.Info\",\"name\":\"_ThingsInfo\",\"type\":\"tuple\"}],\"name\":\"delMarketThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"gateContractAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_contractaddress\",\"type\":\"address\"}],\"name\":\"getThingInfo\",\"outputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LThing.Info\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_contractaddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_gateaddress\",\"type\":\"address\"}],\"name\":\"impoveGateThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalThingAddress\",\"type\":\"address\"}],\"name\":\"lockThingbyGator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalThingAddress\",\"type\":\"address\"}],\"name\":\"lockThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"marketorContractAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalThingAddress\",\"type\":\"address\"}],\"name\":\"unlockThingbyGator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalThingAddress\",\"type\":\"address\"}],\"name\":\"unlockThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LThing.Info\",\"name\":\"_coinInfo\",\"type\":\"tuple\"}],\"name\":\"updateThingbyGator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LThing.Info\",\"name\":\"_coinInfo\",\"type\":\"tuple\"}],\"name\":\"updateThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"The pool interface is broken up into many smaller pieces\",\"kind\":\"dev\",\"methods\":{\"gateContractAddress()\":{\"returns\":{\"_0\":\"The contract address\"}},\"marketorContractAddress()\":{\"returns\":{\"_0\":\"The contract address\"}}},\"title\":\"The interface for a Uniswap V3 Pool\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"gateContractAddress()\":{\"notice\":\"The contract that deployed the pool, which must adhere to the IUniswapV3Factory interface\"},\"marketorContractAddress()\":{\"notice\":\"The contract that deployed the pool, which must adhere to the IUniswapV3Factory interface\"}},\"notice\":\"A Uniswap pool facilitates swapping and automated market making between any two assets that strictly conform to the ERC20 specification\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/IMoonV1Thing.sol\":\"IMoonV1Thing\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/IMoonV1Thing.sol\":{\"keccak256\":\"0x7400c319993d60aeb3e6419d60028a447106308309373809ce9ff3af078f0f0e\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://41aa7b6ace3f43f25918e4d9cececdd729b60fece9060b3ed0e8b26b04ca369f\",\"dweb:/ipfs/QmdMbcTARpyVqYpHcHCzPdqVPCAV7dJZeNz3zPuh9hodr2\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1Events.sol\":{\"keccak256\":\"0x578e73460d0744175b079f189eb3158036522d4a60cab8387f7f01f805769f1b\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://6f0cb6d0b293fdd330b2e8dd312f836bfa02e63225c5154beb77a2d545f582f5\",\"dweb:/ipfs/QmYNKJ9tXE4qZXEttSNWjWs7tnzHYMhjZt1EHQEbQVGQ26\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1GatorActions.sol\":{\"keccak256\":\"0xf3fba13d6fc9dd8d9740d0a6ac15d4fd46906378107ff12f37555ce4c7b63147\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://fd2c4cfcffd94ab9b735511dfee49d0ac3bf8125242af2e3bced7a5b906ca520\",\"dweb:/ipfs/QmXFzXwgmw1LKn6m62ysAL8go6exjnoY8nSTrUbpENJdSx\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1Immutables.sol\":{\"keccak256\":\"0xd647cafb6f672cbec51709761634f2331876fc6411c38c229be45df3a24f0d44\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://6317034add99e80b7fb5a668199bcdc9391d5ea503a0e1b1376aa8c7cfae0216\",\"dweb:/ipfs/QmRrBi1UV7S9sJ5zX71rh4wKXEVPyi35kwmkyTmc72Nzoo\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1MarketorActions.sol\":{\"keccak256\":\"0x804bed2caa55b0bac0e96f47ac351a55c8d7b234fe7bc8bdc0c8f2500b304f9c\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://364ea0cb6c0c575ccb7c76e4d72bdd9fa483c8071d334ba8c495242d745f7c39\",\"dweb:/ipfs/QmTS35S4gZp4MbizMseepjFU4mfu1rWw8zivWHiSRLPtgE\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1State.sol\":{\"keccak256\":\"0xf4d9f339c6cce8a0e773630c87f380ddc935e57c5d120098c51cf03ecd3e27cc\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://92665b8561360dda93d9168a274eb0a57523d02447f4769e2a22e9cb99e5c7af\",\"dweb:/ipfs/QmTF3Q5GfvaUPP1c7Pi4TTqJFQejwhV61vWGGo9krauATL\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LThing.sol\":{\"keccak256\":\"0xc31d6b211c62a7bc924de152039c250d81f24facf1bb6a38d322bafde6e0c19a\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://03ccb965512df288a2065071e49612ce1be0285b743ac2a8bbe92ea0bf0bfa9f\",\"dweb:/ipfs/QmT5SvbqjFRVtAjnSsx6cybCSdGBUBgMioNmh5sLte3wow\"]}},\"version\":1}",
     "bytecode": "",
     "deployedBytecode": "",
     "sourceMap": "",
@@ -547,20 +534,20 @@
             "IThingV1Events": [
                 22
             ],
-            "IThingV1GaterActions": [
-                49
+            "IThingV1GatorActions": [
+                43
             ],
             "IThingV1Immutables": [
-                65
+                59
             ],
             "IThingV1MarketorActions": [
-                118
+                113
             ],
             "IThingV1State": [
-                131
+                126
             ],
             "LThing": [
-                159
+                154
             ]
         },
         "id": 19,
@@ -591,13 +578,13 @@
                 "unitAlias": ""
             },
             {
-                "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1GaterActions.sol",
-                "file": "./Thing/IThingV1GaterActions.sol",
+                "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1GatorActions.sol",
+                "file": "./Thing/IThingV1GatorActions.sol",
                 "id": 3,
                 "nameLocation": "-1:-1:-1",
                 "nodeType": "ImportDirective",
                 "scope": 19,
-                "sourceUnit": 50,
+                "sourceUnit": 44,
                 "src": "107:42:0",
                 "symbolAliases": [],
                 "unitAlias": ""
@@ -609,7 +596,7 @@
                 "nameLocation": "-1:-1:-1",
                 "nodeType": "ImportDirective",
                 "scope": 19,
-                "sourceUnit": 66,
+                "sourceUnit": 60,
                 "src": "150:40:0",
                 "symbolAliases": [],
                 "unitAlias": ""
@@ -621,7 +608,7 @@
                 "nameLocation": "-1:-1:-1",
                 "nodeType": "ImportDirective",
                 "scope": 19,
-                "sourceUnit": 119,
+                "sourceUnit": 114,
                 "src": "191:45:0",
                 "symbolAliases": [],
                 "unitAlias": ""
@@ -633,7 +620,7 @@
                 "nameLocation": "-1:-1:-1",
                 "nodeType": "ImportDirective",
                 "scope": 19,
-                "sourceUnit": 132,
+                "sourceUnit": 127,
                 "src": "237:35:0",
                 "symbolAliases": [],
                 "unitAlias": ""
@@ -656,9 +643,9 @@
                     {
                         "baseName": {
                             "id": 10,
-                            "name": "IThingV1GaterActions",
+                            "name": "IThingV1GatorActions",
                             "nodeType": "IdentifierPath",
-                            "referencedDeclaration": 49,
+                            "referencedDeclaration": 43,
                             "src": "589:20:0"
                         },
                         "id": 11,
@@ -670,7 +657,7 @@
                             "id": 12,
                             "name": "IThingV1Immutables",
                             "nodeType": "IdentifierPath",
-                            "referencedDeclaration": 65,
+                            "referencedDeclaration": 59,
                             "src": "615:18:0"
                         },
                         "id": 13,
@@ -682,7 +669,7 @@
                             "id": 14,
                             "name": "IThingV1MarketorActions",
                             "nodeType": "IdentifierPath",
-                            "referencedDeclaration": 118,
+                            "referencedDeclaration": 113,
                             "src": "639:23:0"
                         },
                         "id": 15,
@@ -694,7 +681,7 @@
                             "id": 16,
                             "name": "IThingV1State",
                             "nodeType": "IdentifierPath",
-                            "referencedDeclaration": 131,
+                            "referencedDeclaration": 126,
                             "src": "668:13:0"
                         },
                         "id": 17,
@@ -715,10 +702,10 @@
                 "id": 18,
                 "linearizedBaseContracts": [
                     18,
-                    131,
-                    118,
-                    65,
-                    49,
+                    126,
+                    113,
+                    59,
+                    43,
                     22
                 ],
                 "name": "IMoonV1Thing",
@@ -733,11 +720,10 @@
         "src": "45:642:0"
     },
     "functionHashes": {
-        "addThingbyGator((bytes32,address,bytes32,bytes6,uint8,address,bool,bool,bool,bool,address,address))": "7326b7f5",
         "addThingbyMarketor((bytes32,address,bytes32,bytes6,uint8,address,bool,bool,bool,bool,address,address))": "62d7b46d",
         "changeThingScopebyMarketor(address,uint8)": "c77682f2",
         "delGateThingbyMarketor(address,address)": "510e1e01",
-        "delThingbyMarketor(address)": "5b52bd37",
+        "delMarketThingbyMarketor((bytes32,address,bytes32,bytes6,uint8,address,bool,bool,bool,bool,address,address))": "9a08975e",
         "gateContractAddress()": "2f17d5df",
         "getThingInfo(address)": "b7228d6f",
         "impoveGateThingbyMarketor(address,address)": "60d7d178",

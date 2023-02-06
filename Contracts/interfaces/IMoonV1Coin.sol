@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "./Coin/ICoinV1Events.sol";
-import "./Coin/ICoinV1GaterActions.sol";
+import "./Coin/ICoinV1GatorActions.sol";
 import "./Coin/ICoinV1Immutables.sol";
 import "./Coin/ICoinV1MarketorActions.sol";
 import "./Coin/ICoinV1State.sol";
@@ -13,7 +13,7 @@ import "./Coin/ICoinV1State.sol";
 /// @dev The pool interface is broken up into many smaller pieces
 interface IMoonV1Coin is
     ICoinV1Events,
-    ICoinV1GaterActions,
+    ICoinV1GatorActions,
     ICoinV1Immutables,
     ICoinV1MarketorActions,
     ICoinV1State

@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "./Thing/IThingV1Events.sol";
-import "./Thing/IThingV1GaterActions.sol";
+import "./Thing/IThingV1GatorActions.sol";
 import "./Thing/IThingV1Immutables.sol";
 import "./Thing/IThingV1MarketorActions.sol";
 import "./Thing/IThingV1State.sol";
@@ -13,7 +13,7 @@ import "./Thing/IThingV1State.sol";
 /// @dev The pool interface is broken up into many smaller pieces
 interface IMoonV1Thing is
     IThingV1Events,
-    IThingV1GaterActions,
+    IThingV1GatorActions,
     IThingV1Immutables,
     IThingV1MarketorActions,
     IThingV1State

@@ -1,0 +1,362 @@
+{
+    "contractName": "IThingV1GatorActions",
+    "abi": [
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_internalThingAddress",
+                    "type": "address"
+                }
+            ],
+            "name": "lockThingbyGator",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_internalThingAddress",
+                    "type": "address"
+                }
+            ],
+            "name": "unlockThingbyGator",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "bytes32",
+                            "name": "name",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "ownerAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "bytes32",
+                            "name": "LSTThingsFullName",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "bytes6",
+                            "name": "symbol",
+                            "type": "bytes6"
+                        },
+                        {
+                            "internalType": "uint8",
+                            "name": "scope",
+                            "type": "uint8"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "contractAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "marketunlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "unlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "createrunlock",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "isUsed",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "addfromgater",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "creator",
+                            "type": "address"
+                        }
+                    ],
+                    "internalType": "struct LThing.Info",
+                    "name": "_coinInfo",
+                    "type": "tuple"
+                }
+            ],
+            "name": "updateThingbyGator",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalThingAddress\",\"type\":\"address\"}],\"name\":\"lockThingbyGator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalThingAddress\",\"type\":\"address\"}],\"name\":\"unlockThingbyGator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LThing.Info\",\"name\":\"_coinInfo\",\"type\":\"tuple\"}],\"name\":\"updateThingbyGator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"title\":\"Permissioned pool actions\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Contains pool methods that may only be called by the factory owner\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1GatorActions.sol\":\"IThingV1GatorActions\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1GatorActions.sol\":{\"keccak256\":\"0xf3fba13d6fc9dd8d9740d0a6ac15d4fd46906378107ff12f37555ce4c7b63147\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://fd2c4cfcffd94ab9b735511dfee49d0ac3bf8125242af2e3bced7a5b906ca520\",\"dweb:/ipfs/QmXFzXwgmw1LKn6m62ysAL8go6exjnoY8nSTrUbpENJdSx\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LThing.sol\":{\"keccak256\":\"0xc31d6b211c62a7bc924de152039c250d81f24facf1bb6a38d322bafde6e0c19a\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://03ccb965512df288a2065071e49612ce1be0285b743ac2a8bbe92ea0bf0bfa9f\",\"dweb:/ipfs/QmT5SvbqjFRVtAjnSsx6cybCSdGBUBgMioNmh5sLte3wow\"]}},\"version\":1}",
+    "bytecode": "",
+    "deployedBytecode": "",
+    "sourceMap": "",
+    "deployedSourceMap": "",
+    "sourcePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1GatorActions.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.15+commit.e14f2714"
+    },
+    "ast": {
+        "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1GatorActions.sol",
+        "exportedSymbols": {
+            "IThingV1GatorActions": [
+                20
+            ],
+            "LThing": [
+                48
+            ]
+        },
+        "id": 21,
+        "license": "GPL-2.0-or-later",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 1,
+                "literals": [
+                    "solidity",
+                    "^",
+                    "0.8",
+                    ".0"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "45:23:0"
+            },
+            {
+                "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LThing.sol",
+                "file": "../../libraries/base/LThing.sol",
+                "id": 2,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 21,
+                "sourceUnit": 49,
+                "src": "70:41:0",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "abstract": false,
+                "baseContracts": [],
+                "canonicalName": "IThingV1GatorActions",
+                "contractDependencies": [],
+                "contractKind": "interface",
+                "documentation": {
+                    "id": 3,
+                    "nodeType": "StructuredDocumentation",
+                    "src": "113:116:0",
+                    "text": "@title Permissioned pool actions\n @notice Contains pool methods that may only be called by the factory owner"
+                },
+                "fullyImplemented": false,
+                "id": 20,
+                "linearizedBaseContracts": [
+                    20
+                ],
+                "name": "IThingV1GatorActions",
+                "nameLocation": "239:20:0",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "functionSelector": "4d768b15",
+                        "id": 8,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "unlockThingbyGator",
+                        "nameLocation": "314:18:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 6,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 5,
+                                    "mutability": "mutable",
+                                    "name": "_internalThingAddress",
+                                    "nameLocation": "341:21:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 8,
+                                    "src": "333:29:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 4,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "333:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "332:31:0"
+                        },
+                        "returnParameters": {
+                            "id": 7,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "372:0:0"
+                        },
+                        "scope": 20,
+                        "src": "305:68:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "functionSelector": "39dd19b8",
+                        "id": 13,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "lockThingbyGator",
+                        "nameLocation": "388:16:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 11,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 10,
+                                    "mutability": "mutable",
+                                    "name": "_internalThingAddress",
+                                    "nameLocation": "413:21:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 13,
+                                    "src": "405:29:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 9,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "405:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "404:31:0"
+                        },
+                        "returnParameters": {
+                            "id": 12,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "444:0:0"
+                        },
+                        "scope": 20,
+                        "src": "379:66:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    },
+                    {
+                        "functionSelector": "adc7c415",
+                        "id": 19,
+                        "implemented": false,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "updateThingbyGator",
+                        "nameLocation": "460:18:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 17,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 16,
+                                    "mutability": "mutable",
+                                    "name": "_coinInfo",
+                                    "nameLocation": "498:9:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 19,
+                                    "src": "479:28:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "memory",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_struct$_Info_$47_memory_ptr",
+                                        "typeString": "struct LThing.Info"
+                                    },
+                                    "typeName": {
+                                        "id": 15,
+                                        "nodeType": "UserDefinedTypeName",
+                                        "pathNode": {
+                                            "id": 14,
+                                            "name": "LThing.Info",
+                                            "nodeType": "IdentifierPath",
+                                            "referencedDeclaration": 47,
+                                            "src": "479:11:0"
+                                        },
+                                        "referencedDeclaration": 47,
+                                        "src": "479:11:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_struct$_Info_$47_storage_ptr",
+                                            "typeString": "struct LThing.Info"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "478:30:0"
+                        },
+                        "returnParameters": {
+                            "id": 18,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "517:0:0"
+                        },
+                        "scope": 20,
+                        "src": "451:67:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "external"
+                    }
+                ],
+                "scope": 21,
+                "src": "229:291:0",
+                "usedErrors": []
+            }
+        ],
+        "src": "45:476:0"
+    },
+    "functionHashes": {
+        "lockThingbyGator(address)": "39dd19b8",
+        "unlockThingbyGator(address)": "4d768b15",
+        "updateThingbyGator((bytes32,address,bytes32,bytes6,uint8,address,bool,bool,bool,bool,address,address))": "adc7c415"
+    },
+    "gasEstimates": null
+}

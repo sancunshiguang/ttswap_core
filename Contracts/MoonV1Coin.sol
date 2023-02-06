@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "./MoonV1Gater.sol";
-import "./MoonV1Manager.sol";
+import "./MoonV1Marketor.sol";
 
 import "./libraries/base/LCoin.sol";
 import "./interfaces/IMoonV1Coin.sol";
@@ -42,8 +42,8 @@ contract MoonV1Coin is IMoonV1Coin {
         _;
     }
 
-    modifier onlyMarketManager() {
-        require(MoonV1Manager(marketorContractAddress).ismarketManager());
+    modifier onlyMarketor() {
+        require(MoonV1Marketor(marketorContractAddress).ismarketMarketor());
         _;
     }
 
@@ -54,7 +54,7 @@ contract MoonV1Coin is IMoonV1Coin {
     /// @dev Explain to a developer any extra details
     function addCoinbyMarketor(LCoin.Info memory _coinInfo)
         external
-        onlyMarketManager
+        onlyMarketor
     {
         if (coinList[_coinInfo.contractAddress].isUsed != true) {
             _coinInfo.creator = msg.sender;
@@ -77,27 +77,27 @@ contract MoonV1Coin is IMoonV1Coin {
     function changeCoinScopebyMarketor(
         address _internalCoinAddress,
         uint8 _scope
-    ) external onlyMarketManager {
+    ) external onlyMarketor {
         coinList[_internalCoinAddress].scope = _scope;
     }
 
     function lockCoinbyMarketor(address _internalCoinAddress)
         external
-        onlyMarketManager
+        onlyMarketor
     {
         coinList[_internalCoinAddress].marketunlock = false;
     }
 
     function unlockCoinbyMarketor(address _internalCoinAddress)
         external
-        onlyMarketManager
+        onlyMarketor
     {
         coinList[_internalCoinAddress].marketunlock = true;
     }
 
     function updateCoinbyMarketor(LCoin.Info memory _coinInfo)
         external
-        onlyMarketManager
+        onlyMarketor
     {
         require(marketCoinList[_coinInfo.contractAddress] != address(0));
         _coinInfo.marketunlock = false;
@@ -110,7 +110,7 @@ contract MoonV1Coin is IMoonV1Coin {
     function impoveGateCoinbyMarketor(
         address _contractaddress,
         address _gateaddress
-    ) external onlyMarketManager {
+    ) external onlyMarketor {
         require(
             gateCoinList[_gateaddress][_contractaddress] != address(0),
             "the coin is not exists"
@@ -126,10 +126,7 @@ contract MoonV1Coin is IMoonV1Coin {
         delete gateCoinList[_gateaddress][_contractaddress];
     }
 
-    function delCoinbyMarketor(address _contractaddress)
-        external
-        onlyMarketManager
-    {
+    function delCoinbyMarketor(address _contractaddress) external onlyMarketor {
         require(
             marketCoinList[_contractaddress] == address(0),
             "the coin is not exists"
@@ -140,7 +137,7 @@ contract MoonV1Coin is IMoonV1Coin {
     function delGateCoinbyMarketor(
         address _contractaddress,
         address _gateaddress
-    ) external onlyMarketManager {
+    ) external onlyMarketor {
         require(
             gateCoinList[_gateaddress][_contractaddress] == address(0),
             "the coin is not exists"

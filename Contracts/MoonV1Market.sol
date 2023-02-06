@@ -7,7 +7,7 @@ pragma solidity ^0.8.0;
 import "./NoDelegateCall.sol";
 import "./libraries/base/LShop.sol";
 
-import "./MoonV1Manager.sol";
+import "./MoonV1Marketor.sol";
 import "./MoonV1Gater.sol";
 import "./MoonV1Coin.sol";
 import "./MoonV1Thing.sol";
@@ -32,8 +32,6 @@ contract MoonV1Market is NoDelegateCall {
 
     mapping(uint24 => int24) public profitUnitSpacing;
 
- 
-
     address public marketContractAddress;
     address public gateContractAddress;
     address public marketorContractAddress;
@@ -48,9 +46,9 @@ contract MoonV1Market is NoDelegateCall {
 
     /// @notice Explain to an end user what this does
     /// @dev Explain to a developer any extra details
-    modifier onlyMarketManager() {
+    modifier onlyMarketor() {
         require(
-            MoonV1Manager(marketorContractAddress).ismarketManager() == true
+            MoonV1Marketor(marketorContractAddress).ismarketMarketor() == true
         );
         _;
     }
@@ -67,7 +65,7 @@ contract MoonV1Market is NoDelegateCall {
         marketCreator = msg.sender;
         marketContractAddress = address(this);
         marketorContractAddress = address(
-            new MoonV1Manager{salt: sha256(abi.encode(marketContractAddress))}(
+            new MoonV1Marketor{salt: sha256(abi.encode(marketContractAddress))}(
                 marketCreator
             )
         );
@@ -146,7 +144,7 @@ contract MoonV1Market is NoDelegateCall {
         address _coin,
         address _thing,
         uint24 _profit
-    ) external noDelegateCall onlyMarketManager returns (address shop) {
+    ) external noDelegateCall onlyMarketor returns (address shop) {
         if (
             shopaddress[_coin][_thing] == address(0) &&
             shopaddress[_thing][_coin] == address(0)
@@ -227,7 +225,7 @@ contract MoonV1Market is NoDelegateCall {
         }
     }
 
-    function raiseShopLevelbyMarketor(address shop) external onlyMarketManager {
+    function raiseShopLevelbyMarketor(address shop) external onlyMarketor {
         require(
             marketShopList[shop] = true && shopList[shop].isUsed == true,
             "the shop not exists in the gate"

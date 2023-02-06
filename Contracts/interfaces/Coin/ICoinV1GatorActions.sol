@@ -5,7 +5,7 @@ import "../../libraries/base/LCoin.sol";
 
 /// @title Permissioned pool actions
 /// @notice Contains pool methods that may only be called by the factory owner
-interface ICoinV1GaterActions {
+interface ICoinV1GatorActions {
     /*
         门户管理币
     */

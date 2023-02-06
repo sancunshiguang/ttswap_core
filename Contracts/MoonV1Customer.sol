@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 import "./libraries/base/LCustomer.sol";
 import "./MoonV1Gater.sol";
-import "./MoonV1Manager.sol";
+import "./MoonV1Marketor.sol";
 
 contract MoonV1Customer {
     /////////////////////////用户管理-市场////////////////////////////
@@ -22,8 +22,8 @@ contract MoonV1Customer {
     mapping(address => uint32) public gateCustomerNextKey;
     mapping(address => mapping(uint32 => address)) public gateCustomerList;
 
-    address public gateContractAddress;
-    address public marketorContractAddress;
+    address public immutable gateContractAddress;
+    address public immutable marketorContractAddress;
 
     constructor(address _gateContractAddress, address _marketorContractAddress)
     {
@@ -38,9 +38,9 @@ contract MoonV1Customer {
         _;
     }
 
-    modifier onlyMarketManager() {
+    modifier onlyMarketor() {
         require(
-            MoonV1Manager(marketorContractAddress).ismarketManager() == true
+            MoonV1Marketor(marketorContractAddress).ismarketMarketor() == true
         );
         _;
     }
@@ -49,7 +49,7 @@ contract MoonV1Customer {
     /////////////////////////user Manage/////////////////////
     function lockCustomerbyMarketor(address _CustomerAddress)
         external
-        onlyMarketManager
+        onlyMarketor
     {
         require(
             customerList[_CustomerAddress].isUsed != true,
@@ -60,7 +60,7 @@ contract MoonV1Customer {
 
     function unlockCustomerbyMarketor(address _CustomerAddress)
         external
-        onlyMarketManager
+        onlyMarketor
     {
         require(
             customerList[_CustomerAddress].isUsed != true,

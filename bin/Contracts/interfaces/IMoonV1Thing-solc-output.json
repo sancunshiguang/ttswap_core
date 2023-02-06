@@ -73,7 +73,43 @@
                                 "type": "tuple"
                             }
                         ],
-                        "name": "addThingbyGator",
+                        "name": "addThingbyMarketor",
+                        "outputs": [],
+                        "stateMutability": "nonpayable",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [
+                            {
+                                "internalType": "address",
+                                "name": "_internalThingAddress",
+                                "type": "address"
+                            },
+                            {
+                                "internalType": "uint8",
+                                "name": "_scope",
+                                "type": "uint8"
+                            }
+                        ],
+                        "name": "changeThingScopebyMarketor",
+                        "outputs": [],
+                        "stateMutability": "nonpayable",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [
+                            {
+                                "internalType": "address",
+                                "name": "_contractaddress",
+                                "type": "address"
+                            },
+                            {
+                                "internalType": "address",
+                                "name": "_gateaddress",
+                                "type": "address"
+                            }
+                        ],
+                        "name": "delGateThingbyMarketor",
                         "outputs": [],
                         "stateMutability": "nonpayable",
                         "type": "function"
@@ -144,60 +180,11 @@
                                     }
                                 ],
                                 "internalType": "struct LThing.Info",
-                                "name": "_coinInfo",
+                                "name": "_ThingsInfo",
                                 "type": "tuple"
                             }
                         ],
-                        "name": "addThingbyMarketor",
-                        "outputs": [],
-                        "stateMutability": "nonpayable",
-                        "type": "function"
-                    },
-                    {
-                        "inputs": [
-                            {
-                                "internalType": "address",
-                                "name": "_internalThingAddress",
-                                "type": "address"
-                            },
-                            {
-                                "internalType": "uint8",
-                                "name": "_scope",
-                                "type": "uint8"
-                            }
-                        ],
-                        "name": "changeThingScopebyMarketor",
-                        "outputs": [],
-                        "stateMutability": "nonpayable",
-                        "type": "function"
-                    },
-                    {
-                        "inputs": [
-                            {
-                                "internalType": "address",
-                                "name": "_contractaddress",
-                                "type": "address"
-                            },
-                            {
-                                "internalType": "address",
-                                "name": "_gateaddress",
-                                "type": "address"
-                            }
-                        ],
-                        "name": "delGateThingbyMarketor",
-                        "outputs": [],
-                        "stateMutability": "nonpayable",
-                        "type": "function"
-                    },
-                    {
-                        "inputs": [
-                            {
-                                "internalType": "address",
-                                "name": "_contractaddress",
-                                "type": "address"
-                            }
-                        ],
-                        "name": "delThingbyMarketor",
+                        "name": "delMarketThingbyMarketor",
                         "outputs": [],
                         "stateMutability": "nonpayable",
                         "type": "function"
@@ -568,11 +555,10 @@
                     },
                     "gasEstimates": null,
                     "methodIdentifiers": {
-                        "addThingbyGator((bytes32,address,bytes32,bytes6,uint8,address,bool,bool,bool,bool,address,address))": "7326b7f5",
                         "addThingbyMarketor((bytes32,address,bytes32,bytes6,uint8,address,bool,bool,bool,bool,address,address))": "62d7b46d",
                         "changeThingScopebyMarketor(address,uint8)": "c77682f2",
                         "delGateThingbyMarketor(address,address)": "510e1e01",
-                        "delThingbyMarketor(address)": "5b52bd37",
+                        "delMarketThingbyMarketor((bytes32,address,bytes32,bytes6,uint8,address,bool,bool,bool,bool,address,address))": "9a08975e",
                         "gateContractAddress()": "2f17d5df",
                         "getThingInfo(address)": "b7228d6f",
                         "impoveGateThingbyMarketor(address,address)": "60d7d178",
@@ -585,7 +571,7 @@
                         "updateThingbyMarketor((bytes32,address,bytes32,bytes6,uint8,address,bool,bool,bool,bool,address,address))": "f6b775d6"
                     }
                 },
-                "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LThing.Info\",\"name\":\"_coinInfo\",\"type\":\"tuple\"}],\"name\":\"addThingbyGator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LThing.Info\",\"name\":\"_coinInfo\",\"type\":\"tuple\"}],\"name\":\"addThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalThingAddress\",\"type\":\"address\"},{\"internalType\":\"uint8\",\"name\":\"_scope\",\"type\":\"uint8\"}],\"name\":\"changeThingScopebyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_contractaddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_gateaddress\",\"type\":\"address\"}],\"name\":\"delGateThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_contractaddress\",\"type\":\"address\"}],\"name\":\"delThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"gateContractAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_contractaddress\",\"type\":\"address\"}],\"name\":\"getThingInfo\",\"outputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LThing.Info\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_contractaddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_gateaddress\",\"type\":\"address\"}],\"name\":\"impoveGateThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalThingAddress\",\"type\":\"address\"}],\"name\":\"lockThingbyGator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalThingAddress\",\"type\":\"address\"}],\"name\":\"lockThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"marketorContractAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalThingAddress\",\"type\":\"address\"}],\"name\":\"unlockThingbyGator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalThingAddress\",\"type\":\"address\"}],\"name\":\"unlockThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LThing.Info\",\"name\":\"_coinInfo\",\"type\":\"tuple\"}],\"name\":\"updateThingbyGator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LThing.Info\",\"name\":\"_coinInfo\",\"type\":\"tuple\"}],\"name\":\"updateThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"The pool interface is broken up into many smaller pieces\",\"kind\":\"dev\",\"methods\":{\"gateContractAddress()\":{\"returns\":{\"_0\":\"The contract address\"}},\"marketorContractAddress()\":{\"returns\":{\"_0\":\"The contract address\"}}},\"title\":\"The interface for a Uniswap V3 Pool\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"gateContractAddress()\":{\"notice\":\"The contract that deployed the pool, which must adhere to the IUniswapV3Factory interface\"},\"marketorContractAddress()\":{\"notice\":\"The contract that deployed the pool, which must adhere to the IUniswapV3Factory interface\"}},\"notice\":\"A Uniswap pool facilitates swapping and automated market making between any two assets that strictly conform to the ERC20 specification\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/IMoonV1Thing.sol\":\"IMoonV1Thing\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/IMoonV1Thing.sol\":{\"keccak256\":\"0xa50b3a5a9e2ec154765c30556a44cf5267d023c120356137ee5dfa49536b5740\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://b9016da041e6d6eb1724e3390f1f6822127cb7632e93306bba4202fb9f2ae9e9\",\"dweb:/ipfs/QmNVyR2ZuFxaCgAXaF9TT5rYAMKLkME8JjCtRkDt8pc6nu\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1Events.sol\":{\"keccak256\":\"0x578e73460d0744175b079f189eb3158036522d4a60cab8387f7f01f805769f1b\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://6f0cb6d0b293fdd330b2e8dd312f836bfa02e63225c5154beb77a2d545f582f5\",\"dweb:/ipfs/QmYNKJ9tXE4qZXEttSNWjWs7tnzHYMhjZt1EHQEbQVGQ26\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1GaterActions.sol\":{\"keccak256\":\"0xefa41655e07d95326ed0434daa003501469ae0d5392cbf8ff94c63ba865629d0\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://95928f204e84a9baa71984919d3f02d2106d26510c4248bb835ff797338b92d4\",\"dweb:/ipfs/QmW2MsuWr9wxD4gsFjUZp7u7gsWTQXAbMWumf8p9c3qiwp\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1Immutables.sol\":{\"keccak256\":\"0xd647cafb6f672cbec51709761634f2331876fc6411c38c229be45df3a24f0d44\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://6317034add99e80b7fb5a668199bcdc9391d5ea503a0e1b1376aa8c7cfae0216\",\"dweb:/ipfs/QmRrBi1UV7S9sJ5zX71rh4wKXEVPyi35kwmkyTmc72Nzoo\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1MarketorActions.sol\":{\"keccak256\":\"0xf06e86deb0f53e3ab815eb5d3af658ca2d07ecdba9d774cfa55e4cf77a880ca4\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://db84ed87a50abeecb18ac8e6c9d9ed33a3243bb5b4cc30f884bfd5ede51aa4f5\",\"dweb:/ipfs/QmX7ewFT9FhRfg8zfsbzBHQi6NuBhppYJPDqniZTxepkFr\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1State.sol\":{\"keccak256\":\"0xf4d9f339c6cce8a0e773630c87f380ddc935e57c5d120098c51cf03ecd3e27cc\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://92665b8561360dda93d9168a274eb0a57523d02447f4769e2a22e9cb99e5c7af\",\"dweb:/ipfs/QmTF3Q5GfvaUPP1c7Pi4TTqJFQejwhV61vWGGo9krauATL\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LThing.sol\":{\"keccak256\":\"0xc31d6b211c62a7bc924de152039c250d81f24facf1bb6a38d322bafde6e0c19a\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://03ccb965512df288a2065071e49612ce1be0285b743ac2a8bbe92ea0bf0bfa9f\",\"dweb:/ipfs/QmT5SvbqjFRVtAjnSsx6cybCSdGBUBgMioNmh5sLte3wow\"]}},\"version\":1}",
+                "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LThing.Info\",\"name\":\"_coinInfo\",\"type\":\"tuple\"}],\"name\":\"addThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalThingAddress\",\"type\":\"address\"},{\"internalType\":\"uint8\",\"name\":\"_scope\",\"type\":\"uint8\"}],\"name\":\"changeThingScopebyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_contractaddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_gateaddress\",\"type\":\"address\"}],\"name\":\"delGateThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LThing.Info\",\"name\":\"_ThingsInfo\",\"type\":\"tuple\"}],\"name\":\"delMarketThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"gateContractAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_contractaddress\",\"type\":\"address\"}],\"name\":\"getThingInfo\",\"outputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LThing.Info\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_contractaddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_gateaddress\",\"type\":\"address\"}],\"name\":\"impoveGateThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalThingAddress\",\"type\":\"address\"}],\"name\":\"lockThingbyGator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalThingAddress\",\"type\":\"address\"}],\"name\":\"lockThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"marketorContractAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalThingAddress\",\"type\":\"address\"}],\"name\":\"unlockThingbyGator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalThingAddress\",\"type\":\"address\"}],\"name\":\"unlockThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LThing.Info\",\"name\":\"_coinInfo\",\"type\":\"tuple\"}],\"name\":\"updateThingbyGator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LThing.Info\",\"name\":\"_coinInfo\",\"type\":\"tuple\"}],\"name\":\"updateThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"The pool interface is broken up into many smaller pieces\",\"kind\":\"dev\",\"methods\":{\"gateContractAddress()\":{\"returns\":{\"_0\":\"The contract address\"}},\"marketorContractAddress()\":{\"returns\":{\"_0\":\"The contract address\"}}},\"title\":\"The interface for a Uniswap V3 Pool\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"gateContractAddress()\":{\"notice\":\"The contract that deployed the pool, which must adhere to the IUniswapV3Factory interface\"},\"marketorContractAddress()\":{\"notice\":\"The contract that deployed the pool, which must adhere to the IUniswapV3Factory interface\"}},\"notice\":\"A Uniswap pool facilitates swapping and automated market making between any two assets that strictly conform to the ERC20 specification\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/IMoonV1Thing.sol\":\"IMoonV1Thing\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/IMoonV1Thing.sol\":{\"keccak256\":\"0x7400c319993d60aeb3e6419d60028a447106308309373809ce9ff3af078f0f0e\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://41aa7b6ace3f43f25918e4d9cececdd729b60fece9060b3ed0e8b26b04ca369f\",\"dweb:/ipfs/QmdMbcTARpyVqYpHcHCzPdqVPCAV7dJZeNz3zPuh9hodr2\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1Events.sol\":{\"keccak256\":\"0x578e73460d0744175b079f189eb3158036522d4a60cab8387f7f01f805769f1b\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://6f0cb6d0b293fdd330b2e8dd312f836bfa02e63225c5154beb77a2d545f582f5\",\"dweb:/ipfs/QmYNKJ9tXE4qZXEttSNWjWs7tnzHYMhjZt1EHQEbQVGQ26\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1GatorActions.sol\":{\"keccak256\":\"0xf3fba13d6fc9dd8d9740d0a6ac15d4fd46906378107ff12f37555ce4c7b63147\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://fd2c4cfcffd94ab9b735511dfee49d0ac3bf8125242af2e3bced7a5b906ca520\",\"dweb:/ipfs/QmXFzXwgmw1LKn6m62ysAL8go6exjnoY8nSTrUbpENJdSx\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1Immutables.sol\":{\"keccak256\":\"0xd647cafb6f672cbec51709761634f2331876fc6411c38c229be45df3a24f0d44\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://6317034add99e80b7fb5a668199bcdc9391d5ea503a0e1b1376aa8c7cfae0216\",\"dweb:/ipfs/QmRrBi1UV7S9sJ5zX71rh4wKXEVPyi35kwmkyTmc72Nzoo\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1MarketorActions.sol\":{\"keccak256\":\"0x804bed2caa55b0bac0e96f47ac351a55c8d7b234fe7bc8bdc0c8f2500b304f9c\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://364ea0cb6c0c575ccb7c76e4d72bdd9fa483c8071d334ba8c495242d745f7c39\",\"dweb:/ipfs/QmTS35S4gZp4MbizMseepjFU4mfu1rWw8zivWHiSRLPtgE\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1State.sol\":{\"keccak256\":\"0xf4d9f339c6cce8a0e773630c87f380ddc935e57c5d120098c51cf03ecd3e27cc\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://92665b8561360dda93d9168a274eb0a57523d02447f4769e2a22e9cb99e5c7af\",\"dweb:/ipfs/QmTF3Q5GfvaUPP1c7Pi4TTqJFQejwhV61vWGGo9krauATL\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LThing.sol\":{\"keccak256\":\"0xc31d6b211c62a7bc924de152039c250d81f24facf1bb6a38d322bafde6e0c19a\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://03ccb965512df288a2065071e49612ce1be0285b743ac2a8bbe92ea0bf0bfa9f\",\"dweb:/ipfs/QmT5SvbqjFRVtAjnSsx6cybCSdGBUBgMioNmh5sLte3wow\"]}},\"version\":1}",
                 "storageLayout": {
                     "storage": [],
                     "types": null
@@ -648,84 +634,9 @@
                 }
             }
         },
-        "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1GaterActions.sol": {
-            "IThingV1GaterActions": {
+        "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1GatorActions.sol": {
+            "IThingV1GatorActions": {
                 "abi": [
-                    {
-                        "inputs": [
-                            {
-                                "components": [
-                                    {
-                                        "internalType": "bytes32",
-                                        "name": "name",
-                                        "type": "bytes32"
-                                    },
-                                    {
-                                        "internalType": "address",
-                                        "name": "ownerAddress",
-                                        "type": "address"
-                                    },
-                                    {
-                                        "internalType": "bytes32",
-                                        "name": "LSTThingsFullName",
-                                        "type": "bytes32"
-                                    },
-                                    {
-                                        "internalType": "bytes6",
-                                        "name": "symbol",
-                                        "type": "bytes6"
-                                    },
-                                    {
-                                        "internalType": "uint8",
-                                        "name": "scope",
-                                        "type": "uint8"
-                                    },
-                                    {
-                                        "internalType": "address",
-                                        "name": "contractAddress",
-                                        "type": "address"
-                                    },
-                                    {
-                                        "internalType": "bool",
-                                        "name": "marketunlock",
-                                        "type": "bool"
-                                    },
-                                    {
-                                        "internalType": "bool",
-                                        "name": "unlock",
-                                        "type": "bool"
-                                    },
-                                    {
-                                        "internalType": "bool",
-                                        "name": "createrunlock",
-                                        "type": "bool"
-                                    },
-                                    {
-                                        "internalType": "bool",
-                                        "name": "isUsed",
-                                        "type": "bool"
-                                    },
-                                    {
-                                        "internalType": "address",
-                                        "name": "addfromgater",
-                                        "type": "address"
-                                    },
-                                    {
-                                        "internalType": "address",
-                                        "name": "creator",
-                                        "type": "address"
-                                    }
-                                ],
-                                "internalType": "struct LThing.Info",
-                                "name": "_coinInfo",
-                                "type": "tuple"
-                            }
-                        ],
-                        "name": "addThingbyGator",
-                        "outputs": [],
-                        "stateMutability": "nonpayable",
-                        "type": "function"
-                    },
                     {
                         "inputs": [
                             {
@@ -854,13 +765,12 @@
                     },
                     "gasEstimates": null,
                     "methodIdentifiers": {
-                        "addThingbyGator((bytes32,address,bytes32,bytes6,uint8,address,bool,bool,bool,bool,address,address))": "7326b7f5",
                         "lockThingbyGator(address)": "39dd19b8",
                         "unlockThingbyGator(address)": "4d768b15",
                         "updateThingbyGator((bytes32,address,bytes32,bytes6,uint8,address,bool,bool,bool,bool,address,address))": "adc7c415"
                     }
                 },
-                "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LThing.Info\",\"name\":\"_coinInfo\",\"type\":\"tuple\"}],\"name\":\"addThingbyGator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalThingAddress\",\"type\":\"address\"}],\"name\":\"lockThingbyGator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalThingAddress\",\"type\":\"address\"}],\"name\":\"unlockThingbyGator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LThing.Info\",\"name\":\"_coinInfo\",\"type\":\"tuple\"}],\"name\":\"updateThingbyGator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"title\":\"Permissioned pool actions\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Contains pool methods that may only be called by the factory owner\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1GaterActions.sol\":\"IThingV1GaterActions\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1GaterActions.sol\":{\"keccak256\":\"0xefa41655e07d95326ed0434daa003501469ae0d5392cbf8ff94c63ba865629d0\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://95928f204e84a9baa71984919d3f02d2106d26510c4248bb835ff797338b92d4\",\"dweb:/ipfs/QmW2MsuWr9wxD4gsFjUZp7u7gsWTQXAbMWumf8p9c3qiwp\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LThing.sol\":{\"keccak256\":\"0xc31d6b211c62a7bc924de152039c250d81f24facf1bb6a38d322bafde6e0c19a\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://03ccb965512df288a2065071e49612ce1be0285b743ac2a8bbe92ea0bf0bfa9f\",\"dweb:/ipfs/QmT5SvbqjFRVtAjnSsx6cybCSdGBUBgMioNmh5sLte3wow\"]}},\"version\":1}",
+                "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalThingAddress\",\"type\":\"address\"}],\"name\":\"lockThingbyGator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalThingAddress\",\"type\":\"address\"}],\"name\":\"unlockThingbyGator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LThing.Info\",\"name\":\"_coinInfo\",\"type\":\"tuple\"}],\"name\":\"updateThingbyGator\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"title\":\"Permissioned pool actions\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Contains pool methods that may only be called by the factory owner\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1GatorActions.sol\":\"IThingV1GatorActions\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1GatorActions.sol\":{\"keccak256\":\"0xf3fba13d6fc9dd8d9740d0a6ac15d4fd46906378107ff12f37555ce4c7b63147\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://fd2c4cfcffd94ab9b735511dfee49d0ac3bf8125242af2e3bced7a5b906ca520\",\"dweb:/ipfs/QmXFzXwgmw1LKn6m62ysAL8go6exjnoY8nSTrUbpENJdSx\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LThing.sol\":{\"keccak256\":\"0xc31d6b211c62a7bc924de152039c250d81f24facf1bb6a38d322bafde6e0c19a\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://03ccb965512df288a2065071e49612ce1be0285b743ac2a8bbe92ea0bf0bfa9f\",\"dweb:/ipfs/QmT5SvbqjFRVtAjnSsx6cybCSdGBUBgMioNmh5sLte3wow\"]}},\"version\":1}",
                 "storageLayout": {
                     "storage": [],
                     "types": null
@@ -1081,12 +991,74 @@
                     {
                         "inputs": [
                             {
-                                "internalType": "address",
-                                "name": "_contractaddress",
-                                "type": "address"
+                                "components": [
+                                    {
+                                        "internalType": "bytes32",
+                                        "name": "name",
+                                        "type": "bytes32"
+                                    },
+                                    {
+                                        "internalType": "address",
+                                        "name": "ownerAddress",
+                                        "type": "address"
+                                    },
+                                    {
+                                        "internalType": "bytes32",
+                                        "name": "LSTThingsFullName",
+                                        "type": "bytes32"
+                                    },
+                                    {
+                                        "internalType": "bytes6",
+                                        "name": "symbol",
+                                        "type": "bytes6"
+                                    },
+                                    {
+                                        "internalType": "uint8",
+                                        "name": "scope",
+                                        "type": "uint8"
+                                    },
+                                    {
+                                        "internalType": "address",
+                                        "name": "contractAddress",
+                                        "type": "address"
+                                    },
+                                    {
+                                        "internalType": "bool",
+                                        "name": "marketunlock",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "internalType": "bool",
+                                        "name": "unlock",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "internalType": "bool",
+                                        "name": "createrunlock",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "internalType": "bool",
+                                        "name": "isUsed",
+                                        "type": "bool"
+                                    },
+                                    {
+                                        "internalType": "address",
+                                        "name": "addfromgater",
+                                        "type": "address"
+                                    },
+                                    {
+                                        "internalType": "address",
+                                        "name": "creator",
+                                        "type": "address"
+                                    }
+                                ],
+                                "internalType": "struct LThing.Info",
+                                "name": "_ThingsInfo",
+                                "type": "tuple"
                             }
                         ],
-                        "name": "delThingbyMarketor",
+                        "name": "delMarketThingbyMarketor",
                         "outputs": [],
                         "stateMutability": "nonpayable",
                         "type": "function"
@@ -1240,14 +1212,14 @@
                         "addThingbyMarketor((bytes32,address,bytes32,bytes6,uint8,address,bool,bool,bool,bool,address,address))": "62d7b46d",
                         "changeThingScopebyMarketor(address,uint8)": "c77682f2",
                         "delGateThingbyMarketor(address,address)": "510e1e01",
-                        "delThingbyMarketor(address)": "5b52bd37",
+                        "delMarketThingbyMarketor((bytes32,address,bytes32,bytes6,uint8,address,bool,bool,bool,bool,address,address))": "9a08975e",
                         "impoveGateThingbyMarketor(address,address)": "60d7d178",
                         "lockThingbyMarketor(address)": "3b7c5d92",
                         "unlockThingbyMarketor(address)": "7fab09b7",
                         "updateThingbyMarketor((bytes32,address,bytes32,bytes6,uint8,address,bool,bool,bool,bool,address,address))": "f6b775d6"
                     }
                 },
-                "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LThing.Info\",\"name\":\"_coinInfo\",\"type\":\"tuple\"}],\"name\":\"addThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalThingAddress\",\"type\":\"address\"},{\"internalType\":\"uint8\",\"name\":\"_scope\",\"type\":\"uint8\"}],\"name\":\"changeThingScopebyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_contractaddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_gateaddress\",\"type\":\"address\"}],\"name\":\"delGateThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_contractaddress\",\"type\":\"address\"}],\"name\":\"delThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_contractaddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_gateaddress\",\"type\":\"address\"}],\"name\":\"impoveGateThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalThingAddress\",\"type\":\"address\"}],\"name\":\"lockThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalThingAddress\",\"type\":\"address\"}],\"name\":\"unlockThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LThing.Info\",\"name\":\"_coinInfo\",\"type\":\"tuple\"}],\"name\":\"updateThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"title\":\"Permissioned pool actions\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Contains pool methods that may only be called by the factory owner\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1MarketorActions.sol\":\"IThingV1MarketorActions\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1MarketorActions.sol\":{\"keccak256\":\"0xf06e86deb0f53e3ab815eb5d3af658ca2d07ecdba9d774cfa55e4cf77a880ca4\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://db84ed87a50abeecb18ac8e6c9d9ed33a3243bb5b4cc30f884bfd5ede51aa4f5\",\"dweb:/ipfs/QmX7ewFT9FhRfg8zfsbzBHQi6NuBhppYJPDqniZTxepkFr\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LThing.sol\":{\"keccak256\":\"0xc31d6b211c62a7bc924de152039c250d81f24facf1bb6a38d322bafde6e0c19a\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://03ccb965512df288a2065071e49612ce1be0285b743ac2a8bbe92ea0bf0bfa9f\",\"dweb:/ipfs/QmT5SvbqjFRVtAjnSsx6cybCSdGBUBgMioNmh5sLte3wow\"]}},\"version\":1}",
+                "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LThing.Info\",\"name\":\"_coinInfo\",\"type\":\"tuple\"}],\"name\":\"addThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalThingAddress\",\"type\":\"address\"},{\"internalType\":\"uint8\",\"name\":\"_scope\",\"type\":\"uint8\"}],\"name\":\"changeThingScopebyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_contractaddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_gateaddress\",\"type\":\"address\"}],\"name\":\"delGateThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LThing.Info\",\"name\":\"_ThingsInfo\",\"type\":\"tuple\"}],\"name\":\"delMarketThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_contractaddress\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_gateaddress\",\"type\":\"address\"}],\"name\":\"impoveGateThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalThingAddress\",\"type\":\"address\"}],\"name\":\"lockThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_internalThingAddress\",\"type\":\"address\"}],\"name\":\"unlockThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"name\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"ownerAddress\",\"type\":\"address\"},{\"internalType\":\"bytes32\",\"name\":\"LSTThingsFullName\",\"type\":\"bytes32\"},{\"internalType\":\"bytes6\",\"name\":\"symbol\",\"type\":\"bytes6\"},{\"internalType\":\"uint8\",\"name\":\"scope\",\"type\":\"uint8\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"marketunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"createrunlock\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"address\",\"name\":\"addfromgater\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"creator\",\"type\":\"address\"}],\"internalType\":\"struct LThing.Info\",\"name\":\"_coinInfo\",\"type\":\"tuple\"}],\"name\":\"updateThingbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"title\":\"Permissioned pool actions\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"notice\":\"Contains pool methods that may only be called by the factory owner\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1MarketorActions.sol\":\"IThingV1MarketorActions\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1MarketorActions.sol\":{\"keccak256\":\"0x804bed2caa55b0bac0e96f47ac351a55c8d7b234fe7bc8bdc0c8f2500b304f9c\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://364ea0cb6c0c575ccb7c76e4d72bdd9fa483c8071d334ba8c495242d745f7c39\",\"dweb:/ipfs/QmTS35S4gZp4MbizMseepjFU4mfu1rWw8zivWHiSRLPtgE\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LThing.sol\":{\"keccak256\":\"0xc31d6b211c62a7bc924de152039c250d81f24facf1bb6a38d322bafde6e0c19a\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://03ccb965512df288a2065071e49612ce1be0285b743ac2a8bbe92ea0bf0bfa9f\",\"dweb:/ipfs/QmT5SvbqjFRVtAjnSsx6cybCSdGBUBgMioNmh5sLte3wow\"]}},\"version\":1}",
                 "storageLayout": {
                     "storage": [],
                     "types": null
@@ -1446,20 +1418,20 @@
                     "IThingV1Events": [
                         22
                     ],
-                    "IThingV1GaterActions": [
-                        49
+                    "IThingV1GatorActions": [
+                        43
                     ],
                     "IThingV1Immutables": [
-                        65
+                        59
                     ],
                     "IThingV1MarketorActions": [
-                        118
+                        113
                     ],
                     "IThingV1State": [
-                        131
+                        126
                     ],
                     "LThing": [
-                        159
+                        154
                     ]
                 },
                 "id": 19,
@@ -1490,13 +1462,13 @@
                         "unitAlias": ""
                     },
                     {
-                        "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1GaterActions.sol",
-                        "file": "./Thing/IThingV1GaterActions.sol",
+                        "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1GatorActions.sol",
+                        "file": "./Thing/IThingV1GatorActions.sol",
                         "id": 3,
                         "nameLocation": "-1:-1:-1",
                         "nodeType": "ImportDirective",
                         "scope": 19,
-                        "sourceUnit": 50,
+                        "sourceUnit": 44,
                         "src": "107:42:0",
                         "symbolAliases": [],
                         "unitAlias": ""
@@ -1508,7 +1480,7 @@
                         "nameLocation": "-1:-1:-1",
                         "nodeType": "ImportDirective",
                         "scope": 19,
-                        "sourceUnit": 66,
+                        "sourceUnit": 60,
                         "src": "150:40:0",
                         "symbolAliases": [],
                         "unitAlias": ""
@@ -1520,7 +1492,7 @@
                         "nameLocation": "-1:-1:-1",
                         "nodeType": "ImportDirective",
                         "scope": 19,
-                        "sourceUnit": 119,
+                        "sourceUnit": 114,
                         "src": "191:45:0",
                         "symbolAliases": [],
                         "unitAlias": ""
@@ -1532,7 +1504,7 @@
                         "nameLocation": "-1:-1:-1",
                         "nodeType": "ImportDirective",
                         "scope": 19,
-                        "sourceUnit": 132,
+                        "sourceUnit": 127,
                         "src": "237:35:0",
                         "symbolAliases": [],
                         "unitAlias": ""
@@ -1555,9 +1527,9 @@
                             {
                                 "baseName": {
                                     "id": 10,
-                                    "name": "IThingV1GaterActions",
+                                    "name": "IThingV1GatorActions",
                                     "nodeType": "IdentifierPath",
-                                    "referencedDeclaration": 49,
+                                    "referencedDeclaration": 43,
                                     "src": "589:20:0"
                                 },
                                 "id": 11,
@@ -1569,7 +1541,7 @@
                                     "id": 12,
                                     "name": "IThingV1Immutables",
                                     "nodeType": "IdentifierPath",
-                                    "referencedDeclaration": 65,
+                                    "referencedDeclaration": 59,
                                     "src": "615:18:0"
                                 },
                                 "id": 13,
@@ -1581,7 +1553,7 @@
                                     "id": 14,
                                     "name": "IThingV1MarketorActions",
                                     "nodeType": "IdentifierPath",
-                                    "referencedDeclaration": 118,
+                                    "referencedDeclaration": 113,
                                     "src": "639:23:0"
                                 },
                                 "id": 15,
@@ -1593,7 +1565,7 @@
                                     "id": 16,
                                     "name": "IThingV1State",
                                     "nodeType": "IdentifierPath",
-                                    "referencedDeclaration": 131,
+                                    "referencedDeclaration": 126,
                                     "src": "668:13:0"
                                 },
                                 "id": 17,
@@ -1614,10 +1586,10 @@
                         "id": 18,
                         "linearizedBaseContracts": [
                             18,
-                            131,
-                            118,
-                            65,
-                            49,
+                            126,
+                            113,
+                            59,
+                            43,
                             22
                         ],
                         "name": "IMoonV1Thing",
@@ -1686,18 +1658,18 @@
             },
             "id": 1
         },
-        "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1GaterActions.sol": {
+        "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1GatorActions.sol": {
             "ast": {
-                "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1GaterActions.sol",
+                "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1GatorActions.sol",
                 "exportedSymbols": {
-                    "IThingV1GaterActions": [
-                        49
+                    "IThingV1GatorActions": [
+                        43
                     ],
                     "LThing": [
-                        159
+                        154
                     ]
                 },
-                "id": 50,
+                "id": 44,
                 "license": "GPL-2.0-or-later",
                 "nodeType": "SourceUnit",
                 "nodes": [
@@ -1718,8 +1690,8 @@
                         "id": 25,
                         "nameLocation": "-1:-1:-1",
                         "nodeType": "ImportDirective",
-                        "scope": 50,
-                        "sourceUnit": 160,
+                        "scope": 44,
+                        "sourceUnit": 155,
                         "src": "70:41:2",
                         "symbolAliases": [],
                         "unitAlias": ""
@@ -1727,7 +1699,7 @@
                     {
                         "abstract": false,
                         "baseContracts": [],
-                        "canonicalName": "IThingV1GaterActions",
+                        "canonicalName": "IThingV1GatorActions",
                         "contractDependencies": [],
                         "contractKind": "interface",
                         "documentation": {
@@ -1737,98 +1709,36 @@
                             "text": "@title Permissioned pool actions\n @notice Contains pool methods that may only be called by the factory owner"
                         },
                         "fullyImplemented": false,
-                        "id": 49,
+                        "id": 43,
                         "linearizedBaseContracts": [
-                            49
+                            43
                         ],
-                        "name": "IThingV1GaterActions",
+                        "name": "IThingV1GatorActions",
                         "nameLocation": "239:20:2",
                         "nodeType": "ContractDefinition",
                         "nodes": [
                             {
-                                "functionSelector": "7326b7f5",
-                                "id": 32,
-                                "implemented": false,
-                                "kind": "function",
-                                "modifiers": [],
-                                "name": "addThingbyGator",
-                                "nameLocation": "313:15:2",
-                                "nodeType": "FunctionDefinition",
-                                "parameters": {
-                                    "id": 30,
-                                    "nodeType": "ParameterList",
-                                    "parameters": [
-                                        {
-                                            "constant": false,
-                                            "id": 29,
-                                            "mutability": "mutable",
-                                            "name": "_coinInfo",
-                                            "nameLocation": "348:9:2",
-                                            "nodeType": "VariableDeclaration",
-                                            "scope": 32,
-                                            "src": "329:28:2",
-                                            "stateVariable": false,
-                                            "storageLocation": "memory",
-                                            "typeDescriptions": {
-                                                "typeIdentifier": "t_struct$_Info_$158_memory_ptr",
-                                                "typeString": "struct LThing.Info"
-                                            },
-                                            "typeName": {
-                                                "id": 28,
-                                                "nodeType": "UserDefinedTypeName",
-                                                "pathNode": {
-                                                    "id": 27,
-                                                    "name": "LThing.Info",
-                                                    "nodeType": "IdentifierPath",
-                                                    "referencedDeclaration": 158,
-                                                    "src": "329:11:2"
-                                                },
-                                                "referencedDeclaration": 158,
-                                                "src": "329:11:2",
-                                                "typeDescriptions": {
-                                                    "typeIdentifier": "t_struct$_Info_$158_storage_ptr",
-                                                    "typeString": "struct LThing.Info"
-                                                }
-                                            },
-                                            "visibility": "internal"
-                                        }
-                                    ],
-                                    "src": "328:30:2"
-                                },
-                                "returnParameters": {
-                                    "id": 31,
-                                    "nodeType": "ParameterList",
-                                    "parameters": [],
-                                    "src": "367:0:2"
-                                },
-                                "scope": 49,
-                                "src": "304:64:2",
-                                "stateMutability": "nonpayable",
-                                "virtual": false,
-                                "visibility": "external"
-                            },
-                            {
                                 "functionSelector": "4d768b15",
-                                "id": 37,
+                                "id": 31,
                                 "implemented": false,
                                 "kind": "function",
                                 "modifiers": [],
                                 "name": "unlockThingbyGator",
-                                "nameLocation": "383:18:2",
+                                "nameLocation": "314:18:2",
                                 "nodeType": "FunctionDefinition",
                                 "parameters": {
-                                    "id": 35,
+                                    "id": 29,
                                     "nodeType": "ParameterList",
                                     "parameters": [
                                         {
                                             "constant": false,
-                                            "id": 34,
+                                            "id": 28,
                                             "mutability": "mutable",
                                             "name": "_internalThingAddress",
-                                            "nameLocation": "410:21:2",
+                                            "nameLocation": "341:21:2",
                                             "nodeType": "VariableDeclaration",
-                                            "scope": 37,
-                                            "src": "402:29:2",
+                                            "scope": 31,
+                                            "src": "333:29:2",
                                             "stateVariable": false,
                                             "storageLocation": "default",
                                             "typeDescriptions": {
@@ -1836,10 +1746,10 @@
                                                 "typeString": "address"
                                             },
                                             "typeName": {
-                                                "id": 33,
+                                                "id": 27,
                                                 "name": "address",
                                                 "nodeType": "ElementaryTypeName",
-                                                "src": "402:7:2",
+                                                "src": "333:7:2",
                                                 "stateMutability": "nonpayable",
                                                 "typeDescriptions": {
                                                     "typeIdentifier": "t_address",
@@ -1849,28 +1759,84 @@
                                             "visibility": "internal"
                                         }
                                     ],
-                                    "src": "401:31:2"
+                                    "src": "332:31:2"
                                 },
                                 "returnParameters": {
-                                    "id": 36,
+                                    "id": 30,
                                     "nodeType": "ParameterList",
                                     "parameters": [],
-                                    "src": "441:0:2"
+                                    "src": "372:0:2"
                                 },
-                                "scope": 49,
-                                "src": "374:68:2",
+                                "scope": 43,
+                                "src": "305:68:2",
                                 "stateMutability": "nonpayable",
                                 "virtual": false,
                                 "visibility": "external"
                             },
                             {
                                 "functionSelector": "39dd19b8",
-                                "id": 42,
+                                "id": 36,
                                 "implemented": false,
                                 "kind": "function",
                                 "modifiers": [],
                                 "name": "lockThingbyGator",
-                                "nameLocation": "457:16:2",
+                                "nameLocation": "388:16:2",
+                                "nodeType": "FunctionDefinition",
+                                "parameters": {
+                                    "id": 34,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 33,
+                                            "mutability": "mutable",
+                                            "name": "_internalThingAddress",
+                                            "nameLocation": "413:21:2",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 36,
+                                            "src": "405:29:2",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            },
+                                            "typeName": {
+                                                "id": 32,
+                                                "name": "address",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "405:7:2",
+                                                "stateMutability": "nonpayable",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "404:31:2"
+                                },
+                                "returnParameters": {
+                                    "id": 35,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [],
+                                    "src": "444:0:2"
+                                },
+                                "scope": 43,
+                                "src": "379:66:2",
+                                "stateMutability": "nonpayable",
+                                "virtual": false,
+                                "visibility": "external"
+                            },
+                            {
+                                "functionSelector": "adc7c415",
+                                "id": 42,
+                                "implemented": false,
+                                "kind": "function",
+                                "modifiers": [],
+                                "name": "updateThingbyGator",
+                                "nameLocation": "460:18:2",
                                 "nodeType": "FunctionDefinition",
                                 "parameters": {
                                     "id": 40,
@@ -1880,114 +1846,58 @@
                                             "constant": false,
                                             "id": 39,
                                             "mutability": "mutable",
-                                            "name": "_internalThingAddress",
-                                            "nameLocation": "482:21:2",
+                                            "name": "_coinInfo",
+                                            "nameLocation": "498:9:2",
                                             "nodeType": "VariableDeclaration",
                                             "scope": 42,
-                                            "src": "474:29:2",
-                                            "stateVariable": false,
-                                            "storageLocation": "default",
-                                            "typeDescriptions": {
-                                                "typeIdentifier": "t_address",
-                                                "typeString": "address"
-                                            },
-                                            "typeName": {
-                                                "id": 38,
-                                                "name": "address",
-                                                "nodeType": "ElementaryTypeName",
-                                                "src": "474:7:2",
-                                                "stateMutability": "nonpayable",
-                                                "typeDescriptions": {
-                                                    "typeIdentifier": "t_address",
-                                                    "typeString": "address"
-                                                }
-                                            },
-                                            "visibility": "internal"
-                                        }
-                                    ],
-                                    "src": "473:31:2"
-                                },
-                                "returnParameters": {
-                                    "id": 41,
-                                    "nodeType": "ParameterList",
-                                    "parameters": [],
-                                    "src": "513:0:2"
-                                },
-                                "scope": 49,
-                                "src": "448:66:2",
-                                "stateMutability": "nonpayable",
-                                "virtual": false,
-                                "visibility": "external"
-                            },
-                            {
-                                "functionSelector": "adc7c415",
-                                "id": 48,
-                                "implemented": false,
-                                "kind": "function",
-                                "modifiers": [],
-                                "name": "updateThingbyGator",
-                                "nameLocation": "529:18:2",
-                                "nodeType": "FunctionDefinition",
-                                "parameters": {
-                                    "id": 46,
-                                    "nodeType": "ParameterList",
-                                    "parameters": [
-                                        {
-                                            "constant": false,
-                                            "id": 45,
-                                            "mutability": "mutable",
-                                            "name": "_coinInfo",
-                                            "nameLocation": "567:9:2",
-                                            "nodeType": "VariableDeclaration",
-                                            "scope": 48,
-                                            "src": "548:28:2",
+                                            "src": "479:28:2",
                                             "stateVariable": false,
                                             "storageLocation": "memory",
                                             "typeDescriptions": {
-                                                "typeIdentifier": "t_struct$_Info_$158_memory_ptr",
+                                                "typeIdentifier": "t_struct$_Info_$153_memory_ptr",
                                                 "typeString": "struct LThing.Info"
                                             },
                                             "typeName": {
-                                                "id": 44,
+                                                "id": 38,
                                                 "nodeType": "UserDefinedTypeName",
                                                 "pathNode": {
-                                                    "id": 43,
+                                                    "id": 37,
                                                     "name": "LThing.Info",
                                                     "nodeType": "IdentifierPath",
-                                                    "referencedDeclaration": 158,
-                                                    "src": "548:11:2"
+                                                    "referencedDeclaration": 153,
+                                                    "src": "479:11:2"
                                                 },
-                                                "referencedDeclaration": 158,
-                                                "src": "548:11:2",
+                                                "referencedDeclaration": 153,
+                                                "src": "479:11:2",
                                                 "typeDescriptions": {
-                                                    "typeIdentifier": "t_struct$_Info_$158_storage_ptr",
+                                                    "typeIdentifier": "t_struct$_Info_$153_storage_ptr",
                                                     "typeString": "struct LThing.Info"
                                                 }
                                             },
                                             "visibility": "internal"
                                         }
                                     ],
-                                    "src": "547:30:2"
+                                    "src": "478:30:2"
                                 },
                                 "returnParameters": {
-                                    "id": 47,
+                                    "id": 41,
                                     "nodeType": "ParameterList",
                                     "parameters": [],
-                                    "src": "586:0:2"
+                                    "src": "517:0:2"
                                 },
-                                "scope": 49,
-                                "src": "520:67:2",
+                                "scope": 43,
+                                "src": "451:67:2",
                                 "stateMutability": "nonpayable",
                                 "virtual": false,
                                 "visibility": "external"
                             }
                         ],
-                        "scope": 50,
-                        "src": "229:360:2",
+                        "scope": 44,
+                        "src": "229:291:2",
                         "usedErrors": []
                     }
                 ],
-                "src": "45:545:2"
+                "src": "45:476:2"
             },
             "id": 2
         },
@@ -1996,15 +1906,15 @@
                 "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1Immutables.sol",
                 "exportedSymbols": {
                     "IThingV1Immutables": [
-                        65
+                        59
                     ]
                 },
-                "id": 66,
+                "id": 60,
                 "license": "GPL-2.0-or-later",
                 "nodeType": "SourceUnit",
                 "nodes": [
                     {
-                        "id": 51,
+                        "id": 45,
                         "literals": [
                             "solidity",
                             "^",
@@ -2021,15 +1931,15 @@
                         "contractDependencies": [],
                         "contractKind": "interface",
                         "documentation": {
-                            "id": 52,
+                            "id": 46,
                             "nodeType": "StructuredDocumentation",
                             "src": "70:153:3",
                             "text": "@title Pool state that never changes\n @notice These parameters are fixed for a pool forever, i.e., the methods will always return the same values"
                         },
                         "fullyImplemented": false,
-                        "id": 65,
+                        "id": 59,
                         "linearizedBaseContracts": [
-                            65
+                            59
                         ],
                         "name": "IThingV1Immutables",
                         "nameLocation": "233:18:3",
@@ -2037,13 +1947,13 @@
                         "nodes": [
                             {
                                 "documentation": {
-                                    "id": 53,
+                                    "id": 47,
                                     "nodeType": "StructuredDocumentation",
                                     "src": "258:138:3",
                                     "text": "@notice The contract that deployed the pool, which must adhere to the IUniswapV3Factory interface\n @return The contract address"
                                 },
                                 "functionSelector": "2f17d5df",
-                                "id": 58,
+                                "id": 52,
                                 "implemented": false,
                                 "kind": "function",
                                 "modifiers": [],
@@ -2051,23 +1961,23 @@
                                 "nameLocation": "410:19:3",
                                 "nodeType": "FunctionDefinition",
                                 "parameters": {
-                                    "id": 54,
+                                    "id": 48,
                                     "nodeType": "ParameterList",
                                     "parameters": [],
                                     "src": "429:2:3"
                                 },
                                 "returnParameters": {
-                                    "id": 57,
+                                    "id": 51,
                                     "nodeType": "ParameterList",
                                     "parameters": [
                                         {
                                             "constant": false,
-                                            "id": 56,
+                                            "id": 50,
                                             "mutability": "mutable",
                                             "name": "",
                                             "nameLocation": "-1:-1:-1",
                                             "nodeType": "VariableDeclaration",
-                                            "scope": 58,
+                                            "scope": 52,
                                             "src": "455:7:3",
                                             "stateVariable": false,
                                             "storageLocation": "default",
@@ -2076,7 +1986,7 @@
                                                 "typeString": "address"
                                             },
                                             "typeName": {
-                                                "id": 55,
+                                                "id": 49,
                                                 "name": "address",
                                                 "nodeType": "ElementaryTypeName",
                                                 "src": "455:7:3",
@@ -2091,7 +2001,7 @@
                                     ],
                                     "src": "454:9:3"
                                 },
-                                "scope": 65,
+                                "scope": 59,
                                 "src": "401:63:3",
                                 "stateMutability": "view",
                                 "virtual": false,
@@ -2099,13 +2009,13 @@
                             },
                             {
                                 "documentation": {
-                                    "id": 59,
+                                    "id": 53,
                                     "nodeType": "StructuredDocumentation",
                                     "src": "470:138:3",
                                     "text": "@notice The contract that deployed the pool, which must adhere to the IUniswapV3Factory interface\n @return The contract address"
                                 },
                                 "functionSelector": "492b7107",
-                                "id": 64,
+                                "id": 58,
                                 "implemented": false,
                                 "kind": "function",
                                 "modifiers": [],
@@ -2113,23 +2023,23 @@
                                 "nameLocation": "622:23:3",
                                 "nodeType": "FunctionDefinition",
                                 "parameters": {
-                                    "id": 60,
+                                    "id": 54,
                                     "nodeType": "ParameterList",
                                     "parameters": [],
                                     "src": "645:2:3"
                                 },
                                 "returnParameters": {
-                                    "id": 63,
+                                    "id": 57,
                                     "nodeType": "ParameterList",
                                     "parameters": [
                                         {
                                             "constant": false,
-                                            "id": 62,
+                                            "id": 56,
                                             "mutability": "mutable",
                                             "name": "",
                                             "nameLocation": "-1:-1:-1",
                                             "nodeType": "VariableDeclaration",
-                                            "scope": 64,
+                                            "scope": 58,
                                             "src": "671:7:3",
                                             "stateVariable": false,
                                             "storageLocation": "default",
@@ -2138,7 +2048,7 @@
                                                 "typeString": "address"
                                             },
                                             "typeName": {
-                                                "id": 61,
+                                                "id": 55,
                                                 "name": "address",
                                                 "nodeType": "ElementaryTypeName",
                                                 "src": "671:7:3",
@@ -2153,14 +2063,14 @@
                                     ],
                                     "src": "670:9:3"
                                 },
-                                "scope": 65,
+                                "scope": 59,
                                 "src": "613:67:3",
                                 "stateMutability": "view",
                                 "virtual": false,
                                 "visibility": "external"
                             }
                         ],
-                        "scope": 66,
+                        "scope": 60,
                         "src": "223:459:3",
                         "usedErrors": []
                     }
@@ -2174,18 +2084,18 @@
                 "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1MarketorActions.sol",
                 "exportedSymbols": {
                     "IThingV1MarketorActions": [
-                        118
+                        113
                     ],
                     "LThing": [
-                        159
+                        154
                     ]
                 },
-                "id": 119,
+                "id": 114,
                 "license": "GPL-2.0-or-later",
                 "nodeType": "SourceUnit",
                 "nodes": [
                     {
-                        "id": 67,
+                        "id": 61,
                         "literals": [
                             "solidity",
                             "^",
@@ -2198,11 +2108,11 @@
                     {
                         "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LThing.sol",
                         "file": "../../libraries/base/LThing.sol",
-                        "id": 68,
+                        "id": 62,
                         "nameLocation": "-1:-1:-1",
                         "nodeType": "ImportDirective",
-                        "scope": 119,
-                        "sourceUnit": 160,
+                        "scope": 114,
+                        "sourceUnit": 155,
                         "src": "70:41:4",
                         "symbolAliases": [],
                         "unitAlias": ""
@@ -2214,15 +2124,15 @@
                         "contractDependencies": [],
                         "contractKind": "interface",
                         "documentation": {
-                            "id": 69,
+                            "id": 63,
                             "nodeType": "StructuredDocumentation",
                             "src": "113:116:4",
                             "text": "@title Permissioned pool actions\n @notice Contains pool methods that may only be called by the factory owner"
                         },
                         "fullyImplemented": false,
-                        "id": 118,
+                        "id": 113,
                         "linearizedBaseContracts": [
-                            118
+                            113
                         ],
                         "name": "IThingV1MarketorActions",
                         "nameLocation": "239:23:4",
@@ -2230,7 +2140,7 @@
                         "nodes": [
                             {
                                 "functionSelector": "62d7b46d",
-                                "id": 75,
+                                "id": 69,
                                 "implemented": false,
                                 "kind": "function",
                                 "modifiers": [],
@@ -2238,38 +2148,38 @@
                                 "nameLocation": "316:18:4",
                                 "nodeType": "FunctionDefinition",
                                 "parameters": {
-                                    "id": 73,
+                                    "id": 67,
                                     "nodeType": "ParameterList",
                                     "parameters": [
                                         {
                                             "constant": false,
-                                            "id": 72,
+                                            "id": 66,
                                             "mutability": "mutable",
                                             "name": "_coinInfo",
                                             "nameLocation": "354:9:4",
                                             "nodeType": "VariableDeclaration",
-                                            "scope": 75,
+                                            "scope": 69,
                                             "src": "335:28:4",
                                             "stateVariable": false,
                                             "storageLocation": "memory",
                                             "typeDescriptions": {
-                                                "typeIdentifier": "t_struct$_Info_$158_memory_ptr",
+                                                "typeIdentifier": "t_struct$_Info_$153_memory_ptr",
                                                 "typeString": "struct LThing.Info"
                                             },
                                             "typeName": {
-                                                "id": 71,
+                                                "id": 65,
                                                 "nodeType": "UserDefinedTypeName",
                                                 "pathNode": {
-                                                    "id": 70,
+                                                    "id": 64,
                                                     "name": "LThing.Info",
                                                     "nodeType": "IdentifierPath",
-                                                    "referencedDeclaration": 158,
+                                                    "referencedDeclaration": 153,
                                                     "src": "335:11:4"
                                                 },
-                                                "referencedDeclaration": 158,
+                                                "referencedDeclaration": 153,
                                                 "src": "335:11:4",
                                                 "typeDescriptions": {
-                                                    "typeIdentifier": "t_struct$_Info_$158_storage_ptr",
+                                                    "typeIdentifier": "t_struct$_Info_$153_storage_ptr",
                                                     "typeString": "struct LThing.Info"
                                                 }
                                             },
@@ -2279,12 +2189,12 @@
                                     "src": "334:30:4"
                                 },
                                 "returnParameters": {
-                                    "id": 74,
+                                    "id": 68,
                                     "nodeType": "ParameterList",
                                     "parameters": [],
                                     "src": "373:0:4"
                                 },
-                                "scope": 118,
+                                "scope": 113,
                                 "src": "307:67:4",
                                 "stateMutability": "nonpayable",
                                 "virtual": false,
@@ -2292,7 +2202,7 @@
                             },
                             {
                                 "functionSelector": "c77682f2",
-                                "id": 82,
+                                "id": 76,
                                 "implemented": false,
                                 "kind": "function",
                                 "modifiers": [],
@@ -2300,17 +2210,17 @@
                                 "nameLocation": "389:26:4",
                                 "nodeType": "FunctionDefinition",
                                 "parameters": {
-                                    "id": 80,
+                                    "id": 74,
                                     "nodeType": "ParameterList",
                                     "parameters": [
                                         {
                                             "constant": false,
-                                            "id": 77,
+                                            "id": 71,
                                             "mutability": "mutable",
                                             "name": "_internalThingAddress",
                                             "nameLocation": "433:21:4",
                                             "nodeType": "VariableDeclaration",
-                                            "scope": 82,
+                                            "scope": 76,
                                             "src": "425:29:4",
                                             "stateVariable": false,
                                             "storageLocation": "default",
@@ -2319,7 +2229,7 @@
                                                 "typeString": "address"
                                             },
                                             "typeName": {
-                                                "id": 76,
+                                                "id": 70,
                                                 "name": "address",
                                                 "nodeType": "ElementaryTypeName",
                                                 "src": "425:7:4",
@@ -2333,12 +2243,12 @@
                                         },
                                         {
                                             "constant": false,
-                                            "id": 79,
+                                            "id": 73,
                                             "mutability": "mutable",
                                             "name": "_scope",
                                             "nameLocation": "470:6:4",
                                             "nodeType": "VariableDeclaration",
-                                            "scope": 82,
+                                            "scope": 76,
                                             "src": "464:12:4",
                                             "stateVariable": false,
                                             "storageLocation": "default",
@@ -2347,7 +2257,7 @@
                                                 "typeString": "uint8"
                                             },
                                             "typeName": {
-                                                "id": 78,
+                                                "id": 72,
                                                 "name": "uint8",
                                                 "nodeType": "ElementaryTypeName",
                                                 "src": "464:5:4",
@@ -2362,12 +2272,12 @@
                                     "src": "415:67:4"
                                 },
                                 "returnParameters": {
-                                    "id": 81,
+                                    "id": 75,
                                     "nodeType": "ParameterList",
                                     "parameters": [],
                                     "src": "491:0:4"
                                 },
-                                "scope": 118,
+                                "scope": 113,
                                 "src": "380:112:4",
                                 "stateMutability": "nonpayable",
                                 "virtual": false,
@@ -2375,7 +2285,7 @@
                             },
                             {
                                 "functionSelector": "3b7c5d92",
-                                "id": 87,
+                                "id": 81,
                                 "implemented": false,
                                 "kind": "function",
                                 "modifiers": [],
@@ -2383,17 +2293,17 @@
                                 "nameLocation": "507:19:4",
                                 "nodeType": "FunctionDefinition",
                                 "parameters": {
-                                    "id": 85,
+                                    "id": 79,
                                     "nodeType": "ParameterList",
                                     "parameters": [
                                         {
                                             "constant": false,
-                                            "id": 84,
+                                            "id": 78,
                                             "mutability": "mutable",
                                             "name": "_internalThingAddress",
                                             "nameLocation": "535:21:4",
                                             "nodeType": "VariableDeclaration",
-                                            "scope": 87,
+                                            "scope": 81,
                                             "src": "527:29:4",
                                             "stateVariable": false,
                                             "storageLocation": "default",
@@ -2402,7 +2312,7 @@
                                                 "typeString": "address"
                                             },
                                             "typeName": {
-                                                "id": 83,
+                                                "id": 77,
                                                 "name": "address",
                                                 "nodeType": "ElementaryTypeName",
                                                 "src": "527:7:4",
@@ -2418,12 +2328,12 @@
                                     "src": "526:31:4"
                                 },
                                 "returnParameters": {
-                                    "id": 86,
+                                    "id": 80,
                                     "nodeType": "ParameterList",
                                     "parameters": [],
                                     "src": "566:0:4"
                                 },
-                                "scope": 118,
+                                "scope": 113,
                                 "src": "498:69:4",
                                 "stateMutability": "nonpayable",
                                 "virtual": false,
@@ -2431,7 +2341,7 @@
                             },
                             {
                                 "functionSelector": "7fab09b7",
-                                "id": 92,
+                                "id": 86,
                                 "implemented": false,
                                 "kind": "function",
                                 "modifiers": [],
@@ -2439,17 +2349,17 @@
                                 "nameLocation": "582:21:4",
                                 "nodeType": "FunctionDefinition",
                                 "parameters": {
-                                    "id": 90,
+                                    "id": 84,
                                     "nodeType": "ParameterList",
                                     "parameters": [
                                         {
                                             "constant": false,
-                                            "id": 89,
+                                            "id": 83,
                                             "mutability": "mutable",
                                             "name": "_internalThingAddress",
                                             "nameLocation": "612:21:4",
                                             "nodeType": "VariableDeclaration",
-                                            "scope": 92,
+                                            "scope": 86,
                                             "src": "604:29:4",
                                             "stateVariable": false,
                                             "storageLocation": "default",
@@ -2458,7 +2368,7 @@
                                                 "typeString": "address"
                                             },
                                             "typeName": {
-                                                "id": 88,
+                                                "id": 82,
                                                 "name": "address",
                                                 "nodeType": "ElementaryTypeName",
                                                 "src": "604:7:4",
@@ -2474,12 +2384,12 @@
                                     "src": "603:31:4"
                                 },
                                 "returnParameters": {
-                                    "id": 91,
+                                    "id": 85,
                                     "nodeType": "ParameterList",
                                     "parameters": [],
                                     "src": "643:0:4"
                                 },
-                                "scope": 118,
+                                "scope": 113,
                                 "src": "573:71:4",
                                 "stateMutability": "nonpayable",
                                 "virtual": false,
@@ -2487,7 +2397,7 @@
                             },
                             {
                                 "functionSelector": "f6b775d6",
-                                "id": 98,
+                                "id": 92,
                                 "implemented": false,
                                 "kind": "function",
                                 "modifiers": [],
@@ -2495,38 +2405,38 @@
                                 "nameLocation": "659:21:4",
                                 "nodeType": "FunctionDefinition",
                                 "parameters": {
-                                    "id": 96,
+                                    "id": 90,
                                     "nodeType": "ParameterList",
                                     "parameters": [
                                         {
                                             "constant": false,
-                                            "id": 95,
+                                            "id": 89,
                                             "mutability": "mutable",
                                             "name": "_coinInfo",
                                             "nameLocation": "700:9:4",
                                             "nodeType": "VariableDeclaration",
-                                            "scope": 98,
+                                            "scope": 92,
                                             "src": "681:28:4",
                                             "stateVariable": false,
                                             "storageLocation": "memory",
                                             "typeDescriptions": {
-                                                "typeIdentifier": "t_struct$_Info_$158_memory_ptr",
+                                                "typeIdentifier": "t_struct$_Info_$153_memory_ptr",
                                                 "typeString": "struct LThing.Info"
                                             },
                                             "typeName": {
-                                                "id": 94,
+                                                "id": 88,
                                                 "nodeType": "UserDefinedTypeName",
                                                 "pathNode": {
-                                                    "id": 93,
+                                                    "id": 87,
                                                     "name": "LThing.Info",
                                                     "nodeType": "IdentifierPath",
-                                                    "referencedDeclaration": 158,
+                                                    "referencedDeclaration": 153,
                                                     "src": "681:11:4"
                                                 },
-                                                "referencedDeclaration": 158,
+                                                "referencedDeclaration": 153,
                                                 "src": "681:11:4",
                                                 "typeDescriptions": {
-                                                    "typeIdentifier": "t_struct$_Info_$158_storage_ptr",
+                                                    "typeIdentifier": "t_struct$_Info_$153_storage_ptr",
                                                     "typeString": "struct LThing.Info"
                                                 }
                                             },
@@ -2536,12 +2446,12 @@
                                     "src": "680:30:4"
                                 },
                                 "returnParameters": {
-                                    "id": 97,
+                                    "id": 91,
                                     "nodeType": "ParameterList",
                                     "parameters": [],
                                     "src": "719:0:4"
                                 },
-                                "scope": 118,
+                                "scope": 113,
                                 "src": "650:70:4",
                                 "stateMutability": "nonpayable",
                                 "virtual": false,
@@ -2549,7 +2459,7 @@
                             },
                             {
                                 "functionSelector": "60d7d178",
-                                "id": 105,
+                                "id": 99,
                                 "implemented": false,
                                 "kind": "function",
                                 "modifiers": [],
@@ -2557,17 +2467,17 @@
                                 "nameLocation": "735:25:4",
                                 "nodeType": "FunctionDefinition",
                                 "parameters": {
-                                    "id": 103,
+                                    "id": 97,
                                     "nodeType": "ParameterList",
                                     "parameters": [
                                         {
                                             "constant": false,
-                                            "id": 100,
+                                            "id": 94,
                                             "mutability": "mutable",
                                             "name": "_contractaddress",
                                             "nameLocation": "778:16:4",
                                             "nodeType": "VariableDeclaration",
-                                            "scope": 105,
+                                            "scope": 99,
                                             "src": "770:24:4",
                                             "stateVariable": false,
                                             "storageLocation": "default",
@@ -2576,7 +2486,7 @@
                                                 "typeString": "address"
                                             },
                                             "typeName": {
-                                                "id": 99,
+                                                "id": 93,
                                                 "name": "address",
                                                 "nodeType": "ElementaryTypeName",
                                                 "src": "770:7:4",
@@ -2590,12 +2500,12 @@
                                         },
                                         {
                                             "constant": false,
-                                            "id": 102,
+                                            "id": 96,
                                             "mutability": "mutable",
                                             "name": "_gateaddress",
                                             "nameLocation": "812:12:4",
                                             "nodeType": "VariableDeclaration",
-                                            "scope": 105,
+                                            "scope": 99,
                                             "src": "804:20:4",
                                             "stateVariable": false,
                                             "storageLocation": "default",
@@ -2604,7 +2514,7 @@
                                                 "typeString": "address"
                                             },
                                             "typeName": {
-                                                "id": 101,
+                                                "id": 95,
                                                 "name": "address",
                                                 "nodeType": "ElementaryTypeName",
                                                 "src": "804:7:4",
@@ -2620,28 +2530,90 @@
                                     "src": "760:70:4"
                                 },
                                 "returnParameters": {
-                                    "id": 104,
+                                    "id": 98,
                                     "nodeType": "ParameterList",
                                     "parameters": [],
                                     "src": "839:0:4"
                                 },
-                                "scope": 118,
+                                "scope": 113,
                                 "src": "726:114:4",
                                 "stateMutability": "nonpayable",
                                 "virtual": false,
                                 "visibility": "external"
                             },
                             {
-                                "functionSelector": "5b52bd37",
-                                "id": 110,
+                                "functionSelector": "9a08975e",
+                                "id": 105,
                                 "implemented": false,
                                 "kind": "function",
                                 "modifiers": [],
-                                "name": "delThingbyMarketor",
-                                "nameLocation": "855:18:4",
+                                "name": "delMarketThingbyMarketor",
+                                "nameLocation": "855:24:4",
                                 "nodeType": "FunctionDefinition",
                                 "parameters": {
-                                    "id": 108,
+                                    "id": 103,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 102,
+                                            "mutability": "mutable",
+                                            "name": "_ThingsInfo",
+                                            "nameLocation": "899:11:4",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 105,
+                                            "src": "880:30:4",
+                                            "stateVariable": false,
+                                            "storageLocation": "memory",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_struct$_Info_$153_memory_ptr",
+                                                "typeString": "struct LThing.Info"
+                                            },
+                                            "typeName": {
+                                                "id": 101,
+                                                "nodeType": "UserDefinedTypeName",
+                                                "pathNode": {
+                                                    "id": 100,
+                                                    "name": "LThing.Info",
+                                                    "nodeType": "IdentifierPath",
+                                                    "referencedDeclaration": 153,
+                                                    "src": "880:11:4"
+                                                },
+                                                "referencedDeclaration": 153,
+                                                "src": "880:11:4",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_struct$_Info_$153_storage_ptr",
+                                                    "typeString": "struct LThing.Info"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "879:32:4"
+                                },
+                                "returnParameters": {
+                                    "id": 104,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [],
+                                    "src": "920:0:4"
+                                },
+                                "scope": 113,
+                                "src": "846:75:4",
+                                "stateMutability": "nonpayable",
+                                "virtual": false,
+                                "visibility": "external"
+                            },
+                            {
+                                "functionSelector": "510e1e01",
+                                "id": 112,
+                                "implemented": false,
+                                "kind": "function",
+                                "modifiers": [],
+                                "name": "delGateThingbyMarketor",
+                                "nameLocation": "936:22:4",
+                                "nodeType": "FunctionDefinition",
+                                "parameters": {
+                                    "id": 110,
                                     "nodeType": "ParameterList",
                                     "parameters": [
                                         {
@@ -2649,10 +2621,10 @@
                                             "id": 107,
                                             "mutability": "mutable",
                                             "name": "_contractaddress",
-                                            "nameLocation": "882:16:4",
+                                            "nameLocation": "976:16:4",
                                             "nodeType": "VariableDeclaration",
-                                            "scope": 110,
-                                            "src": "874:24:4",
+                                            "scope": 112,
+                                            "src": "968:24:4",
                                             "stateVariable": false,
                                             "storageLocation": "default",
                                             "typeDescriptions": {
@@ -2663,63 +2635,7 @@
                                                 "id": 106,
                                                 "name": "address",
                                                 "nodeType": "ElementaryTypeName",
-                                                "src": "874:7:4",
-                                                "stateMutability": "nonpayable",
-                                                "typeDescriptions": {
-                                                    "typeIdentifier": "t_address",
-                                                    "typeString": "address"
-                                                }
-                                            },
-                                            "visibility": "internal"
-                                        }
-                                    ],
-                                    "src": "873:26:4"
-                                },
-                                "returnParameters": {
-                                    "id": 109,
-                                    "nodeType": "ParameterList",
-                                    "parameters": [],
-                                    "src": "908:0:4"
-                                },
-                                "scope": 118,
-                                "src": "846:63:4",
-                                "stateMutability": "nonpayable",
-                                "virtual": false,
-                                "visibility": "external"
-                            },
-                            {
-                                "functionSelector": "510e1e01",
-                                "id": 117,
-                                "implemented": false,
-                                "kind": "function",
-                                "modifiers": [],
-                                "name": "delGateThingbyMarketor",
-                                "nameLocation": "924:22:4",
-                                "nodeType": "FunctionDefinition",
-                                "parameters": {
-                                    "id": 115,
-                                    "nodeType": "ParameterList",
-                                    "parameters": [
-                                        {
-                                            "constant": false,
-                                            "id": 112,
-                                            "mutability": "mutable",
-                                            "name": "_contractaddress",
-                                            "nameLocation": "964:16:4",
-                                            "nodeType": "VariableDeclaration",
-                                            "scope": 117,
-                                            "src": "956:24:4",
-                                            "stateVariable": false,
-                                            "storageLocation": "default",
-                                            "typeDescriptions": {
-                                                "typeIdentifier": "t_address",
-                                                "typeString": "address"
-                                            },
-                                            "typeName": {
-                                                "id": 111,
-                                                "name": "address",
-                                                "nodeType": "ElementaryTypeName",
-                                                "src": "956:7:4",
+                                                "src": "968:7:4",
                                                 "stateMutability": "nonpayable",
                                                 "typeDescriptions": {
                                                     "typeIdentifier": "t_address",
@@ -2730,13 +2646,13 @@
                                         },
                                         {
                                             "constant": false,
-                                            "id": 114,
+                                            "id": 109,
                                             "mutability": "mutable",
                                             "name": "_gateaddress",
-                                            "nameLocation": "998:12:4",
+                                            "nameLocation": "1010:12:4",
                                             "nodeType": "VariableDeclaration",
-                                            "scope": 117,
-                                            "src": "990:20:4",
+                                            "scope": 112,
+                                            "src": "1002:20:4",
                                             "stateVariable": false,
                                             "storageLocation": "default",
                                             "typeDescriptions": {
@@ -2744,10 +2660,10 @@
                                                 "typeString": "address"
                                             },
                                             "typeName": {
-                                                "id": 113,
+                                                "id": 108,
                                                 "name": "address",
                                                 "nodeType": "ElementaryTypeName",
-                                                "src": "990:7:4",
+                                                "src": "1002:7:4",
                                                 "stateMutability": "nonpayable",
                                                 "typeDescriptions": {
                                                     "typeIdentifier": "t_address",
@@ -2757,27 +2673,27 @@
                                             "visibility": "internal"
                                         }
                                     ],
-                                    "src": "946:70:4"
+                                    "src": "958:70:4"
                                 },
                                 "returnParameters": {
-                                    "id": 116,
+                                    "id": 111,
                                     "nodeType": "ParameterList",
                                     "parameters": [],
-                                    "src": "1025:0:4"
+                                    "src": "1037:0:4"
                                 },
-                                "scope": 118,
-                                "src": "915:111:4",
+                                "scope": 113,
+                                "src": "927:111:4",
                                 "stateMutability": "nonpayable",
                                 "virtual": false,
                                 "visibility": "external"
                             }
                         ],
-                        "scope": 119,
-                        "src": "229:799:4",
+                        "scope": 114,
+                        "src": "229:811:4",
                         "usedErrors": []
                     }
                 ],
-                "src": "45:984:4"
+                "src": "45:996:4"
             },
             "id": 4
         },
@@ -2786,18 +2702,18 @@
                 "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Thing/IThingV1State.sol",
                 "exportedSymbols": {
                     "IThingV1State": [
-                        131
+                        126
                     ],
                     "LThing": [
-                        159
+                        154
                     ]
                 },
-                "id": 132,
+                "id": 127,
                 "license": "GPL-2.0-or-later",
                 "nodeType": "SourceUnit",
                 "nodes": [
                     {
-                        "id": 120,
+                        "id": 115,
                         "literals": [
                             "solidity",
                             "^",
@@ -2810,11 +2726,11 @@
                     {
                         "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LThing.sol",
                         "file": "../../libraries/base/LThing.sol",
-                        "id": 121,
+                        "id": 116,
                         "nameLocation": "-1:-1:-1",
                         "nodeType": "ImportDirective",
-                        "scope": 132,
-                        "sourceUnit": 160,
+                        "scope": 127,
+                        "sourceUnit": 155,
                         "src": "70:41:5",
                         "symbolAliases": [],
                         "unitAlias": ""
@@ -2826,15 +2742,15 @@
                         "contractDependencies": [],
                         "contractKind": "interface",
                         "documentation": {
-                            "id": 122,
+                            "id": 117,
                             "nodeType": "StructuredDocumentation",
                             "src": "113:169:5",
                             "text": "@title Pool state that can change\n @notice These methods compose the pool's state, and can change with any frequency including multiple times\n per transaction"
                         },
                         "fullyImplemented": false,
-                        "id": 131,
+                        "id": 126,
                         "linearizedBaseContracts": [
-                            131
+                            126
                         ],
                         "name": "IThingV1State",
                         "nameLocation": "292:13:5",
@@ -2842,7 +2758,7 @@
                         "nodes": [
                             {
                                 "functionSelector": "b7228d6f",
-                                "id": 130,
+                                "id": 125,
                                 "implemented": false,
                                 "kind": "function",
                                 "modifiers": [],
@@ -2850,17 +2766,17 @@
                                 "nameLocation": "321:12:5",
                                 "nodeType": "FunctionDefinition",
                                 "parameters": {
-                                    "id": 125,
+                                    "id": 120,
                                     "nodeType": "ParameterList",
                                     "parameters": [
                                         {
                                             "constant": false,
-                                            "id": 124,
+                                            "id": 119,
                                             "mutability": "mutable",
                                             "name": "_contractaddress",
                                             "nameLocation": "342:16:5",
                                             "nodeType": "VariableDeclaration",
-                                            "scope": 130,
+                                            "scope": 125,
                                             "src": "334:24:5",
                                             "stateVariable": false,
                                             "storageLocation": "default",
@@ -2869,7 +2785,7 @@
                                                 "typeString": "address"
                                             },
                                             "typeName": {
-                                                "id": 123,
+                                                "id": 118,
                                                 "name": "address",
                                                 "nodeType": "ElementaryTypeName",
                                                 "src": "334:7:5",
@@ -2885,38 +2801,38 @@
                                     "src": "333:26:5"
                                 },
                                 "returnParameters": {
-                                    "id": 129,
+                                    "id": 124,
                                     "nodeType": "ParameterList",
                                     "parameters": [
                                         {
                                             "constant": false,
-                                            "id": 128,
+                                            "id": 123,
                                             "mutability": "mutable",
                                             "name": "",
                                             "nameLocation": "-1:-1:-1",
                                             "nodeType": "VariableDeclaration",
-                                            "scope": 130,
+                                            "scope": 125,
                                             "src": "407:18:5",
                                             "stateVariable": false,
                                             "storageLocation": "memory",
                                             "typeDescriptions": {
-                                                "typeIdentifier": "t_struct$_Info_$158_memory_ptr",
+                                                "typeIdentifier": "t_struct$_Info_$153_memory_ptr",
                                                 "typeString": "struct LThing.Info"
                                             },
                                             "typeName": {
-                                                "id": 127,
+                                                "id": 122,
                                                 "nodeType": "UserDefinedTypeName",
                                                 "pathNode": {
-                                                    "id": 126,
+                                                    "id": 121,
                                                     "name": "LThing.Info",
                                                     "nodeType": "IdentifierPath",
-                                                    "referencedDeclaration": 158,
+                                                    "referencedDeclaration": 153,
                                                     "src": "407:11:5"
                                                 },
-                                                "referencedDeclaration": 158,
+                                                "referencedDeclaration": 153,
                                                 "src": "407:11:5",
                                                 "typeDescriptions": {
-                                                    "typeIdentifier": "t_struct$_Info_$158_storage_ptr",
+                                                    "typeIdentifier": "t_struct$_Info_$153_storage_ptr",
                                                     "typeString": "struct LThing.Info"
                                                 }
                                             },
@@ -2925,14 +2841,14 @@
                                     ],
                                     "src": "406:20:5"
                                 },
-                                "scope": 131,
+                                "scope": 126,
                                 "src": "312:115:5",
                                 "stateMutability": "view",
                                 "virtual": false,
                                 "visibility": "external"
                             }
                         ],
-                        "scope": 132,
+                        "scope": 127,
                         "src": "282:147:5",
                         "usedErrors": []
                     }
@@ -2946,15 +2862,15 @@
                 "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LThing.sol",
                 "exportedSymbols": {
                     "LThing": [
-                        159
+                        154
                     ]
                 },
-                "id": 160,
+                "id": 155,
                 "license": "GPL-2.0-or-later",
                 "nodeType": "SourceUnit",
                 "nodes": [
                     {
-                        "id": 133,
+                        "id": 128,
                         "literals": [
                             "solidity",
                             "^",
@@ -2971,9 +2887,9 @@
                         "contractDependencies": [],
                         "contractKind": "library",
                         "fullyImplemented": true,
-                        "id": 159,
+                        "id": 154,
                         "linearizedBaseContracts": [
-                            159
+                            154
                         ],
                         "name": "LThing",
                         "nameLocation": "78:6:6",
@@ -2981,16 +2897,16 @@
                         "nodes": [
                             {
                                 "canonicalName": "LThing.Info",
-                                "id": 158,
+                                "id": 153,
                                 "members": [
                                     {
                                         "constant": false,
-                                        "id": 135,
+                                        "id": 130,
                                         "mutability": "mutable",
                                         "name": "name",
                                         "nameLocation": "243:4:6",
                                         "nodeType": "VariableDeclaration",
-                                        "scope": 158,
+                                        "scope": 153,
                                         "src": "235:12:6",
                                         "stateVariable": false,
                                         "storageLocation": "default",
@@ -2999,7 +2915,7 @@
                                             "typeString": "bytes32"
                                         },
                                         "typeName": {
-                                            "id": 134,
+                                            "id": 129,
                                             "name": "bytes32",
                                             "nodeType": "ElementaryTypeName",
                                             "src": "235:7:6",
@@ -3012,12 +2928,12 @@
                                     },
                                     {
                                         "constant": false,
-                                        "id": 137,
+                                        "id": 132,
                                         "mutability": "mutable",
                                         "name": "ownerAddress",
                                         "nameLocation": "356:12:6",
                                         "nodeType": "VariableDeclaration",
-                                        "scope": 158,
+                                        "scope": 153,
                                         "src": "348:20:6",
                                         "stateVariable": false,
                                         "storageLocation": "default",
@@ -3026,7 +2942,7 @@
                                             "typeString": "address"
                                         },
                                         "typeName": {
-                                            "id": 136,
+                                            "id": 131,
                                             "name": "address",
                                             "nodeType": "ElementaryTypeName",
                                             "src": "348:7:6",
@@ -3040,12 +2956,12 @@
                                     },
                                     {
                                         "constant": false,
-                                        "id": 139,
+                                        "id": 134,
                                         "mutability": "mutable",
                                         "name": "LSTThingsFullName",
                                         "nameLocation": "443:17:6",
                                         "nodeType": "VariableDeclaration",
-                                        "scope": 158,
+                                        "scope": 153,
                                         "src": "435:25:6",
                                         "stateVariable": false,
                                         "storageLocation": "default",
@@ -3054,7 +2970,7 @@
                                             "typeString": "bytes32"
                                         },
                                         "typeName": {
-                                            "id": 138,
+                                            "id": 133,
                                             "name": "bytes32",
                                             "nodeType": "ElementaryTypeName",
                                             "src": "435:7:6",
@@ -3067,12 +2983,12 @@
                                     },
                                     {
                                         "constant": false,
-                                        "id": 141,
+                                        "id": 136,
                                         "mutability": "mutable",
                                         "name": "symbol",
                                         "nameLocation": "494:6:6",
                                         "nodeType": "VariableDeclaration",
-                                        "scope": 158,
+                                        "scope": 153,
                                         "src": "487:13:6",
                                         "stateVariable": false,
                                         "storageLocation": "default",
@@ -3081,7 +2997,7 @@
                                             "typeString": "bytes6"
                                         },
                                         "typeName": {
-                                            "id": 140,
+                                            "id": 135,
                                             "name": "bytes6",
                                             "nodeType": "ElementaryTypeName",
                                             "src": "487:6:6",
@@ -3094,12 +3010,12 @@
                                     },
                                     {
                                         "constant": false,
-                                        "id": 143,
+                                        "id": 138,
                                         "mutability": "mutable",
                                         "name": "scope",
                                         "nameLocation": "516:5:6",
                                         "nodeType": "VariableDeclaration",
-                                        "scope": 158,
+                                        "scope": 153,
                                         "src": "510:11:6",
                                         "stateVariable": false,
                                         "storageLocation": "default",
@@ -3108,7 +3024,7 @@
                                             "typeString": "uint8"
                                         },
                                         "typeName": {
-                                            "id": 142,
+                                            "id": 137,
                                             "name": "uint8",
                                             "nodeType": "ElementaryTypeName",
                                             "src": "510:5:6",
@@ -3121,12 +3037,12 @@
                                     },
                                     {
                                         "constant": false,
-                                        "id": 145,
+                                        "id": 140,
                                         "mutability": "mutable",
                                         "name": "contractAddress",
                                         "nameLocation": "636:15:6",
                                         "nodeType": "VariableDeclaration",
-                                        "scope": 158,
+                                        "scope": 153,
                                         "src": "628:23:6",
                                         "stateVariable": false,
                                         "storageLocation": "default",
@@ -3135,7 +3051,7 @@
                                             "typeString": "address"
                                         },
                                         "typeName": {
-                                            "id": 144,
+                                            "id": 139,
                                             "name": "address",
                                             "nodeType": "ElementaryTypeName",
                                             "src": "628:7:6",
@@ -3149,12 +3065,12 @@
                                     },
                                     {
                                         "constant": false,
-                                        "id": 147,
+                                        "id": 142,
                                         "mutability": "mutable",
                                         "name": "marketunlock",
                                         "nameLocation": "666:12:6",
                                         "nodeType": "VariableDeclaration",
-                                        "scope": 158,
+                                        "scope": 153,
                                         "src": "661:17:6",
                                         "stateVariable": false,
                                         "storageLocation": "default",
@@ -3163,7 +3079,7 @@
                                             "typeString": "bool"
                                         },
                                         "typeName": {
-                                            "id": 146,
+                                            "id": 141,
                                             "name": "bool",
                                             "nodeType": "ElementaryTypeName",
                                             "src": "661:4:6",
@@ -3176,12 +3092,12 @@
                                     },
                                     {
                                         "constant": false,
-                                        "id": 149,
+                                        "id": 144,
                                         "mutability": "mutable",
                                         "name": "unlock",
                                         "nameLocation": "693:6:6",
                                         "nodeType": "VariableDeclaration",
-                                        "scope": 158,
+                                        "scope": 153,
                                         "src": "688:11:6",
                                         "stateVariable": false,
                                         "storageLocation": "default",
@@ -3190,7 +3106,7 @@
                                             "typeString": "bool"
                                         },
                                         "typeName": {
-                                            "id": 148,
+                                            "id": 143,
                                             "name": "bool",
                                             "nodeType": "ElementaryTypeName",
                                             "src": "688:4:6",
@@ -3203,12 +3119,12 @@
                                     },
                                     {
                                         "constant": false,
-                                        "id": 151,
+                                        "id": 146,
                                         "mutability": "mutable",
                                         "name": "createrunlock",
                                         "nameLocation": "714:13:6",
                                         "nodeType": "VariableDeclaration",
-                                        "scope": 158,
+                                        "scope": 153,
                                         "src": "709:18:6",
                                         "stateVariable": false,
                                         "storageLocation": "default",
@@ -3217,7 +3133,7 @@
                                             "typeString": "bool"
                                         },
                                         "typeName": {
-                                            "id": 150,
+                                            "id": 145,
                                             "name": "bool",
                                             "nodeType": "ElementaryTypeName",
                                             "src": "709:4:6",
@@ -3230,12 +3146,12 @@
                                     },
                                     {
                                         "constant": false,
-                                        "id": 153,
+                                        "id": 148,
                                         "mutability": "mutable",
                                         "name": "isUsed",
                                         "nameLocation": "742:6:6",
                                         "nodeType": "VariableDeclaration",
-                                        "scope": 158,
+                                        "scope": 153,
                                         "src": "737:11:6",
                                         "stateVariable": false,
                                         "storageLocation": "default",
@@ -3244,7 +3160,7 @@
                                             "typeString": "bool"
                                         },
                                         "typeName": {
-                                            "id": 152,
+                                            "id": 147,
                                             "name": "bool",
                                             "nodeType": "ElementaryTypeName",
                                             "src": "737:4:6",
@@ -3257,12 +3173,12 @@
                                     },
                                     {
                                         "constant": false,
-                                        "id": 155,
+                                        "id": 150,
                                         "mutability": "mutable",
                                         "name": "addfromgater",
                                         "nameLocation": "766:12:6",
                                         "nodeType": "VariableDeclaration",
-                                        "scope": 158,
+                                        "scope": 153,
                                         "src": "758:20:6",
                                         "stateVariable": false,
                                         "storageLocation": "default",
@@ -3271,7 +3187,7 @@
                                             "typeString": "address"
                                         },
                                         "typeName": {
-                                            "id": 154,
+                                            "id": 149,
                                             "name": "address",
                                             "nodeType": "ElementaryTypeName",
                                             "src": "758:7:6",
@@ -3285,12 +3201,12 @@
                                     },
                                     {
                                         "constant": false,
-                                        "id": 157,
+                                        "id": 152,
                                         "mutability": "mutable",
                                         "name": "creator",
                                         "nameLocation": "796:7:6",
                                         "nodeType": "VariableDeclaration",
-                                        "scope": 158,
+                                        "scope": 153,
                                         "src": "788:15:6",
                                         "stateVariable": false,
                                         "storageLocation": "default",
@@ -3299,7 +3215,7 @@
                                             "typeString": "address"
                                         },
                                         "typeName": {
-                                            "id": 156,
+                                            "id": 151,
                                             "name": "address",
                                             "nodeType": "ElementaryTypeName",
                                             "src": "788:7:6",
@@ -3315,12 +3231,12 @@
                                 "name": "Info",
                                 "nameLocation": "98:4:6",
                                 "nodeType": "StructDefinition",
-                                "scope": 159,
+                                "scope": 154,
                                 "src": "91:719:6",
                                 "visibility": "public"
                             }
                         ],
-                        "scope": 160,
+                        "scope": 155,
                         "src": "70:742:6",
                         "usedErrors": []
                     }

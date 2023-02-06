@@ -2,9 +2,9 @@
 pragma solidity ^0.8.0;
 
 import "./libraries/base/LGate.sol";
-import "./MoonV1Manager.sol";
+import "./MoonV1Marketor.sol";
 
-contract MoonV1Gater {
+contract MoonV1Gator {
     //门户信息
     //Gate Parameter
 
@@ -31,19 +31,16 @@ contract MoonV1Gater {
     /// @notice Explain to an end user what this does
     /// @dev Explain to a developer any extra details
 
-    modifier onlyMarketManager() {
+    modifier onlyMarketor() {
         require(
-            MoonV1Manager(marketorContractAddress).ismarketManager() == true
+            MoonV1Marketor(marketorContractAddress).ismarketMarketor() == true
         );
         _;
     }
 
     /////////////////////////门户管理-市场////////////////////////////
     ///////////////////////// Gate Manage///////////////////////////
-    function lockGatebyMarketor(address _gateraddress)
-        external
-        onlyMarketManager
-    {
+    function lockGatebyMarketor(address _gateraddress) external onlyMarketor {
         require(
             gateList[_gateraddress].isUsed == true,
             "the gater isnot exist"
@@ -51,10 +48,7 @@ contract MoonV1Gater {
         gateList[_gateraddress].marketunlock = true;
     }
 
-    function unlockGatebyMarketor(address _gateraddress)
-        external
-        onlyMarketManager
-    {
+    function unlockGatebyMarketor(address _gateraddress) external onlyMarketor {
         require(
             gateList[_gateraddress].isUsed == true,
             "the gater isnot exist"
@@ -67,7 +61,7 @@ contract MoonV1Gater {
     //更新门户内容
     function updateGatebyMarketor(LGate.Info memory _gater)
         external
-        onlyMarketManager
+        onlyMarketor
     {
         require(
             gateList[_gater.gateAddress].isUsed == true,
@@ -78,7 +72,7 @@ contract MoonV1Gater {
         gateList[_gater.gateAddress] = _gater;
     }
 
-    function delGatebyMarketor(address _gater) external onlyMarketManager {
+    function delGatebyMarketor(address _gater) external onlyMarketor {
         require(gateList[_gater].isUsed == true, "the gater is exister");
 
         delete gateList[_gater];

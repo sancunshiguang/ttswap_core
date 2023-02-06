@@ -1,12 +1,12 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity ^0.8.0;
 
-import "./interfaces/IMoonV1Manager.sol";
+import "./interfaces/IMoonV1Marketor.sol";
 
-contract MoonV1Manager is IMoonV1Manager {
+contract MoonV1Marketor is IMoonV1Marketor {
     //市场管理员
-    //marketManagers
-    mapping(address => bool) public marketManagers;
+    //marketMarketors
+    mapping(address => bool) public marketMarketors;
 
     address public marketCreator;
 
@@ -21,37 +21,27 @@ contract MoonV1Manager is IMoonV1Manager {
 
     /// @notice Explain to an end user what this does
     /// @dev Explain to a developer any extra details
-    modifier onlyMarketManager() {
-        require(marketManagers[msg.sender] == true);
-        _;
-    }
-
-    /// @notice Explain to an end user what this does
-    /// @dev Explain to a developer any extra details
-
-    /// @notice Explain to an end user what this does
-    /// @dev Explain to a developer any extra details
-    function setMarketManager(address _owner)
+    function setMarketMarketor(address _owner)
         external
         override
         onlyMarketCreator
     {
-        marketManagers[_owner] = true;
+        marketMarketors[_owner] = true;
     }
 
     /// @notice Explain to an end user what this does
     /// @dev Explain to a developer any extra details
-    function delMarketManager(address _owner)
+    function delMarketMarketor(address _owner)
         external
         override
         onlyMarketCreator
     {
-        delete marketManagers[_owner];
+        delete marketMarketors[_owner];
     }
 
     /// @notice Explain to an end user what this does
     /// @dev Explain to a developer any extra details
-    function ismarketManager() external view override returns (bool) {
-        return marketManagers[msg.sender];
+    function ismarketMarketor() external view override returns (bool) {
+        return marketMarketors[msg.sender];
     }
 }

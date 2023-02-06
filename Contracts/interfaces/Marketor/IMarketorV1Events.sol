@@ -3,6 +3,6 @@ pragma solidity ^0.8.0;
 
 /// @title Events emitted by a pool
 /// @notice Contains all events emitted by the pool
-interface IManagerV1Events {
+interface IMarketorV1Events {
 
 }

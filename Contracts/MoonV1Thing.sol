@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity ^0.8.0;
 import "./libraries/base/LThing.sol";
-import "./MoonV1Manager.sol";
+import "./MoonV1Marketor.sol";
 import "./MoonV1Gater.sol";
 import "./interfaces/IMoonV1Thing.sol";
 
@@ -37,9 +37,9 @@ contract MoonV1Thing is IMoonV1Thing {
         _;
     }
 
-    modifier onlyMarketManager() {
+    modifier onlyMarketor() {
         require(
-            MoonV1Manager(marketorContractAddress).ismarketManager() == true
+            MoonV1Marketor(marketorContractAddress).ismarketMarketor() == true
         );
         _;
     }
@@ -48,7 +48,7 @@ contract MoonV1Thing is IMoonV1Thing {
     /////////////////////////things Manage/////////////////////
     function addThingbyMarketor(LThing.Info memory _ThingsInfo)
         external
-        onlyMarketManager
+        onlyMarketor
     {
         if (ThingsList[_ThingsInfo.contractAddress].isUsed != true) {
             _ThingsInfo.addfromgater = msg.sender;
@@ -72,27 +72,27 @@ contract MoonV1Thing is IMoonV1Thing {
     function changeThingScopebyMarketor(
         address _internalThingsAddress,
         uint8 _scope
-    ) external onlyMarketManager {
+    ) external onlyMarketor {
         ThingsList[_internalThingsAddress].scope = _scope;
     }
 
     function lockThingbyMarketor(address _internalThingsAddress)
         external
-        onlyMarketManager
+        onlyMarketor
     {
         ThingsList[_internalThingsAddress].marketunlock = false;
     }
 
     function unlockThingbyMarketor(address _internalThingsAddress)
         external
-        onlyMarketManager
+        onlyMarketor
     {
         ThingsList[_internalThingsAddress].marketunlock = true;
     }
 
     function updateThingbyMarketor(LThing.Info memory _ThingsInfo)
         external
-        onlyMarketManager
+        onlyMarketor
     {
         require(marketThingsList[_ThingsInfo.contractAddress] != address(0));
         _ThingsInfo.marketunlock = false;
@@ -105,7 +105,7 @@ contract MoonV1Thing is IMoonV1Thing {
     function impoveGateThingbyMarketor(
         address _contractaddress,
         address _gateaddress
-    ) external onlyMarketManager {
+    ) external onlyMarketor {
         require(
             gateThingsList[_gateaddress][_contractaddress] != address(0),
             "the Things is not exists"
@@ -123,7 +123,7 @@ contract MoonV1Thing is IMoonV1Thing {
 
     function delMarketThingbyMarketor(LThing.Info memory _ThingsInfo)
         external
-        onlyMarketManager
+        onlyMarketor
     {
         require(
             marketThingsList[_ThingsInfo.contractAddress] == address(0),
@@ -135,7 +135,7 @@ contract MoonV1Thing is IMoonV1Thing {
     function delGateThingbyMarketor(
         address _contractaddress,
         address _gateaddress
-    ) external onlyMarketManager {
+    ) external onlyMarketor {
         require(
             gateThingsList[_gateaddress][_contractaddress] == address(0),
             "the Things is not exists"
