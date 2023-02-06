@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 library LProfitShares {
     struct Info {
         uint8 marketshare;
-        uint8 gatershare;
+        uint8 gatorshare;
         uint8 commandershare;
         uint8 usershare;
     }
