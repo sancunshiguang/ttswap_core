@@ -1,0 +1,603 @@
+{
+    "contractName": "IMoonV1Customer",
+    "abi": [
+        {
+            "inputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "bytes32",
+                            "name": "neckname",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "uint32",
+                            "name": "createtimestamp",
+                            "type": "uint32"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "recommender",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "uint40",
+                            "name": "customerKey",
+                            "type": "uint40"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "Gater",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "uint32",
+                            "name": "GaterKey",
+                            "type": "uint32"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "contractAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "isUsed",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "unlock",
+                            "type": "bool"
+                        }
+                    ],
+                    "internalType": "struct LCustomer.Info",
+                    "name": "_customer",
+                    "type": "tuple"
+                }
+            ],
+            "name": "addCustomer",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "bytes32",
+                            "name": "neckname",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "uint32",
+                            "name": "createtimestamp",
+                            "type": "uint32"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "recommender",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "uint40",
+                            "name": "customerKey",
+                            "type": "uint40"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "Gater",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "uint32",
+                            "name": "GaterKey",
+                            "type": "uint32"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "contractAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "isUsed",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "unlock",
+                            "type": "bool"
+                        }
+                    ],
+                    "internalType": "struct LCustomer.Info",
+                    "name": "_customer",
+                    "type": "tuple"
+                },
+                {
+                    "internalType": "address",
+                    "name": "_gator",
+                    "type": "address"
+                }
+            ],
+            "name": "addCustomer",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "uint40",
+                    "name": "_recommanderUnikey",
+                    "type": "uint40"
+                }
+            ],
+            "name": "addRelation",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "gateContractAddress",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_CustomerAddress",
+                    "type": "address"
+                }
+            ],
+            "name": "getCustomer",
+            "outputs": [
+                {
+                    "components": [
+                        {
+                            "internalType": "bytes32",
+                            "name": "neckname",
+                            "type": "bytes32"
+                        },
+                        {
+                            "internalType": "uint32",
+                            "name": "createtimestamp",
+                            "type": "uint32"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "recommender",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "uint40",
+                            "name": "customerKey",
+                            "type": "uint40"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "Gater",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "uint32",
+                            "name": "GaterKey",
+                            "type": "uint32"
+                        },
+                        {
+                            "internalType": "address",
+                            "name": "contractAddress",
+                            "type": "address"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "isUsed",
+                            "type": "bool"
+                        },
+                        {
+                            "internalType": "bool",
+                            "name": "unlock",
+                            "type": "bool"
+                        }
+                    ],
+                    "internalType": "struct LCustomer.Info",
+                    "name": "",
+                    "type": "tuple"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_recommander",
+                    "type": "address"
+                },
+                {
+                    "internalType": "uint32",
+                    "name": "_cumstomerindex",
+                    "type": "uint32"
+                }
+            ],
+            "name": "getCustomerInfobyRecommander",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_recommander",
+                    "type": "address"
+                }
+            ],
+            "name": "getCustomerNumbyRecommander",
+            "outputs": [
+                {
+                    "internalType": "uint32",
+                    "name": "",
+                    "type": "uint32"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_customer",
+                    "type": "address"
+                }
+            ],
+            "name": "getCustomerRecommander",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_CustomerAddress",
+                    "type": "address"
+                }
+            ],
+            "name": "isValidCustomer",
+            "outputs": [
+                {
+                    "internalType": "bool",
+                    "name": "",
+                    "type": "bool"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_CustomerAddress",
+                    "type": "address"
+                }
+            ],
+            "name": "lockCustomerbyMarketor",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "marketorContractAddress",
+            "outputs": [
+                {
+                    "internalType": "address",
+                    "name": "",
+                    "type": "address"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_CustomerAddress",
+                    "type": "address"
+                }
+            ],
+            "name": "unlockCustomerbyMarketor",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "bytes32",
+                    "name": "_newname",
+                    "type": "bytes32"
+                }
+            ],
+            "name": "updateCustomerNeckName",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.15+commit.e14f2714\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"neckname\",\"type\":\"bytes32\"},{\"internalType\":\"uint32\",\"name\":\"createtimestamp\",\"type\":\"uint32\"},{\"internalType\":\"address\",\"name\":\"recommender\",\"type\":\"address\"},{\"internalType\":\"uint40\",\"name\":\"customerKey\",\"type\":\"uint40\"},{\"internalType\":\"address\",\"name\":\"Gater\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"GaterKey\",\"type\":\"uint32\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"}],\"internalType\":\"struct LCustomer.Info\",\"name\":\"_customer\",\"type\":\"tuple\"}],\"name\":\"addCustomer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"neckname\",\"type\":\"bytes32\"},{\"internalType\":\"uint32\",\"name\":\"createtimestamp\",\"type\":\"uint32\"},{\"internalType\":\"address\",\"name\":\"recommender\",\"type\":\"address\"},{\"internalType\":\"uint40\",\"name\":\"customerKey\",\"type\":\"uint40\"},{\"internalType\":\"address\",\"name\":\"Gater\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"GaterKey\",\"type\":\"uint32\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"}],\"internalType\":\"struct LCustomer.Info\",\"name\":\"_customer\",\"type\":\"tuple\"},{\"internalType\":\"address\",\"name\":\"_gator\",\"type\":\"address\"}],\"name\":\"addCustomer\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint40\",\"name\":\"_recommanderUnikey\",\"type\":\"uint40\"}],\"name\":\"addRelation\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"gateContractAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_CustomerAddress\",\"type\":\"address\"}],\"name\":\"getCustomer\",\"outputs\":[{\"components\":[{\"internalType\":\"bytes32\",\"name\":\"neckname\",\"type\":\"bytes32\"},{\"internalType\":\"uint32\",\"name\":\"createtimestamp\",\"type\":\"uint32\"},{\"internalType\":\"address\",\"name\":\"recommender\",\"type\":\"address\"},{\"internalType\":\"uint40\",\"name\":\"customerKey\",\"type\":\"uint40\"},{\"internalType\":\"address\",\"name\":\"Gater\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"GaterKey\",\"type\":\"uint32\"},{\"internalType\":\"address\",\"name\":\"contractAddress\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"isUsed\",\"type\":\"bool\"},{\"internalType\":\"bool\",\"name\":\"unlock\",\"type\":\"bool\"}],\"internalType\":\"struct LCustomer.Info\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_recommander\",\"type\":\"address\"},{\"internalType\":\"uint32\",\"name\":\"_cumstomerindex\",\"type\":\"uint32\"}],\"name\":\"getCustomerInfobyRecommander\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_recommander\",\"type\":\"address\"}],\"name\":\"getCustomerNumbyRecommander\",\"outputs\":[{\"internalType\":\"uint32\",\"name\":\"\",\"type\":\"uint32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_customer\",\"type\":\"address\"}],\"name\":\"getCustomerRecommander\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_CustomerAddress\",\"type\":\"address\"}],\"name\":\"isValidCustomer\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_CustomerAddress\",\"type\":\"address\"}],\"name\":\"lockCustomerbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"marketorContractAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_CustomerAddress\",\"type\":\"address\"}],\"name\":\"unlockCustomerbyMarketor\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_newname\",\"type\":\"bytes32\"}],\"name\":\"updateCustomerNeckName\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"The pool interface is broken up into many smaller pieces\",\"kind\":\"dev\",\"methods\":{\"gateContractAddress()\":{\"returns\":{\"_0\":\"The contract address\"}},\"marketorContractAddress()\":{\"returns\":{\"_0\":\"The contract address\"}}},\"title\":\"The interface for a Uniswap V3 Pool\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"gateContractAddress()\":{\"notice\":\"The contract that deployed the pool, which must adhere to the IUniswapV3Factory interface\"},\"marketorContractAddress()\":{\"notice\":\"The contract that deployed the pool, which must adhere to the IUniswapV3Factory interface\"}},\"notice\":\"A Uniswap pool facilitates swapping and automated market making between any two assets that strictly conform to the ERC20 specification\",\"version\":1}},\"settings\":{\"compilationTarget\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/IMoonV1Customer.sol\":\"IMoonV1Customer\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Customer/ICustomerV1CustomerActions.sol\":{\"keccak256\":\"0x01b7331594f615db652b95ff4728f480b6f8216f864a86f31754f146fe4b0f30\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://9de076f0cb88bf6d8059c97ed0767ad3b5e2cd08bd51f1e4bfea0214d2b941d1\",\"dweb:/ipfs/QmbHgSJy1s1KaDEG3Dor65qt3a4PuPEGZJnqMfhJKNYLgb\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Customer/ICustomerV1Events.sol\":{\"keccak256\":\"0x2e0a76949cc2a0af8a1a32ea99447dd4818bb7a02b95109dabfccf00c79bfa5f\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://a210a4594a0a339b930b8ac55e2aa476dccb1767cef3d1f346dd3616e2231671\",\"dweb:/ipfs/QmaQUh48NJ5Pgst3s8C6jvcdQLyghGVjnp6VhNKLwDowLX\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Customer/ICustomerV1GatorActions.sol\":{\"keccak256\":\"0xf531a352e8164b36560d784cb317ef018d34c2639240a15064e2442ad55cc64b\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://3d1fb52d0302ac37df5714a2ae1225487efb31470cbf6f39363af3de148c5e8f\",\"dweb:/ipfs/QmPpBDykjax6ugVcqgQk6pNvdiidQUQVwfypvXyQ9ZkoBb\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Customer/ICustomerV1Immutables.sol\":{\"keccak256\":\"0x7f763e26df3259f4b3169443200c0b985dc5bf6fb9943a216ddde7dca777534f\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://86991cee10d1d02cabff26c8a371e2f03537bf6dc3fbad2a23dc2e3267585a1f\",\"dweb:/ipfs/QmQfry5kAxHEz5H9SNjBh3SFZujApxDGULCR5tVxWZVLE7\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Customer/ICustomerV1MarketorActions.sol\":{\"keccak256\":\"0x17a64352c0c989b27d32903ead1585ad86af43bb0f7395a9d2a1f92f7b7cafda\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://7bb84bd798f03541a1cc9e8a28ca3125f2ef91d1055d628f1b996b4ce3fbf304\",\"dweb:/ipfs/Qmf1hwsPu6KQTdiZ94JZiAukbgAmBAirfdbFj48LwAeaaE\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Customer/ICustomerV1State.sol\":{\"keccak256\":\"0xcb49777410fa22e2057cf6abc0298453a397fc3426cae13cfc2749fa47fd6870\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://48e4d3dba1a4bd7f331d4cadef855ada4d8d12fe5d6e8193e69b19ae00cae002\",\"dweb:/ipfs/QmVNAVHsEdbToYkwUaMixgaTaDVVKWkqXT6EzLbbayeu6W\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/IMoonV1Customer.sol\":{\"keccak256\":\"0xbd45b0d66af2271fba8a555bde349a281c038a2687bff8ce4d6e2d505ed7a87b\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://a59c5223eadc396e0b3ac5f6328816c6b4e8396c62fe1057850dfa12bd0a5da3\",\"dweb:/ipfs/QmQ3oW9Xz2kmxsGnWffUMHqrnS5DoU5n5n5FX2tP3C6chq\"]},\"/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/libraries/base/LCustomer.sol\":{\"keccak256\":\"0x6acb4a762f349ab39bd48ff34c150b55f55aabc4826379838391749136f3aee9\",\"license\":\"GPL-2.0-or-later\",\"urls\":[\"bzz-raw://58552a104e1a046883cf116fe6748600caf7c8ebe341f82a38aa6fbfb09355cb\",\"dweb:/ipfs/QmQxUAK9fzefN6afoJ2CGyRWtETz1TEcZoJhDFCYJ3WY4V\"]}},\"version\":1}",
+    "bytecode": "",
+    "deployedBytecode": "",
+    "sourceMap": "",
+    "deployedSourceMap": "",
+    "sourcePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/IMoonV1Customer.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.15+commit.e14f2714"
+    },
+    "ast": {
+        "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/IMoonV1Customer.sol",
+        "exportedSymbols": {
+            "ICustomerV1CustomerActions": [
+                28
+            ],
+            "ICustomerV1Events": [
+                32
+            ],
+            "ICustomerV1GatorActions": [
+                36
+            ],
+            "ICustomerV1Immutables": [
+                52
+            ],
+            "ICustomerV1MarketorActions": [
+                66
+            ],
+            "ICustomerV1State": [
+                109
+            ],
+            "IMoonV1Customer": [
+                131
+            ],
+            "LCustomer": [
+                153
+            ]
+        },
+        "id": 132,
+        "license": "GPL-2.0-or-later",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 111,
+                "literals": [
+                    "solidity",
+                    "^",
+                    "0.8",
+                    ".0"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "45:23:6"
+            },
+            {
+                "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Customer/ICustomerV1Events.sol",
+                "file": "./Customer/ICustomerV1Events.sol",
+                "id": 112,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 132,
+                "sourceUnit": 33,
+                "src": "70:42:6",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Customer/ICustomerV1Immutables.sol",
+                "file": "./Customer/ICustomerV1Immutables.sol",
+                "id": 113,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 132,
+                "sourceUnit": 53,
+                "src": "113:46:6",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Customer/ICustomerV1State.sol",
+                "file": "./Customer/ICustomerV1State.sol",
+                "id": 114,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 132,
+                "sourceUnit": 110,
+                "src": "160:41:6",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Customer/ICustomerV1CustomerActions.sol",
+                "file": "./Customer/ICustomerV1CustomerActions.sol",
+                "id": 115,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 132,
+                "sourceUnit": 29,
+                "src": "202:51:6",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Customer/ICustomerV1GatorActions.sol",
+                "file": "./Customer/ICustomerV1GatorActions.sol",
+                "id": 116,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 132,
+                "sourceUnit": 37,
+                "src": "254:48:6",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "absolutePath": "/Users/admin/Documents/gitworkplace/ttswap_core/ttswap_core/Contracts/interfaces/Customer/ICustomerV1MarketorActions.sol",
+                "file": "./Customer/ICustomerV1MarketorActions.sol",
+                "id": 117,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 132,
+                "sourceUnit": 67,
+                "src": "303:51:6",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "abstract": false,
+                "baseContracts": [
+                    {
+                        "baseName": {
+                            "id": 119,
+                            "name": "ICustomerV1Events",
+                            "nodeType": "IdentifierPath",
+                            "referencedDeclaration": 32,
+                            "src": "654:17:6"
+                        },
+                        "id": 120,
+                        "nodeType": "InheritanceSpecifier",
+                        "src": "654:17:6"
+                    },
+                    {
+                        "baseName": {
+                            "id": 121,
+                            "name": "ICustomerV1Immutables",
+                            "nodeType": "IdentifierPath",
+                            "referencedDeclaration": 52,
+                            "src": "677:21:6"
+                        },
+                        "id": 122,
+                        "nodeType": "InheritanceSpecifier",
+                        "src": "677:21:6"
+                    },
+                    {
+                        "baseName": {
+                            "id": 123,
+                            "name": "ICustomerV1State",
+                            "nodeType": "IdentifierPath",
+                            "referencedDeclaration": 109,
+                            "src": "704:16:6"
+                        },
+                        "id": 124,
+                        "nodeType": "InheritanceSpecifier",
+                        "src": "704:16:6"
+                    },
+                    {
+                        "baseName": {
+                            "id": 125,
+                            "name": "ICustomerV1CustomerActions",
+                            "nodeType": "IdentifierPath",
+                            "referencedDeclaration": 28,
+                            "src": "726:26:6"
+                        },
+                        "id": 126,
+                        "nodeType": "InheritanceSpecifier",
+                        "src": "726:26:6"
+                    },
+                    {
+                        "baseName": {
+                            "id": 127,
+                            "name": "ICustomerV1GatorActions",
+                            "nodeType": "IdentifierPath",
+                            "referencedDeclaration": 36,
+                            "src": "758:23:6"
+                        },
+                        "id": 128,
+                        "nodeType": "InheritanceSpecifier",
+                        "src": "758:23:6"
+                    },
+                    {
+                        "baseName": {
+                            "id": 129,
+                            "name": "ICustomerV1MarketorActions",
+                            "nodeType": "IdentifierPath",
+                            "referencedDeclaration": 66,
+                            "src": "787:26:6"
+                        },
+                        "id": 130,
+                        "nodeType": "InheritanceSpecifier",
+                        "src": "787:26:6"
+                    }
+                ],
+                "canonicalName": "IMoonV1Customer",
+                "contractDependencies": [],
+                "contractKind": "interface",
+                "documentation": {
+                    "id": 118,
+                    "nodeType": "StructuredDocumentation",
+                    "src": "356:265:6",
+                    "text": "@title The interface for a Uniswap V3 Pool\n @notice A Uniswap pool facilitates swapping and automated market making between any two assets that strictly conform\n to the ERC20 specification\n @dev The pool interface is broken up into many smaller pieces"
+                },
+                "fullyImplemented": false,
+                "id": 131,
+                "linearizedBaseContracts": [
+                    131,
+                    66,
+                    36,
+                    28,
+                    109,
+                    52,
+                    32
+                ],
+                "name": "IMoonV1Customer",
+                "nameLocation": "631:15:6",
+                "nodeType": "ContractDefinition",
+                "nodes": [],
+                "scope": 132,
+                "src": "621:197:6",
+                "usedErrors": []
+            }
+        ],
+        "src": "45:774:6"
+    },
+    "functionHashes": {
+        "addCustomer((bytes32,uint32,address,uint40,address,uint32,address,bool,bool))": "14f9e554",
+        "addCustomer((bytes32,uint32,address,uint40,address,uint32,address,bool,bool),address)": "fc5f9f18",
+        "addRelation(uint40)": "f3c86048",
+        "gateContractAddress()": "2f17d5df",
+        "getCustomer(address)": "cb949e51",
+        "getCustomerInfobyRecommander(address,uint32)": "8370aa81",
+        "getCustomerNumbyRecommander(address)": "8a6df726",
+        "getCustomerRecommander(address)": "e71957b9",
+        "isValidCustomer(address)": "78166097",
+        "lockCustomerbyMarketor(address)": "0138a661",
+        "marketorContractAddress()": "492b7107",
+        "unlockCustomerbyMarketor(address)": "be5fdac8",
+        "updateCustomerNeckName(bytes32)": "3b63b647"
+    },
+    "gasEstimates": null
+}

@@ -5,5 +5,5 @@ pragma solidity ^0.8.0;
 /// @notice These methods compose the pool's state, and can change with any frequency including multiple times
 /// per transaction
 interface IMarketorV1State {
-    function ismarketMarketor() external view returns (bool);
+    function isValidMarketor() external view returns (bool);
 }
