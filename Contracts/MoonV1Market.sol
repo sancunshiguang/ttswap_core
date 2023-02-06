@@ -8,7 +8,7 @@ import "./NoDelegateCall.sol";
 import "./libraries/base/LShop.sol";
 
 import "./MoonV1Marketor.sol";
-import "./MoonV1Gater.sol";
+import "./MoonV1Gator.sol";
 import "./MoonV1Coin.sol";
 import "./MoonV1Thing.sol";
 import "./MoonV1Customer.sol";
@@ -32,8 +32,8 @@ contract MoonV1Market is NoDelegateCall {
 
     mapping(uint24 => int24) public profitUnitSpacing;
 
-    address public marketContractAddress;
     address public gateContractAddress;
+    address public marketContractAddress;
     address public marketorContractAddress;
     address public coinContractAddress;
     address public thingContractAddress;
@@ -48,7 +48,7 @@ contract MoonV1Market is NoDelegateCall {
     /// @dev Explain to a developer any extra details
     modifier onlyMarketor() {
         require(
-            MoonV1Marketor(marketorContractAddress).ismarketMarketor() == true
+            MoonV1Marketor(marketContractAddress).ismarketMarketor() == true
         );
         _;
     }
@@ -56,7 +56,7 @@ contract MoonV1Market is NoDelegateCall {
     /// @notice Explain to an end user what this does
     /// @dev Explain to a developer any extra details
     modifier onlyGator() {
-        require(MoonV1Gater(gateContractAddress).isValidGater());
+        require(MoonV1Gator(gateContractAddress).isValidGator());
         _;
     }
 
@@ -71,30 +71,30 @@ contract MoonV1Market is NoDelegateCall {
         );
 
         gateContractAddress = address(
-            new MoonV1Gater{salt: sha256(abi.encode(marketContractAddress))}(
+            new MoonV1Gator{salt: sha256(abi.encode(marketContractAddress))}(
                 gateContractAddress,
-                marketorContractAddress
+                marketContractAddress
             )
         );
 
         coinContractAddress = address(
             new MoonV1Coin{salt: sha256(abi.encode(marketContractAddress))}(
                 gateContractAddress,
-                marketorContractAddress
+                marketContractAddress
             )
         );
 
         thingContractAddress = address(
             new MoonV1Coin{salt: sha256(abi.encode(marketContractAddress))}(
                 gateContractAddress,
-                marketorContractAddress
+                marketContractAddress
             )
         );
 
         customerContractAddress = address(
             new MoonV1Customer{salt: sha256(abi.encode(marketContractAddress))}(
                 gateContractAddress,
-                marketorContractAddress
+                marketContractAddress
             )
         );
 
@@ -118,7 +118,7 @@ contract MoonV1Market is NoDelegateCall {
     LProfitShares.Info public marketProfitshares =
         LProfitShares.Info({
             marketshare: 20,
-            gatershare: 40,
+            gatorshare: 40,
             commandershare: 20,
             usershare: 20
         });

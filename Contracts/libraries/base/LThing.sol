@@ -20,7 +20,7 @@ library LThing {
         bool unlock;
         bool createrunlock;
         bool isUsed;
-        address addfromgater;
+        address addfromgator;
         address creator;
     }
 }

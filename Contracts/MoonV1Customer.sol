@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "./libraries/base/LCustomer.sol";
-import "./MoonV1Gater.sol";
+import "./MoonV1Gator.sol";
 import "./MoonV1Marketor.sol";
 
 contract MoonV1Customer {
@@ -34,7 +34,7 @@ contract MoonV1Customer {
     /// @notice Explain to an end user what this does
     /// @dev Explain to a developer any extra details
     modifier onlyGator() {
-        require(MoonV1Gater(gateContractAddress).isValidGater());
+        require(MoonV1Gator(gateContractAddress).isValidGator());
         _;
     }
 
@@ -160,7 +160,7 @@ contract MoonV1Customer {
         return recommenderraltionlist[_recommander][_cumstomerindex];
     }
 
-    function addCustomer(LCustomer.Info memory _customer, address _gater)
+    function addCustomer(LCustomer.Info memory _customer, address _gator)
         external
     {
         require(
@@ -168,15 +168,15 @@ contract MoonV1Customer {
                 _customer.contractAddress == msg.sender,
             "customer is exists"
         );
-        if (gateCustomerNextKey[_gater] >= 1) {
-            gateCustomerNextKey[_gater] += 1;
-        } else gateCustomerNextKey[_gater] = 1;
-        _customer.Gater = _gater;
-        _customer.GaterKey = gateCustomerNextKey[_gater];
+        if (gateCustomerNextKey[_gator] >= 1) {
+            gateCustomerNextKey[_gator] += 1;
+        } else gateCustomerNextKey[_gator] = 1;
+        _customer.Gater = _gator;
+        _customer.GaterKey = gateCustomerNextKey[_gator];
         customerUniNextKey += 1;
         customerUniKey[customerUniNextKey] = msg.sender;
         _customer.customerKey = customerUniNextKey;
         customerList[_customer.contractAddress] = _customer;
-        gateCustomerList[_gater][gateCustomerNextKey[_gater]] = msg.sender;
+        gateCustomerList[_gator][gateCustomerNextKey[_gator]] = msg.sender;
     }
 }

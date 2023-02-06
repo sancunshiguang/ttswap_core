@@ -10,15 +10,12 @@ contract MoonV1Gator {
 
     mapping(address => LGate.Info) public gateList;
 
-    address public marketContractAddress;
-    address public marketorContractAddress;
+    address public immutable marketorContractAddress;
+    address public marketCreator;
 
-    constructor(
-        address _marketContractAddress,
-        address _marketorContractAddress
-    ) {
-        marketContractAddress = _marketContractAddress;
+    constructor(address _marketorContractAddress, address _marketCreator) {
         marketorContractAddress = _marketorContractAddress;
+        marketCreator = _marketCreator;
     }
 
     /// @notice Explain to an end user what this does
@@ -40,42 +37,42 @@ contract MoonV1Gator {
 
     /////////////////////////门户管理-市场////////////////////////////
     ///////////////////////// Gate Manage///////////////////////////
-    function lockGatebyMarketor(address _gateraddress) external onlyMarketor {
+    function lockGatebyMarketor(address _gatoraddress) external onlyMarketor {
         require(
-            gateList[_gateraddress].isUsed == true,
-            "the gater isnot exist"
+            gateList[_gatoraddress].isUsed == true,
+            "the gator isnot exist"
         );
-        gateList[_gateraddress].marketunlock = true;
+        gateList[_gatoraddress].marketunlock = true;
     }
 
-    function unlockGatebyMarketor(address _gateraddress) external onlyMarketor {
+    function unlockGatebyMarketor(address _gatoraddress) external onlyMarketor {
         require(
-            gateList[_gateraddress].isUsed == true,
-            "the gater isnot exist"
+            gateList[_gatoraddress].isUsed == true,
+            "the gator isnot exist"
         );
-        gateList[_gateraddress].marketunlock = false;
+        gateList[_gatoraddress].marketunlock = false;
     }
 
     //提升权威
     //impoveauthrity
     //更新门户内容
-    function updateGatebyMarketor(LGate.Info memory _gater)
+    function updateGatebyMarketor(LGate.Info memory _gator)
         external
         onlyMarketor
     {
         require(
-            gateList[_gater.gateAddress].isUsed == true,
-            "the gater is exister"
+            gateList[_gator.gateAddress].isUsed == true,
+            "the gator is exister"
         );
-        _gater.marketunlock = gateList[_gater.gateAddress].marketunlock;
-        _gater.unlock = gateList[_gater.gateAddress].unlock;
-        gateList[_gater.gateAddress] = _gater;
+        _gator.marketunlock = gateList[_gator.gateAddress].marketunlock;
+        _gator.unlock = gateList[_gator.gateAddress].unlock;
+        gateList[_gator.gateAddress] = _gator;
     }
 
-    function delGatebyMarketor(address _gater) external onlyMarketor {
-        require(gateList[_gater].isUsed == true, "the gater is exister");
+    function delGatebyMarketor(address _gator) external onlyMarketor {
+        require(gateList[_gator].isUsed == true, "the gator is exister");
 
-        delete gateList[_gater];
+        delete gateList[_gator];
     }
 
     ///////////////////////// 门户管理-门户////////////////////////////
@@ -85,7 +82,7 @@ contract MoonV1Gator {
         require(
             gateList[msg.sender].isUsed == true &&
                 gateList[msg.sender].gateAddress == msg.sender,
-            "the gater isnot exist"
+            "the gator isnot exist"
         );
         gateList[msg.sender].unlock = true;
     }
@@ -94,40 +91,40 @@ contract MoonV1Gator {
         require(
             gateList[msg.sender].isUsed == true &&
                 gateList[msg.sender].gateAddress == msg.sender,
-            "the gater isnot exist"
+            "the gator isnot exist"
         );
         gateList[msg.sender].unlock = false;
     }
 
     //更新门户内容
-    function updateGatebyGator(LGate.Info memory _gater) external onlyGator {
+    function updateGatebyGator(LGate.Info memory _gator) external onlyGator {
         require(
-            gateList[_gater.gateAddress].isUsed == true,
-            "the gater is exister"
+            gateList[_gator.gateAddress].isUsed == true,
+            "the gator is exister"
         );
         require(
-            gateList[_gater.gateAddress].gateAddress == msg.sender,
-            "the gater is your"
+            gateList[_gator.gateAddress].gateAddress == msg.sender,
+            "the gator is your"
         );
-        _gater.marketunlock = false;
-        _gater.unlock = true;
-        gateList[_gater.gateAddress] = _gater;
+        _gator.marketunlock = false;
+        _gator.unlock = true;
+        gateList[_gator.gateAddress] = _gator;
     }
 
-    function addGater(LGate.Info memory _gater) external {
+    function addGater(LGate.Info memory _gator) external {
         require(
-            gateList[_gater.gateAddress].isUsed != true,
-            "the gater is exister"
+            gateList[_gator.gateAddress].isUsed != true,
+            "the gator is exister"
         );
-        require(_gater.gateAddress == msg.sender, "the gater is your");
+        require(_gator.gateAddress == msg.sender, "the gator is your");
 
-        _gater.marketunlock = false; //默认是被冻结状态
-        _gater.unlock = false; //默认是被冻结状态
+        _gator.marketunlock = false; //默认是被冻结状态
+        _gator.unlock = false; //默认是被冻结状态
 
-        gateList[_gater.gateAddress] = _gater; //添加门户信息到门户列表
+        gateList[_gator.gateAddress] = _gator; //添加门户信息到门户列表
     }
 
-    function isValidGater() external view returns (bool) {
+    function isValidGator() external view returns (bool) {
         return gateList[msg.sender].marketunlock;
     }
 }

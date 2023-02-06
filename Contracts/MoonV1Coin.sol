@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity ^0.8.0;
 
-import "./MoonV1Gater.sol";
+import "./MoonV1Gator.sol";
 import "./MoonV1Marketor.sol";
 
 import "./libraries/base/LCoin.sol";
@@ -38,7 +38,7 @@ contract MoonV1Coin is IMoonV1Coin {
     /// @notice Explain to an end user what this does
     /// @dev Explain to a developer any extra details
     modifier onlyGator() {
-        require(MoonV1Gater(gateContractAddress).isValidGater());
+        require(MoonV1Gator(gateContractAddress).isValidGator());
         _;
     }
 

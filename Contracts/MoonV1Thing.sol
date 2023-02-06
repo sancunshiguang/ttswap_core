@@ -2,7 +2,7 @@
 pragma solidity ^0.8.0;
 import "./libraries/base/LThing.sol";
 import "./MoonV1Marketor.sol";
-import "./MoonV1Gater.sol";
+import "./MoonV1Gator.sol";
 import "./interfaces/IMoonV1Thing.sol";
 
 contract MoonV1Thing is IMoonV1Thing {
@@ -33,7 +33,7 @@ contract MoonV1Thing is IMoonV1Thing {
     /// @notice Explain to an end user what this does
     /// @dev Explain to a developer any extra details
     modifier onlyGator() {
-        require(MoonV1Gater(gateContractAddress).isValidGater());
+        require(MoonV1Gator(gateContractAddress).isValidGator());
         _;
     }
 
@@ -51,7 +51,7 @@ contract MoonV1Thing is IMoonV1Thing {
         onlyMarketor
     {
         if (ThingsList[_ThingsInfo.contractAddress].isUsed != true) {
-            _ThingsInfo.addfromgater = msg.sender;
+            _ThingsInfo.addfromgator = msg.sender;
             _ThingsInfo.creator = msg.sender;
             _ThingsInfo.marketunlock = false;
             _ThingsInfo.unlock = false;
@@ -151,7 +151,7 @@ contract MoonV1Thing is IMoonV1Thing {
         onlyGator
     {
         require(
-            ThingsList[_internalThingsAddress].addfromgater == msg.sender,
+            ThingsList[_internalThingsAddress].addfromgator == msg.sender,
             "you have not the right"
         );
         ThingsList[_internalThingsAddress].unlock = true;
@@ -162,7 +162,7 @@ contract MoonV1Thing is IMoonV1Thing {
         onlyGator
     {
         require(
-            ThingsList[_internalThingsAddress].addfromgater == msg.sender,
+            ThingsList[_internalThingsAddress].addfromgator == msg.sender,
             "you have not the right"
         );
         ThingsList[_internalThingsAddress].unlock = false;
@@ -173,14 +173,14 @@ contract MoonV1Thing is IMoonV1Thing {
         onlyGator
     {
         require(
-            ThingsList[_ThingsInfo.contractAddress].addfromgater == msg.sender,
+            ThingsList[_ThingsInfo.contractAddress].addfromgator == msg.sender,
             "you have not the right"
         );
         require(_ThingsInfo.scope == 4, "the coin scope is not justified ");
         _ThingsInfo.marketunlock = false;
         _ThingsInfo.unlock = false;
         _ThingsInfo.isUsed = true;
-        _ThingsInfo.addfromgater = msg.sender;
+        _ThingsInfo.addfromgator = msg.sender;
         ThingsList[_ThingsInfo.contractAddress] = _ThingsInfo;
     }
 
@@ -227,7 +227,7 @@ contract MoonV1Thing is IMoonV1Thing {
         _ThingsInfo.unlock = true;
         _ThingsInfo.createrunlock = false;
         _ThingsInfo.isUsed = true;
-        _ThingsInfo.addfromgater = _gateaddress;
+        _ThingsInfo.addfromgator = _gateaddress;
         _ThingsInfo.creator = msg.sender;
         ThingsList[_ThingsInfo.contractAddress] = _ThingsInfo;
         gateThingsList[_gateaddress][_ThingsInfo.contractAddress] = _ThingsInfo
@@ -249,7 +249,7 @@ contract MoonV1Thing is IMoonV1Thing {
         _ThingsInfo.unlock = true;
         _ThingsInfo.createrunlock = false;
         _ThingsInfo.isUsed = true;
-        _ThingsInfo.addfromgater = _gateaddress;
+        _ThingsInfo.addfromgator = _gateaddress;
         _ThingsInfo.creator = msg.sender;
         ThingsList[_ThingsInfo.contractAddress] = _ThingsInfo;
         gateThingsList[_gateaddress][_ThingsInfo.contractAddress] = _ThingsInfo
