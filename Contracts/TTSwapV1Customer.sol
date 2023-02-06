@@ -23,19 +23,19 @@ contract TTSwapV1Customer is ITTSwapV1Customer {
     mapping(address => uint32) public gateCustomerNextKey;
     mapping(address => mapping(uint32 => address)) public gateCustomerList;
 
-    address public immutable gateContractAddress;
+    address public immutable gatorContractAddress;
     address public immutable marketorContractAddress;
 
-    constructor(address _gateContractAddress, address _marketorContractAddress)
+    constructor(address _gatorContractAddress, address _marketorContractAddress)
     {
-        gateContractAddress = _gateContractAddress;
+        gatorContractAddress = _gatorContractAddress;
         marketorContractAddress = _marketorContractAddress;
     }
 
     /// @notice Explain to an end user what this does
     /// @dev Explain to a developer any extra details
     modifier onlyGator() {
-        require(IGatorV1State(gateContractAddress).isValidGator());
+        require(IGatorV1State(gatorContractAddress).isValidGator());
         _;
     }
 

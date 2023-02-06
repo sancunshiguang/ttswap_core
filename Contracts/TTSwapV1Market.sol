@@ -34,12 +34,12 @@ contract TTSwapV1Market is NoDelegateCall {
 
     mapping(uint24 => int24) public profitUnitSpacing;
 
-    address public gateContractAddress;
-    address public marketContractAddress;
-    address public marketorContractAddress;
-    address public coinContractAddress;
-    address public thingContractAddress;
-    address public customerContractAddress;
+    address public immutable gatorContractAddress;
+    address public immutable marketContractAddress;
+    address public immutable marketorContractAddress;
+    address public immutable coinContractAddress;
+    address public immutable thingContractAddress;
+    address public immutable customerContractAddress;
 
     modifier onlyMarketCreator() {
         require(msg.sender == marketCreator);
@@ -56,7 +56,7 @@ contract TTSwapV1Market is NoDelegateCall {
     /// @notice Explain to an end user what this does
     /// @dev Explain to a developer any extra details
     modifier onlyGator() {
-        require(IGatorV1State(gateContractAddress).isValidGator());
+        require(IGatorV1State(gatorContractAddress).isValidGator());
         _;
     }
 
@@ -70,31 +70,31 @@ contract TTSwapV1Market is NoDelegateCall {
             }(marketCreator)
         );
 
-        gateContractAddress = address(
+        gatorContractAddress = address(
             new TTSwapV1Gator{salt: sha256(abi.encode(marketContractAddress))}(
-                gateContractAddress,
-                marketContractAddress
+                marketorContractAddress,
+                marketCreator
             )
         );
 
         coinContractAddress = address(
             new TTSwapV1Coin{salt: sha256(abi.encode(marketContractAddress))}(
-                gateContractAddress,
-                marketContractAddress
+                gatorContractAddress,
+                marketorContractAddress
             )
         );
 
         thingContractAddress = address(
             new TTSwapV1Coin{salt: sha256(abi.encode(marketContractAddress))}(
-                gateContractAddress,
-                marketContractAddress
+                gatorContractAddress,
+                marketorContractAddress
             )
         );
 
         customerContractAddress = address(
             new TTSwapV1Customer{
                 salt: sha256(abi.encode(marketContractAddress))
-            }(gateContractAddress, marketContractAddress)
+            }(gatorContractAddress, marketorContractAddress)
         );
 
         profitUnitSpacing[50] = 10;

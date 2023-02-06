@@ -6,7 +6,7 @@ pragma solidity ^0.8.0;
 interface ICustomerV1Immutables {
     /// @notice The contract that deployed the pool, which must adhere to the IUniswapV3Factory interface
     /// @return The contract address
-    function gateContractAddress() external view returns (address);
+    function gatorContractAddress() external view returns (address);
 
     /// @notice The contract that deployed the pool, which must adhere to the IUniswapV3Factory interface
     /// @return The contract address

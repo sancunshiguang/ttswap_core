@@ -23,12 +23,12 @@ contract TTSwapV1Coin is ITTSwapV1Coin {
 
     mapping(address => LCoin.Info) public coinList;
 
-    address public immutable gateContractAddress;
+    address public immutable gatorContractAddress;
     address public immutable marketorContractAddress;
 
-    constructor(address _gateContractAddress, address _marketorContractAddress)
+    constructor(address _gatorContractAddress, address _marketorContractAddress)
     {
-        gateContractAddress = _gateContractAddress;
+        gatorContractAddress = _gatorContractAddress;
         marketorContractAddress = _marketorContractAddress;
     }
 
@@ -37,7 +37,7 @@ contract TTSwapV1Coin is ITTSwapV1Coin {
     /// @notice Explain to an end user what this does
     /// @dev Explain to a developer any extra details
     modifier onlyGator() {
-        require(IGatorV1State(gateContractAddress).isValidGator());
+        require(IGatorV1State(gatorContractAddress).isValidGator());
         _;
     }
 
