@@ -14,16 +14,25 @@ contract TTSwapV1Customer is ITTSwapV1Customer {
     //customeraddress =>customer detail info
     mapping(address => LCustomer.Info) public customerList;
 
+    //平台用户号->用户信息
     mapping(uint40 => address) public customerUniKey; //用户号
+    //下一位用户号的编号
     uint40 public customerUniNextKey; //用户下个编号
+
+    //推荐人->被推荐人的序号
     mapping(address => uint32) public recommenderraltionkey;
+    //推荐人->被推荐人的序号->推荐人的用户地址
     mapping(address => mapping(uint32 => address))
         public recommenderraltionlist;
 
+    //门户地址->下一个门户用户的序号
     mapping(address => uint32) public gateCustomerNextKey;
+    //门户地址->门户用户序号->用户地址
     mapping(address => mapping(uint32 => address)) public gateCustomerList;
 
+    //门户合约地址
     address public immutable gatorContractAddress;
+    //平台合约地址
     address public immutable marketorContractAddress;
 
     constructor(address _gatorContractAddress, address _marketorContractAddress)
@@ -44,8 +53,6 @@ contract TTSwapV1Customer is ITTSwapV1Customer {
         _;
     }
 
-    /////////////////////////用户管理-市场////////////////////////////
-    /////////////////////////user Manage/////////////////////
     function lockCustomerbyMarketor(address _CustomerAddress)
         external
         onlyMarketor

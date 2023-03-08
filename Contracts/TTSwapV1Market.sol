@@ -139,48 +139,6 @@ contract TTSwapV1Market is NoDelegateCall {
     /// @param _coin the coin of the shop
     /// @param _thing the things of the shop
     /// @param _profit  交易手续费费率fee percentage of swap
-    function createShopbyMarketor(
-        address _coin,
-        address _thing,
-        uint24 _profit
-    ) external noDelegateCall onlyMarketor returns (address shop) {
-        if (
-            shopaddress[_coin][_thing] == address(0) &&
-            shopaddress[_thing][_coin] == address(0)
-        ) {
-            /*   shop = deploy(
-                marketCreator,
-                _coin,
-                _thing,
-                _profit,
-                profitUnitSpacing[_profit],
-                marketProfitshares
-            );
-*/
-            shopaddress[_coin][_thing] = shop;
-            shopaddress[_thing][_coin] = shop;
-            shopList[shop].Market = marketCreator;
-            shopList[shop].coin = _coin;
-            shopList[shop].thing = _thing;
-            shopList[shop].profit = _profit;
-            shopList[shop].unitSpacing = profitUnitSpacing[_profit];
-            gateShopList[msg.sender][shop] = true;
-            delete shop;
-        } else {
-            require(
-                gateShopList[msg.sender][shopaddress[_coin][_thing]] == true,
-                "the shop exists"
-            );
-            gateShopList[msg.sender][shopaddress[_coin][_thing]] = true;
-        }
-    }
-
-    /// @notice Explain to an end user what this does
-    /// @dev Explain to a developer any extra details
-    /// @param _coin the coin of the shop
-    /// @param _thing the things of the shop
-    /// @param _profit  交易手续费费率fee percentage of swap
-
     function createShopbyGator(
         address _coin,
         address _thing,
@@ -198,8 +156,8 @@ contract TTSwapV1Market is NoDelegateCall {
             shopaddress[_coin][_thing] == address(0) &&
             shopaddress[_thing][_coin] == address(0)
         ) {
-            /*shop = deploy(
-                msg.sender,
+            /* shop = deploy(
+                marketContractAddress,
                 _coin,
                 _thing,
                 _profit,
@@ -208,21 +166,14 @@ contract TTSwapV1Market is NoDelegateCall {
             );*/
 
             shopaddress[_coin][_thing] = shop;
-            shopaddress[_thing][_coin] = shop;
-            shopList[shop].Market = marketCreator;
+            shopList[shop].Market = marketContractAddress;
             shopList[shop].coin = _coin;
             shopList[shop].thing = _thing;
             shopList[shop].profit = _profit;
             shopList[shop].unitSpacing = profitUnitSpacing[_profit];
-            marketShopList[shop] = true;
+            gateShopList[msg.sender][shop] = true;
             delete shop;
-        } else {
-            require(
-                marketShopList[shopaddress[_coin][_thing]] == true,
-                "the shop exists"
-            );
-            marketShopList[shopaddress[_coin][_thing]] = true;
-        }
+        } else {}
     }
 
     function raiseShopLevelbyMarketor(address shop) external onlyMarketor {
