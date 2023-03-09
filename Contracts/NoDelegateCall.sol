@@ -18,13 +18,11 @@ abstract contract NoDelegateCall {
     ///     and the use of immutable means the address bytes are copied in every place the modifier is used.
     function checkNotDelegateCall() private view {
         require(address(this) == original);
-        加一个测试内容
     }
 
     /// @notice Prevents delegatecall into the modified method
     modifier noDelegateCall() {
         checkNotDelegateCall();
         _;
-
     }
 }
