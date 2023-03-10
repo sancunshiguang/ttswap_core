@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity ^0.8.0;
 
-import "./Interfaces/ITTSwapV1Shop.sol";
+import "./interfaces/ITTSwapV1Shop.sol";
 
 import "./libraries/LLowGasSafeMath.sol";
 import "./libraries/LSafeCast.sol";
