@@ -3,17 +3,21 @@ pragma solidity ^0.8.0;
 
 import "./LFullMath.sol";
 import "./LSqrtPriceMath.sol";
+import "./LLowGasSafeMath.sol";
+import "./LSafeCast.sol";
 
 /// @title Computes the result of a swap within ticks
 /// @notice Contains methods for computing the result of a swap within a single tick price range, i.e., a single tick.
 library LSwapMath {
+    using LSafeCast for uint256;
+    using LSafeCast for int256;
+
     /// @notice Computes the result of swapping some amount in, or amount out, given the parameters of the swap,调整内容,删除computeSwapStep中每一步去计算手续费,买的时间开始计手续费,卖的时候最后计手续费
     /// @dev The fee, plus the amount in, will never exceed the amount remaining if the swap's `amountSpecified` is positive
     /// @param sqrtRatioCurrentX96 The current sqrt price of the pool
     /// @param sqrtRatioTargetX96 The price that cannot be exceeded, from which the direction of the swap is inferred
     /// @param liquidity The usable liquidity
     /// @param amountRemaining How much input or output amount is remaining to be swapped in/out
-    /// @param feePips The fee taken from the input amount, expressed in hundredths of a bip
     /// @return sqrtRatioNextX96 The price after swapping the amount in/out, not to exceed the price target
     /// @return amountIn The amount to be swapped in, of either token0 or token1, based on the direction of the swap
     /// @return amountOut The amount to be received, of either token0 or token1, based on the direction of the swap
@@ -22,8 +26,7 @@ library LSwapMath {
         uint160 sqrtRatioCurrentX96,
         uint160 sqrtRatioTargetX96,
         uint128 liquidity,
-        int256 amountRemaining,
-        uint24 feePips
+        int256 amountRemaining
     )
         internal
         pure
@@ -38,11 +41,6 @@ library LSwapMath {
         bool exactIn = amountRemaining >= 0;
 
         if (exactIn) {
-            uint256 amountRemainingLessFee = LFullMath.mulDiv(
-                uint256(amountRemaining),
-                1e6 - feePips,
-                1e6
-            );
             amountIn = zeroForOne
                 ? LSqrtPriceMath.getAmount0Delta(
                     sqrtRatioTargetX96,
@@ -56,13 +54,13 @@ library LSwapMath {
                     liquidity,
                     true
                 );
-            if (amountRemainingLessFee >= amountIn)
+            if (amountRemaining.toUint256() >= amountIn)
                 sqrtRatioNextX96 = sqrtRatioTargetX96;
             else
                 sqrtRatioNextX96 = LSqrtPriceMath.getNextSqrtPriceFromInput(
                     sqrtRatioCurrentX96,
                     liquidity,
-                    amountRemainingLessFee,
+                    amountRemaining.toUint256(),
                     zeroForOne
                 );
         } else {
@@ -134,15 +132,6 @@ library LSwapMath {
             amountOut = uint256(-amountRemaining);
         }
 
-        if (exactIn && sqrtRatioNextX96 != sqrtRatioTargetX96) {
-            // we didn't reach the target, so take the remainder of the maximum input as fee
-            feeAmount = uint256(amountRemaining) - amountIn;
-        } else {
-            feeAmount = LFullMath.mulDivRoundingUp(
-                amountIn,
-                feePips,
-                1e6 - feePips
-            );
-        }
+        feeAmount = 0;
     }
 }
