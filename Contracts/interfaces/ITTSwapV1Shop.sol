@@ -1,20 +1,18 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 pragma solidity ^0.8.0;
 
-import "./market/ITTSwapV1MarketImmutables.sol";
-import "./market/ITTSwapV1MarketState.sol";
-import "./market/ITTSwapV1MarketDerivedState.sol";
-import "./market/ITTSwapV1MarketCreatorActions.sol";
-import "./market/ITTSwapV1MarketManagerActions.sol";
-import "./market/ITTSwapV1MarketGatorActions.sol";
-import "./market/ITTSwapV1MarketEvents.sol";
+import "./shop/IMoonV1ShopActions.sol";
+import "./shop/IMoonV1ShopDerivedState.sol";
+import "./shop/IMoonV1ShopEvents.sol";
+import "./shop/IMoonV1ShopImmutables.sol";
+import "./shop/IMoonV1ShopOwnerActions.sol";
+import "./shop/IMoonV1ShopState.sol";
 
 interface ITTSwapV1Shop is
-    ITTSwapV1MarketImmutables,
-    ITTSwapV1MarketState,
-    ITTSwapV1MarketDerivedState,
-    ITTSwapV1MarketCreatorActions,
-    ITTSwapV1MarketManagerActions,
-    ITTSwapV1MarketGatorActions,
-    ITTSwapV1MarketEvents
+    IMoonV1ShopActions,
+    IMoonV1ShopDerivedState,
+    IMoonV1ShopEvents,
+    IMoonV1ShopImmutables,
+    IMoonV1ShopState,
+    IMoonV1ShopOwnerActions
 {}
