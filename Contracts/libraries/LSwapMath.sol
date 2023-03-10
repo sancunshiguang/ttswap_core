@@ -7,7 +7,7 @@ import "./LSqrtPriceMath.sol";
 /// @title Computes the result of a swap within ticks
 /// @notice Contains methods for computing the result of a swap within a single tick price range, i.e., a single tick.
 library LSwapMath {
-    /// @notice Computes the result of swapping some amount in, or amount out, given the parameters of the swap
+    /// @notice Computes the result of swapping some amount in, or amount out, given the parameters of the swap,调整内容,删除computeSwapStep中每一步去计算手续费,买的时间开始计手续费,卖的时候最后计手续费
     /// @dev The fee, plus the amount in, will never exceed the amount remaining if the swap's `amountSpecified` is positive
     /// @param sqrtRatioCurrentX96 The current sqrt price of the pool
     /// @param sqrtRatioTargetX96 The price that cannot be exceeded, from which the direction of the swap is inferred
