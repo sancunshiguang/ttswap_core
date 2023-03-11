@@ -10,9 +10,9 @@ library LCoin {
         uint256 maxSupply; //流通量
         uint256 totalSupply; //发行量
         address contractAddress; //合约地址
-        bytes32 WhitePaperUrl; //白皮书地址
-        bytes32 OfficalWebsite; //官网
-        bytes32 blockExplorerUrl; //区块查询
+       // bytes32 WhitePaperUrl; //白皮书地址
+       // bytes32 OfficalWebsite; //官网
+        //bytes32 blockExplorerUrl; //区块查询
         bool marketunlock; //市场锁
         bool unlock; //门户锁
         address creator; //添加人

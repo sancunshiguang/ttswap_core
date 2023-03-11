@@ -2,7 +2,6 @@
 pragma solidity ^0.8.0;
 
 import "./interfaces/ITTSwapV1Shop.sol";
-import "./interfaces/market/ITTSwapV1MarketState.sol";
 
 import "./libraries/LLowGasSafeMath.sol";
 import "./libraries/LSafeCast.sol";
@@ -15,13 +14,12 @@ import "./libraries/TransferHelper.sol";
 import "./libraries/LSwapMath.sol";
 
 import "./TTSwapV1Market.sol";
-import "./TTSwapV1Customer.sol";
 import "./TTSwapV1ShopCreate.sol";
 import "./interfaces/IERC20Minimal.sol";
 
 import "./NoDelegateCall.sol";
 
-contract TTSwapV1Shop is NoDelegateCall {
+contract TTSwapV1Shop_changefeesource is ITTSwapV1Shop, NoDelegateCall {
     using LLowGasSafeMath for uint256;
     using LLowGasSafeMath for int256;
     using LSafeCast for uint256;
@@ -32,12 +30,12 @@ contract TTSwapV1Shop is NoDelegateCall {
     using LProof for LProof.Info;
     using LPriceLog for LPriceLog.PriceLog[65535];
 
-    address public immutable market;
-    address public immutable coin;
-    address public immutable thing;
-    uint24 public immutable profit;
-    int24 public unitSpacing;
-    uint128 public maxInvestionPerUnit;
+    address public immutable override market;
+    address public immutable override coin;
+    address public immutable override thing;
+    uint24 public immutable override profit;
+    int24 public override unitSpacing;
+    uint128 public override maxInvestionPerUnit;
     LProfitShares.Info public profitshares;
     //思考,关于门店的创建者
     address public gater;
@@ -58,11 +56,11 @@ contract TTSwapV1Shop is NoDelegateCall {
         bool unlocked;
     }
 
-    State0 public state0;
+    State0 public override state0;
 
     //总费用
-    uint256 public profitGrowthGlobalCoinX128;
-    //  uint256 public  profitGrowthGlobalThingX128;
+    uint256 public override profitGrowthGlobalCoinX128;
+    //  uint256 public override profitGrowthGlobalThingX128;
 
     //协议费
     struct ProtocalProfits {
@@ -70,17 +68,17 @@ contract TTSwapV1Shop is NoDelegateCall {
         uint128 thing;
     }
 
-    ProtocalProfits public protocolProfits;
+    ProtocalProfits public override protocolProfits;
 
-    uint128 public investion;
+    uint128 public override investion;
 
-    mapping(int24 => LUnit.Info) public units;
+    mapping(int24 => LUnit.Info) public override units;
 
-    mapping(int16 => uint256) public unitBitmap;
+    mapping(int16 => uint256) public override unitBitmap;
 
-    mapping(bytes32 => LProof.Info) public proofs;
+    mapping(bytes32 => LProof.Info) public override proofs;
 
-    LPriceLog.PriceLog[65535] public priceLogers;
+    LPriceLog.PriceLog[65535] public override priceLogers;
 
     constructor() {
         (
@@ -110,7 +108,7 @@ contract TTSwapV1Shop is NoDelegateCall {
         state0.unlocked = true;
     }
     modifier onlyMarketManager() {
-        require(ITTSwapV1MarketState(market).ismarketManager() == true);
+        require(IMarketorV1State(market).ismarketManager() == true);
         _;
     }
 
@@ -173,6 +171,7 @@ contract TTSwapV1Shop is NoDelegateCall {
     )
         external
         view
+        override
         noDelegateCall
         returns (
             int56 unitCumulativeInside,
@@ -266,6 +265,7 @@ contract TTSwapV1Shop is NoDelegateCall {
     )
         external
         view
+        override
         noDelegateCall
         returns (
             int56[] memory unitCumulatives,
@@ -285,21 +285,21 @@ contract TTSwapV1Shop is NoDelegateCall {
 
     function increaseLookerCardinalityNext(
         uint16 lookerCardinalityNext
-    ) external lock noDelegateCall {
+    ) external override lock noDelegateCall {
         uint16 lookerCardinalityNextOld = state0.lookerCardinalityNext; // for the event
         uint16 lookerCardinalityNextNew = priceLogers.grow(
             lookerCardinalityNextOld,
             lookerCardinalityNext
         );
         state0.lookerCardinalityNext = lookerCardinalityNextNew;
-        // if (lookerCardinalityNextOld != lookerCardinalityNextNew)
-        //     emit IncreaseObservationCardinalityNext(
-        //         lookerCardinalityNextOld,
-        //         lookerCardinalityNextNew
-        //     );
+        if (lookerCardinalityNextOld != lookerCardinalityNextNew)
+            emit IncreaseObservationCardinalityNext(
+                lookerCardinalityNextOld,
+                lookerCardinalityNextNew
+            );
     }
 
-    function initialize(uint160 sqrtPriceX96) external {
+    function initialize(uint160 sqrtPriceX96) external override {
         require(state0.sqrtPriceX96 == 0, "AI");
 
         int24 unit = LUnitMath.getUnitAtSqrtRatio(sqrtPriceX96);
@@ -318,7 +318,7 @@ contract TTSwapV1Shop is NoDelegateCall {
             unlocked: true
         });
 
-        //emit Initialize(sqrtPriceX96, unit);
+        emit Initialize(sqrtPriceX96, unit);
     }
 
     struct ModifyProofParams {
@@ -473,15 +473,20 @@ contract TTSwapV1Shop is NoDelegateCall {
             }
         }
 
-        uint256 feeGrowthInside0X128 = units.getFeeGrowthInside(
-            _unitLower,
-            _unitUpper,
-            unit,
-            _feeGrowthGlobalCoinX128
-            //_feeGrowthGlobalThingX128
-        );
+        (uint256 feeGrowthInside0X128, uint256 feeGrowthInside1X128) = units
+            .getFeeGrowthInside(
+                _unitLower,
+                _unitUpper,
+                unit,
+                _feeGrowthGlobalCoinX128
+                //_feeGrowthGlobalThingX128
+            );
 
-        proof.update(investionDelta, feeGrowthInside0X128);
+        proof.update(
+            investionDelta,
+            feeGrowthInside0X128,
+            feeGrowthInside1X128
+        );
 
         // clear any tick data that is no longer needed
         if (investionDelta < 0) {
@@ -500,7 +505,7 @@ contract TTSwapV1Shop is NoDelegateCall {
         int24 _unitUpper,
         uint128 amount,
         bytes calldata data
-    ) external lock returns (uint256 coinamount, uint256 thingamount) {
+    ) external override lock returns (uint256 coinamount, uint256 thingamount) {
         require(amount > 0);
         (, int256 amount0Int, int256 amount1Int) = _modifyproof(
             ModifyProofParams({
@@ -528,15 +533,15 @@ contract TTSwapV1Shop is NoDelegateCall {
         if (thingamount > 0)
             require(balance1Before.add(thingamount) <= thingbalance(), "M1");
 
-        // emit Mint(
-        //     msg.sender,
-        //     recipient,
-        //     _unitLower,
-        //     _unitUpper,
-        //     amount,
-        //     coinamount,
-        //     thingamount
-        // );
+        emit Mint(
+            msg.sender,
+            recipient,
+            _unitLower,
+            _unitUpper,
+            amount,
+            coinamount,
+            thingamount
+        );
     }
 
     function collect(
@@ -544,7 +549,7 @@ contract TTSwapV1Shop is NoDelegateCall {
         int24 _unitLower,
         int24 _unitUpper,
         uint128 amount0Requested
-    ) external lock returns (uint128 amount0) {
+    ) external override lock returns (uint128 amount0) {
         // we don't need to checkTicks here, because invalid proofs will never have non-zero tokensOwed{0,1}
         LProof.Info storage proof = proofs.get(
             msg.sender,
@@ -561,7 +566,7 @@ contract TTSwapV1Shop is NoDelegateCall {
             TransferHelper.safeTransfer(coin, recipient, amount0);
         }
 
-        //  emit Collect(msg.sender, recipient, _unitLower, _unitUpper, amount0);
+        emit Collect(msg.sender, recipient, _unitLower, _unitUpper, amount0);
     }
 
     //// @inheritdoc IUniswapV3PoolActions
@@ -570,7 +575,7 @@ contract TTSwapV1Shop is NoDelegateCall {
         int24 _unitLower,
         int24 _unitUpper,
         uint128 amount
-    ) external lock returns (uint256 amount0, uint256 amount1) {
+    ) external override lock returns (uint256 amount0, uint256 amount1) {
         (
             LProof.Info storage proof,
             int256 amount0Int,
@@ -588,10 +593,13 @@ contract TTSwapV1Shop is NoDelegateCall {
         amount1 = uint256(-amount1Int);
 
         if (amount0 > 0 || amount1 > 0) {
-            proof.tokensOwed0 = proof.tokensOwed0 + uint128(amount0);
+            (proof.tokensOwed0, proof.tokensOwed1) = (
+                proof.tokensOwed0 + uint128(amount0),
+                proof.tokensOwed1 + uint128(amount1)
+            );
         }
 
-        // emit Burn(msg.sender, _unitLower, _unitUpper, amount, amount0, amount1);
+        emit Burn(msg.sender, _unitLower, _unitUpper, amount, amount0, amount1);
     }
 
     struct SwapCache {
@@ -661,13 +669,18 @@ contract TTSwapV1Shop is NoDelegateCall {
         int256 amountSpecified,
         uint160 sqrtPriceLimitX96,
         bytes calldata data
-    ) external noDelegateCall returns (int256 amount0, int256 amount1) {
+    )
+        external
+        override
+        noDelegateCall
+        returns (int256 amount0, int256 amount1)
+    {
         bool _zeroForOne = zeroForOne;
         address _recipient = recipient;
         require(amountSpecified != 0, "AS");
         require(marketlock == false, "market lock");
         State0 memory state0Start = state0;
-        address commanderaddress = TTSwapV1Customer(market)
+        address commanderaddress = TTSwapV1Market(market)
             .getCustomerRecommander(msg.sender);
         address gateraddress = TTSwapV1Market(market).getCustomerRecommander(
             msg.sender
@@ -892,7 +905,7 @@ contract TTSwapV1Shop is NoDelegateCall {
                 }
             }
         } else {
-            // profitGrowthGlobalThingX128 = state.profitGrowthGlobalX128;
+            //  profitGrowthGlobalThingX128 = state.profitGrowthGlobalX128;
             if (state.protocolFee > 0) {
                 shopfee[gateraddress].thing +=
                     (state.protocolFee / 100) *
@@ -968,15 +981,15 @@ contract TTSwapV1Shop is NoDelegateCall {
             );
         }
 
-        // emit Swap(
-        //     msg.sender,
-        //     _recipient,
-        //     amount0,
-        //     amount1,
-        //     state.sqrtPriceX96,
-        //     state.investion,
-        //     state.unit
-        // );
+        emit Swap(
+            msg.sender,
+            _recipient,
+            amount0,
+            amount1,
+            state.sqrtPriceX96,
+            state.investion,
+            state.unit
+        );
         state0.unlocked = true;
     }
 
@@ -986,7 +999,7 @@ contract TTSwapV1Shop is NoDelegateCall {
         uint256 amount0,
         uint256 amount1,
         bytes calldata data
-    ) external lock noDelegateCall {
+    ) external override lock noDelegateCall {
         uint128 _investion = investion;
         require(_investion > 0, "L");
         address commanderaddress = TTSwapV1Market(market)
@@ -1071,11 +1084,11 @@ contract TTSwapV1Shop is NoDelegateCall {
                     );
                 }
 
-                // profitGrowthGlobalThingX128 += LFullMath.mulDiv(
-                //     paid1 - fees1,
-                //     FixedPoint128.Q128,
-                //     _investion
-                // );
+            //    profitGrowthGlobalThingX128 += LFullMath.mulDiv(
+           //         paid1 - fees1,
+           //         FixedPoint128.Q128,
+           //         _investion
+          //      );
             }
         }
 
@@ -1086,7 +1099,7 @@ contract TTSwapV1Shop is NoDelegateCall {
     function setShopFeeProtocolbyMarketor(
         uint8 profitProtocol0,
         uint8 profitProtocol1
-    ) external lock onlyMarketManager {
+    ) external override lock onlyMarketManager {
         require(
             (profitProtocol0 == 0 ||
                 (profitProtocol0 >= 2 && profitProtocol0 <= 10)) &&
@@ -1095,12 +1108,12 @@ contract TTSwapV1Shop is NoDelegateCall {
         );
         uint8 profitProtocolOld = state0.profitProtocol;
         state0.profitProtocol = profitProtocol0 + (profitProtocol1 << 4);
-        // emit SetFeeProtocol(
-        //     profitProtocolOld % 16,
-        //     profitProtocolOld >> 4,
-        //     profitProtocol0,
-        //     profitProtocol1
-        // );
+        emit SetFeeProtocol(
+            profitProtocolOld % 16,
+            profitProtocolOld >> 4,
+            profitProtocol0,
+            profitProtocol1
+        );
     }
 
     function setShopFeeProfitSharesbyMarketor(
@@ -1108,7 +1121,7 @@ contract TTSwapV1Shop is NoDelegateCall {
         uint8 _gatershare,
         uint8 _commandershare,
         uint8 _usershare
-    ) external lock onlyMarketManager {
+    ) external override lock onlyMarketManager {
         require(
             (_marketshare + _gatershare + _commandershare + _usershare) == 100,
             "profitshare config error"
@@ -1124,6 +1137,7 @@ contract TTSwapV1Shop is NoDelegateCall {
     //// @inheritdoc ITTSwapV1ShopOwnerActions
     function collectProtocol()
         external
+        override
         lock
         returns (uint128 coinamount, uint128 thingamount)
     {
@@ -1135,6 +1149,6 @@ contract TTSwapV1Shop is NoDelegateCall {
             TransferHelper.safeTransfer(coin, msg.sender, coinamount);
         }
 
-        //   emit CollectProtocol(msg.sender, msg.sender, coinamount);
+        emit CollectProtocol(msg.sender, msg.sender, coinamount);
     }
 }

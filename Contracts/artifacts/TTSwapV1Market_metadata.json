@@ -1,0 +1,247 @@
+{
+	"compiler": {
+		"version": "0.8.16+commit.07a7930e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "gatorContractAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "marketContractAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "marketCreator",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "marketorContractAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"constructor": {
+					"details": "Explain to a developer any extra details"
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"constructor": {
+					"notice": "Explain to an end user what this does"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Contracts/TTSwapV1Market.sol": "TTSwapV1Market"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Contracts/NoDelegateCall.sol": {
+			"keccak256": "0x2ab29a2d0765c68425e211acb66687eb1955b77396fc051bb0a0f6ea5786d6b1",
+			"license": "BUSL-1.1",
+			"urls": [
+				"bzz-raw://2c2ed438b9a3b74f0b38adc33085e1383861eb4948f3501327fb4e72a778bb94",
+				"dweb:/ipfs/Qmf6WNNJSP69fJWGbSQvA6GPdvyJFSP6oTfLbwiiAJ1zKj"
+			]
+		},
+		"Contracts/TTSwapV1Gator.sol": {
+			"keccak256": "0xa366547600ef5e448dd36a42c3d20fa5e1f9342cf19a9f05f9454654c09319e3",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://f1f2cdc8ffb5c3234d19292fab0a1ffe6b2ed10e6876ed76a0ad7365bf22feea",
+				"dweb:/ipfs/QmXxwwrZvBeDsDKZZBjGqPmDqgUvt7W3y96eAQccWedQw6"
+			]
+		},
+		"Contracts/TTSwapV1Market.sol": {
+			"keccak256": "0x2f8ee8b616837f5513f44da53656e023ac3ae810946c878f8aae262c8ea62e86",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://3cbc3376be7e10fabcc1d790b6dade019e5569441695430d11c4ff5592d06c5f",
+				"dweb:/ipfs/QmVR28RBqs1TxcfoqmmBxeQLCwEJYAsRiv5jE1sFMcdiqu"
+			]
+		},
+		"Contracts/TTSwapV1Marketor.sol": {
+			"keccak256": "0x57129b68012b22ba3f1cf375ced0b8f98fbe7ebd31c8959733ca3cb750e9d361",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://2aa8b27a0c3841496c7f39f744da75b0bd7e303a2d329f97b4f5a8a4a61b4fc5",
+				"dweb:/ipfs/QmbvTGeDbPaYT27M399A7cADbXT5zWb2CQktVBySvG98JT"
+			]
+		},
+		"Contracts/interfaces/Gator/IGatorV1CustomerActions.sol": {
+			"keccak256": "0x5166995889ad764ce7379845df7e6f55f5114294f18795a07da173466418c010",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://c101332272e023fd17dd3e96270424a42aa257e02f14650314bf133ff3105221",
+				"dweb:/ipfs/QmUznHitEEPeBRc7PxrUMggmyLveBtW2MJyKGUt8KDrjUn"
+			]
+		},
+		"Contracts/interfaces/Gator/IGatorV1Events.sol": {
+			"keccak256": "0xcddaf97a05e7a5b4706705dd9618ad9a97ebe6559365deaa3bcbe21eef84d462",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://0432642546822e3e6bb77c89815cda36aea85154bb8431c0837db1b5fb199dcd",
+				"dweb:/ipfs/QmYSkG65spVSpN1WDkF5iFtPSBvYeDWvSNRVpYygR9iJkr"
+			]
+		},
+		"Contracts/interfaces/Gator/IGatorV1GatorActions.sol": {
+			"keccak256": "0x43e783a765bf4f5a4de8591ceb9556c215372e068e80827637f22aec41460359",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://23b287fe77c961c6f7dc7b7a1591eddd0772b687faf41e7c0400c66114e8a452",
+				"dweb:/ipfs/QmVKaaxjY7ya3HSkdUt7zqw2J8BqxMDGvUbUjobVCcUsHk"
+			]
+		},
+		"Contracts/interfaces/Gator/IGatorV1Immutables.sol": {
+			"keccak256": "0x8cbeb007a8321dee1ef73ed11e1af76c30acb64c6829d2c0d02c6f6cb4e8fdc3",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://00b5dc4c7cbcec92fdfa6e6d512209d63cf2cac6a1ae6969b853172fc9fb8319",
+				"dweb:/ipfs/QmYoRZuN8XvT6eESqy5BFEDxbs12beWtBHgkjxna3Jy7CF"
+			]
+		},
+		"Contracts/interfaces/Gator/IGatorV1MarketorActions.sol": {
+			"keccak256": "0xcd27934c7288dbf950975c629280d20b5d2b79f3f1d4cda94e866f2b24255fa9",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://7ea87e856a6e52e3171e4395b05feff4264454f7e5a106117f4f49328aa72492",
+				"dweb:/ipfs/QmYZkYNsqvEnKsqN5HLjo2JsWJqksniSkRXkC8bJsPKGJp"
+			]
+		},
+		"Contracts/interfaces/Gator/IGatorV1State.sol": {
+			"keccak256": "0xe3c37b988423c5989fce2b078a598788c052dc23403dff95509d57464bb1c12f",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://5c3766825c2fa5442d265a5524ae150626d18e235be99d1b485182ebbc9c0e1e",
+				"dweb:/ipfs/Qme7hkgr2K3vEUst6YPBaq55dycpXBaffWLKXDSPX3QnvK"
+			]
+		},
+		"Contracts/interfaces/ITTSwapV1Gator.sol": {
+			"keccak256": "0xcc6a9f594874f75e8f19b2d65a3d0892bd9d3f75636e93e8d52cf4aea6703652",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://c434a90d0ac2d2afc87a43147c85d3f9d48530eb2cd8fd2b491262be8a7238db",
+				"dweb:/ipfs/QmWyyaWVvSVVduUiS3vKQ4guLHnP4ugcCQp46kNvLsz2iJ"
+			]
+		},
+		"Contracts/interfaces/ITTSwapV1Marketor.sol": {
+			"keccak256": "0xcec6819c6010fada016d2adffd3ae7973365e768c6144df626506c5a00873565",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://59feb2895b8fda46ab09fd4b63605aef2bd315169102ef43898501dcdb92b3da",
+				"dweb:/ipfs/QmWxs1ftk6xYceq2dRKZ3m5zwrvNYHdLt1xPo1Ntauii9g"
+			]
+		},
+		"Contracts/interfaces/Marketor/IMarketorV1Events.sol": {
+			"keccak256": "0x1019146e8e3c5f553f93a5f1f7d31c0a7227b25ce87d8d76124fbdaae200615f",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://11113d24362e6a66e5e897ad597992660a06e8641cb5bdaebe74823504b0e225",
+				"dweb:/ipfs/QmZY3dqUFb6DkxHUveC3BpyxsyrTHujoSg7q9mWUnwNYzc"
+			]
+		},
+		"Contracts/interfaces/Marketor/IMarketorV1Immutables.sol": {
+			"keccak256": "0xc6fe9db9aafa196283670e6f83a876df0e6fe84074b06012865db8efd0581aa3",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://be174ba35045eeee018680400cd4cc238125664b0c23bc28f68ef27b1f8f5201",
+				"dweb:/ipfs/QmXGdMa25gG1A4FEctyXn7vkB7VUnJaqY5NHpTgzbHZbbi"
+			]
+		},
+		"Contracts/interfaces/Marketor/IMarketorV1MarketCreatorActions.sol": {
+			"keccak256": "0x85fe030c431f4ce0818038e673a58d35b30ac6fdb6760b24c105afbd0b94cc15",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://08d50a6cd32a067e30d45964d7d018fbec1b0b34b00529548815b6a98d4e9ee5",
+				"dweb:/ipfs/QmaRBpH3M7vt628KB1UqonAoUD1UcqNXSEsPdeyThZ55VC"
+			]
+		},
+		"Contracts/interfaces/Marketor/IMarketorV1State.sol": {
+			"keccak256": "0xaad87d4ddb4502c8908f30707db6628834d3df7bef3d68d6d50179d0db672ee7",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://905d7e65de99ddf8edc93aac5a9e6139e7813ac472abefa987b4ea85c73e4803",
+				"dweb:/ipfs/QmNbEzweLBYEuiTbURiPuoyyqgmx59XtA5Ugo7uEvQXRCS"
+			]
+		},
+		"Contracts/libraries/base/LCustomer.sol": {
+			"keccak256": "0x6acb4a762f349ab39bd48ff34c150b55f55aabc4826379838391749136f3aee9",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://58552a104e1a046883cf116fe6748600caf7c8ebe341f82a38aa6fbfb09355cb",
+				"dweb:/ipfs/QmQxUAK9fzefN6afoJ2CGyRWtETz1TEcZoJhDFCYJ3WY4V"
+			]
+		},
+		"Contracts/libraries/base/LGate.sol": {
+			"keccak256": "0xdbbcc3e545cc8d7d8eebe4b1dbaccee4d2adbce4785cb7ac5f4712093c72db52",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://1d7251ca8ee12ad7009fe9f280aa8be028502f51e7465fe5314b85b9a2815991",
+				"dweb:/ipfs/QmRQ5Z78r3qDKhBbRbDs8d4ThNk5fLN5S5g6tosHwa6jdo"
+			]
+		}
+	},
+	"version": 1
+}
