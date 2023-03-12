@@ -34,14 +34,12 @@ interface ITTSwapV1ShopEvents {
     /// @param tickLower The lower tick of the position
     /// @param tickUpper The upper tick of the position
     /// @param amount0 The amount of token0 fees collected
-    /// @param amount1 The amount of token1 fees collected
     event Collect(
         address indexed owner,
         address recipient,
         int24 indexed tickLower,
         int24 indexed tickUpper,
-        uint128 amount0,
-        uint128 amount1
+        uint128 amount0
     );
 
     /// @notice Emitted when a position's liquidity is removed
@@ -121,11 +119,9 @@ interface ITTSwapV1ShopEvents {
     /// @param sender The address that collects the protocol fees
     /// @param recipient The address that receives the collected protocol fees
     /// @param amount0 The amount of token0 protocol fees that is withdrawn
-    /// @param amount0 The amount of token1 protocol fees that is withdrawn
     event CollectProtocol(
         address indexed sender,
         address indexed recipient,
-        uint128 amount0,
-        uint128 amount1
+        uint128 amount0
     );
 }

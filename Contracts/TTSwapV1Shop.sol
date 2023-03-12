@@ -2,6 +2,7 @@
 pragma solidity ^0.8.0;
 
 import "./interfaces/ITTSwapV1Shop.sol";
+import "./interfaces/Marketor/IMarketorV1State.sol";
 
 import "./libraries/LLowGasSafeMath.sol";
 import "./libraries/LSafeCast.sol";
@@ -20,7 +21,7 @@ import "./interfaces/IERC20Minimal.sol";
 
 import "./NoDelegateCall.sol";
 
-contract TTSwapV1Shop_changefeesource is ITTSwapV1Shop, NoDelegateCall {
+contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
     using LLowGasSafeMath for uint256;
     using LLowGasSafeMath for int256;
     using LSafeCast for uint256;
@@ -109,7 +110,7 @@ contract TTSwapV1Shop_changefeesource is ITTSwapV1Shop, NoDelegateCall {
         state0.unlocked = true;
     }
     modifier onlyMarketManager() {
-        require(IMarketorV1State(market).ismarketManager() == true);
+        require(IMarketorV1State(market).isValidMarketor() == true);
         _;
     }
 
@@ -474,20 +475,15 @@ contract TTSwapV1Shop_changefeesource is ITTSwapV1Shop, NoDelegateCall {
             }
         }
 
-        (uint256 feeGrowthInside0X128, uint256 feeGrowthInside1X128) = units
-            .getFeeGrowthInside(
-                _unitLower,
-                _unitUpper,
-                unit,
-                _feeGrowthGlobalCoinX128
-                //_feeGrowthGlobalThingX128
-            );
-
-        proof.update(
-            investionDelta,
-            feeGrowthInside0X128,
-            feeGrowthInside1X128
+        uint256 feeGrowthInside0X128 = units.getFeeGrowthInside(
+            _unitLower,
+            _unitUpper,
+            unit,
+            _feeGrowthGlobalCoinX128
+            //_feeGrowthGlobalThingX128
         );
+
+        proof.update(investionDelta, feeGrowthInside0X128);
 
         // clear any tick data that is no longer needed
         if (investionDelta < 0) {
@@ -748,24 +744,19 @@ contract TTSwapV1Shop_changefeesource is ITTSwapV1Shop, NoDelegateCall {
             step.sqrtPriceNextX96 = LUnitMath.getSqrtRatioAtUnit(step.unitNext);
 
             // compute values to swap to the target tick, price limit, or point where input/output amount is exhausted
-            (
-                state.sqrtPriceX96,
-                step.amountIn,
-                step.amountOut,
-                step.feeAmount
-            ) = LSwapMath.computeSwapStep(
-                state.sqrtPriceX96,
-                (
-                    _zeroForOne
-                        ? step.sqrtPriceNextX96 < sqrtPriceLimitX96
-                        : step.sqrtPriceNextX96 > sqrtPriceLimitX96
-                )
-                    ? sqrtPriceLimitX96
-                    : step.sqrtPriceNextX96,
-                state.investion,
-                state.amountSpecifiedRemaining,
-                profit
-            );
+            (state.sqrtPriceX96, step.amountIn, step.amountOut) = LSwapMath
+                .computeSwapStep(
+                    state.sqrtPriceX96,
+                    (
+                        _zeroForOne
+                            ? step.sqrtPriceNextX96 < sqrtPriceLimitX96
+                            : step.sqrtPriceNextX96 > sqrtPriceLimitX96
+                    )
+                        ? sqrtPriceLimitX96
+                        : step.sqrtPriceNextX96,
+                    state.investion,
+                    state.amountSpecifiedRemaining
+                );
 
             if (exactInput) {
                 state.amountSpecifiedRemaining -= (step.amountIn +
@@ -815,17 +806,13 @@ contract TTSwapV1Shop_changefeesource is ITTSwapV1Shop, NoDelegateCall {
                         );
                         cache.computedLatestObservation = true;
                     }
+                    //要调整
                     int128 investionNet = units.cross(
                         step.unitNext,
                         (
                             _zeroForOne
                                 ? state.profitGrowthGlobalX128
                                 : profitGrowthGlobalCoinX128
-                        ),
-                        (
-                            _zeroForOne
-                                ? profitGrowthGlobalCoinX128
-                                : state.profitGrowthGlobalX128
                         ),
                         cache.secondsPerinvestionCumulativeX128,
                         cache.unitCumulative,
@@ -885,7 +872,7 @@ contract TTSwapV1Shop_changefeesource is ITTSwapV1Shop, NoDelegateCall {
             if (state.protocolFee > 0) {
                 shopfee[gateraddress].coin +=
                     (state.protocolFee / 100) *
-                    profitshares.gatershare;
+                    profitshares.gatorshare;
                 shopfee[market].coin +=
                     (state.protocolFee / 100) *
                     profitshares.marketshare;
@@ -910,7 +897,7 @@ contract TTSwapV1Shop_changefeesource is ITTSwapV1Shop, NoDelegateCall {
             if (state.protocolFee > 0) {
                 shopfee[gateraddress].thing +=
                     (state.protocolFee / 100) *
-                    profitshares.gatershare;
+                    profitshares.gatorshare;
                 shopfee[market].thing +=
                     (state.protocolFee / 100) *
                     profitshares.marketshare;
@@ -997,17 +984,16 @@ contract TTSwapV1Shop_changefeesource is ITTSwapV1Shop, NoDelegateCall {
     //// @inheritdoc ITTSwapV1ShopActions
     function flash(
         address recipient,
+        address _gateraddress,
         uint256 amount0,
         uint256 amount1,
         bytes calldata data
     ) external override lock noDelegateCall {
         uint128 _investion = investion;
         require(_investion > 0, "L");
-        address commanderaddress = TTSwapV1Market(market)
+        address commanderaddress = TTSwapV1Customer(market)
             .getCustomerRecommander(msg.sender);
-        address gateraddress = TTSwapV1Market(market).getCustomerRecommander(
-            msg.sender
-        );
+        address gateraddress = _gateraddress;
         uint256 fee0 = LFullMath.mulDivRoundingUp(amount0, profit, 1e6);
         uint256 fee1 = LFullMath.mulDivRoundingUp(amount1, profit, 1e6);
         uint256 balance0Before = coinbalance();
@@ -1037,7 +1023,7 @@ contract TTSwapV1Shop_changefeesource is ITTSwapV1Shop, NoDelegateCall {
             uint256 fees0 = profitProtocol0 == 0 ? 0 : paid0 / profitProtocol0;
             if (uint128(fees0) > 0) {
                 shopfee[gateraddress].coin += uint128(
-                    (fees0 / 100) * profitshares.gatershare
+                    (fees0 / 100) * profitshares.gatorshare
                 );
                 shopfee[market].coin += uint128(
                     (fees0 / 100) * profitshares.marketshare
@@ -1064,7 +1050,7 @@ contract TTSwapV1Shop_changefeesource is ITTSwapV1Shop, NoDelegateCall {
             uint256 fees1 = profitProtocol1 == 0 ? 0 : paid1 / profitProtocol1;
             if (uint128(fees1) > 0) {
                 shopfee[gateraddress].thing += uint128(
-                    (fees1 / 100) * profitshares.gatershare
+                    (fees1 / 100) * profitshares.gatorshare
                 );
                 shopfee[market].thing += uint128(
                     (fees1 / 100) * profitshares.marketshare
@@ -1129,7 +1115,7 @@ contract TTSwapV1Shop_changefeesource is ITTSwapV1Shop, NoDelegateCall {
         );
         profitshares = LProfitShares.Info({
             marketshare: _marketshare,
-            gatershare: _gatershare,
+            gatorshare: _gatershare,
             commandershare: _commandershare,
             usershare: _usershare
         });
