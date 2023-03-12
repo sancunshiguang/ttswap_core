@@ -14,10 +14,7 @@ interface ITTSwapV1ShopOwnerActions {
 
     /// @notice Collect the protocol fee accrued to the pool
     /// @return amount0 The protocol fee collected in token0
-    /// @return amount1 The protocol fee collected in token1
-    function collectProtocol()
-        external
-        returns (uint128 amount0, uint128 amount1);
+    function collectProtocol() external returns (uint128 amount0);
 
     function setShopFeeProfitSharesbyMarketor(
         uint8 _marketshare,

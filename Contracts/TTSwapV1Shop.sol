@@ -1045,39 +1045,39 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
                 }
             }
         }
-        if (paid1 > 0) {
-            uint8 profitProtocol1 = state0.profitProtocol >> 4;
-            uint256 fees1 = profitProtocol1 == 0 ? 0 : paid1 / profitProtocol1;
-            if (uint128(fees1) > 0) {
-                shopfee[gateraddress].thing += uint128(
-                    (fees1 / 100) * profitshares.gatorshare
-                );
-                shopfee[market].thing += uint128(
-                    (fees1 / 100) * profitshares.marketshare
-                );
-                if (commanderaddress != address(0)) {
-                    shopfee[commanderaddress].thing += uint128(
-                        fees1 * profitshares.commandershare
-                    );
-                    shopfee[market].thing += uint128(
-                        fees1 * profitshares.usershare
-                    );
-                } else {
-                    shopfee[gateraddress].thing += uint128(
-                        fees1 * profitshares.commandershare
-                    );
-                    shopfee[msg.sender].thing += uint8(
-                        fees1 * profitshares.usershare
-                    );
-                }
+        // if (paid1 > 0) {
+        //     uint8 profitProtocol1 = state0.profitProtocol >> 4;
+        //     uint256 fees1 = profitProtocol1 == 0 ? 0 : paid1 / profitProtocol1;
+        //     if (uint128(fees1) > 0) {
+        //         shopfee[gateraddress].thing += uint128(
+        //             (fees1 / 100) * profitshares.gatorshare
+        //         );
+        //         shopfee[market].thing += uint128(
+        //             (fees1 / 100) * profitshares.marketshare
+        //         );
+        //         if (commanderaddress != address(0)) {
+        //             shopfee[commanderaddress].thing += uint128(
+        //                 fees1 * profitshares.commandershare
+        //             );
+        //             shopfee[market].thing += uint128(
+        //                 fees1 * profitshares.usershare
+        //             );
+        //         } else {
+        //             shopfee[gateraddress].thing += uint128(
+        //                 fees1 * profitshares.commandershare
+        //             );
+        //             shopfee[msg.sender].thing += uint8(
+        //                 fees1 * profitshares.usershare
+        //             );
+        //         }
 
-                //    profitGrowthGlobalThingX128 += LFullMath.mulDiv(
-                //         paid1 - fees1,
-                //         FixedPoint128.Q128,
-                //         _investion
-                //      );
-            }
-        }
+        //         //    profitGrowthGlobalThingX128 += LFullMath.mulDiv(
+        //         //         paid1 - fees1,
+        //         //         FixedPoint128.Q128,
+        //         //         _investion
+        //         //      );
+        //     }
+        // }
 
         // emit Flash(msg.sender, recipient, amount0, amount1, paid0, paid1);
     }
@@ -1126,7 +1126,7 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
         external
         override
         lock
-        returns (uint128 coinamount, uint128 thingamount)
+        returns (uint128 coinamount)
     {
         coinamount = shopfee[msg.sender].coin;
 
