@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 /// @title Permissionless pool actions
 /// @notice Contains pool methods that can be called by anyone
-interface IMoonV1ShopActions {
+interface ITTSwapV1ShopActions {
     /// @notice Sets the initial price for the pool
     /// @dev Price is represented as a sqrt(amountToken1/amountToken0) Q64.96 value
     /// @param sqrtPriceX96 the initial sqrt price of the pool as a Q64.96
@@ -37,16 +37,13 @@ interface IMoonV1ShopActions {
     /// @param tickLower The lower tick of the position for which to collect fees
     /// @param tickUpper The upper tick of the position for which to collect fees
     /// @param amount0Requested How much token0 should be withdrawn from the fees owed
-    /// @param amount1Requested How much token1 should be withdrawn from the fees owed
     /// @return amount0 The amount of fees collected in token0
-    /// @return amount1 The amount of fees collected in token1
     function collect(
         address recipient,
         int24 tickLower,
         int24 tickUpper,
-        uint128 amount0Requested,
-        uint128 amount1Requested
-    ) external returns (uint128 amount0, uint128 amount1);
+        uint128 amount0Requested
+    ) external returns (uint128 amount0);
 
     /// @notice Burn liquidity from the sender and account tokens owed for the liquidity to the position
     /// @dev Can be used to trigger a recalculation of fees owed to a position by calling with an amount of 0
@@ -65,6 +62,7 @@ interface IMoonV1ShopActions {
     /// @notice Swap token0 for token1, or token1 for token0
     /// @dev The caller of this method receives a callback in the form of IUniswapV3SwapCallback#uniswapV3SwapCallback
     /// @param recipient The address to receive the output of the swap
+    /// @param _gateraddress The address to receive the output of the swap
     /// @param zeroForOne The direction of the swap, true for token0 to token1, false for token1 to token0
     /// @param amountSpecified The amount of the swap, which implicitly configures the swap as exact input (positive), or exact output (negative)
     /// @param sqrtPriceLimitX96 The Q64.96 sqrt price limit. If zero for one, the price cannot be less than this
@@ -74,6 +72,7 @@ interface IMoonV1ShopActions {
     /// @return amount1 The delta of the balance of token1 of the pool, exact when negative, minimum when positive
     function swap(
         address recipient,
+        address _gateraddress,
         bool zeroForOne,
         int256 amountSpecified,
         uint160 sqrtPriceLimitX96,
@@ -99,6 +98,7 @@ interface IMoonV1ShopActions {
     /// @dev This method is no-op if the pool already has an observationCardinalityNext greater than or equal to
     /// the input observationCardinalityNext.
     /// @param lookerCardinalityNext The desired minimum number of observations for the pool to store
-    function increaseLookerCardinalityNext(uint16 lookerCardinalityNext)
-        external;
+    function increaseLookerCardinalityNext(
+        uint16 lookerCardinalityNext
+    ) external;
 }

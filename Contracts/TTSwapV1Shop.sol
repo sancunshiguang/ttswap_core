@@ -648,6 +648,7 @@ contract TTSwapV1Shop is NoDelegateCall {
     /// @notice Swap token0 for token1, or token1 for token0
     /// @dev The caller of this method receives a callback in the form of IUniswapV3SwapCallback#uniswapV3SwapCallback
     /// @param recipient The address to receive the output of the swap
+    /// @param _gateraddress The address to receive the output of the swap
     /// @param zeroForOne The direction of the swap, true for token0 to token1, false for token1 to token0
     /// @param amountSpecified The amount of the swap, which implicitly configures the swap as exact input (positive), or exact output (negative)
     /// @param sqrtPriceLimitX96 The Q64.96 sqrt price limit. If zero for one, the price cannot be less than this
@@ -657,11 +658,17 @@ contract TTSwapV1Shop is NoDelegateCall {
     /// @return amount1 The delta of the balance of token1 of the pool, exact when negative, minimum when positive
     function swap(
         address recipient,
+        address _gateraddress,
         bool zeroForOne, //true :buy,false:sell
         int256 amountSpecified,
         uint160 sqrtPriceLimitX96,
         bytes calldata data
-    ) external noDelegateCall returns (int256 amount0, int256 amount1) {
+    )
+        external
+        override
+        noDelegateCall
+        returns (int256 amount0, int256 amount1)
+    {
         bool _zeroForOne = zeroForOne;
         address _recipient = recipient;
         require(amountSpecified != 0, "AS");
@@ -669,9 +676,7 @@ contract TTSwapV1Shop is NoDelegateCall {
         State0 memory state0Start = state0;
         address commanderaddress = TTSwapV1Customer(market)
             .getCustomerRecommander(msg.sender);
-        address gateraddress = TTSwapV1Market(market).getCustomerRecommander(
-            msg.sender
-        ); //这个还要处理一下
+        address gateraddress = _gateraddress;
         require(state0Start.unlocked, "LOK");
         require(
             zeroForOne

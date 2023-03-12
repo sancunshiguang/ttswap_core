@@ -17,6 +17,8 @@ library LProof {
         uint256 coinFeeGrowthInsideLastX128;
         // the fees owed to the position owner in token0/token1
         uint128 tokensOwed0;
+        // the fees owed to the position owner in token0/token1
+        uint128 tokensOwed1;
     }
 
     /// @notice Returns the Info struct of a position, given an owner and position boundaries

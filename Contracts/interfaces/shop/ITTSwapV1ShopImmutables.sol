@@ -3,14 +3,14 @@ pragma solidity ^0.8.0;
 
 /// @title Pool state that never changes
 /// @notice These parameters are fixed for a pool forever, i.e., the methods will always return the same values
-interface IMoonV1ShopImmutables {
+interface ITTSwapV1ShopImmutables {
     /// @notice The contract that deployed the pool, which must adhere to the IUniswapV3Factory interface
     /// @return market The contract address
     function market() external view returns (address market);
 
     /// @notice The first of the two tokens of the pool, sorted by address
     /// @return coin The token contract address
-     
+
     function coin() external view returns (address coin);
 
     /// @notice The second of the two tokens of the pool, sorted by address
@@ -18,7 +18,7 @@ interface IMoonV1ShopImmutables {
     function thing() external view returns (address thing);
 
     /// @notice The pool's fee in hundredths of a bip, i.e. 1e-6
-    /// @return profit The fee 
+    /// @return profit The fee
     function profit() external view returns (uint24 profit);
 
     /// @notice The pool tick spacing
@@ -33,5 +33,8 @@ interface IMoonV1ShopImmutables {
     /// @dev This parameter is enforced per tick to prevent liquidity from overflowing a uint128 at any point, and
     /// also prevents out-of-range liquidity from being used to prevent adding in-range liquidity to a pool
     /// @return maxInvestionPerUnit The max amount of liquidity per tick
-    function maxInvestionPerUnit() external view returns (uint128 maxInvestionPerUnit);
+    function maxInvestionPerUnit()
+        external
+        view
+        returns (uint128 maxInvestionPerUnit);
 }

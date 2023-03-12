@@ -4,7 +4,7 @@ pragma solidity ^0.8.0;
 /// @title Pool state that can change
 /// @notice These methods compose the pool's state, and can change with any frequency including multiple times
 /// per transaction
-interface IMoonV1ShopState {
+interface ITTSwapV1ShopState {
     /// @notice The 0th storage slot in the pool stores many values, and is exposed as a single method to save gas
     /// when accessed externally.
     /// @return sqrtPriceX96 The current price of the pool as a sqrt(token1/token0) Q64.96 value
@@ -35,10 +35,6 @@ interface IMoonV1ShopState {
     /// @dev This value can overflow the uint256
     function profitGrowthGlobalCoinX128() external view returns (uint256);
 
-    /// @notice The fee growth as a Q128.128 fees of token1 collected per unit of liquidity for the entire life of the pool
-    /// @dev This value can overflow the uint256
-    function profitGrowthGlobalThingX128() external view returns (uint256);
-
     /// @notice The amounts of token0 and token1 that are owed to the protocol
     /// @dev Protocol fees will never exceed uint128 max in either token
     function protocolProfits()
@@ -65,14 +61,15 @@ interface IMoonV1ShopState {
     /// Outside values can only be used if the tick is initialized, i.e. if liquidityGross is greater than 0.
     /// In addition, these values are only relative and must be used only in comparison to previous snapshots for
     /// a specific position.
-    function units(int24 unit)
+    function units(
+        int24 unit
+    )
         external
         view
         returns (
             uint128 liquidityGross,
             int128 liquidityNet,
             uint256 feeGrowthOutside0X128,
-            uint256 feeGrowthOutside1X128,
             int56 tickCumulativeOutside,
             uint160 secondsPerLiquidityOutsideX128,
             uint32 secondsOutside,
@@ -89,13 +86,14 @@ interface IMoonV1ShopState {
     /// Returns feeGrowthInside1LastX128 fee growth of token1 inside the tick range as of the last mint/burn/poke,
     /// Returns tokensOwed0 the computed amount of token0 owed to the position as of the last mint/burn/poke,
     /// Returns tokensOwed1 the computed amount of token1 owed to the position as of the last mint/burn/poke
-    function proofs(bytes32 key)
+    function proofs(
+        bytes32 key
+    )
         external
         view
         returns (
             uint128 liquidity,
             uint256 feeGrowthInside0LastX128,
-            uint256 feeGrowthInside1LastX128,
             uint128 tokensOwed0,
             uint128 tokensOwed1
         );
@@ -108,7 +106,9 @@ interface IMoonV1ShopState {
     /// Returns unitCumulative the tick multiplied by seconds elapsed for the life of the pool as of the observation timestamp,
     /// Returns secondsPerInvestionCumulativeX128 the seconds per in range liquidity for the life of the pool as of the observation timestamp,
     /// Returns initialized whether the observation has been initialized and the values are safe to use
-    function priceLogers(uint256 index)
+    function priceLogers(
+        uint256 index
+    )
         external
         view
         returns (

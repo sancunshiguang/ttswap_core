@@ -14,6 +14,7 @@ import "./libraries/TransferHelper.sol";
 import "./libraries/LSwapMath.sol";
 
 import "./TTSwapV1Market.sol";
+import "./TTSwapV1Customer.sol";
 import "./TTSwapV1ShopCreate.sol";
 import "./interfaces/IERC20Minimal.sol";
 
@@ -656,6 +657,7 @@ contract TTSwapV1Shop_changefeesource is ITTSwapV1Shop, NoDelegateCall {
     /// @notice Swap token0 for token1, or token1 for token0
     /// @dev The caller of this method receives a callback in the form of IUniswapV3SwapCallback#uniswapV3SwapCallback
     /// @param recipient The address to receive the output of the swap
+    /// @param _gateraddress The address to receive the output of the swap
     /// @param zeroForOne The direction of the swap, true for token0 to token1, false for token1 to token0
     /// @param amountSpecified The amount of the swap, which implicitly configures the swap as exact input (positive), or exact output (negative)
     /// @param sqrtPriceLimitX96 The Q64.96 sqrt price limit. If zero for one, the price cannot be less than this
@@ -665,6 +667,7 @@ contract TTSwapV1Shop_changefeesource is ITTSwapV1Shop, NoDelegateCall {
     /// @return amount1 The delta of the balance of token1 of the pool, exact when negative, minimum when positive
     function swap(
         address recipient,
+        address _gateraddress,
         bool zeroForOne, //true :buy,false:sell
         int256 amountSpecified,
         uint160 sqrtPriceLimitX96,
@@ -680,11 +683,9 @@ contract TTSwapV1Shop_changefeesource is ITTSwapV1Shop, NoDelegateCall {
         require(amountSpecified != 0, "AS");
         require(marketlock == false, "market lock");
         State0 memory state0Start = state0;
-        address commanderaddress = TTSwapV1Market(market)
+        address commanderaddress = TTSwapV1Customer(market)
             .getCustomerRecommander(msg.sender);
-        address gateraddress = TTSwapV1Market(market).getCustomerRecommander(
-            msg.sender
-        ); //这个还要处理一下
+        address gateraddress = _gateraddress;
         require(state0Start.unlocked, "LOK");
         require(
             zeroForOne
@@ -1084,11 +1085,11 @@ contract TTSwapV1Shop_changefeesource is ITTSwapV1Shop, NoDelegateCall {
                     );
                 }
 
-            //    profitGrowthGlobalThingX128 += LFullMath.mulDiv(
-           //         paid1 - fees1,
-           //         FixedPoint128.Q128,
-           //         _investion
-          //      );
+                //    profitGrowthGlobalThingX128 += LFullMath.mulDiv(
+                //         paid1 - fees1,
+                //         FixedPoint128.Q128,
+                //         _investion
+                //      );
             }
         }
 
