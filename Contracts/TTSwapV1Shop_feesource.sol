@@ -21,7 +21,7 @@ import "./interfaces/IERC20Minimal.sol";
 
 import "./NoDelegateCall.sol";
 
-contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
+contract TTSwapV1Shop_feesource is ITTSwapV1Shop, NoDelegateCall {
     using LLowGasSafeMath for uint256;
     using LLowGasSafeMath for int256;
     using LSafeCast for uint256;
@@ -735,18 +735,18 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
                     state.amountSpecifiedRemaining
                 );
 
-            // if (exactInput) {
-            //     state.amountSpecifiedRemaining -= (step.amountIn +
-            //         step.feeAmount).toInt256();
-            //     state.amountCalculated = state.amountCalculated.sub(
-            //         step.amountOut.toInt256()
-            //     );
-            // } else {
-            //     state.amountSpecifiedRemaining += step.amountOut.toInt256();
-            //     state.amountCalculated = state.amountCalculated.add(
-            //         (step.amountIn + step.feeAmount).toInt256()
-            //     );
-            // }
+            if (exactInput) {
+                state.amountSpecifiedRemaining -= (step.amountIn +
+                    step.feeAmount).toInt256();
+                state.amountCalculated = state.amountCalculated.sub(
+                    step.amountOut.toInt256()
+                );
+            } else {
+                state.amountSpecifiedRemaining += step.amountOut.toInt256();
+                state.amountCalculated = state.amountCalculated.add(
+                    (step.amountIn + step.feeAmount).toInt256()
+                );
+            }
 
             // if the protocol fee is on, calculate how much is owed, decrement feeAmount, and increment protocolFee
             // if (cache.profitProtocol > 0) {
