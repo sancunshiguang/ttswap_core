@@ -1,0 +1,1934 @@
+{
+	"compiler": {
+		"version": "0.8.16+commit.07a7930e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "int24",
+						"name": "tickLower",
+						"type": "int24"
+					},
+					{
+						"indexed": true,
+						"internalType": "int24",
+						"name": "tickUpper",
+						"type": "int24"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint128",
+						"name": "amount",
+						"type": "uint128"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount0",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount1",
+						"type": "uint256"
+					}
+				],
+				"name": "Burn",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "int24",
+						"name": "tickLower",
+						"type": "int24"
+					},
+					{
+						"indexed": true,
+						"internalType": "int24",
+						"name": "tickUpper",
+						"type": "int24"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint128",
+						"name": "amount0",
+						"type": "uint128"
+					}
+				],
+				"name": "Collect",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint128",
+						"name": "amount0",
+						"type": "uint128"
+					}
+				],
+				"name": "CollectProtocol",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount0",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount1",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "paid0",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "paid1",
+						"type": "uint256"
+					}
+				],
+				"name": "Flash",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint16",
+						"name": "observationCardinalityNextOld",
+						"type": "uint16"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint16",
+						"name": "observationCardinalityNextNew",
+						"type": "uint16"
+					}
+				],
+				"name": "IncreaseObservationCardinalityNext",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint160",
+						"name": "sqrtPriceX96",
+						"type": "uint160"
+					},
+					{
+						"indexed": false,
+						"internalType": "int24",
+						"name": "tick",
+						"type": "int24"
+					}
+				],
+				"name": "Initialize",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "int24",
+						"name": "tickLower",
+						"type": "int24"
+					},
+					{
+						"indexed": true,
+						"internalType": "int24",
+						"name": "tickUpper",
+						"type": "int24"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint128",
+						"name": "amount",
+						"type": "uint128"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount0",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount1",
+						"type": "uint256"
+					}
+				],
+				"name": "Mint",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint8",
+						"name": "feeProtocol0Old",
+						"type": "uint8"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint8",
+						"name": "feeProtocol1Old",
+						"type": "uint8"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint8",
+						"name": "feeProtocol0New",
+						"type": "uint8"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint8",
+						"name": "feeProtocol1New",
+						"type": "uint8"
+					}
+				],
+				"name": "SetFeeProtocol",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "int256",
+						"name": "amount0",
+						"type": "int256"
+					},
+					{
+						"indexed": false,
+						"internalType": "int256",
+						"name": "amount1",
+						"type": "int256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint160",
+						"name": "sqrtPriceX96",
+						"type": "uint160"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint128",
+						"name": "liquidity",
+						"type": "uint128"
+					},
+					{
+						"indexed": false,
+						"internalType": "int24",
+						"name": "tick",
+						"type": "int24"
+					}
+				],
+				"name": "Swap",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "int24",
+						"name": "_unitLower",
+						"type": "int24"
+					},
+					{
+						"internalType": "int24",
+						"name": "_unitUpper",
+						"type": "int24"
+					},
+					{
+						"internalType": "uint128",
+						"name": "amount",
+						"type": "uint128"
+					}
+				],
+				"name": "burn",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "amount0",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount1",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "coin",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					},
+					{
+						"internalType": "int24",
+						"name": "_unitLower",
+						"type": "int24"
+					},
+					{
+						"internalType": "int24",
+						"name": "_unitUpper",
+						"type": "int24"
+					},
+					{
+						"internalType": "uint128",
+						"name": "amount0Requested",
+						"type": "uint128"
+					}
+				],
+				"name": "collect",
+				"outputs": [
+					{
+						"internalType": "uint128",
+						"name": "amount0",
+						"type": "uint128"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "collectProtocol",
+				"outputs": [
+					{
+						"internalType": "uint128",
+						"name": "coinamount",
+						"type": "uint128"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_gateraddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount0",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount1",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "flash",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "gatelock",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "gater",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint16",
+						"name": "lookerCardinalityNext",
+						"type": "uint16"
+					}
+				],
+				"name": "increaseLookerCardinalityNext",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint160",
+						"name": "sqrtPriceX96",
+						"type": "uint160"
+					}
+				],
+				"name": "initialize",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "investion",
+				"outputs": [
+					{
+						"internalType": "uint128",
+						"name": "",
+						"type": "uint128"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "lockShopbyGetor",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "lockShopbyMarketor",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "market",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "marketlock",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "maxInvestionPerUnit",
+				"outputs": [
+					{
+						"internalType": "uint128",
+						"name": "",
+						"type": "uint128"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					},
+					{
+						"internalType": "int24",
+						"name": "_unitLower",
+						"type": "int24"
+					},
+					{
+						"internalType": "int24",
+						"name": "_unitUpper",
+						"type": "int24"
+					},
+					{
+						"internalType": "uint128",
+						"name": "amount",
+						"type": "uint128"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "mint",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "coinamount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "thingamount",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint32[]",
+						"name": "secondsAgos",
+						"type": "uint32[]"
+					}
+				],
+				"name": "observe",
+				"outputs": [
+					{
+						"internalType": "int56[]",
+						"name": "unitCumulatives",
+						"type": "int56[]"
+					},
+					{
+						"internalType": "uint160[]",
+						"name": "secondsPerinvestionCumulativeX128s",
+						"type": "uint160[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "priceLogers",
+				"outputs": [
+					{
+						"internalType": "uint32",
+						"name": "blockTimestamp",
+						"type": "uint32"
+					},
+					{
+						"internalType": "int56",
+						"name": "unitCumulative",
+						"type": "int56"
+					},
+					{
+						"internalType": "uint160",
+						"name": "secondsPerInvestionCumulativeX128",
+						"type": "uint160"
+					},
+					{
+						"internalType": "bool",
+						"name": "initialized",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "profit",
+				"outputs": [
+					{
+						"internalType": "uint24",
+						"name": "",
+						"type": "uint24"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "profitGrowthGlobalCoinX128",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "profitshares",
+				"outputs": [
+					{
+						"internalType": "uint8",
+						"name": "marketshare",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint8",
+						"name": "gatorshare",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint8",
+						"name": "commandershare",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint8",
+						"name": "usershare",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"name": "proofs",
+				"outputs": [
+					{
+						"internalType": "uint128",
+						"name": "liquidity",
+						"type": "uint128"
+					},
+					{
+						"internalType": "uint256",
+						"name": "coinFeeGrowthInsideLastX128",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint128",
+						"name": "tokensOwed0",
+						"type": "uint128"
+					},
+					{
+						"internalType": "uint128",
+						"name": "tokensOwed1",
+						"type": "uint128"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "protocolProfits",
+				"outputs": [
+					{
+						"internalType": "uint128",
+						"name": "coin",
+						"type": "uint128"
+					},
+					{
+						"internalType": "uint128",
+						"name": "thing",
+						"type": "uint128"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "scope",
+				"outputs": [
+					{
+						"internalType": "uint8",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint8",
+						"name": "_marketshare",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint8",
+						"name": "_gatershare",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint8",
+						"name": "_commandershare",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint8",
+						"name": "_usershare",
+						"type": "uint8"
+					}
+				],
+				"name": "setShopFeeProfitSharesbyMarketor",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint8",
+						"name": "profitProtocol0",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint8",
+						"name": "profitProtocol1",
+						"type": "uint8"
+					}
+				],
+				"name": "setShopFeeProtocolbyMarketor",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "shopfee",
+				"outputs": [
+					{
+						"internalType": "uint128",
+						"name": "coin",
+						"type": "uint128"
+					},
+					{
+						"internalType": "uint128",
+						"name": "thing",
+						"type": "uint128"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "int24",
+						"name": "_unitLower",
+						"type": "int24"
+					},
+					{
+						"internalType": "int24",
+						"name": "_unitUpper",
+						"type": "int24"
+					}
+				],
+				"name": "snapshotCumulativesInside",
+				"outputs": [
+					{
+						"internalType": "int56",
+						"name": "unitCumulativeInside",
+						"type": "int56"
+					},
+					{
+						"internalType": "uint160",
+						"name": "secondsPerinvestionInsideX128",
+						"type": "uint160"
+					},
+					{
+						"internalType": "uint32",
+						"name": "secondsInside",
+						"type": "uint32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "state0",
+				"outputs": [
+					{
+						"internalType": "uint160",
+						"name": "sqrtPriceX96",
+						"type": "uint160"
+					},
+					{
+						"internalType": "int24",
+						"name": "unit",
+						"type": "int24"
+					},
+					{
+						"internalType": "uint16",
+						"name": "lookerIndex",
+						"type": "uint16"
+					},
+					{
+						"internalType": "uint16",
+						"name": "lookerCardinality",
+						"type": "uint16"
+					},
+					{
+						"internalType": "uint16",
+						"name": "lookerCardinalityNext",
+						"type": "uint16"
+					},
+					{
+						"internalType": "uint8",
+						"name": "profitProtocol",
+						"type": "uint8"
+					},
+					{
+						"internalType": "bool",
+						"name": "unlocked",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_gateraddress",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "zeroForOne",
+						"type": "bool"
+					},
+					{
+						"internalType": "int256",
+						"name": "amountSpecified",
+						"type": "int256"
+					},
+					{
+						"internalType": "uint160",
+						"name": "sqrtPriceLimitX96",
+						"type": "uint160"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "swap",
+				"outputs": [
+					{
+						"internalType": "int256",
+						"name": "amount0",
+						"type": "int256"
+					},
+					{
+						"internalType": "int256",
+						"name": "amount1",
+						"type": "int256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "thing",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "int16",
+						"name": "",
+						"type": "int16"
+					}
+				],
+				"name": "unitBitmap",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "unitSpacing",
+				"outputs": [
+					{
+						"internalType": "int24",
+						"name": "",
+						"type": "int24"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "int24",
+						"name": "",
+						"type": "int24"
+					}
+				],
+				"name": "units",
+				"outputs": [
+					{
+						"internalType": "uint128",
+						"name": "InvestGross",
+						"type": "uint128"
+					},
+					{
+						"internalType": "int128",
+						"name": "InvestNet",
+						"type": "int128"
+					},
+					{
+						"internalType": "uint256",
+						"name": "coinFeeGrowthOutsideX128",
+						"type": "uint256"
+					},
+					{
+						"internalType": "int56",
+						"name": "unitCumulativeOutside",
+						"type": "int56"
+					},
+					{
+						"internalType": "uint160",
+						"name": "secondsPerLiquidityOutsideX128",
+						"type": "uint160"
+					},
+					{
+						"internalType": "uint32",
+						"name": "secondsOutside",
+						"type": "uint32"
+					},
+					{
+						"internalType": "bool",
+						"name": "initialized",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "unlockShopbyGetor",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "unlockShopbyMarketor",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"burn(int24,int24,uint128)": {
+					"details": "noDelegateCall is applied indirectly via _modifyproof"
+				},
+				"collectProtocol()": {
+					"returns": {
+						"coinamount": "The protocol fee collected in token0"
+					}
+				},
+				"flash(address,address,uint256,uint256,bytes)": {
+					"details": "The caller of this method receives a callback in the form of IUniswapV3FlashCallback#uniswapV3FlashCallbackCan be used to donate underlying tokens pro-rata to currently in-range liquidity providers by calling with 0 amount{0,1} and sending the donation amount(s) from the callback",
+					"params": {
+						"_gateraddress": "The address which will receive the token0 and token1 amounts",
+						"amount0": "The amount of token0 to send",
+						"amount1": "The amount of token1 to send",
+						"data": "Any data to be passed through to the callback",
+						"recipient": "The address which will receive the token0 and token1 amounts"
+					}
+				},
+				"increaseLookerCardinalityNext(uint16)": {
+					"details": "This method is no-op if the pool already has an observationCardinalityNext greater than or equal to the input observationCardinalityNext.",
+					"params": {
+						"lookerCardinalityNext": "The desired minimum number of observations for the pool to store"
+					}
+				},
+				"initialize(uint160)": {
+					"details": "Price is represented as a sqrt(amountToken1/amountToken0) Q64.96 value",
+					"params": {
+						"sqrtPriceX96": "the initial sqrt price of the pool as a Q64.96"
+					}
+				},
+				"observe(uint32[])": {
+					"details": "To get a time weighted average tick or liquidity-in-range, you must call this with two values, one representing the beginning of the period and another for the end of the period. E.g., to get the last hour time-weighted average tick, you must call it with secondsAgos = [3600, 0].The time weighted average tick represents the geometric time weighted average price of the pool, in log base sqrt(1.0001) of token1 / token0. The TickMath library can be used to go from a tick value to a ratio.",
+					"params": {
+						"secondsAgos": "From how long ago each cumulative tick and liquidity value should be returned"
+					},
+					"returns": {
+						"secondsPerinvestionCumulativeX128s": "Cumulative seconds per liquidity-in-range value as of each `secondsAgos` from the current block timestamp",
+						"unitCumulatives": "Cumulative tick values as of each `secondsAgos` from the current block timestamp"
+					}
+				},
+				"setShopFeeProtocolbyMarketor(uint8,uint8)": {
+					"params": {
+						"profitProtocol0": "new protocol fee for token0 of the pool",
+						"profitProtocol1": "new protocol fee for token1 of the pool"
+					}
+				},
+				"swap(address,address,bool,int256,uint160,bytes)": {
+					"details": "The caller of this method receives a callback in the form of IUniswapV3SwapCallback#uniswapV3SwapCallback",
+					"params": {
+						"_gateraddress": "The address to receive the output of the swap",
+						"amountSpecified": "The amount of the swap, which implicitly configures the swap as exact input (positive), or exact output (negative)",
+						"data": "Any data to be passed through to the callback",
+						"recipient": "The address to receive the output of the swap",
+						"sqrtPriceLimitX96": "The Q64.96 sqrt price limit. If zero for one, the price cannot be less than this value after the swap. If one for zero, the price cannot be greater than this value after the swap",
+						"zeroForOne": "The direction of the swap, true for token0 to token1, false for token1 to token0"
+					},
+					"returns": {
+						"amount0": "The delta of the balance of token0 of the pool, exact when negative, minimum when positive",
+						"amount1": "The delta of the balance of token1 of the pool, exact when negative, minimum when positive"
+					}
+				}
+			},
+			"stateVariables": {
+				"coin": {
+					"return": "The token contract address",
+					"returns": {
+						"_0": "The token contract address"
+					}
+				},
+				"investion": {
+					"details": "This value has no relationship to the total liquidity across all ticks function liquidity() external view returns (uint128);"
+				},
+				"market": {
+					"return": "The contract address",
+					"returns": {
+						"_0": "The contract address"
+					}
+				},
+				"maxInvestionPerUnit": {
+					"details": "This parameter is enforced per tick to prevent liquidity from overflowing a uint128 at any point, and also prevents out-of-range liquidity from being used to prevent adding in-range liquidity to a pool",
+					"return": "The max amount of liquidity per tick",
+					"returns": {
+						"_0": "The max amount of liquidity per tick"
+					}
+				},
+				"priceLogers": {
+					"details": "You most likely want to use #observe() instead of this method to get an observation as of some amount of time ago, rather than at a specific index in the array.",
+					"params": {
+						"index": "The element of the observations array to fetch"
+					},
+					"return": "blockTimestamp The timestamp of the observation, Returns unitCumulative the tick multiplied by seconds elapsed for the life of the pool as of the observation timestamp, Returns secondsPerInvestionCumulativeX128 the seconds per in range liquidity for the life of the pool as of the observation timestamp, Returns initialized whether the observation has been initialized and the values are safe to use",
+					"returns": {
+						"blockTimestamp": "The timestamp of the observation, Returns unitCumulative the tick multiplied by seconds elapsed for the life of the pool as of the observation timestamp, Returns secondsPerInvestionCumulativeX128 the seconds per in range liquidity for the life of the pool as of the observation timestamp, Returns initialized whether the observation has been initialized and the values are safe to use"
+					}
+				},
+				"profit": {
+					"return": "The fee",
+					"returns": {
+						"_0": "The fee"
+					}
+				},
+				"profitGrowthGlobalCoinX128": {
+					"details": "This value can overflow the uint256"
+				},
+				"proofs": {
+					"params": {
+						"key": "The position's key is a hash of a preimage composed by the owner, tickLower and tickUpper"
+					},
+					"return": "liquidity The amount of liquidity in the position, Returns feeGrowthInside0LastX128 fee growth of token0 inside the tick range as of the last mint/burn/poke, Returns feeGrowthInside1LastX128 fee growth of token1 inside the tick range as of the last mint/burn/poke, Returns tokensOwed0 the computed amount of token0 owed to the position as of the last mint/burn/poke, Returns tokensOwed1 the computed amount of token1 owed to the position as of the last mint/burn/poke",
+					"returns": {
+						"liquidity": "The amount of liquidity in the position, Returns feeGrowthInside0LastX128 fee growth of token0 inside the tick range as of the last mint/burn/poke, Returns feeGrowthInside1LastX128 fee growth of token1 inside the tick range as of the last mint/burn/poke, Returns tokensOwed0 the computed amount of token0 owed to the position as of the last mint/burn/poke, Returns tokensOwed1 the computed amount of token1 owed to the position as of the last mint/burn/poke"
+					}
+				},
+				"protocolProfits": {
+					"details": "Protocol fees will never exceed uint128 max in either token"
+				},
+				"state0": {
+					"return": "sqrtPriceX96 The current price of the pool as a sqrt(token1/token0) Q64.96 value tick The current tick of the pool, i.e. according to the last tick transition that was run. This value may not always be equal to SqrtTickMath.getTickAtSqrtRatio(sqrtPriceX96) if the price is on a tick boundary. observationIndex The index of the last oracle observation that was written, observationCardinality The current maximum number of observations stored in the pool, observationCardinalityNext The next maximum number of observations, to be updated when the observation. feeProtocol The protocol fee for both tokens of the pool. Encoded as two 4 bit values, where the protocol fee of token1 is shifted 4 bits and the protocol fee of token0 is the lower 4 bits. Used as the denominator of a fraction of the swap fee, e.g. 4 means 1/4th of the swap fee. unlocked Whether the pool is currently locked to reentrancy",
+					"returns": {
+						"sqrtPriceX96": "The current price of the pool as a sqrt(token1/token0) Q64.96 value tick The current tick of the pool, i.e. according to the last tick transition that was run. This value may not always be equal to SqrtTickMath.getTickAtSqrtRatio(sqrtPriceX96) if the price is on a tick boundary. observationIndex The index of the last oracle observation that was written, observationCardinality The current maximum number of observations stored in the pool, observationCardinalityNext The next maximum number of observations, to be updated when the observation. feeProtocol The protocol fee for both tokens of the pool. Encoded as two 4 bit values, where the protocol fee of token1 is shifted 4 bits and the protocol fee of token0 is the lower 4 bits. Used as the denominator of a fraction of the swap fee, e.g. 4 means 1/4th of the swap fee. unlocked Whether the pool is currently locked to reentrancy"
+					}
+				},
+				"thing": {
+					"return": "The token contract address",
+					"returns": {
+						"_0": "The token contract address"
+					}
+				},
+				"unitSpacing": {
+					"details": "Ticks can only be used at multiples of this value, minimum of 1 and always positive e.g.: a tickSpacing of 3 means ticks can be initialized every 3rd tick, i.e., ..., -6, -3, 0, 3, 6, ... This value is an int24 to avoid casting even though it is always positive.",
+					"return": "The tick spacing",
+					"returns": {
+						"_0": "The tick spacing"
+					}
+				},
+				"units": {
+					"params": {
+						"unit": "The unit to look up"
+					},
+					"return": "InvestGross the total amount of position liquidity that uses the pool either as tick lower or tick upper, liquidityNet how much liquidity changes when the pool price crosses the tick, feeGrowthOutside0X128 the fee growth on the other side of the tick from the current tick in token0, feeGrowthOutside1X128 the fee growth on the other side of the tick from the current tick in token1, tickCumulativeOutside the cumulative tick value on the other side of the tick from the current tick secondsPerLiquidityOutsideX128 the seconds spent per liquidity on the other side of the tick from the current tick, secondsOutside the seconds spent on the other side of the tick from the current tick, initialized Set to true if the tick is initialized, i.e. liquidityGross is greater than 0, otherwise equal to false. Outside values can only be used if the tick is initialized, i.e. if liquidityGross is greater than 0. In addition, these values are only relative and must be used only in comparison to previous snapshots for a specific position.",
+					"returns": {
+						"InvestGross": "the total amount of position liquidity that uses the pool either as tick lower or tick upper, liquidityNet how much liquidity changes when the pool price crosses the tick, feeGrowthOutside0X128 the fee growth on the other side of the tick from the current tick in token0, feeGrowthOutside1X128 the fee growth on the other side of the tick from the current tick in token1, tickCumulativeOutside the cumulative tick value on the other side of the tick from the current tick secondsPerLiquidityOutsideX128 the seconds spent per liquidity on the other side of the tick from the current tick, secondsOutside the seconds spent on the other side of the tick from the current tick, initialized Set to true if the tick is initialized, i.e. liquidityGross is greater than 0, otherwise equal to false. Outside values can only be used if the tick is initialized, i.e. if liquidityGross is greater than 0. In addition, these values are only relative and must be used only in comparison to previous snapshots for a specific position."
+					}
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"events": {
+				"Burn(address,int24,int24,uint128,uint256,uint256)": {
+					"notice": "Emitted when a position's liquidity is removed"
+				},
+				"Collect(address,address,int24,int24,uint128)": {
+					"notice": "Emitted when fees are collected by the owner of a position"
+				},
+				"CollectProtocol(address,address,uint128)": {
+					"notice": "Emitted when the collected protocol fees are withdrawn by the factory owner"
+				},
+				"Flash(address,address,uint256,uint256,uint256,uint256)": {
+					"notice": "Emitted by the pool for any flashes of token0/token1"
+				},
+				"IncreaseObservationCardinalityNext(uint16,uint16)": {
+					"notice": "Emitted by the pool for increases to the number of observations that can be stored"
+				},
+				"Initialize(uint160,int24)": {
+					"notice": "Emitted exactly once by a pool when #initialize is first called on the pool"
+				},
+				"Mint(address,address,int24,int24,uint128,uint256,uint256)": {
+					"notice": "Emitted when liquidity is minted for a given position"
+				},
+				"SetFeeProtocol(uint8,uint8,uint8,uint8)": {
+					"notice": "Emitted when the protocol fee is changed by the pool"
+				},
+				"Swap(address,address,int256,int256,uint160,uint128,int24)": {
+					"notice": "Emitted by the pool for any swaps between token0 and token1"
+				}
+			},
+			"kind": "user",
+			"methods": {
+				"coin()": {
+					"notice": "The first of the two tokens of the pool, sorted by address"
+				},
+				"collectProtocol()": {
+					"notice": "Collect the protocol fee accrued to the pool"
+				},
+				"flash(address,address,uint256,uint256,bytes)": {
+					"notice": "Receive token0 and/or token1 and pay it back, plus a fee, in the callback"
+				},
+				"increaseLookerCardinalityNext(uint16)": {
+					"notice": "Increase the maximum number of price and liquidity observations that this pool will store"
+				},
+				"initialize(uint160)": {
+					"notice": "Sets the initial price for the pool"
+				},
+				"investion()": {
+					"notice": "The currently in range liquidity available to the pool"
+				},
+				"market()": {
+					"notice": "The contract that deployed the pool, which must adhere to the IUniswapV3Factory interface"
+				},
+				"maxInvestionPerUnit()": {
+					"notice": "The maximum amount of position liquidity that can use any tick in the range"
+				},
+				"observe(uint32[])": {
+					"notice": "Returns the cumulative tick and liquidity as of each timestamp `secondsAgo` from the current block timestamp"
+				},
+				"priceLogers(uint256)": {
+					"notice": "Returns data about a specific observation index"
+				},
+				"profit()": {
+					"notice": "The pool's fee in hundredths of a bip, i.e. 1e-6"
+				},
+				"profitGrowthGlobalCoinX128()": {
+					"notice": "The fee growth as a Q128.128 fees of token0 collected per unit of liquidity for the entire life of the pool"
+				},
+				"proofs(bytes32)": {
+					"notice": "Returns the information about a position by the position's key"
+				},
+				"protocolProfits()": {
+					"notice": "The amounts of token0 and token1 that are owed to the protocol"
+				},
+				"setShopFeeProtocolbyMarketor(uint8,uint8)": {
+					"notice": "Set the denominator of the protocol's % share of the fees"
+				},
+				"state0()": {
+					"notice": "The 0th storage slot in the pool stores many values, and is exposed as a single method to save gas when accessed externally."
+				},
+				"swap(address,address,bool,int256,uint160,bytes)": {
+					"notice": "Swap token0 for token1, or token1 for token0"
+				},
+				"thing()": {
+					"notice": "The second of the two tokens of the pool, sorted by address"
+				},
+				"unitBitmap(int16)": {
+					"notice": "Returns 256 packed tick initialized boolean values. See TickBitmap for more information"
+				},
+				"unitSpacing()": {
+					"notice": "The pool tick spacing"
+				},
+				"units(int24)": {
+					"notice": "Look up information about a specific tick in the pool"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Contracts/TTSwapV1Shop.sol": "TTSwapV1Shop"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Contracts/NoDelegateCall.sol": {
+			"keccak256": "0x2ab29a2d0765c68425e211acb66687eb1955b77396fc051bb0a0f6ea5786d6b1",
+			"license": "BUSL-1.1",
+			"urls": [
+				"bzz-raw://2c2ed438b9a3b74f0b38adc33085e1383861eb4948f3501327fb4e72a778bb94",
+				"dweb:/ipfs/Qmf6WNNJSP69fJWGbSQvA6GPdvyJFSP6oTfLbwiiAJ1zKj"
+			]
+		},
+		"Contracts/TTSwapV1Coin.sol": {
+			"keccak256": "0xcc73b53b96387b6a2077d61714ea8abbd7fcd2474a2f2bcb8cccc6a25a2de782",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://4ee20f34a960d8d284242ff9ae71b76398c0293692085a14bb409615c24d5c92",
+				"dweb:/ipfs/QmVcvh3pFnhSpXf9UJ2GicfCSJPbE5tiXp1SGArRNF7ZRJ"
+			]
+		},
+		"Contracts/TTSwapV1Customer.sol": {
+			"keccak256": "0x149dbd564041f03a7517606038fc2eb140b4ebfebb1f92256cfa756bec18c69d",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://7c5e9b6984f9827b08e0ba01c6f103e72256388e1fb45c0f4cc8f486ea75ca1b",
+				"dweb:/ipfs/QmQNtP6Ye7YcNdLZPzp2zPVAm4UBuyVbNvEgbDEQuEjoa9"
+			]
+		},
+		"Contracts/TTSwapV1Gator.sol": {
+			"keccak256": "0xa366547600ef5e448dd36a42c3d20fa5e1f9342cf19a9f05f9454654c09319e3",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://f1f2cdc8ffb5c3234d19292fab0a1ffe6b2ed10e6876ed76a0ad7365bf22feea",
+				"dweb:/ipfs/QmXxwwrZvBeDsDKZZBjGqPmDqgUvt7W3y96eAQccWedQw6"
+			]
+		},
+		"Contracts/TTSwapV1Market.sol": {
+			"keccak256": "0xfd6d6b702040ad6a5cbeeede5463fb23a242b997026ed8d7e0e1231e60467ad2",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://7338834b5a31c988f1b15235207187a866abb4fbe9392487752a977b8e1580d7",
+				"dweb:/ipfs/QmQNDfF3kPT8V6ZN5ZZtjZKWDDKCdQqBkCE8UBRfCTkgRy"
+			]
+		},
+		"Contracts/TTSwapV1Marketor.sol": {
+			"keccak256": "0x57129b68012b22ba3f1cf375ced0b8f98fbe7ebd31c8959733ca3cb750e9d361",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://2aa8b27a0c3841496c7f39f744da75b0bd7e303a2d329f97b4f5a8a4a61b4fc5",
+				"dweb:/ipfs/QmbvTGeDbPaYT27M399A7cADbXT5zWb2CQktVBySvG98JT"
+			]
+		},
+		"Contracts/TTSwapV1Shop.sol": {
+			"keccak256": "0x68539a2c77035fa8b445b641b9ae313e66873c1fa5e3e021ce4454e8b83a8875",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://d43d540dc980832075f807dc911d4ecdb09108048d5b3e79f14e1a708cc87a4c",
+				"dweb:/ipfs/QmdLgTRDf9BCoFSUTmGsV8Wb2qTZTjurY6Z5SUQpDosqo1"
+			]
+		},
+		"Contracts/TTSwapV1ShopCreate.sol": {
+			"keccak256": "0x6f5529a076a186b50d77736c1a53f4fea7ad064b543cd6d986f4b7d218a4d0eb",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://6af28a44440f83baddd8ddad6fb31404379249011caf488d29b0a46375337022",
+				"dweb:/ipfs/QmYkRfVmQig1hcJTQK6bujCNUeCsrMBWd81yAfiHiBHiDC"
+			]
+		},
+		"Contracts/TTSwapV1Thing.sol": {
+			"keccak256": "0x20accda43ee70f3af5203c7b270703d0a2f532ae5e736701715b554d586149ed",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://7df93fed4871ac534848fab4f1a110829431decd4859d9ea7d5d551bb6e6c6d7",
+				"dweb:/ipfs/QmdZ2esVZt8DSkfLuNccn4fjuScYsztxS4AcJsXtL5ANjj"
+			]
+		},
+		"Contracts/interfaces/Coin/ICoinV1Events.sol": {
+			"keccak256": "0x1c2a7d25c4df3bd615df013c217ed7a3dab1a1d78bb8f1390dfc88b277fefa57",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://ce74856dbf250051fba0f7cf56e6e58102fce98333c2f639c7a1199202eaf9a6",
+				"dweb:/ipfs/QmYEhmrsfzyUizcUATMUt2uU7HpqBgVksjf8ToDb559vbh"
+			]
+		},
+		"Contracts/interfaces/Coin/ICoinV1GatorActions.sol": {
+			"keccak256": "0x8c16f579285d606e862ce180ca24d79ca086fb01b9268af1c39b4c8fbf2d96a1",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://7c064bf49ffeee517f08ef4e94d53f18894c2355a8f42962e30a050662b55c6a",
+				"dweb:/ipfs/Qma8rG2d4z7LrJEGVhwgEqvUs3bmVxq1CAphBjAe34wBhp"
+			]
+		},
+		"Contracts/interfaces/Coin/ICoinV1Immutables.sol": {
+			"keccak256": "0x7ccf6639d1c5082ef3a932bc7c45b99ee88a63ad233d997942a19333d1c06d8b",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://e1a449d8f0a94697115b7457cadc9f7dcf23ca8a114b35e266a9ef9833c073c2",
+				"dweb:/ipfs/QmeFnQhJkHhBDdskEEhYUMA2pL7RcYSKTiWc3nHwjeQkeb"
+			]
+		},
+		"Contracts/interfaces/Coin/ICoinV1MarketorActions.sol": {
+			"keccak256": "0xe009186e1b5ce6f8f883b2d5b6a58b9f7427376fe7d2afd8571dec1fb95ce68b",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://1e2007d95aa5767105375f3046cec93cf51a3a4818c4ebc9513cd7b882de9d95",
+				"dweb:/ipfs/QmdLCEF3yhhBkGhHdGaM8WVy2LfBHGLW6T3tRWfqiwPtKy"
+			]
+		},
+		"Contracts/interfaces/Coin/ICoinV1State.sol": {
+			"keccak256": "0xd03715fc3391f5aeb00ca1620a86cd85efc9b3a99a9c283e182f739e427f95b9",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://3b2e2174ee6495d8a354c8825b33f25bd514becf93aca020162d80a256e7291c",
+				"dweb:/ipfs/QmaqFMfBz5dELTaFLazLgjXUsJWT6hVga2s3xdYc2hAjF1"
+			]
+		},
+		"Contracts/interfaces/Customer/ICustomerV1CustomerActions.sol": {
+			"keccak256": "0x01b7331594f615db652b95ff4728f480b6f8216f864a86f31754f146fe4b0f30",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://9de076f0cb88bf6d8059c97ed0767ad3b5e2cd08bd51f1e4bfea0214d2b941d1",
+				"dweb:/ipfs/QmbHgSJy1s1KaDEG3Dor65qt3a4PuPEGZJnqMfhJKNYLgb"
+			]
+		},
+		"Contracts/interfaces/Customer/ICustomerV1Events.sol": {
+			"keccak256": "0x2e0a76949cc2a0af8a1a32ea99447dd4818bb7a02b95109dabfccf00c79bfa5f",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://a210a4594a0a339b930b8ac55e2aa476dccb1767cef3d1f346dd3616e2231671",
+				"dweb:/ipfs/QmaQUh48NJ5Pgst3s8C6jvcdQLyghGVjnp6VhNKLwDowLX"
+			]
+		},
+		"Contracts/interfaces/Customer/ICustomerV1GatorActions.sol": {
+			"keccak256": "0xf531a352e8164b36560d784cb317ef018d34c2639240a15064e2442ad55cc64b",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://3d1fb52d0302ac37df5714a2ae1225487efb31470cbf6f39363af3de148c5e8f",
+				"dweb:/ipfs/QmPpBDykjax6ugVcqgQk6pNvdiidQUQVwfypvXyQ9ZkoBb"
+			]
+		},
+		"Contracts/interfaces/Customer/ICustomerV1Immutables.sol": {
+			"keccak256": "0xc90d8ef483f7487db0bed9e42e3dbdfd6a6a5bb0e61be7f263acaaeec43d4411",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://6f085d8fde780690e2a5cd14d6b6ae1dab9328ce8b5859c6aa94b532c14c72d4",
+				"dweb:/ipfs/QmWqtuPQCdESmRLCC82ux1UiTY4Ei2CsMmrthp4BWn5e4g"
+			]
+		},
+		"Contracts/interfaces/Customer/ICustomerV1MarketorActions.sol": {
+			"keccak256": "0x17a64352c0c989b27d32903ead1585ad86af43bb0f7395a9d2a1f92f7b7cafda",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://7bb84bd798f03541a1cc9e8a28ca3125f2ef91d1055d628f1b996b4ce3fbf304",
+				"dweb:/ipfs/Qmf1hwsPu6KQTdiZ94JZiAukbgAmBAirfdbFj48LwAeaaE"
+			]
+		},
+		"Contracts/interfaces/Customer/ICustomerV1State.sol": {
+			"keccak256": "0xcb49777410fa22e2057cf6abc0298453a397fc3426cae13cfc2749fa47fd6870",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://48e4d3dba1a4bd7f331d4cadef855ada4d8d12fe5d6e8193e69b19ae00cae002",
+				"dweb:/ipfs/QmVNAVHsEdbToYkwUaMixgaTaDVVKWkqXT6EzLbbayeu6W"
+			]
+		},
+		"Contracts/interfaces/Gator/IGatorV1CustomerActions.sol": {
+			"keccak256": "0x5166995889ad764ce7379845df7e6f55f5114294f18795a07da173466418c010",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://c101332272e023fd17dd3e96270424a42aa257e02f14650314bf133ff3105221",
+				"dweb:/ipfs/QmUznHitEEPeBRc7PxrUMggmyLveBtW2MJyKGUt8KDrjUn"
+			]
+		},
+		"Contracts/interfaces/Gator/IGatorV1Events.sol": {
+			"keccak256": "0xcddaf97a05e7a5b4706705dd9618ad9a97ebe6559365deaa3bcbe21eef84d462",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://0432642546822e3e6bb77c89815cda36aea85154bb8431c0837db1b5fb199dcd",
+				"dweb:/ipfs/QmYSkG65spVSpN1WDkF5iFtPSBvYeDWvSNRVpYygR9iJkr"
+			]
+		},
+		"Contracts/interfaces/Gator/IGatorV1GatorActions.sol": {
+			"keccak256": "0x43e783a765bf4f5a4de8591ceb9556c215372e068e80827637f22aec41460359",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://23b287fe77c961c6f7dc7b7a1591eddd0772b687faf41e7c0400c66114e8a452",
+				"dweb:/ipfs/QmVKaaxjY7ya3HSkdUt7zqw2J8BqxMDGvUbUjobVCcUsHk"
+			]
+		},
+		"Contracts/interfaces/Gator/IGatorV1Immutables.sol": {
+			"keccak256": "0x8cbeb007a8321dee1ef73ed11e1af76c30acb64c6829d2c0d02c6f6cb4e8fdc3",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://00b5dc4c7cbcec92fdfa6e6d512209d63cf2cac6a1ae6969b853172fc9fb8319",
+				"dweb:/ipfs/QmYoRZuN8XvT6eESqy5BFEDxbs12beWtBHgkjxna3Jy7CF"
+			]
+		},
+		"Contracts/interfaces/Gator/IGatorV1MarketorActions.sol": {
+			"keccak256": "0xcd27934c7288dbf950975c629280d20b5d2b79f3f1d4cda94e866f2b24255fa9",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://7ea87e856a6e52e3171e4395b05feff4264454f7e5a106117f4f49328aa72492",
+				"dweb:/ipfs/QmYZkYNsqvEnKsqN5HLjo2JsWJqksniSkRXkC8bJsPKGJp"
+			]
+		},
+		"Contracts/interfaces/Gator/IGatorV1State.sol": {
+			"keccak256": "0xe3c37b988423c5989fce2b078a598788c052dc23403dff95509d57464bb1c12f",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://5c3766825c2fa5442d265a5524ae150626d18e235be99d1b485182ebbc9c0e1e",
+				"dweb:/ipfs/Qme7hkgr2K3vEUst6YPBaq55dycpXBaffWLKXDSPX3QnvK"
+			]
+		},
+		"Contracts/interfaces/IERC20Minimal.sol": {
+			"keccak256": "0xd92f37e7fabdb065efa9b0fab3fed533d92bf8ea1ea489b18ede0e9b3b3b2bd0",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://daeed40f194a531e55c37cd8b1647aa1b7d3f38461680e58136146337e12d791",
+				"dweb:/ipfs/Qmdm4dzMxM2qqSeFBVEVY2Br8sdr5uGXqb9Sf1d78cb7Gv"
+			]
+		},
+		"Contracts/interfaces/ITTSwapV1Coin.sol": {
+			"keccak256": "0x2b7565414d045d12859626e9027d9e69508edca12ea84104065b653aef808807",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://4a0b4105fa3a11aac2ee96e04561e4dce084a7e9a0869fbb3c183d37273a15a5",
+				"dweb:/ipfs/QmTC3ByoPkYyRLZ5hnec2hA4VA2CWnxXWCNQrky7iKoJpJ"
+			]
+		},
+		"Contracts/interfaces/ITTSwapV1Customer.sol": {
+			"keccak256": "0xec1054bcc0fb3865bdd0b072d900619591f2e585d6d42a656f4961ccafdce8fa",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://9a909fcc599a52e1032d38a655e00e4dcc01eade0957770988ebe0706f964f6a",
+				"dweb:/ipfs/QmV86hTNgS6YQkph17FEU8JNdcEgzhhqXaqiP5fcBf7yn5"
+			]
+		},
+		"Contracts/interfaces/ITTSwapV1Gator.sol": {
+			"keccak256": "0xcc6a9f594874f75e8f19b2d65a3d0892bd9d3f75636e93e8d52cf4aea6703652",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://c434a90d0ac2d2afc87a43147c85d3f9d48530eb2cd8fd2b491262be8a7238db",
+				"dweb:/ipfs/QmWyyaWVvSVVduUiS3vKQ4guLHnP4ugcCQp46kNvLsz2iJ"
+			]
+		},
+		"Contracts/interfaces/ITTSwapV1MarketShopCreate.sol": {
+			"keccak256": "0x57261ab377d2bb593ea558f6f6e1ada34cccc8f190e82806b8d1965418952b49",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://d6ea28d87074c7587a3003887ce44bcd9cba36fed78b83d68c8f6d202f1821cc",
+				"dweb:/ipfs/QmYz83aBp3sRx6cuXUSt81pBjMuTEWubqsf98bt7ktHX3s"
+			]
+		},
+		"Contracts/interfaces/ITTSwapV1Marketor.sol": {
+			"keccak256": "0xcec6819c6010fada016d2adffd3ae7973365e768c6144df626506c5a00873565",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://59feb2895b8fda46ab09fd4b63605aef2bd315169102ef43898501dcdb92b3da",
+				"dweb:/ipfs/QmWxs1ftk6xYceq2dRKZ3m5zwrvNYHdLt1xPo1Ntauii9g"
+			]
+		},
+		"Contracts/interfaces/ITTSwapV1Shop.sol": {
+			"keccak256": "0x47cd40160a5661bc7d82a6c8c828a7ddc8e007920b1346cc4c18a5b934b51308",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://cac42ac9b99d9cb26f89df9d7981e8c2378936d5221e239022b8fe3aa8ed05b4",
+				"dweb:/ipfs/QmZyYZKT2xtvchitcnbpdHpaTFv7rmtjX9vZhJ9kZaHQhG"
+			]
+		},
+		"Contracts/interfaces/ITTSwapV1Thing.sol": {
+			"keccak256": "0x7ca1409c94e8face538d0a62df48401c1df8f57113cc232955673ecc436549c6",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://0aa1edebc597ece5b97edb807ee5f7240f4ae7a33861f932237bbf474202d1e0",
+				"dweb:/ipfs/QmevDr5VHn8wNaWD2UWMq7eYju9RPxzD7sDTFKrxZXc9Lm"
+			]
+		},
+		"Contracts/interfaces/Marketor/IMarketorV1Events.sol": {
+			"keccak256": "0x1019146e8e3c5f553f93a5f1f7d31c0a7227b25ce87d8d76124fbdaae200615f",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://11113d24362e6a66e5e897ad597992660a06e8641cb5bdaebe74823504b0e225",
+				"dweb:/ipfs/QmZY3dqUFb6DkxHUveC3BpyxsyrTHujoSg7q9mWUnwNYzc"
+			]
+		},
+		"Contracts/interfaces/Marketor/IMarketorV1Immutables.sol": {
+			"keccak256": "0xc6fe9db9aafa196283670e6f83a876df0e6fe84074b06012865db8efd0581aa3",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://be174ba35045eeee018680400cd4cc238125664b0c23bc28f68ef27b1f8f5201",
+				"dweb:/ipfs/QmXGdMa25gG1A4FEctyXn7vkB7VUnJaqY5NHpTgzbHZbbi"
+			]
+		},
+		"Contracts/interfaces/Marketor/IMarketorV1MarketCreatorActions.sol": {
+			"keccak256": "0x85fe030c431f4ce0818038e673a58d35b30ac6fdb6760b24c105afbd0b94cc15",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://08d50a6cd32a067e30d45964d7d018fbec1b0b34b00529548815b6a98d4e9ee5",
+				"dweb:/ipfs/QmaRBpH3M7vt628KB1UqonAoUD1UcqNXSEsPdeyThZ55VC"
+			]
+		},
+		"Contracts/interfaces/Marketor/IMarketorV1State.sol": {
+			"keccak256": "0xaad87d4ddb4502c8908f30707db6628834d3df7bef3d68d6d50179d0db672ee7",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://905d7e65de99ddf8edc93aac5a9e6139e7813ac472abefa987b4ea85c73e4803",
+				"dweb:/ipfs/QmNbEzweLBYEuiTbURiPuoyyqgmx59XtA5Ugo7uEvQXRCS"
+			]
+		},
+		"Contracts/interfaces/Shop/ITTSwapV1ShopActions.sol": {
+			"keccak256": "0xfad031eaa6bc663f9bccd7a0f5c2054ba700c722fb3a77909571071ed15fc546",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://7c2b7c09c89c5772b7b936611c0834d977c233a60e1ca9b638dda6808adbc161",
+				"dweb:/ipfs/QmVLSbDYnV6DTDU5PLA6ntfVLCZYt1Hatnzn7hTxzoMb5q"
+			]
+		},
+		"Contracts/interfaces/Shop/ITTSwapV1ShopDerivedState.sol": {
+			"keccak256": "0xef9bff71506b809f0e245466ce8fd00317058ec5e965dd03b031ff67b96e854e",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://3fd6aef824986f2f7873393d552b89c09368596c3cbd3054f7af55f220b1df3d",
+				"dweb:/ipfs/QmNV8iZTtEoSgu5Gaf2E3kaCMt1bHDiSCke9AZZLVM7BCL"
+			]
+		},
+		"Contracts/interfaces/Shop/ITTSwapV1ShopEvents.sol": {
+			"keccak256": "0xc0fcd2b9ef1d053bd1bc8d2d41d8903eb31fc22def7c5771a179d341403e0fe3",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://54d8cc8ceda6c269cdac77d9a603a0b787a763def80216dfc86fd38872869986",
+				"dweb:/ipfs/QmbwzVdR2hCrR3VNZbu9qpaivAvCUgGayqwWFS1Zgqrty1"
+			]
+		},
+		"Contracts/interfaces/Shop/ITTSwapV1ShopImmutables.sol": {
+			"keccak256": "0x8f42d97409eb1e856cfadb6777c58f60c11e0d26fd593017a89ea287f2094a5c",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://b8e304e482e9274eef3b911ab36dd79b2dcd55f05a3906b0bdad8ad0bf443ca7",
+				"dweb:/ipfs/QmRoWmUM3sLm6VHxa2yMPyKms9s4grtH8MK4Y2kgJFRkpm"
+			]
+		},
+		"Contracts/interfaces/Shop/ITTSwapV1ShopOwnerActions.sol": {
+			"keccak256": "0xe630195f1c8deb244bb5635aa9a24acaf6ff472a74f358592bf74ebd39fc068f",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://eb81e4315431a7fdbff128ecf493d50269ca40ff56d478a9a583f46745d03090",
+				"dweb:/ipfs/QmW4fjjxo6EpLbiexShoUvL2dfzk5ueYV689KS9EKtQ1dQ"
+			]
+		},
+		"Contracts/interfaces/Shop/ITTSwapV1ShopState.sol": {
+			"keccak256": "0xd067808fcb06731cc22f30ca6a24564957c9345a50f0f17d44dee1ee694742a9",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://6d89d0031870f34f6b8c185f408b21a6173229eecabbd802d2f53ed2b79f643b",
+				"dweb:/ipfs/QmSZ36kUKMYTn1FCgQm5XsLGqbhSsxbsRfbLELBjChmCWF"
+			]
+		},
+		"Contracts/interfaces/Thing/IThingV1Events.sol": {
+			"keccak256": "0x578e73460d0744175b079f189eb3158036522d4a60cab8387f7f01f805769f1b",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://6f0cb6d0b293fdd330b2e8dd312f836bfa02e63225c5154beb77a2d545f582f5",
+				"dweb:/ipfs/QmYNKJ9tXE4qZXEttSNWjWs7tnzHYMhjZt1EHQEbQVGQ26"
+			]
+		},
+		"Contracts/interfaces/Thing/IThingV1GatorActions.sol": {
+			"keccak256": "0xf3fba13d6fc9dd8d9740d0a6ac15d4fd46906378107ff12f37555ce4c7b63147",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://fd2c4cfcffd94ab9b735511dfee49d0ac3bf8125242af2e3bced7a5b906ca520",
+				"dweb:/ipfs/QmXFzXwgmw1LKn6m62ysAL8go6exjnoY8nSTrUbpENJdSx"
+			]
+		},
+		"Contracts/interfaces/Thing/IThingV1Immutables.sol": {
+			"keccak256": "0xd3638fb49778764b61cae22befcef983d3e535c8ad9ea6b84d05b4b72c2dc444",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://4d2cd441adfc0f860ce2038704f99a6c9a26e558492bc4d90d278969362ad178",
+				"dweb:/ipfs/QmXCm7DPmNnUUVTc5Sidr9BTxVTWhSwyDp7KUSxqZSfJBz"
+			]
+		},
+		"Contracts/interfaces/Thing/IThingV1MarketorActions.sol": {
+			"keccak256": "0x804bed2caa55b0bac0e96f47ac351a55c8d7b234fe7bc8bdc0c8f2500b304f9c",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://364ea0cb6c0c575ccb7c76e4d72bdd9fa483c8071d334ba8c495242d745f7c39",
+				"dweb:/ipfs/QmTS35S4gZp4MbizMseepjFU4mfu1rWw8zivWHiSRLPtgE"
+			]
+		},
+		"Contracts/interfaces/Thing/IThingV1State.sol": {
+			"keccak256": "0xf4d9f339c6cce8a0e773630c87f380ddc935e57c5d120098c51cf03ecd3e27cc",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://92665b8561360dda93d9168a274eb0a57523d02447f4769e2a22e9cb99e5c7af",
+				"dweb:/ipfs/QmTF3Q5GfvaUPP1c7Pi4TTqJFQejwhV61vWGGo9krauATL"
+			]
+		},
+		"Contracts/libraries/LBitMath.sol": {
+			"keccak256": "0x5d5109decb94122e6fcef6f27fff880ccd75208fa3045e86141d8279e96310b9",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://86b8ea87c77d72d82069df4303b42f58e9ac148d822b77ad28ee09a41a6a3a0a",
+				"dweb:/ipfs/QmRiR2kRVoasNS7ZpbvdiU8VDiDJzM3XDEm9texs9WvvV7"
+			]
+		},
+		"Contracts/libraries/LFixedPoint128.sol": {
+			"keccak256": "0xc7e80dc41f28887d0d915a75c0b2783ae659e5384dd1a3ed1251a42e058d8835",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://2df62bf1d9d4349236fd0bc7a96b3a3be95f4c049603e4a20c8473cca9402b4d",
+				"dweb:/ipfs/QmVR5dmMkoypmhaBeBj8cGegHpJycbofUDg59dHm42i9MT"
+			]
+		},
+		"Contracts/libraries/LFixedPoint96.sol": {
+			"keccak256": "0xb2bd8d956c89ce45663663441ec4837281b519f62feff3909c53361fc5ed0d66",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://351d282bb844d8f01b4ad55bbf4548f4bbf6ce8de74d2ad2a50659e099dc6db6",
+				"dweb:/ipfs/QmWPN3sw8pCws7JeKYFpYmPPiMbByVoQFDHUoPtDWRHV8P"
+			]
+		},
+		"Contracts/libraries/LFullMath.sol": {
+			"keccak256": "0x7c76b0257a92546c1be2be38eed6f1922b319ac89401e4f62fb43a5f988b25e1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://67a3c87d2ed61ecc0d6b3def93f1616ad6dd59441ddf9bf92d9e9003f69f41f4",
+				"dweb:/ipfs/QmfCeAhbNrUuLo689BRYJiitdE9HCp85QbxC6EQuM7Nj8d"
+			]
+		},
+		"Contracts/libraries/LInvestionMath.sol": {
+			"keccak256": "0x22de397a5a761562a16ab8f2d99afdaafd2cae44d08dc587d971fa541f9a7387",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://7c9da60fc87ccd029fcab8acee52b5df6d1a556acc5fce10d5e9c69c441a186e",
+				"dweb:/ipfs/QmduRPuvHg7xbYxH5XbxX6tv89yiT99K61PfeYkCjCKVQj"
+			]
+		},
+		"Contracts/libraries/LLowGasSafeMath.sol": {
+			"keccak256": "0x5bf25f61cb866e25b26d72affc4bd247737f9b6d1f7f8b93dbd1a7b5a7b8baf1",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://498eb3a3f7e16e24e5c6148763187519c9a6d819a1029affa8667e4278e3c116",
+				"dweb:/ipfs/Qmaxs6EzJZMFRK9CbPA2vNDYHJNdxMLkgPXhjyGwjQ6Dj7"
+			]
+		},
+		"Contracts/libraries/LPriceLog.sol": {
+			"keccak256": "0xb6a7a915c8f9d4d9bb9df93ef28020f7ff4488c437e0b14a230c34d91c59988a",
+			"license": "BUSL-1.1",
+			"urls": [
+				"bzz-raw://d22e63f9a1999ece9304f846a77852de770a412e61a7920311731312fa9a7a71",
+				"dweb:/ipfs/QmVogbgpfKhsneizme6ZbZHs84eV1tkoC7yw2DB9JQpQHf"
+			]
+		},
+		"Contracts/libraries/LProfitShares.sol": {
+			"keccak256": "0x24155975e3c13d1e899694cf87074e41bdbcfbd7172e6c1bb9903f44490d1b05",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://483df8c53d41966b921793204f8c77154c194d856ccdbb80c11049ddb3fcc669",
+				"dweb:/ipfs/QmNcikJvCKwtL7KPw2Dbk9PDP9wuFwmv72YnHSSuM9Saow"
+			]
+		},
+		"Contracts/libraries/LProof.sol": {
+			"keccak256": "0x18fef840a91cd012a1410cd71f9f1667da7d51bf1b231b55ebcc96e8477e7e97",
+			"license": "BUSL-1.1",
+			"urls": [
+				"bzz-raw://488f68f46217a60279f7e7784750dd858c96b484b2521a27a9619b968dec9eb1",
+				"dweb:/ipfs/QmVTYnRE2kFP4Z7FWNjT219rUhYVjoTWMqphAKia2BLKKq"
+			]
+		},
+		"Contracts/libraries/LSafeCast.sol": {
+			"keccak256": "0x222610146dea88e182b6e55a293a25a8ad881cadd4738749e355f2a57d10f30b",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://026ad0fbd652e59bb3bea38a58b71be568ce4753523f16b8efee10da3fba7e4f",
+				"dweb:/ipfs/QmNhHdEG6J72HAM2gNcFMvPLY8wRzMcQdPHAP8cwS1ckta"
+			]
+		},
+		"Contracts/libraries/LSqrtPriceMath.sol": {
+			"keccak256": "0xad7834db0bc421acc9f6f8e185db9848c31e9e25416b4b0c9c06774303c11f61",
+			"license": "BUSL-1.1",
+			"urls": [
+				"bzz-raw://6267fe00fc68db6e55a04e6b70a0e23b1060090b6707c324995a1e3f4a289921",
+				"dweb:/ipfs/QmVCLGUYgQCFhjCypTouz5Gngt3RSYM7MpvFZ16XgEgRC1"
+			]
+		},
+		"Contracts/libraries/LSwapMath.sol": {
+			"keccak256": "0x108a5bcb586eec5b1d3557ed5de594969fc51b68cc5426e0967274c806e1d284",
+			"license": "BUSL-1.1",
+			"urls": [
+				"bzz-raw://8317cfc3fd5b41af4f5284cd183ef7e841730c9b3f9f4b4d413859d148b1ffd2",
+				"dweb:/ipfs/Qmc9RGwsAokkzcvZdo9ko9hEi7Z9vbcarqWtuapBw8kqDD"
+			]
+		},
+		"Contracts/libraries/LUnit.sol": {
+			"keccak256": "0x7064abeda9d86a97c6f379be89426bc4bd68ff262e76b4c217d819a7828fed5d",
+			"license": "BUSL-1.1",
+			"urls": [
+				"bzz-raw://3de9c7cc81087b7eed175b649600d634a42391b233b4b762c5b1f9e0c4d18c25",
+				"dweb:/ipfs/QmaAhVmkZqR73jjoFLs3GkabiiE3H9vMGLnUv4oh8iE2Em"
+			]
+		},
+		"Contracts/libraries/LUnitBitmap.sol": {
+			"keccak256": "0x553c93d606f8e1db57029077903ce11ab0c2b3d2b5b565ad7532a00ce00928a6",
+			"license": "BUSL-1.1",
+			"urls": [
+				"bzz-raw://5c960c23f29ee8cc7fa2336fafebc68e1a8e7816b120a4d4aaebef469f534569",
+				"dweb:/ipfs/QmbL8rk2bRGLFsai23kQSSaZK84kemBNoou4s21rv4DRHB"
+			]
+		},
+		"Contracts/libraries/LUnitMath.sol": {
+			"keccak256": "0xf872f1ba6e1d02d361be4b101fa71c56876f388771ece29aed574d698f9d852b",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://ced438e0580f88a73ae2060b0f20451a4f4fccc12d1d9cb3deafca28ce622572",
+				"dweb:/ipfs/QmWY6Xm3SrMUWUJa8uZcP68DCA4eqhtcqpECL9bXmigNiW"
+			]
+		},
+		"Contracts/libraries/LUnsafeMath.sol": {
+			"keccak256": "0xef31f30ee402bb3be2087120fe6bbb338e7443a765c99a587bb771caa4ca5ef0",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://8b04d2c2396774df0e55fe55f6b0ce111caf5081f18647ed32f2bd77bf397f3b",
+				"dweb:/ipfs/QmX6vVWUb6Kk61jzxPk5Guqz1J7CTzHRLkMkUqz4V8Pcao"
+			]
+		},
+		"Contracts/libraries/TransferHelper.sol": {
+			"keccak256": "0x9e8f8868d3d76ef5d6d4cb647282d21c530b5b73ae84ac3302b9fd7fd2a6f6a5",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://6a10b535ca978c9cdbc48fce26e69f67f02935093be7758fbd3357757e8abc41",
+				"dweb:/ipfs/QmRE1K6o4EjZuxq6XeD3U81udAo6WEqAvXZaMPyAko3c74"
+			]
+		},
+		"Contracts/libraries/base/LCoin.sol": {
+			"keccak256": "0x2f3d0c81c28a301ac57f417a6ef18d340e868867ae568ef058387244eed55b82",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://7c775fae6aef37ee4c5a1ad4565ff8a910f50dbe02491bfd576dac7ea71d80b0",
+				"dweb:/ipfs/QmUdzJpeQeHiZrfBq1mQ33bF63MWp5KMCrj4BBd37s1sbo"
+			]
+		},
+		"Contracts/libraries/base/LCustomer.sol": {
+			"keccak256": "0x6acb4a762f349ab39bd48ff34c150b55f55aabc4826379838391749136f3aee9",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://58552a104e1a046883cf116fe6748600caf7c8ebe341f82a38aa6fbfb09355cb",
+				"dweb:/ipfs/QmQxUAK9fzefN6afoJ2CGyRWtETz1TEcZoJhDFCYJ3WY4V"
+			]
+		},
+		"Contracts/libraries/base/LGate.sol": {
+			"keccak256": "0xdbbcc3e545cc8d7d8eebe4b1dbaccee4d2adbce4785cb7ac5f4712093c72db52",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://1d7251ca8ee12ad7009fe9f280aa8be028502f51e7465fe5314b85b9a2815991",
+				"dweb:/ipfs/QmRQ5Z78r3qDKhBbRbDs8d4ThNk5fLN5S5g6tosHwa6jdo"
+			]
+		},
+		"Contracts/libraries/base/LShop.sol": {
+			"keccak256": "0xb8f7b47345b022ecbd97491b79385ee69c226a62c832048df9ad74c6e4132102",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://a821cb2570143bb2c30910d7949ddb1846be13451024c341ea8a59512609d202",
+				"dweb:/ipfs/QmQg5uxtJaYg4JMVaQZRugK2m92t9fCcrPcXHbx1sqkJVS"
+			]
+		},
+		"Contracts/libraries/base/LThing.sol": {
+			"keccak256": "0x92f9131edeaa28f9fc9919ffd6a361bff43a75f5463ff1a0442745819ba902ac",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://0fe0b912050e29cb3de59e9e3a88b88af40d4c2b915fa007c7e2213e00c882bc",
+				"dweb:/ipfs/QmPCtVzTuSZweDsbTGuGHh9RF5kD4UohRPoaPvXVRxuhEz"
+			]
+		}
+	},
+	"version": 1
+}

@@ -39,14 +39,15 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
     int24 public override unitSpacing;
     uint128 public override maxInvestionPerUnit;
     LProfitShares.Info public profitshares;
-    //思考,关于门店的创建者
+    //思考,关于门店的创建
+
     address public gater;
     uint8 public scope;
     bool public marketlock;
     bool public gatelock;
 
     //记录各自手续费的情况(门户,社区,推荐者,用户返佣)
-    mapping(address => ProtocalProfits) public shopfee;
+    mapping(address => uint128) public shopfee;
 
     struct State0 {
         uint160 sqrtPriceX96;
@@ -54,7 +55,6 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
         uint16 lookerIndex;
         uint16 lookerCardinality;
         uint16 lookerCardinalityNext;
-        uint8 profitProtocol;
         bool unlocked;
     }
 
@@ -62,7 +62,6 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
 
     //总费用
     uint256 public override profitGrowthGlobalCoinX128;
-    //  uint256 public override profitGrowthGlobalThingX128;
 
     //协议费
     struct ProtocalProfits {
@@ -316,7 +315,6 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
             lookerIndex: 0,
             lookerCardinality: cardinality,
             lookerCardinalityNext: cardinalityNext,
-            profitProtocol: 0,
             unlocked: true
         });
 
@@ -447,7 +445,6 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
                 unit,
                 investionDelta,
                 _feeGrowthGlobalCoinX128,
-                //_feeGrowthGlobalThingX128,
                 secondsPerInvestionCumulativeX128,
                 unitCumulative,
                 time,
@@ -459,7 +456,6 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
                 unit,
                 investionDelta,
                 _feeGrowthGlobalCoinX128,
-                //  _feeGrowthGlobalThingX128,
                 secondsPerInvestionCumulativeX128,
                 unitCumulative,
                 time,
@@ -600,8 +596,7 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
     }
 
     struct SwapCache {
-        // the protocol fee for the input token
-        uint8 profitProtocol;
+
         // investion at the beginning of the swap
         uint128 investionStart;
         // the timestamp of the current block
@@ -626,8 +621,7 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
         int24 unit;
         // the global fee growth of the input token
         uint256 profitGrowthGlobalX128;
-        // amount of input token paid as protocol fee
-        uint128 protocolFee;
+       
         // the current investion in range
         uint128 investion;
     }
@@ -645,8 +639,7 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
         uint256 amountIn;
         // how much is being swapped out
         uint256 amountOut;
-        // how much fee is being paid in
-        uint256 feeAmount;
+       
     }
 
     //// @inheritdoc ITTSwapV1ShopActions
@@ -697,9 +690,6 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
         SwapCache memory cache = SwapCache({
             investionStart: investion,
             blockTimestamp: _blockTimestamp(),
-            profitProtocol: zeroForOne
-                ? (state0Start.profitProtocol % 16)
-                : (state0Start.profitProtocol >> 4),
             secondsPerinvestionCumulativeX128: 0,
             unitCumulative: 0,
             computedLatestObservation: false
@@ -713,7 +703,7 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
             sqrtPriceX96: state0Start.sqrtPriceX96,
             unit: state0Start.unit,
             profitGrowthGlobalX128: profitGrowthGlobalCoinX128,
-            protocolFee: 0,
+           
             investion: cache.investionStart
         });
 
@@ -758,33 +748,33 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
                     state.amountSpecifiedRemaining
                 );
 
-            if (exactInput) {
-                state.amountSpecifiedRemaining -= (step.amountIn +
-                    step.feeAmount).toInt256();
-                state.amountCalculated = state.amountCalculated.sub(
-                    step.amountOut.toInt256()
-                );
-            } else {
-                state.amountSpecifiedRemaining += step.amountOut.toInt256();
-                state.amountCalculated = state.amountCalculated.add(
-                    (step.amountIn + step.feeAmount).toInt256()
-                );
-            }
+            // if (exactInput) {
+            //     state.amountSpecifiedRemaining -= (step.amountIn +
+            //         step.feeAmount).toInt256();
+            //     state.amountCalculated = state.amountCalculated.sub(
+            //         step.amountOut.toInt256()
+            //     );
+            // } else {
+            //     state.amountSpecifiedRemaining += step.amountOut.toInt256();
+            //     state.amountCalculated = state.amountCalculated.add(
+            //         (step.amountIn + step.feeAmount).toInt256()
+            //     );
+            // }
 
             // if the protocol fee is on, calculate how much is owed, decrement feeAmount, and increment protocolFee
-            if (cache.profitProtocol > 0) {
-                uint256 delta = step.feeAmount / cache.profitProtocol;
-                step.feeAmount -= delta;
-                state.protocolFee += uint128(delta);
-            }
+            // if (cache.profitProtocol > 0) {
+            //     uint256 delta = step.feeAmount / cache.profitProtocol;
+            //     step.feeAmount -= delta;
+            //     state.protocolFee += uint128(delta);
+            // }
 
             // update global fee tracker
-            if (state.investion > 0)
-                state.profitGrowthGlobalX128 += LFullMath.mulDiv(
-                    step.feeAmount,
-                    FixedPoint128.Q128,
-                    state.investion
-                );
+            // if (state.investion > 0)
+            //     state.profitGrowthGlobalX128 += LFullMath.mulDiv(
+            //         step.feeAmount,
+            //         FixedPoint128.Q128,
+            //         state.investion
+            //     );
 
             // shift tick if we reached the next price
             if (state.sqrtPriceX96 == step.sqrtPriceNextX96) {
@@ -867,58 +857,58 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
 
         // update fee growth global and, if necessary, protocol fees
         // overflow is acceptable, protocol has to withdraw before it hits type(uint128).max fees
-        if (zeroForOne) {
-            profitGrowthGlobalCoinX128 = state.profitGrowthGlobalX128;
-            if (state.protocolFee > 0) {
-                shopfee[gateraddress].coin +=
-                    (state.protocolFee / 100) *
-                    profitshares.gatorshare;
-                shopfee[market].coin +=
-                    (state.protocolFee / 100) *
-                    profitshares.marketshare;
-                if (commanderaddress != address(0)) {
-                    shopfee[commanderaddress].coin +=
-                        state.protocolFee *
-                        profitshares.commandershare;
-                    shopfee[market].coin +=
-                        state.protocolFee *
-                        profitshares.usershare;
-                } else {
-                    shopfee[gateraddress].coin +=
-                        state.protocolFee *
-                        profitshares.commandershare;
-                    shopfee[msg.sender].coin +=
-                        state.protocolFee *
-                        profitshares.usershare;
-                }
-            }
-        } else {
-            //  profitGrowthGlobalThingX128 = state.profitGrowthGlobalX128;
-            if (state.protocolFee > 0) {
-                shopfee[gateraddress].thing +=
-                    (state.protocolFee / 100) *
-                    profitshares.gatorshare;
-                shopfee[market].thing +=
-                    (state.protocolFee / 100) *
-                    profitshares.marketshare;
+        // if (zeroForOne) {
+        //     profitGrowthGlobalCoinX128 = state.profitGrowthGlobalX128;
+        //     if (state.protocolFee > 0) {
+        //         shopfee[gateraddress].coin +=
+        //             (state.protocolFee / 100) *
+        //             profitshares.gatorshare;
+        //         shopfee[market].coin +=
+        //             (state.protocolFee / 100) *
+        //             profitshares.marketshare;
+        //         if (commanderaddress != address(0)) {
+        //             shopfee[commanderaddress].coin +=
+        //                 state.protocolFee *
+        //                 profitshares.commandershare;
+        //             shopfee[market].coin +=
+        //                 state.protocolFee *
+        //                 profitshares.usershare;
+        //         } else {
+        //             shopfee[gateraddress].coin +=
+        //                 state.protocolFee *
+        //                 profitshares.commandershare;
+        //             shopfee[msg.sender].coin +=
+        //                 state.protocolFee *
+        //                 profitshares.usershare;
+        //         }
+        //     }
+        // } else {
+        //     //  profitGrowthGlobalThingX128 = state.profitGrowthGlobalX128;
+        //     if (state.protocolFee > 0) {
+        //         shopfee[gateraddress].thing +=
+        //             (state.protocolFee / 100) *
+        //             profitshares.gatorshare;
+        //         shopfee[market].thing +=
+        //             (state.protocolFee / 100) *
+        //             profitshares.marketshare;
 
-                if (commanderaddress != address(0)) {
-                    shopfee[commanderaddress].thing +=
-                        state.protocolFee *
-                        profitshares.commandershare;
-                    shopfee[market].thing +=
-                        state.protocolFee *
-                        profitshares.usershare;
-                } else {
-                    shopfee[gateraddress].thing +=
-                        state.protocolFee *
-                        profitshares.commandershare;
-                    shopfee[msg.sender].thing +=
-                        state.protocolFee *
-                        profitshares.usershare;
-                }
-            }
-        }
+        //         if (commanderaddress != address(0)) {
+        //             shopfee[commanderaddress].thing +=
+        //                 state.protocolFee *
+        //                 profitshares.commandershare;
+        //             shopfee[market].thing +=
+        //                 state.protocolFee *
+        //                 profitshares.usershare;
+        //         } else {
+        //             shopfee[gateraddress].thing +=
+        //                 state.protocolFee *
+        //                 profitshares.commandershare;
+        //             shopfee[msg.sender].thing +=
+        //                 state.protocolFee *
+        //                 profitshares.usershare;
+        //         }
+        //     }
+        // }
 
         (amount0, amount1) = zeroForOne == exactInput
             ? (
@@ -1016,35 +1006,35 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
 
         // sub is safe because we know balanceAfter is gt balanceBefore by at least fee
         uint256 paid0 = balance0After - balance0Before;
-        uint256 paid1 = balance1After - balance1Before;
+        //uint256 paid1 = balance1After - balance1Before;
 
-        if (paid0 > 0) {
-            uint8 profitProtocol0 = state0.profitProtocol % 16;
-            uint256 fees0 = profitProtocol0 == 0 ? 0 : paid0 / profitProtocol0;
-            if (uint128(fees0) > 0) {
-                shopfee[gateraddress].coin += uint128(
-                    (fees0 / 100) * profitshares.gatorshare
-                );
-                shopfee[market].coin += uint128(
-                    (fees0 / 100) * profitshares.marketshare
-                );
-                if (commanderaddress != address(0)) {
-                    shopfee[commanderaddress].coin += uint128(
-                        fees0 * profitshares.commandershare
-                    );
-                    shopfee[market].coin += uint128(
-                        fees0 * profitshares.usershare
-                    );
-                } else {
-                    shopfee[gateraddress].coin += uint128(
-                        fees0 * profitshares.commandershare
-                    );
-                    shopfee[msg.sender].coin += uint8(
-                        fees0 * profitshares.usershare
-                    );
-                }
-            }
-        }
+        // if (paid0 > 0) {
+        //     uint8 profitProtocol0 = state0.profitProtocol % 16;
+        //     uint256 fees0 = profitProtocol0 == 0 ? 0 : paid0 / profitProtocol0;
+        //     if (uint128(fees0) > 0) {
+        //         shopfee[gateraddress].coin += uint128(
+        //             (fees0 / 100) * profitshares.gatorshare
+        //         );
+        //         shopfee[market].coin += uint128(
+        //             (fees0 / 100) * profitshares.marketshare
+        //         );
+        //         if (commanderaddress != address(0)) {
+        //             shopfee[commanderaddress].coin += uint128(
+        //                 fees0 * profitshares.commandershare
+        //             );
+        //             shopfee[market].coin += uint128(
+        //                 fees0 * profitshares.usershare
+        //             );
+        //         } else {
+        //             shopfee[gateraddress].coin += uint128(
+        //                 fees0 * profitshares.commandershare
+        //             );
+        //             shopfee[msg.sender].coin += uint8(
+        //                 fees0 * profitshares.usershare
+        //             );
+        //         }
+        //     }
+        // }
         // if (paid1 > 0) {
         //     uint8 profitProtocol1 = state0.profitProtocol >> 4;
         //     uint256 fees1 = profitProtocol1 == 0 ? 0 : paid1 / profitProtocol1;
@@ -1082,26 +1072,6 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
         // emit Flash(msg.sender, recipient, amount0, amount1, paid0, paid1);
     }
 
-    //// @inheritdoc IUniswapV3PoolOwnerActions
-    function setShopFeeProtocolbyMarketor(
-        uint8 profitProtocol0,
-        uint8 profitProtocol1
-    ) external override lock onlyMarketManager {
-        require(
-            (profitProtocol0 == 0 ||
-                (profitProtocol0 >= 2 && profitProtocol0 <= 10)) &&
-                (profitProtocol1 == 0 ||
-                    (profitProtocol1 >= 2 && profitProtocol1 <= 10))
-        );
-        uint8 profitProtocolOld = state0.profitProtocol;
-        state0.profitProtocol = profitProtocol0 + (profitProtocol1 << 4);
-        emit SetFeeProtocol(
-            profitProtocolOld % 16,
-            profitProtocolOld >> 4,
-            profitProtocol0,
-            profitProtocol1
-        );
-    }
 
     function setShopFeeProfitSharesbyMarketor(
         uint8 _marketshare,
@@ -1128,11 +1098,11 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
         lock
         returns (uint128 coinamount)
     {
-        coinamount = shopfee[msg.sender].coin;
+        coinamount = shopfee[msg.sender];
 
         if (coinamount > 0) {
             if (coinamount == protocolProfits.coin) coinamount = coinamount - 1; // ensure that the slot is not cleared, for gas savings
-            shopfee[msg.sender].coin -= coinamount;
+            shopfee[msg.sender] -= coinamount;
             TransferHelper.safeTransfer(coin, msg.sender, coinamount);
         }
 
