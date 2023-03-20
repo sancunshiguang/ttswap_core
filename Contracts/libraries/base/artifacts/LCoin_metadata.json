@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.16+commit.07a7930e"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Contracts/libraries/base/LCoin.sol": "LCoin"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Contracts/libraries/base/LCoin.sol": {
+			"keccak256": "0xa6bc5b95827ec52e77a8264a34ff2b99dd3bbcfa3272fe6d1089802dc91b4c42",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://50758a1dc70a7e850a93118b94fdf078fbae81e14ac6900ac70e27c8dbe78c3c",
+				"dweb:/ipfs/QmSggzL8pbhruSnNfbdnr1sdCP9cgXUBqFzyjg9bWGo7Ka"
+			]
+		}
+	},
+	"version": 1
+}

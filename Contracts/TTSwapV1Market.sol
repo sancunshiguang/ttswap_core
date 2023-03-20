@@ -127,10 +127,9 @@ contract TTSwapV1Market {
 
     /// @notice Explain to an end user what this does
     /// @dev Explain to a developer any extra details
-    function setMarketProfitshare(LProfitShares.Info memory _profitshare)
-        external
-        onlyMarketCreator
-    {
+    function setMarketProfitshareByMarketor(
+        LProfitShares.Info memory _profitshare
+    ) external onlyMarketCreator {
         marketProfitshares = _profitshare;
     }
 

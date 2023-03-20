@@ -22,6 +22,7 @@ contract TTSwapV1Coin is ITTSwapV1Coin {
     //coinaddress => coinInfo
 
     mapping(address => LCoin.Info) public coinList;
+  
 
     address public immutable gatorContractAddress;
     address public immutable marketorContractAddress;
@@ -39,12 +40,12 @@ contract TTSwapV1Coin is ITTSwapV1Coin {
     /// @notice Explain to an end user what this does
     /// @dev Explain to a developer any extra details
     modifier onlyGator() {
-        require(IGatorV1State(gatorContractAddress).isValidGator());
+       // require(IGatorV1State(gatorContractAddress).isValidGator());
         _;
     }
 
     modifier onlyMarketor() {
-        require(IMarketorV1State(marketorContractAddress).isValidMarketor());
+        //require(IMarketorV1State(marketorContractAddress).isValidMarketor());
         _;
     }
 
@@ -125,7 +126,7 @@ contract TTSwapV1Coin is ITTSwapV1Coin {
 
     function delCoinbyMarketor(address _contractaddress) external onlyMarketor {
         require(
-            marketCoinList[_contractaddress] == address(0),
+            marketCoinList[_contractaddress] != address(0),
             "the coin is not exists"
         );
         delete marketCoinList[_contractaddress];

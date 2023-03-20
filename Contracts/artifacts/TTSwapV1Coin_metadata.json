@@ -26,14 +26,14 @@
 					{
 						"components": [
 							{
-								"internalType": "bytes32",
+								"internalType": "string",
 								"name": "coinFullName",
-								"type": "bytes32"
+								"type": "string"
 							},
 							{
-								"internalType": "bytes6",
+								"internalType": "string",
 								"name": "symbol",
-								"type": "bytes6"
+								"type": "string"
 							},
 							{
 								"internalType": "uint8",
@@ -96,14 +96,14 @@
 					{
 						"components": [
 							{
-								"internalType": "bytes32",
+								"internalType": "string",
 								"name": "coinFullName",
-								"type": "bytes32"
+								"type": "string"
 							},
 							{
-								"internalType": "bytes6",
+								"internalType": "string",
 								"name": "symbol",
-								"type": "bytes6"
+								"type": "string"
 							},
 							{
 								"internalType": "uint8",
@@ -190,14 +190,14 @@
 				"name": "coinList",
 				"outputs": [
 					{
-						"internalType": "bytes32",
+						"internalType": "string",
 						"name": "coinFullName",
-						"type": "bytes32"
+						"type": "string"
 					},
 					{
-						"internalType": "bytes6",
+						"internalType": "string",
 						"name": "symbol",
-						"type": "bytes6"
+						"type": "string"
 					},
 					{
 						"internalType": "uint8",
@@ -329,14 +329,14 @@
 					{
 						"components": [
 							{
-								"internalType": "bytes32",
+								"internalType": "string",
 								"name": "coinFullName",
-								"type": "bytes32"
+								"type": "string"
 							},
 							{
-								"internalType": "bytes6",
+								"internalType": "string",
 								"name": "symbol",
-								"type": "bytes6"
+								"type": "string"
 							},
 							{
 								"internalType": "uint8",
@@ -518,14 +518,14 @@
 					{
 						"components": [
 							{
-								"internalType": "bytes32",
+								"internalType": "string",
 								"name": "coinFullName",
-								"type": "bytes32"
+								"type": "string"
 							},
 							{
-								"internalType": "bytes6",
+								"internalType": "string",
 								"name": "symbol",
-								"type": "bytes6"
+								"type": "string"
 							},
 							{
 								"internalType": "uint8",
@@ -588,14 +588,14 @@
 					{
 						"components": [
 							{
-								"internalType": "bytes32",
+								"internalType": "string",
 								"name": "coinFullName",
-								"type": "bytes32"
+								"type": "string"
 							},
 							{
-								"internalType": "bytes6",
+								"internalType": "string",
 								"name": "symbol",
-								"type": "bytes6"
+								"type": "string"
 							},
 							{
 								"internalType": "uint8",
@@ -657,7 +657,7 @@
 		"devdoc": {
 			"kind": "dev",
 			"methods": {
-				"addCoinbyMarketor((bytes32,bytes6,uint8,uint8,uint256,uint256,address,bool,bool,address,bool))": {
+				"addCoinbyMarketor((string,string,uint8,uint8,uint256,uint256,address,bool,bool,address,bool))": {
 					"details": "Explain to a developer any extra details"
 				}
 			},
@@ -680,7 +680,7 @@
 		"userdoc": {
 			"kind": "user",
 			"methods": {
-				"addCoinbyMarketor((bytes32,bytes6,uint8,uint8,uint256,uint256,address,bool,bool,address,bool))": {
+				"addCoinbyMarketor((string,string,uint8,uint8,uint256,uint256,address,bool,bool,address,bool))": {
 					"notice": "Explain to an end user what this does"
 				},
 				"gatorContractAddress()": {
@@ -710,11 +710,11 @@
 	},
 	"sources": {
 		"Contracts/TTSwapV1Coin.sol": {
-			"keccak256": "0xcc73b53b96387b6a2077d61714ea8abbd7fcd2474a2f2bcb8cccc6a25a2de782",
+			"keccak256": "0x006c6e38297850684edbd5a7fd1d35b610242f4b2b9c625333ab24a0829b27b2",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://4ee20f34a960d8d284242ff9ae71b76398c0293692085a14bb409615c24d5c92",
-				"dweb:/ipfs/QmVcvh3pFnhSpXf9UJ2GicfCSJPbE5tiXp1SGArRNF7ZRJ"
+				"bzz-raw://bfc7af7d4d0e7d5a8df692bd786fceb8fab9d206cec7bab3166bae7174b49dab",
+				"dweb:/ipfs/QmRnExTpXc4SMEWirzxmwMwuvHKw7pcWXhGczvrU5eBxMX"
 			]
 		},
 		"Contracts/interfaces/Coin/ICoinV1Events.sol": {
@@ -782,11 +782,11 @@
 			]
 		},
 		"Contracts/libraries/base/LCoin.sol": {
-			"keccak256": "0x2f3d0c81c28a301ac57f417a6ef18d340e868867ae568ef058387244eed55b82",
+			"keccak256": "0xa6bc5b95827ec52e77a8264a34ff2b99dd3bbcfa3272fe6d1089802dc91b4c42",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://7c775fae6aef37ee4c5a1ad4565ff8a910f50dbe02491bfd576dac7ea71d80b0",
-				"dweb:/ipfs/QmUdzJpeQeHiZrfBq1mQ33bF63MWp5KMCrj4BBd37s1sbo"
+				"bzz-raw://50758a1dc70a7e850a93118b94fdf078fbae81e14ac6900ac70e27c8dbe78c3c",
+				"dweb:/ipfs/QmSggzL8pbhruSnNfbdnr1sdCP9cgXUBqFzyjg9bWGo7Ka"
 			]
 		},
 		"Contracts/libraries/base/LCustomer.sol": {

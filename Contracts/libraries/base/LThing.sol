@@ -6,21 +6,24 @@ library LThing {
         // recode the neckname (Not Real Name) of customer(length<32)
         // 记录用户别名(长度小于32字节)
         bytes32 name;
-        // recode which organization the customer belong.
-        // 记录所有者组织
         address ownerAddress;
-        // 1:lawCoin,2:organCoin,3:marketCoin,4:gateCoin
-        bytes32 LSTThingsFullName;
-        //symbol
         bytes6 symbol;
-        uint8 scope; //1:货币式加密货币 2:应用型加密货币 3:平台型加密货币
-        //合约地址
+        uint8 typecode;
         address contractAddress;
         bool marketunlock;
-        bool unlock;
+        bool gatelock;
         bool createrunlock;
         bool isUsed;
         address addfromgator;
         address creator;
+    }
+
+    struct DetailInfo {
+        address contractAddress; //合约地址
+        bytes32 WhitePaperUrl; //白皮书地址
+        bytes32 OfficalWebsite; //官网
+        bytes32 blockExplorerUrl; //区块查询
+        bytes32 twriterUrl; //区块查询
+        bytes32 bbsUrl; //区块查询
     }
 }
