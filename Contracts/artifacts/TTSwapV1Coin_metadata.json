@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.16+commit.07a7930e"
+		"version": "0.8.18+commit.87f61d96"
 	},
 	"language": "Solidity",
 	"output": {
@@ -36,9 +36,9 @@
 								"type": "string"
 							},
 							{
-								"internalType": "uint8",
-								"name": "scope",
-								"type": "uint8"
+								"internalType": "string",
+								"name": "typecode",
+								"type": "string"
 							},
 							{
 								"internalType": "uint8",
@@ -67,18 +67,18 @@
 							},
 							{
 								"internalType": "bool",
-								"name": "unlock",
+								"name": "gateunlock",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "isUsed",
 								"type": "bool"
 							},
 							{
 								"internalType": "address",
 								"name": "creator",
 								"type": "address"
-							},
-							{
-								"internalType": "bool",
-								"name": "isUsed",
-								"type": "bool"
 							}
 						],
 						"internalType": "struct LCoin.Info",
@@ -106,9 +106,9 @@
 								"type": "string"
 							},
 							{
-								"internalType": "uint8",
-								"name": "scope",
-								"type": "uint8"
+								"internalType": "string",
+								"name": "typecode",
+								"type": "string"
 							},
 							{
 								"internalType": "uint8",
@@ -137,18 +137,18 @@
 							},
 							{
 								"internalType": "bool",
-								"name": "unlock",
+								"name": "gateunlock",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "isUsed",
 								"type": "bool"
 							},
 							{
 								"internalType": "address",
 								"name": "creator",
 								"type": "address"
-							},
-							{
-								"internalType": "bool",
-								"name": "isUsed",
-								"type": "bool"
 							}
 						],
 						"internalType": "struct LCoin.Info",
@@ -157,24 +157,6 @@
 					}
 				],
 				"name": "addCoinbyMarketor",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_internalCoinAddress",
-						"type": "address"
-					},
-					{
-						"internalType": "uint8",
-						"name": "_scope",
-						"type": "uint8"
-					}
-				],
-				"name": "changeCoinScopebyMarketor",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -200,9 +182,9 @@
 						"type": "string"
 					},
 					{
-						"internalType": "uint8",
-						"name": "scope",
-						"type": "uint8"
+						"internalType": "string",
+						"name": "typecode",
+						"type": "string"
 					},
 					{
 						"internalType": "uint8",
@@ -231,18 +213,18 @@
 					},
 					{
 						"internalType": "bool",
-						"name": "unlock",
+						"name": "gateunlock",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "isUsed",
 						"type": "bool"
 					},
 					{
 						"internalType": "address",
 						"name": "creator",
 						"type": "address"
-					},
-					{
-						"internalType": "bool",
-						"name": "isUsed",
-						"type": "bool"
 					}
 				],
 				"stateMutability": "view",
@@ -339,9 +321,9 @@
 								"type": "string"
 							},
 							{
-								"internalType": "uint8",
-								"name": "scope",
-								"type": "uint8"
+								"internalType": "string",
+								"name": "typecode",
+								"type": "string"
 							},
 							{
 								"internalType": "uint8",
@@ -370,18 +352,18 @@
 							},
 							{
 								"internalType": "bool",
-								"name": "unlock",
+								"name": "gateunlock",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "isUsed",
 								"type": "bool"
 							},
 							{
 								"internalType": "address",
 								"name": "creator",
 								"type": "address"
-							},
-							{
-								"internalType": "bool",
-								"name": "isUsed",
-								"type": "bool"
 							}
 						],
 						"internalType": "struct LCoin.Info",
@@ -528,9 +510,9 @@
 								"type": "string"
 							},
 							{
-								"internalType": "uint8",
-								"name": "scope",
-								"type": "uint8"
+								"internalType": "string",
+								"name": "typecode",
+								"type": "string"
 							},
 							{
 								"internalType": "uint8",
@@ -559,18 +541,18 @@
 							},
 							{
 								"internalType": "bool",
-								"name": "unlock",
+								"name": "gateunlock",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "isUsed",
 								"type": "bool"
 							},
 							{
 								"internalType": "address",
 								"name": "creator",
 								"type": "address"
-							},
-							{
-								"internalType": "bool",
-								"name": "isUsed",
-								"type": "bool"
 							}
 						],
 						"internalType": "struct LCoin.Info",
@@ -598,9 +580,9 @@
 								"type": "string"
 							},
 							{
-								"internalType": "uint8",
-								"name": "scope",
-								"type": "uint8"
+								"internalType": "string",
+								"name": "typecode",
+								"type": "string"
 							},
 							{
 								"internalType": "uint8",
@@ -629,18 +611,18 @@
 							},
 							{
 								"internalType": "bool",
-								"name": "unlock",
+								"name": "gateunlock",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "isUsed",
 								"type": "bool"
 							},
 							{
 								"internalType": "address",
 								"name": "creator",
 								"type": "address"
-							},
-							{
-								"internalType": "bool",
-								"name": "isUsed",
-								"type": "bool"
 							}
 						],
 						"internalType": "struct LCoin.Info",
@@ -657,7 +639,7 @@
 		"devdoc": {
 			"kind": "dev",
 			"methods": {
-				"addCoinbyMarketor((string,string,uint8,uint8,uint256,uint256,address,bool,bool,address,bool))": {
+				"addCoinbyMarketor((string,string,string,uint8,uint256,uint256,address,bool,bool,bool,address))": {
 					"details": "Explain to a developer any extra details"
 				}
 			},
@@ -680,7 +662,7 @@
 		"userdoc": {
 			"kind": "user",
 			"methods": {
-				"addCoinbyMarketor((string,string,uint8,uint8,uint256,uint256,address,bool,bool,address,bool))": {
+				"addCoinbyMarketor((string,string,string,uint8,uint256,uint256,address,bool,bool,bool,address))": {
 					"notice": "Explain to an end user what this does"
 				},
 				"gatorContractAddress()": {
@@ -697,7 +679,7 @@
 		"compilationTarget": {
 			"Contracts/TTSwapV1Coin.sol": "TTSwapV1Coin"
 		},
-		"evmVersion": "london",
+		"evmVersion": "paris",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -710,11 +692,11 @@
 	},
 	"sources": {
 		"Contracts/TTSwapV1Coin.sol": {
-			"keccak256": "0x006c6e38297850684edbd5a7fd1d35b610242f4b2b9c625333ab24a0829b27b2",
+			"keccak256": "0x121a9d2cdd40c1475338239defa708ce3ef13fe5e56cd85e35f49448f302cb47",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://bfc7af7d4d0e7d5a8df692bd786fceb8fab9d206cec7bab3166bae7174b49dab",
-				"dweb:/ipfs/QmRnExTpXc4SMEWirzxmwMwuvHKw7pcWXhGczvrU5eBxMX"
+				"bzz-raw://f588c50eaed506f948a15930634918ed167e207d6d29a3870efab026638d5338",
+				"dweb:/ipfs/QmZYEnpA8mA4g3CLuZCbSQdSawy1pzQcjJMhq6v36TCrJu"
 			]
 		},
 		"Contracts/interfaces/Coin/ICoinV1Events.sol": {
@@ -742,11 +724,11 @@
 			]
 		},
 		"Contracts/interfaces/Coin/ICoinV1MarketorActions.sol": {
-			"keccak256": "0xe009186e1b5ce6f8f883b2d5b6a58b9f7427376fe7d2afd8571dec1fb95ce68b",
+			"keccak256": "0xfbf89b1fa5dfebb2957f21ca1b27fede09423383340c0b3e1ad580f31d3c53ac",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://1e2007d95aa5767105375f3046cec93cf51a3a4818c4ebc9513cd7b882de9d95",
-				"dweb:/ipfs/QmdLCEF3yhhBkGhHdGaM8WVy2LfBHGLW6T3tRWfqiwPtKy"
+				"bzz-raw://a7fe4979395b97cfc337f7658189d35dcd22ebb50d6c4b487cb9f419737e85b1",
+				"dweb:/ipfs/QmXuF9MnA8ycQr8YeRcNZCjGHwv8Se24WchDsduzxab3HL"
 			]
 		},
 		"Contracts/interfaces/Coin/ICoinV1State.sol": {
@@ -782,11 +764,11 @@
 			]
 		},
 		"Contracts/libraries/base/LCoin.sol": {
-			"keccak256": "0xa6bc5b95827ec52e77a8264a34ff2b99dd3bbcfa3272fe6d1089802dc91b4c42",
+			"keccak256": "0xe98f1efb1de1113551e5761abccfc60631ae962a9534ac29dbb8a38017aeb8b6",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://50758a1dc70a7e850a93118b94fdf078fbae81e14ac6900ac70e27c8dbe78c3c",
-				"dweb:/ipfs/QmSggzL8pbhruSnNfbdnr1sdCP9cgXUBqFzyjg9bWGo7Ka"
+				"bzz-raw://a1f2cdbfd3ee779823b4bcf2aed61600a99c675a9bb074644ad7a821c9487ecf",
+				"dweb:/ipfs/Qman1woGsvdr355MCGkUrCkAiiiat1cHT7t8JyLoEDBX52"
 			]
 		},
 		"Contracts/libraries/base/LCustomer.sol": {

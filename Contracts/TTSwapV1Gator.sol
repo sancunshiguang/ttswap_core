@@ -56,16 +56,15 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
     //提升权威
     //impoveauthrity
     //更新门户内容
-    function updateGatebyMarketor(LGate.Info memory _gator)
-        external
-        onlyMarketor
-    {
+    function updateGatebyMarketor(
+        LGate.Info memory _gator
+    ) external onlyMarketor {
         require(
             gateList[_gator.gateAddress].isUsed == true,
             "the gator is exister"
         );
         _gator.marketunlock = gateList[_gator.gateAddress].marketunlock;
-        _gator.unlock = gateList[_gator.gateAddress].unlock;
+        _gator.gateunlock = gateList[_gator.gateAddress].gateunlock;
         gateList[_gator.gateAddress] = _gator;
     }
 
@@ -84,7 +83,7 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
                 gateList[msg.sender].gateAddress == msg.sender,
             "the gator isnot exist"
         );
-        gateList[msg.sender].unlock = true;
+        gateList[msg.sender].gateunlock = true;
     }
 
     function unlockGatebyGater() external onlyGator {
@@ -93,7 +92,7 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
                 gateList[msg.sender].gateAddress == msg.sender,
             "the gator isnot exist"
         );
-        gateList[msg.sender].unlock = false;
+        gateList[msg.sender].gateunlock = false;
     }
 
     //更新门户内容
@@ -107,7 +106,7 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
             "the gator is your"
         );
         _gator.marketunlock = false;
-        _gator.unlock = true;
+        _gator.gateunlock = true;
         gateList[_gator.gateAddress] = _gator;
     }
 
@@ -119,7 +118,7 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
         require(_gator.gateAddress == msg.sender, "the gator is your");
 
         _gator.marketunlock = false; //默认是被冻结状态
-        _gator.unlock = false; //默认是被冻结状态
+        _gator.gateunlock = false; //默认是被冻结状态
 
         gateList[_gator.gateAddress] = _gator; //添加门户信息到门户列表
     }

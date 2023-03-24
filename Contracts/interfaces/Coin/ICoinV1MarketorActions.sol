@@ -11,11 +11,6 @@ interface ICoinV1MarketorActions {
     */
     function addCoinbyMarketor(LCoin.Info memory _coinInfo) external;
 
-    function changeCoinScopebyMarketor(
-        address _internalCoinAddress,
-        uint8 _scope
-    ) external;
-
     function lockCoinbyMarketor(address _internalCoinAddress) external;
 
     function unlockCoinbyMarketor(address _internalCoinAddress) external;

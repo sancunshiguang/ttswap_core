@@ -3,15 +3,18 @@ pragma solidity ^0.8.0;
 
 library LThing {
     struct Info {
-        // recode the neckname (Not Real Name) of customer(length<32)
         // 记录用户别名(长度小于32字节)
-        bytes32 name;
-        address ownerAddress;
-        bytes6 symbol;
-        uint8 typecode;
+        bytes32 name; //名称
+        bytes6 symbol; //符号
+        uint256 typecode; // 所有经济活动的国际标准行业分类编码
+        uint160 authority; //权威
         address contractAddress;
+        // uint8 decimals; //精度
+        // uint256 maxSupply; //流通量
+        // uint256 totalSupply; //发行量
+        uint256 boolcode; //marketunlock|gateunlock|createrunlock|isUsed
         bool marketunlock;
-        bool gatelock;
+        bool gateunlock;
         bool createrunlock;
         bool isUsed;
         address addfromgator;

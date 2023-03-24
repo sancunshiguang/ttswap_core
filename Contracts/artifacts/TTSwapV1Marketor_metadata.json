@@ -1,0 +1,188 @@
+{
+	"compiler": {
+		"version": "0.8.18+commit.87f61d96"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_marketCreator",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "Marketors",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_owner",
+						"type": "address"
+					}
+				],
+				"name": "delMarketorByMarketCreator",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "isValidMarketor",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "marketCreator",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_owner",
+						"type": "address"
+					}
+				],
+				"name": "setMarketorByMarketCreator",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"delMarketorByMarketCreator(address)": {
+					"details": "Explain to a developer any extra details"
+				},
+				"isValidMarketor()": {
+					"details": "Explain to a developer any extra details"
+				},
+				"setMarketorByMarketCreator(address)": {
+					"details": "Explain to a developer any extra details"
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"delMarketorByMarketCreator(address)": {
+					"notice": "Explain to an end user what this does"
+				},
+				"isValidMarketor()": {
+					"notice": "Explain to an end user what this does"
+				},
+				"setMarketorByMarketCreator(address)": {
+					"notice": "Explain to an end user what this does"
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Contracts/TTSwapV1Marketor.sol": "TTSwapV1Marketor"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Contracts/TTSwapV1Marketor.sol": {
+			"keccak256": "0x57129b68012b22ba3f1cf375ced0b8f98fbe7ebd31c8959733ca3cb750e9d361",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://2aa8b27a0c3841496c7f39f744da75b0bd7e303a2d329f97b4f5a8a4a61b4fc5",
+				"dweb:/ipfs/QmbvTGeDbPaYT27M399A7cADbXT5zWb2CQktVBySvG98JT"
+			]
+		},
+		"Contracts/interfaces/ITTSwapV1Marketor.sol": {
+			"keccak256": "0xcec6819c6010fada016d2adffd3ae7973365e768c6144df626506c5a00873565",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://59feb2895b8fda46ab09fd4b63605aef2bd315169102ef43898501dcdb92b3da",
+				"dweb:/ipfs/QmWxs1ftk6xYceq2dRKZ3m5zwrvNYHdLt1xPo1Ntauii9g"
+			]
+		},
+		"Contracts/interfaces/Marketor/IMarketorV1Events.sol": {
+			"keccak256": "0x1019146e8e3c5f553f93a5f1f7d31c0a7227b25ce87d8d76124fbdaae200615f",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://11113d24362e6a66e5e897ad597992660a06e8641cb5bdaebe74823504b0e225",
+				"dweb:/ipfs/QmZY3dqUFb6DkxHUveC3BpyxsyrTHujoSg7q9mWUnwNYzc"
+			]
+		},
+		"Contracts/interfaces/Marketor/IMarketorV1Immutables.sol": {
+			"keccak256": "0x2159e6262a224a3fb19bd304f89fab571d6ddad00a01c5bcbc7699bdca627412",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://6fb78be3604a8d3ad5772db5533a3cf5268607997a5f815b6d8809cc8412d126",
+				"dweb:/ipfs/QmZVF85N81hmsrzofsPLfDjrv2r82z8Xn4ooj6r2rTNM4F"
+			]
+		},
+		"Contracts/interfaces/Marketor/IMarketorV1MarketCreatorActions.sol": {
+			"keccak256": "0x85fe030c431f4ce0818038e673a58d35b30ac6fdb6760b24c105afbd0b94cc15",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://08d50a6cd32a067e30d45964d7d018fbec1b0b34b00529548815b6a98d4e9ee5",
+				"dweb:/ipfs/QmaRBpH3M7vt628KB1UqonAoUD1UcqNXSEsPdeyThZ55VC"
+			]
+		},
+		"Contracts/interfaces/Marketor/IMarketorV1State.sol": {
+			"keccak256": "0xaad87d4ddb4502c8908f30707db6628834d3df7bef3d68d6d50179d0db672ee7",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://905d7e65de99ddf8edc93aac5a9e6139e7813ac472abefa987b4ea85c73e4803",
+				"dweb:/ipfs/QmNbEzweLBYEuiTbURiPuoyyqgmx59XtA5Ugo7uEvQXRCS"
+			]
+		}
+	},
+	"version": 1
+}

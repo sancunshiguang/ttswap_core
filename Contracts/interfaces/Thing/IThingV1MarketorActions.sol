@@ -11,10 +11,7 @@ interface IThingV1MarketorActions {
     */
     function addThingbyMarketor(LThing.Info memory _coinInfo) external;
 
-    function changeThingScopebyMarketor(
-        address _internalThingAddress,
-        uint8 _scope
-    ) external;
+   
 
     function lockThingbyMarketor(address _internalThingAddress) external;
 

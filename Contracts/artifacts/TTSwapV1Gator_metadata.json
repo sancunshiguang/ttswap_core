@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.16+commit.07a7930e"
+		"version": "0.8.18+commit.87f61d96"
 	},
 	"language": "Solidity",
 	"output": {
@@ -41,24 +41,9 @@
 								"type": "uint160"
 							},
 							{
-								"internalType": "bytes32",
+								"internalType": "string",
 								"name": "name",
-								"type": "bytes32"
-							},
-							{
-								"internalType": "bytes32",
-								"name": "website",
-								"type": "bytes32"
-							},
-							{
-								"internalType": "bytes32[10]",
-								"name": "webserverip",
-								"type": "bytes32[10]"
-							},
-							{
-								"internalType": "uint32",
-								"name": "createtimestamp",
-								"type": "uint32"
+								"type": "string"
 							},
 							{
 								"internalType": "bool",
@@ -67,7 +52,7 @@
 							},
 							{
 								"internalType": "bool",
-								"name": "unlock",
+								"name": "gateunlock",
 								"type": "bool"
 							},
 							{
@@ -125,19 +110,9 @@
 						"type": "uint160"
 					},
 					{
-						"internalType": "bytes32",
+						"internalType": "string",
 						"name": "name",
-						"type": "bytes32"
-					},
-					{
-						"internalType": "bytes32",
-						"name": "website",
-						"type": "bytes32"
-					},
-					{
-						"internalType": "uint32",
-						"name": "createtimestamp",
-						"type": "uint32"
+						"type": "string"
 					},
 					{
 						"internalType": "bool",
@@ -146,7 +121,7 @@
 					},
 					{
 						"internalType": "bool",
-						"name": "unlock",
+						"name": "gateunlock",
 						"type": "bool"
 					},
 					{
@@ -257,24 +232,9 @@
 								"type": "uint160"
 							},
 							{
-								"internalType": "bytes32",
+								"internalType": "string",
 								"name": "name",
-								"type": "bytes32"
-							},
-							{
-								"internalType": "bytes32",
-								"name": "website",
-								"type": "bytes32"
-							},
-							{
-								"internalType": "bytes32[10]",
-								"name": "webserverip",
-								"type": "bytes32[10]"
-							},
-							{
-								"internalType": "uint32",
-								"name": "createtimestamp",
-								"type": "uint32"
+								"type": "string"
 							},
 							{
 								"internalType": "bool",
@@ -283,7 +243,7 @@
 							},
 							{
 								"internalType": "bool",
-								"name": "unlock",
+								"name": "gateunlock",
 								"type": "bool"
 							},
 							{
@@ -322,24 +282,9 @@
 								"type": "uint160"
 							},
 							{
-								"internalType": "bytes32",
+								"internalType": "string",
 								"name": "name",
-								"type": "bytes32"
-							},
-							{
-								"internalType": "bytes32",
-								"name": "website",
-								"type": "bytes32"
-							},
-							{
-								"internalType": "bytes32[10]",
-								"name": "webserverip",
-								"type": "bytes32[10]"
-							},
-							{
-								"internalType": "uint32",
-								"name": "createtimestamp",
-								"type": "uint32"
+								"type": "string"
 							},
 							{
 								"internalType": "bool",
@@ -348,7 +293,7 @@
 							},
 							{
 								"internalType": "bool",
-								"name": "unlock",
+								"name": "gateunlock",
 								"type": "bool"
 							},
 							{
@@ -395,7 +340,7 @@
 		"compilationTarget": {
 			"Contracts/TTSwapV1Gator.sol": "TTSwapV1Gator"
 		},
-		"evmVersion": "london",
+		"evmVersion": "paris",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -408,11 +353,11 @@
 	},
 	"sources": {
 		"Contracts/TTSwapV1Gator.sol": {
-			"keccak256": "0xa366547600ef5e448dd36a42c3d20fa5e1f9342cf19a9f05f9454654c09319e3",
+			"keccak256": "0xf5aa10950be84b8bcfcbc4993b8e4d45a7cfc9a8180edf227930f3dbb11f6a72",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://f1f2cdc8ffb5c3234d19292fab0a1ffe6b2ed10e6876ed76a0ad7365bf22feea",
-				"dweb:/ipfs/QmXxwwrZvBeDsDKZZBjGqPmDqgUvt7W3y96eAQccWedQw6"
+				"bzz-raw://76430d87ae529767ea2d6dad46566ec951e67881e79c92daa9ece9ca4906b177",
+				"dweb:/ipfs/QmYH3SZLuFKKujLiN2RU9BoDFug2fNLt2LKWznfudRihiH"
 			]
 		},
 		"Contracts/interfaces/Gator/IGatorV1CustomerActions.sol": {
@@ -488,11 +433,11 @@
 			]
 		},
 		"Contracts/libraries/base/LGate.sol": {
-			"keccak256": "0xdbbcc3e545cc8d7d8eebe4b1dbaccee4d2adbce4785cb7ac5f4712093c72db52",
+			"keccak256": "0x36d8718264475237175565152c9f3060726c77f851bb02697a51a06909282b72",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://1d7251ca8ee12ad7009fe9f280aa8be028502f51e7465fe5314b85b9a2815991",
-				"dweb:/ipfs/QmRQ5Z78r3qDKhBbRbDs8d4ThNk5fLN5S5g6tosHwa6jdo"
+				"bzz-raw://1aadded42c60a23bb86d8c845f8cd430300ac6a9db9871a741c27968a4410870",
+				"dweb:/ipfs/QmfVvvCPQnrWvLkhyhqbNF1Xb15WE9ocMFw8DnbZT6Pjys"
 			]
 		}
 	},

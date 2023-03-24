@@ -22,7 +22,6 @@ contract TTSwapV1Coin is ITTSwapV1Coin {
     //coinaddress => coinInfo
 
     mapping(address => LCoin.Info) public coinList;
-  
 
     address public immutable gatorContractAddress;
     address public immutable marketorContractAddress;
@@ -40,7 +39,7 @@ contract TTSwapV1Coin is ITTSwapV1Coin {
     /// @notice Explain to an end user what this does
     /// @dev Explain to a developer any extra details
     modifier onlyGator() {
-       // require(IGatorV1State(gatorContractAddress).isValidGator());
+        // require(IGatorV1State(gatorContractAddress).isValidGator());
         _;
     }
 
@@ -60,7 +59,7 @@ contract TTSwapV1Coin is ITTSwapV1Coin {
         if (coinList[_coinInfo.contractAddress].isUsed != true) {
             _coinInfo.creator = msg.sender;
             _coinInfo.marketunlock = false;
-            _coinInfo.unlock = false;
+            _coinInfo.gateunlock = false;
             _coinInfo.isUsed = true;
             coinList[_coinInfo.contractAddress] = _coinInfo;
             marketCoinList[_coinInfo.contractAddress] = _coinInfo
@@ -73,13 +72,6 @@ contract TTSwapV1Coin is ITTSwapV1Coin {
             marketCoinList[_coinInfo.contractAddress] = _coinInfo
                 .contractAddress;
         }
-    }
-
-    function changeCoinScopebyMarketor(
-        address _internalCoinAddress,
-        uint8 _scope
-    ) external onlyMarketor {
-        coinList[_internalCoinAddress].scope = _scope;
     }
 
     function lockCoinbyMarketor(
@@ -99,7 +91,7 @@ contract TTSwapV1Coin is ITTSwapV1Coin {
     ) external onlyMarketor {
         require(marketCoinList[_coinInfo.contractAddress] != address(0));
         _coinInfo.marketunlock = false;
-        _coinInfo.unlock = false;
+        _coinInfo.gateunlock = false;
         _coinInfo.isUsed = true;
         _coinInfo.creator = coinList[_coinInfo.contractAddress].creator;
         coinList[_coinInfo.contractAddress] = _coinInfo;
@@ -149,7 +141,7 @@ contract TTSwapV1Coin is ITTSwapV1Coin {
         if (coinList[_coinInfo.contractAddress].isUsed != true) {
             _coinInfo.creator = msg.sender;
             _coinInfo.marketunlock = false;
-            _coinInfo.unlock = false;
+            _coinInfo.gateunlock = false;
             _coinInfo.isUsed = true;
             coinList[_coinInfo.contractAddress] = _coinInfo;
             gateCoinList[msg.sender][_coinInfo.contractAddress] = _coinInfo
@@ -176,7 +168,7 @@ contract TTSwapV1Coin is ITTSwapV1Coin {
             coinList[_internalCoinAddress].creator == msg.sender,
             "you have not the right"
         );
-        coinList[_internalCoinAddress].unlock = true;
+        coinList[_internalCoinAddress].gateunlock = true;
     }
 
     function lockCoinbyGator(address _internalCoinAddress) external onlyGator {
@@ -184,7 +176,7 @@ contract TTSwapV1Coin is ITTSwapV1Coin {
             coinList[_internalCoinAddress].creator == msg.sender,
             "you have not the right"
         );
-        coinList[_internalCoinAddress].unlock = false;
+        coinList[_internalCoinAddress].gateunlock = false;
     }
 
     function updateCoinbyGator(LCoin.Info memory _coinInfo) external onlyGator {
@@ -192,9 +184,9 @@ contract TTSwapV1Coin is ITTSwapV1Coin {
             coinList[_coinInfo.contractAddress].creator == msg.sender,
             "you have not the right"
         );
-        require(_coinInfo.scope == 4, "the coin scope is not justified ");
+        
         _coinInfo.marketunlock = false;
-        _coinInfo.unlock = false;
+        _coinInfo.gateunlock = false;
         _coinInfo.isUsed = true;
         _coinInfo.creator = msg.sender;
         coinList[_coinInfo.contractAddress] = _coinInfo;

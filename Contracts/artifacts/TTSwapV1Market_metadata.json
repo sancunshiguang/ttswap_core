@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.16+commit.07a7930e"
+		"version": "0.8.18+commit.87f61d96"
 	},
 	"language": "Solidity",
 	"output": {
@@ -9,6 +9,56 @@
 				"inputs": [],
 				"stateMutability": "nonpayable",
 				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "coinContractAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "customerContractAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "gateShopList",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
 			},
 			{
 				"inputs": [],
@@ -51,7 +101,145 @@
 			},
 			{
 				"inputs": [],
+				"name": "marketProfitshares",
+				"outputs": [
+					{
+						"internalType": "uint8",
+						"name": "marketshare",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint8",
+						"name": "gatorshare",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint8",
+						"name": "commandershare",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint8",
+						"name": "usershare",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "marketShopList",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "marketorContractAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint24",
+						"name": "",
+						"type": "uint24"
+					}
+				],
+				"name": "profitUnitSpacing",
+				"outputs": [
+					{
+						"internalType": "int24",
+						"name": "",
+						"type": "int24"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint8",
+								"name": "marketshare",
+								"type": "uint8"
+							},
+							{
+								"internalType": "uint8",
+								"name": "gatorshare",
+								"type": "uint8"
+							},
+							{
+								"internalType": "uint8",
+								"name": "commandershare",
+								"type": "uint8"
+							},
+							{
+								"internalType": "uint8",
+								"name": "usershare",
+								"type": "uint8"
+							}
+						],
+						"internalType": "struct LProfitShares.Info",
+						"name": "_profitshare",
+						"type": "tuple"
+					}
+				],
+				"name": "setMarketProfitshareByMarketor",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "shopaddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "thingContractAddress",
 				"outputs": [
 					{
 						"internalType": "address",
@@ -66,7 +254,7 @@
 		"devdoc": {
 			"kind": "dev",
 			"methods": {
-				"constructor": {
+				"setMarketProfitshareByMarketor((uint8,uint8,uint8,uint8))": {
 					"details": "Explain to a developer any extra details"
 				}
 			},
@@ -75,7 +263,7 @@
 		"userdoc": {
 			"kind": "user",
 			"methods": {
-				"constructor": {
+				"setMarketProfitshareByMarketor((uint8,uint8,uint8,uint8))": {
 					"notice": "Explain to an end user what this does"
 				}
 			},
@@ -86,7 +274,7 @@
 		"compilationTarget": {
 			"Contracts/TTSwapV1Market.sol": "TTSwapV1Market"
 		},
-		"evmVersion": "london",
+		"evmVersion": "paris",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -106,20 +294,36 @@
 				"dweb:/ipfs/Qmf6WNNJSP69fJWGbSQvA6GPdvyJFSP6oTfLbwiiAJ1zKj"
 			]
 		},
-		"Contracts/TTSwapV1Gator.sol": {
-			"keccak256": "0xa366547600ef5e448dd36a42c3d20fa5e1f9342cf19a9f05f9454654c09319e3",
+		"Contracts/TTSwapV1Coin.sol": {
+			"keccak256": "0x121a9d2cdd40c1475338239defa708ce3ef13fe5e56cd85e35f49448f302cb47",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://f1f2cdc8ffb5c3234d19292fab0a1ffe6b2ed10e6876ed76a0ad7365bf22feea",
-				"dweb:/ipfs/QmXxwwrZvBeDsDKZZBjGqPmDqgUvt7W3y96eAQccWedQw6"
+				"bzz-raw://f588c50eaed506f948a15930634918ed167e207d6d29a3870efab026638d5338",
+				"dweb:/ipfs/QmZYEnpA8mA4g3CLuZCbSQdSawy1pzQcjJMhq6v36TCrJu"
+			]
+		},
+		"Contracts/TTSwapV1Customer.sol": {
+			"keccak256": "0x149dbd564041f03a7517606038fc2eb140b4ebfebb1f92256cfa756bec18c69d",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://7c5e9b6984f9827b08e0ba01c6f103e72256388e1fb45c0f4cc8f486ea75ca1b",
+				"dweb:/ipfs/QmQNtP6Ye7YcNdLZPzp2zPVAm4UBuyVbNvEgbDEQuEjoa9"
+			]
+		},
+		"Contracts/TTSwapV1Gator.sol": {
+			"keccak256": "0xf5aa10950be84b8bcfcbc4993b8e4d45a7cfc9a8180edf227930f3dbb11f6a72",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://76430d87ae529767ea2d6dad46566ec951e67881e79c92daa9ece9ca4906b177",
+				"dweb:/ipfs/QmYH3SZLuFKKujLiN2RU9BoDFug2fNLt2LKWznfudRihiH"
 			]
 		},
 		"Contracts/TTSwapV1Market.sol": {
-			"keccak256": "0x2f8ee8b616837f5513f44da53656e023ac3ae810946c878f8aae262c8ea62e86",
+			"keccak256": "0x0e023381bfffe8174f46dcd8a87b58235154384941aef6332a5122736f0a97c0",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://3cbc3376be7e10fabcc1d790b6dade019e5569441695430d11c4ff5592d06c5f",
-				"dweb:/ipfs/QmVR28RBqs1TxcfoqmmBxeQLCwEJYAsRiv5jE1sFMcdiqu"
+				"bzz-raw://5fa0b13899d17a769187d61801d93c10bc116c332d41c4c3addb810dc837d976",
+				"dweb:/ipfs/QmdzgFpCmaEYsbMQbbGZh165ubbeEJ145TjQaAJM7vWYgK"
 			]
 		},
 		"Contracts/TTSwapV1Marketor.sol": {
@@ -128,6 +332,102 @@
 			"urls": [
 				"bzz-raw://2aa8b27a0c3841496c7f39f744da75b0bd7e303a2d329f97b4f5a8a4a61b4fc5",
 				"dweb:/ipfs/QmbvTGeDbPaYT27M399A7cADbXT5zWb2CQktVBySvG98JT"
+			]
+		},
+		"Contracts/TTSwapV1Thing.sol": {
+			"keccak256": "0xf5eaaf6cd4724170dd9f90cf17ddb45b793e5a5036d6655855aaca891ff2486d",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://f1b349208dee069a64509dcb40aff7d24f50a3f52275f96a67450948d5c208f1",
+				"dweb:/ipfs/QmeaKxaeRCysczgba5nb4MRVuDTpQGc6siSrdEFKVmPwTw"
+			]
+		},
+		"Contracts/interfaces/Coin/ICoinV1Events.sol": {
+			"keccak256": "0x1c2a7d25c4df3bd615df013c217ed7a3dab1a1d78bb8f1390dfc88b277fefa57",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://ce74856dbf250051fba0f7cf56e6e58102fce98333c2f639c7a1199202eaf9a6",
+				"dweb:/ipfs/QmYEhmrsfzyUizcUATMUt2uU7HpqBgVksjf8ToDb559vbh"
+			]
+		},
+		"Contracts/interfaces/Coin/ICoinV1GatorActions.sol": {
+			"keccak256": "0x8c16f579285d606e862ce180ca24d79ca086fb01b9268af1c39b4c8fbf2d96a1",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://7c064bf49ffeee517f08ef4e94d53f18894c2355a8f42962e30a050662b55c6a",
+				"dweb:/ipfs/Qma8rG2d4z7LrJEGVhwgEqvUs3bmVxq1CAphBjAe34wBhp"
+			]
+		},
+		"Contracts/interfaces/Coin/ICoinV1Immutables.sol": {
+			"keccak256": "0x7ccf6639d1c5082ef3a932bc7c45b99ee88a63ad233d997942a19333d1c06d8b",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://e1a449d8f0a94697115b7457cadc9f7dcf23ca8a114b35e266a9ef9833c073c2",
+				"dweb:/ipfs/QmeFnQhJkHhBDdskEEhYUMA2pL7RcYSKTiWc3nHwjeQkeb"
+			]
+		},
+		"Contracts/interfaces/Coin/ICoinV1MarketorActions.sol": {
+			"keccak256": "0xfbf89b1fa5dfebb2957f21ca1b27fede09423383340c0b3e1ad580f31d3c53ac",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://a7fe4979395b97cfc337f7658189d35dcd22ebb50d6c4b487cb9f419737e85b1",
+				"dweb:/ipfs/QmXuF9MnA8ycQr8YeRcNZCjGHwv8Se24WchDsduzxab3HL"
+			]
+		},
+		"Contracts/interfaces/Coin/ICoinV1State.sol": {
+			"keccak256": "0xd03715fc3391f5aeb00ca1620a86cd85efc9b3a99a9c283e182f739e427f95b9",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://3b2e2174ee6495d8a354c8825b33f25bd514becf93aca020162d80a256e7291c",
+				"dweb:/ipfs/QmaqFMfBz5dELTaFLazLgjXUsJWT6hVga2s3xdYc2hAjF1"
+			]
+		},
+		"Contracts/interfaces/Customer/ICustomerV1CustomerActions.sol": {
+			"keccak256": "0x01b7331594f615db652b95ff4728f480b6f8216f864a86f31754f146fe4b0f30",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://9de076f0cb88bf6d8059c97ed0767ad3b5e2cd08bd51f1e4bfea0214d2b941d1",
+				"dweb:/ipfs/QmbHgSJy1s1KaDEG3Dor65qt3a4PuPEGZJnqMfhJKNYLgb"
+			]
+		},
+		"Contracts/interfaces/Customer/ICustomerV1Events.sol": {
+			"keccak256": "0x2e0a76949cc2a0af8a1a32ea99447dd4818bb7a02b95109dabfccf00c79bfa5f",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://a210a4594a0a339b930b8ac55e2aa476dccb1767cef3d1f346dd3616e2231671",
+				"dweb:/ipfs/QmaQUh48NJ5Pgst3s8C6jvcdQLyghGVjnp6VhNKLwDowLX"
+			]
+		},
+		"Contracts/interfaces/Customer/ICustomerV1GatorActions.sol": {
+			"keccak256": "0xf531a352e8164b36560d784cb317ef018d34c2639240a15064e2442ad55cc64b",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://3d1fb52d0302ac37df5714a2ae1225487efb31470cbf6f39363af3de148c5e8f",
+				"dweb:/ipfs/QmPpBDykjax6ugVcqgQk6pNvdiidQUQVwfypvXyQ9ZkoBb"
+			]
+		},
+		"Contracts/interfaces/Customer/ICustomerV1Immutables.sol": {
+			"keccak256": "0xc90d8ef483f7487db0bed9e42e3dbdfd6a6a5bb0e61be7f263acaaeec43d4411",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://6f085d8fde780690e2a5cd14d6b6ae1dab9328ce8b5859c6aa94b532c14c72d4",
+				"dweb:/ipfs/QmWqtuPQCdESmRLCC82ux1UiTY4Ei2CsMmrthp4BWn5e4g"
+			]
+		},
+		"Contracts/interfaces/Customer/ICustomerV1MarketorActions.sol": {
+			"keccak256": "0x17a64352c0c989b27d32903ead1585ad86af43bb0f7395a9d2a1f92f7b7cafda",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://7bb84bd798f03541a1cc9e8a28ca3125f2ef91d1055d628f1b996b4ce3fbf304",
+				"dweb:/ipfs/Qmf1hwsPu6KQTdiZ94JZiAukbgAmBAirfdbFj48LwAeaaE"
+			]
+		},
+		"Contracts/interfaces/Customer/ICustomerV1State.sol": {
+			"keccak256": "0xcb49777410fa22e2057cf6abc0298453a397fc3426cae13cfc2749fa47fd6870",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://48e4d3dba1a4bd7f331d4cadef855ada4d8d12fe5d6e8193e69b19ae00cae002",
+				"dweb:/ipfs/QmVNAVHsEdbToYkwUaMixgaTaDVVKWkqXT6EzLbbayeu6W"
 			]
 		},
 		"Contracts/interfaces/Gator/IGatorV1CustomerActions.sol": {
@@ -178,6 +478,22 @@
 				"dweb:/ipfs/Qme7hkgr2K3vEUst6YPBaq55dycpXBaffWLKXDSPX3QnvK"
 			]
 		},
+		"Contracts/interfaces/ITTSwapV1Coin.sol": {
+			"keccak256": "0x2b7565414d045d12859626e9027d9e69508edca12ea84104065b653aef808807",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://4a0b4105fa3a11aac2ee96e04561e4dce084a7e9a0869fbb3c183d37273a15a5",
+				"dweb:/ipfs/QmTC3ByoPkYyRLZ5hnec2hA4VA2CWnxXWCNQrky7iKoJpJ"
+			]
+		},
+		"Contracts/interfaces/ITTSwapV1Customer.sol": {
+			"keccak256": "0xec1054bcc0fb3865bdd0b072d900619591f2e585d6d42a656f4961ccafdce8fa",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://9a909fcc599a52e1032d38a655e00e4dcc01eade0957770988ebe0706f964f6a",
+				"dweb:/ipfs/QmV86hTNgS6YQkph17FEU8JNdcEgzhhqXaqiP5fcBf7yn5"
+			]
+		},
 		"Contracts/interfaces/ITTSwapV1Gator.sol": {
 			"keccak256": "0xcc6a9f594874f75e8f19b2d65a3d0892bd9d3f75636e93e8d52cf4aea6703652",
 			"license": "GPL-2.0-or-later",
@@ -194,6 +510,14 @@
 				"dweb:/ipfs/QmWxs1ftk6xYceq2dRKZ3m5zwrvNYHdLt1xPo1Ntauii9g"
 			]
 		},
+		"Contracts/interfaces/ITTSwapV1Thing.sol": {
+			"keccak256": "0x7ca1409c94e8face538d0a62df48401c1df8f57113cc232955673ecc436549c6",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://0aa1edebc597ece5b97edb807ee5f7240f4ae7a33861f932237bbf474202d1e0",
+				"dweb:/ipfs/QmevDr5VHn8wNaWD2UWMq7eYju9RPxzD7sDTFKrxZXc9Lm"
+			]
+		},
 		"Contracts/interfaces/Marketor/IMarketorV1Events.sol": {
 			"keccak256": "0x1019146e8e3c5f553f93a5f1f7d31c0a7227b25ce87d8d76124fbdaae200615f",
 			"license": "GPL-2.0-or-later",
@@ -203,11 +527,11 @@
 			]
 		},
 		"Contracts/interfaces/Marketor/IMarketorV1Immutables.sol": {
-			"keccak256": "0xc6fe9db9aafa196283670e6f83a876df0e6fe84074b06012865db8efd0581aa3",
+			"keccak256": "0x2159e6262a224a3fb19bd304f89fab571d6ddad00a01c5bcbc7699bdca627412",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://be174ba35045eeee018680400cd4cc238125664b0c23bc28f68ef27b1f8f5201",
-				"dweb:/ipfs/QmXGdMa25gG1A4FEctyXn7vkB7VUnJaqY5NHpTgzbHZbbi"
+				"bzz-raw://6fb78be3604a8d3ad5772db5533a3cf5268607997a5f815b6d8809cc8412d126",
+				"dweb:/ipfs/QmZVF85N81hmsrzofsPLfDjrv2r82z8Xn4ooj6r2rTNM4F"
 			]
 		},
 		"Contracts/interfaces/Marketor/IMarketorV1MarketCreatorActions.sol": {
@@ -226,6 +550,62 @@
 				"dweb:/ipfs/QmNbEzweLBYEuiTbURiPuoyyqgmx59XtA5Ugo7uEvQXRCS"
 			]
 		},
+		"Contracts/interfaces/Thing/IThingV1Events.sol": {
+			"keccak256": "0x578e73460d0744175b079f189eb3158036522d4a60cab8387f7f01f805769f1b",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://6f0cb6d0b293fdd330b2e8dd312f836bfa02e63225c5154beb77a2d545f582f5",
+				"dweb:/ipfs/QmYNKJ9tXE4qZXEttSNWjWs7tnzHYMhjZt1EHQEbQVGQ26"
+			]
+		},
+		"Contracts/interfaces/Thing/IThingV1GatorActions.sol": {
+			"keccak256": "0xf3fba13d6fc9dd8d9740d0a6ac15d4fd46906378107ff12f37555ce4c7b63147",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://fd2c4cfcffd94ab9b735511dfee49d0ac3bf8125242af2e3bced7a5b906ca520",
+				"dweb:/ipfs/QmXFzXwgmw1LKn6m62ysAL8go6exjnoY8nSTrUbpENJdSx"
+			]
+		},
+		"Contracts/interfaces/Thing/IThingV1Immutables.sol": {
+			"keccak256": "0xd3638fb49778764b61cae22befcef983d3e535c8ad9ea6b84d05b4b72c2dc444",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://4d2cd441adfc0f860ce2038704f99a6c9a26e558492bc4d90d278969362ad178",
+				"dweb:/ipfs/QmXCm7DPmNnUUVTc5Sidr9BTxVTWhSwyDp7KUSxqZSfJBz"
+			]
+		},
+		"Contracts/interfaces/Thing/IThingV1MarketorActions.sol": {
+			"keccak256": "0x2381c9bd1db7debd9af2986d92921b25027454de8280d9724dba80208bceb173",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://72d5c3c7389b8b825aa6256950596fa472780b9154aee0fe704d6189196f6d4a",
+				"dweb:/ipfs/QmQHq231fZ9iQn9KVHfhkueNDtvhVRcyiE3Pyf4rTqzdh5"
+			]
+		},
+		"Contracts/interfaces/Thing/IThingV1State.sol": {
+			"keccak256": "0xf4d9f339c6cce8a0e773630c87f380ddc935e57c5d120098c51cf03ecd3e27cc",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://92665b8561360dda93d9168a274eb0a57523d02447f4769e2a22e9cb99e5c7af",
+				"dweb:/ipfs/QmTF3Q5GfvaUPP1c7Pi4TTqJFQejwhV61vWGGo9krauATL"
+			]
+		},
+		"Contracts/libraries/LProfitShares.sol": {
+			"keccak256": "0x24155975e3c13d1e899694cf87074e41bdbcfbd7172e6c1bb9903f44490d1b05",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://483df8c53d41966b921793204f8c77154c194d856ccdbb80c11049ddb3fcc669",
+				"dweb:/ipfs/QmNcikJvCKwtL7KPw2Dbk9PDP9wuFwmv72YnHSSuM9Saow"
+			]
+		},
+		"Contracts/libraries/base/LCoin.sol": {
+			"keccak256": "0xe98f1efb1de1113551e5761abccfc60631ae962a9534ac29dbb8a38017aeb8b6",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://a1f2cdbfd3ee779823b4bcf2aed61600a99c675a9bb074644ad7a821c9487ecf",
+				"dweb:/ipfs/Qman1woGsvdr355MCGkUrCkAiiiat1cHT7t8JyLoEDBX52"
+			]
+		},
 		"Contracts/libraries/base/LCustomer.sol": {
 			"keccak256": "0x6acb4a762f349ab39bd48ff34c150b55f55aabc4826379838391749136f3aee9",
 			"license": "GPL-2.0-or-later",
@@ -235,11 +615,27 @@
 			]
 		},
 		"Contracts/libraries/base/LGate.sol": {
-			"keccak256": "0xdbbcc3e545cc8d7d8eebe4b1dbaccee4d2adbce4785cb7ac5f4712093c72db52",
+			"keccak256": "0x36d8718264475237175565152c9f3060726c77f851bb02697a51a06909282b72",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://1d7251ca8ee12ad7009fe9f280aa8be028502f51e7465fe5314b85b9a2815991",
-				"dweb:/ipfs/QmRQ5Z78r3qDKhBbRbDs8d4ThNk5fLN5S5g6tosHwa6jdo"
+				"bzz-raw://1aadded42c60a23bb86d8c845f8cd430300ac6a9db9871a741c27968a4410870",
+				"dweb:/ipfs/QmfVvvCPQnrWvLkhyhqbNF1Xb15WE9ocMFw8DnbZT6Pjys"
+			]
+		},
+		"Contracts/libraries/base/LShop.sol": {
+			"keccak256": "0xb8f7b47345b022ecbd97491b79385ee69c226a62c832048df9ad74c6e4132102",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://a821cb2570143bb2c30910d7949ddb1846be13451024c341ea8a59512609d202",
+				"dweb:/ipfs/QmQg5uxtJaYg4JMVaQZRugK2m92t9fCcrPcXHbx1sqkJVS"
+			]
+		},
+		"Contracts/libraries/base/LThing.sol": {
+			"keccak256": "0x01489223f8e14ea4a4eef23a70edd0a7107ebd5af2a34be88ccaec4fdb478d60",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://78039435013623f08a7963b084f09c46a13005db4f7f986e25325d98e8cf5e70",
+				"dweb:/ipfs/QmcGRcmpaR2vJArinwZcRWixirUDhEQYQbFbEnBp8ush28"
 			]
 		}
 	},

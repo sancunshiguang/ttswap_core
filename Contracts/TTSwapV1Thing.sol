@@ -22,8 +22,10 @@ contract TTSwapV1Thing is ITTSwapV1Thing {
     address public gatorContractAddress;
     address public marketorContractAddress;
 
-    constructor(address _gatorContractAddress, address _marketorContractAddress)
-    {
+    constructor(
+        address _gatorContractAddress,
+        address _marketorContractAddress
+    ) {
         gatorContractAddress = _gatorContractAddress;
         marketorContractAddress = _marketorContractAddress;
     }
@@ -44,15 +46,14 @@ contract TTSwapV1Thing is ITTSwapV1Thing {
 
     /////////////////////////物品设置-市场/////////////////////
     /////////////////////////things Manage/////////////////////
-    function addThingbyMarketor(LThing.Info memory _ThingsInfo)
-        external
-        onlyMarketor
-    {
+    function addThingbyMarketor(
+        LThing.Info memory _ThingsInfo
+    ) external onlyMarketor {
         if (ThingsList[_ThingsInfo.contractAddress].isUsed != true) {
             _ThingsInfo.addfromgator = msg.sender;
             _ThingsInfo.creator = msg.sender;
             _ThingsInfo.marketunlock = false;
-            _ThingsInfo.unlock = false;
+            _ThingsInfo.gateunlock = false;
             _ThingsInfo.isUsed = true;
             ThingsList[_ThingsInfo.contractAddress] = _ThingsInfo;
             marketThingsList[_ThingsInfo.contractAddress] = _ThingsInfo
@@ -67,34 +68,24 @@ contract TTSwapV1Thing is ITTSwapV1Thing {
         }
     }
 
-    function changeThingScopebyMarketor(
-        address _internalThingsAddress,
-        uint8 _scope
+    function lockThingbyMarketor(
+        address _internalThingsAddress
     ) external onlyMarketor {
-        ThingsList[_internalThingsAddress].scope = _scope;
-    }
-
-    function lockThingbyMarketor(address _internalThingsAddress)
-        external
-        onlyMarketor
-    {
         ThingsList[_internalThingsAddress].marketunlock = false;
     }
 
-    function unlockThingbyMarketor(address _internalThingsAddress)
-        external
-        onlyMarketor
-    {
+    function unlockThingbyMarketor(
+        address _internalThingsAddress
+    ) external onlyMarketor {
         ThingsList[_internalThingsAddress].marketunlock = true;
     }
 
-    function updateThingbyMarketor(LThing.Info memory _ThingsInfo)
-        external
-        onlyMarketor
-    {
+    function updateThingbyMarketor(
+        LThing.Info memory _ThingsInfo
+    ) external onlyMarketor {
         require(marketThingsList[_ThingsInfo.contractAddress] != address(0));
         _ThingsInfo.marketunlock = false;
-        _ThingsInfo.unlock = false;
+        _ThingsInfo.gateunlock = false;
         _ThingsInfo.isUsed = true;
         _ThingsInfo.creator = ThingsList[_ThingsInfo.contractAddress].creator;
         ThingsList[_ThingsInfo.contractAddress] = _ThingsInfo;
@@ -119,10 +110,9 @@ contract TTSwapV1Thing is ITTSwapV1Thing {
         delete gateThingsList[_gateaddress][_contractaddress];
     }
 
-    function delMarketThingbyMarketor(LThing.Info memory _ThingsInfo)
-        external
-        onlyMarketor
-    {
+    function delMarketThingbyMarketor(
+        LThing.Info memory _ThingsInfo
+    ) external onlyMarketor {
         require(
             marketThingsList[_ThingsInfo.contractAddress] == address(0),
             "the Things is not exists"
@@ -144,39 +134,36 @@ contract TTSwapV1Thing is ITTSwapV1Thing {
     /////////////////////////物品设置-门户/////////////////////
     /////////////////////////things Manage/////////////////////
 
-    function unlockThingbyGator(address _internalThingsAddress)
-        external
-        onlyGator
-    {
+    function unlockThingbyGator(
+        address _internalThingsAddress
+    ) external onlyGator {
         require(
             ThingsList[_internalThingsAddress].addfromgator == msg.sender,
             "you have not the right"
         );
-        ThingsList[_internalThingsAddress].unlock = true;
+        ThingsList[_internalThingsAddress].gateunlock = true;
     }
 
-    function lockThingbyGator(address _internalThingsAddress)
-        external
-        onlyGator
-    {
+    function lockThingbyGator(
+        address _internalThingsAddress
+    ) external onlyGator {
         require(
             ThingsList[_internalThingsAddress].addfromgator == msg.sender,
             "you have not the right"
         );
-        ThingsList[_internalThingsAddress].unlock = false;
+        ThingsList[_internalThingsAddress].gateunlock = false;
     }
 
-    function updateThingbyGator(LThing.Info memory _ThingsInfo)
-        external
-        onlyGator
-    {
+    function updateThingbyGator(
+        LThing.Info memory _ThingsInfo
+    ) external onlyGator {
         require(
             ThingsList[_ThingsInfo.contractAddress].addfromgator == msg.sender,
             "you have not the right"
         );
-        require(_ThingsInfo.scope == 4, "the coin scope is not justified ");
+       
         _ThingsInfo.marketunlock = false;
-        _ThingsInfo.unlock = false;
+        _ThingsInfo.gateunlock = false;
         _ThingsInfo.isUsed = true;
         _ThingsInfo.addfromgator = msg.sender;
         ThingsList[_ThingsInfo.contractAddress] = _ThingsInfo;
@@ -222,7 +209,7 @@ contract TTSwapV1Thing is ITTSwapV1Thing {
         );
 
         _ThingsInfo.marketunlock = false;
-        _ThingsInfo.unlock = true;
+        _ThingsInfo.gateunlock = true;
         _ThingsInfo.createrunlock = false;
         _ThingsInfo.isUsed = true;
         _ThingsInfo.addfromgator = _gateaddress;
@@ -244,7 +231,7 @@ contract TTSwapV1Thing is ITTSwapV1Thing {
         );
 
         _ThingsInfo.marketunlock = false;
-        _ThingsInfo.unlock = true;
+        _ThingsInfo.gateunlock = true;
         _ThingsInfo.createrunlock = false;
         _ThingsInfo.isUsed = true;
         _ThingsInfo.addfromgator = _gateaddress;
@@ -254,11 +241,9 @@ contract TTSwapV1Thing is ITTSwapV1Thing {
             .contractAddress;
     }
 
-    function getThingInfo(address _contractaddress)
-        external
-        view
-        returns (LThing.Info memory)
-    {
+    function getThingInfo(
+        address _contractaddress
+    ) external view returns (LThing.Info memory) {
         require(
             ThingsList[_contractaddress].isUsed == true,
             "the Things is not exists"
