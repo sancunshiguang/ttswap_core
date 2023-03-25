@@ -5,12 +5,8 @@ library LGate {
     struct Info {
         // the address of the Market
         // 记录market地址
-        address market;
         //Gator地址
         address gateAddress;
-        // the name of the Organization
-        // 记录大门的名称
-        uint160 authority;
         // the name of the Organization
         // 记录大门的名称
         string name;
@@ -32,10 +28,10 @@ library LGate {
 
     struct DetailInfo {
         address contractAddress; //合约地址
-        bytes32 WhitePaperUrl; //白皮书地址
-        bytes32 OfficalWebsite; //官网
-        bytes32 blockExplorerUrl; //区块查询
-        bytes32 twriterUrl; //区块查询
-        bytes32 bbsUrl; //bbs论坛地址
+        string WhitePaperUrl; //白皮书地址
+        string OfficalWebsite; //官网
+        string blockExplorerUrl; //区块查询
+        string twriterUrl; //区块查询
+        string bbsUrl; //bbs论坛地址
     }
 }

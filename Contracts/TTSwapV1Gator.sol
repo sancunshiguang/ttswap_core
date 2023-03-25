@@ -11,6 +11,10 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
     //Gate Parameter
 
     mapping(address => LGate.Info) public gateList;
+    //记录门户编号
+    mapping(uint8 => address) public gateNumbers;
+    //记录门户最大编号
+    uint8 public maxGateNumbers;
 
     address public immutable marketorContractAddress;
     address public marketCreator;
@@ -18,6 +22,7 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
     constructor(address _marketorContractAddress, address _marketCreator) {
         marketorContractAddress = _marketorContractAddress;
         marketCreator = _marketCreator;
+        maxGateNumbers = 1;
     }
 
     /// @notice Explain to an end user what this does
@@ -43,6 +48,7 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
             "the gator isnot exist"
         );
         gateList[_gatoraddress].marketunlock = true;
+        emit e_lockGatebyMarketor(_gatoraddress, msg.sender);
     }
 
     function unlockGatebyMarketor(address _gatoraddress) external onlyMarketor {
@@ -51,6 +57,7 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
             "the gator isnot exist"
         );
         gateList[_gatoraddress].marketunlock = false;
+        emit e_unlockGatebyMarketor(_gatoraddress, msg.sender);
     }
 
     //提升权威
@@ -66,12 +73,18 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
         _gator.marketunlock = gateList[_gator.gateAddress].marketunlock;
         _gator.gateunlock = gateList[_gator.gateAddress].gateunlock;
         gateList[_gator.gateAddress] = _gator;
+        emit e_updateGatebyMarketor(
+            _gator.gateAddress,
+            _gator.name,
+            msg.sender
+        );
     }
 
     function delGatebyMarketor(address _gator) external onlyMarketor {
         require(gateList[_gator].isUsed == true, "the gator is exister");
 
         delete gateList[_gator];
+        emit e_delGatebyMarketor(_gator, msg.sender);
     }
 
     ///////////////////////// 门户管理-门户////////////////////////////
@@ -84,6 +97,8 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
             "the gator isnot exist"
         );
         gateList[msg.sender].gateunlock = true;
+
+        emit e_lockGatebyGater(msg.sender);
     }
 
     function unlockGatebyGater() external onlyGator {
@@ -93,6 +108,7 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
             "the gator isnot exist"
         );
         gateList[msg.sender].gateunlock = false;
+        emit e_unlockGatebyGater(msg.sender);
     }
 
     //更新门户内容
@@ -108,6 +124,7 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
         _gator.marketunlock = false;
         _gator.gateunlock = true;
         gateList[_gator.gateAddress] = _gator;
+        emit e_updateGatebyGator(_gator.gateAddress, _gator.name);
     }
 
     function addGater(LGate.Info memory _gator) external {
@@ -121,9 +138,22 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
         _gator.gateunlock = false; //默认是被冻结状态
 
         gateList[_gator.gateAddress] = _gator; //添加门户信息到门户列表
+        gateNumbers[maxGateNumbers] = _gator.gateAddress;
+        maxGateNumbers += 1;
+        emit e_addGater(_gator.gateAddress, _gator.name);
     }
 
     function isValidGator() external view returns (bool) {
         return gateList[msg.sender].marketunlock;
+    }
+
+    function getGaterInfo(
+        uint8 _gateNumber
+    ) external view returns (LGate.Info memory) {
+        return gateList[gateNumbers[_gateNumber]];
+    }
+
+    function getMaxGateNumber() external view returns (uint8) {
+        return maxGateNumbers;
     }
 }
