@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 import "./libraries/base/LGate.sol";
 import "./interfaces/Marketor/IMarketorV1State.sol";
-
+import "./TTSwapV1Marketor.sol";
 import "./interfaces/ITTSwapV1Gator.sol";
 
 contract TTSwapV1Gator is ITTSwapV1Gator {
@@ -36,7 +36,12 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
     /// @dev Explain to a developer any extra details
 
     modifier onlyMarketor() {
-        require(IMarketorV1State(marketorContractAddress).isValidMarketor());
+        require(
+            IMarketorV1State(marketorContractAddress).isValidMarketor(
+                msg.sender
+            ),
+            "you are marketor"
+        );
         _;
     }
 
@@ -47,7 +52,7 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
             gateList[_gatoraddress].isUsed == true,
             "the gator isnot exist"
         );
-        gateList[_gatoraddress].marketunlock = true;
+        gateList[_gatoraddress].marketunlock = false;
         emit e_lockGatebyMarketor(_gatoraddress, msg.sender);
     }
 
@@ -56,7 +61,7 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
             gateList[_gatoraddress].isUsed == true,
             "the gator isnot exist"
         );
-        gateList[_gatoraddress].marketunlock = false;
+        gateList[_gatoraddress].marketunlock = true;
         emit e_unlockGatebyMarketor(_gatoraddress, msg.sender);
     }
 
@@ -96,7 +101,7 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
                 gateList[msg.sender].gateAddress == msg.sender,
             "the gator isnot exist"
         );
-        gateList[msg.sender].gateunlock = true;
+        gateList[msg.sender].gateunlock = false;
 
         emit e_lockGatebyGater(msg.sender);
     }
@@ -107,7 +112,7 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
                 gateList[msg.sender].gateAddress == msg.sender,
             "the gator isnot exist"
         );
-        gateList[msg.sender].gateunlock = false;
+        gateList[msg.sender].gateunlock = true;
         emit e_unlockGatebyGater(msg.sender);
     }
 
@@ -121,8 +126,8 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
             gateList[_gator.gateAddress].gateAddress == msg.sender,
             "the gator is your"
         );
-        _gator.marketunlock = false;
-        _gator.gateunlock = true;
+        _gator.marketunlock = gateList[_gator.gateAddress].marketunlock;
+        _gator.gateunlock = gateList[_gator.gateAddress].gateunlock;
         gateList[_gator.gateAddress] = _gator;
         emit e_updateGatebyGator(_gator.gateAddress, _gator.name);
     }
@@ -136,7 +141,8 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
 
         _gator.marketunlock = false; //默认是被冻结状态
         _gator.gateunlock = false; //默认是被冻结状态
-
+        _gator.gateNo = maxGateNumbers; //门户编号
+        _gator.createtimestamp = block.timestamp; //创建时间
         gateList[_gator.gateAddress] = _gator; //添加门户信息到门户列表
         gateNumbers[maxGateNumbers] = _gator.gateAddress;
         maxGateNumbers += 1;
@@ -145,6 +151,14 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
 
     function isValidGator() external view returns (bool) {
         return gateList[msg.sender].marketunlock;
+    }
+
+    function geteNo() external view returns (uint8) {
+        return gateList[msg.sender].gateNo;
+    }
+
+    function geteNo(address _gateAddress) external view returns (uint8) {
+        return gateList[_gateAddress].gateNo;
     }
 
     function getGaterInfo(

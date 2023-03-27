@@ -21,21 +21,17 @@ contract TTSwapV1Marketor is ITTSwapV1Marketor {
 
     /// @notice Explain to an end user what this does
     /// @dev Explain to a developer any extra details
-    function setMarketorByMarketCreator(address _owner)
-        external
-        override
-        onlyMarketCreator
-    {
+    function setMarketorByMarketCreator(
+        address _owner
+    ) external override onlyMarketCreator {
         Marketors[_owner] = true;
     }
 
     /// @notice Explain to an end user what this does
     /// @dev Explain to a developer any extra details
-    function delMarketorByMarketCreator(address _owner)
-        external
-        override
-        onlyMarketCreator
-    {
+    function delMarketorByMarketCreator(
+        address _owner
+    ) external override onlyMarketCreator {
         delete Marketors[_owner];
     }
 
@@ -43,5 +39,13 @@ contract TTSwapV1Marketor is ITTSwapV1Marketor {
     /// @dev Explain to a developer any extra details
     function isValidMarketor() external view override returns (bool) {
         return Marketors[msg.sender];
+    }
+
+    /// @notice Explain to an end user what this does
+    /// @dev Explain to a developer any extra details
+    function isValidMarketor(
+        address mkaddress
+    ) external view override returns (bool) {
+        return Marketors[mkaddress];
     }
 }

@@ -22,13 +22,159 @@
 				"type": "constructor"
 			},
 			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "gateAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					}
+				],
+				"name": "e_addGater",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "gateAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "marketoraddress",
+						"type": "address"
+					}
+				],
+				"name": "e_delGatebyMarketor",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "gateAddress",
+						"type": "address"
+					}
+				],
+				"name": "e_lockGatebyGater",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "gateAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "marketoraddress",
+						"type": "address"
+					}
+				],
+				"name": "e_lockGatebyMarketor",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "gateAddress",
+						"type": "address"
+					}
+				],
+				"name": "e_unlockGatebyGater",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "gateAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "marketoraddress",
+						"type": "address"
+					}
+				],
+				"name": "e_unlockGatebyMarketor",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "gateAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					}
+				],
+				"name": "e_updateGatebyGator",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "gateAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "marketoraddress",
+						"type": "address"
+					}
+				],
+				"name": "e_updateGatebyMarketor",
+				"type": "event"
+			},
+			{
 				"inputs": [
 					{
 						"components": [
 							{
-								"internalType": "address",
-								"name": "market",
-								"type": "address"
+								"internalType": "uint8",
+								"name": "gateNo",
+								"type": "uint8"
 							},
 							{
 								"internalType": "address",
@@ -36,14 +182,14 @@
 								"type": "address"
 							},
 							{
-								"internalType": "uint160",
-								"name": "authority",
-								"type": "uint160"
-							},
-							{
 								"internalType": "string",
 								"name": "name",
 								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "createtimestamp",
+								"type": "uint256"
 							},
 							{
 								"internalType": "bool",
@@ -95,9 +241,9 @@
 				"name": "gateList",
 				"outputs": [
 					{
-						"internalType": "address",
-						"name": "market",
-						"type": "address"
+						"internalType": "uint8",
+						"name": "gateNo",
+						"type": "uint8"
 					},
 					{
 						"internalType": "address",
@@ -105,14 +251,14 @@
 						"type": "address"
 					},
 					{
-						"internalType": "uint160",
-						"name": "authority",
-						"type": "uint160"
-					},
-					{
 						"internalType": "string",
 						"name": "name",
 						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "createtimestamp",
+						"type": "uint256"
 					},
 					{
 						"internalType": "bool",
@@ -128,6 +274,126 @@
 						"internalType": "bool",
 						"name": "isUsed",
 						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint8",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"name": "gateNumbers",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint8",
+						"name": "_gateNumber",
+						"type": "uint8"
+					}
+				],
+				"name": "getGaterInfo",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint8",
+								"name": "gateNo",
+								"type": "uint8"
+							},
+							{
+								"internalType": "address",
+								"name": "gateAddress",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "createtimestamp",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "marketunlock",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "gateunlock",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "isUsed",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct LGate.Info",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getMaxGateNumber",
+				"outputs": [
+					{
+						"internalType": "uint8",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "geteNo",
+				"outputs": [
+					{
+						"internalType": "uint8",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_gateAddress",
+						"type": "address"
+					}
+				],
+				"name": "geteNo",
+				"outputs": [
+					{
+						"internalType": "uint8",
+						"name": "",
+						"type": "uint8"
 					}
 				],
 				"stateMutability": "view",
@@ -194,6 +460,19 @@
 			},
 			{
 				"inputs": [],
+				"name": "maxGateNumbers",
+				"outputs": [
+					{
+						"internalType": "uint8",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "unlockGatebyGater",
 				"outputs": [],
 				"stateMutability": "nonpayable",
@@ -217,9 +496,9 @@
 					{
 						"components": [
 							{
-								"internalType": "address",
-								"name": "market",
-								"type": "address"
+								"internalType": "uint8",
+								"name": "gateNo",
+								"type": "uint8"
 							},
 							{
 								"internalType": "address",
@@ -227,14 +506,14 @@
 								"type": "address"
 							},
 							{
-								"internalType": "uint160",
-								"name": "authority",
-								"type": "uint160"
-							},
-							{
 								"internalType": "string",
 								"name": "name",
 								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "createtimestamp",
+								"type": "uint256"
 							},
 							{
 								"internalType": "bool",
@@ -267,9 +546,9 @@
 					{
 						"components": [
 							{
-								"internalType": "address",
-								"name": "market",
-								"type": "address"
+								"internalType": "uint8",
+								"name": "gateNo",
+								"type": "uint8"
 							},
 							{
 								"internalType": "address",
@@ -277,14 +556,14 @@
 								"type": "address"
 							},
 							{
-								"internalType": "uint160",
-								"name": "authority",
-								"type": "uint160"
-							},
-							{
 								"internalType": "string",
 								"name": "name",
 								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "createtimestamp",
+								"type": "uint256"
 							},
 							{
 								"internalType": "bool",
@@ -314,6 +593,55 @@
 			}
 		],
 		"devdoc": {
+			"events": {
+				"e_addGater(address,string)": {
+					"params": {
+						"gateAddress": "The address that minted the liquidity",
+						"name": "The owner of the position and recipient of any minted liquidity"
+					}
+				},
+				"e_delGatebyMarketor(address,address)": {
+					"params": {
+						"gateAddress": "The address that minted the liquidity",
+						"marketoraddress": "The owner of the position and recipient of any minted liquidity"
+					}
+				},
+				"e_lockGatebyGater(address)": {
+					"params": {
+						"gateAddress": "The address that minted the liquidity"
+					}
+				},
+				"e_lockGatebyMarketor(address,address)": {
+					"params": {
+						"gateAddress": "The address that minted the liquidity",
+						"marketoraddress": "The address that minted the liquidity"
+					}
+				},
+				"e_unlockGatebyGater(address)": {
+					"params": {
+						"gateAddress": "The address that minted the liquidity"
+					}
+				},
+				"e_unlockGatebyMarketor(address,address)": {
+					"params": {
+						"gateAddress": "The address that minted the liquidity",
+						"marketoraddress": "The address that minted the liquidity"
+					}
+				},
+				"e_updateGatebyGator(address,string)": {
+					"params": {
+						"gateAddress": "The address that minted the liquidity",
+						"name": "The owner of the position and recipient of any minted liquidity"
+					}
+				},
+				"e_updateGatebyMarketor(address,string,address)": {
+					"params": {
+						"gateAddress": "The address that minted the liquidity",
+						"marketoraddress": "The owner of the position and recipient of any minted liquidity",
+						"name": "The owner of the position and recipient of any minted liquidity"
+					}
+				}
+			},
 			"kind": "dev",
 			"methods": {},
 			"stateVariables": {
@@ -327,6 +655,32 @@
 			"version": 1
 		},
 		"userdoc": {
+			"events": {
+				"e_addGater(address,string)": {
+					"notice": "Emitted when liquidity is minted for a given position"
+				},
+				"e_delGatebyMarketor(address,address)": {
+					"notice": "Emitted when liquidity is minted for a given position"
+				},
+				"e_lockGatebyGater(address)": {
+					"notice": "Emitted when liquidity is minted for a given position"
+				},
+				"e_lockGatebyMarketor(address,address)": {
+					"notice": "Emitted when liquidity is minted for a given position"
+				},
+				"e_unlockGatebyGater(address)": {
+					"notice": "Emitted when liquidity is minted for a given position"
+				},
+				"e_unlockGatebyMarketor(address,address)": {
+					"notice": "Emitted when liquidity is minted for a given position"
+				},
+				"e_updateGatebyGator(address,string)": {
+					"notice": "Emitted when liquidity is minted for a given position"
+				},
+				"e_updateGatebyMarketor(address,string,address)": {
+					"notice": "Emitted when liquidity is minted for a given position"
+				}
+			},
 			"kind": "user",
 			"methods": {
 				"marketorContractAddress()": {
@@ -353,11 +707,19 @@
 	},
 	"sources": {
 		"Contracts/TTSwapV1Gator.sol": {
-			"keccak256": "0xf5aa10950be84b8bcfcbc4993b8e4d45a7cfc9a8180edf227930f3dbb11f6a72",
+			"keccak256": "0x00f479efa08aeb01e4159700e9e8ff529c2398efaddd219dfc7994ad2c8faec4",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://76430d87ae529767ea2d6dad46566ec951e67881e79c92daa9ece9ca4906b177",
-				"dweb:/ipfs/QmYH3SZLuFKKujLiN2RU9BoDFug2fNLt2LKWznfudRihiH"
+				"bzz-raw://b0aa523f73fd96e689308551bfa1f3d5772d306caba5c7db5fb2e74a3ce0993c",
+				"dweb:/ipfs/QmUWyvkVZ23AUaC2nEHmfqDw5QmuXgjLYYRoyf7eoS4c9C"
+			]
+		},
+		"Contracts/TTSwapV1Marketor.sol": {
+			"keccak256": "0xfa132b1165f87cd4a949886c2ff9d72218468b090a730b041ceb2d8f8d2d3b34",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://a004db01bcec2f007b85be196951212670d27d9e933a2fa36d1ca1f5c059af4f",
+				"dweb:/ipfs/QmZmQf7BWbAb8y2wPWmK3SFrpXTWVb6H1MDXzbHrbGw333"
 			]
 		},
 		"Contracts/interfaces/Gator/IGatorV1CustomerActions.sol": {
@@ -369,11 +731,11 @@
 			]
 		},
 		"Contracts/interfaces/Gator/IGatorV1Events.sol": {
-			"keccak256": "0xcddaf97a05e7a5b4706705dd9618ad9a97ebe6559365deaa3bcbe21eef84d462",
+			"keccak256": "0xace58e51abbb96256abd8c2a356d318ed1145b39b9d4a77fb635abb26ebfd4af",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://0432642546822e3e6bb77c89815cda36aea85154bb8431c0837db1b5fb199dcd",
-				"dweb:/ipfs/QmYSkG65spVSpN1WDkF5iFtPSBvYeDWvSNRVpYygR9iJkr"
+				"bzz-raw://509999e221e8873c6bc4a01a9a4dfe46a6c9846d54e07f137c07e477ad99d22a",
+				"dweb:/ipfs/QmWE5XXbYxeTx1B18Vg27WM8uSmshgkVfU1WuRwxEYA4kZ"
 			]
 		},
 		"Contracts/interfaces/Gator/IGatorV1GatorActions.sol": {
@@ -401,11 +763,11 @@
 			]
 		},
 		"Contracts/interfaces/Gator/IGatorV1State.sol": {
-			"keccak256": "0xe3c37b988423c5989fce2b078a598788c052dc23403dff95509d57464bb1c12f",
+			"keccak256": "0xcaa550fdeb2699223bfef9bb96186cf356cc63a7234fc1c0c2278fc8d3333413",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://5c3766825c2fa5442d265a5524ae150626d18e235be99d1b485182ebbc9c0e1e",
-				"dweb:/ipfs/Qme7hkgr2K3vEUst6YPBaq55dycpXBaffWLKXDSPX3QnvK"
+				"bzz-raw://ca84bfe141ceb4ffb764ed9481ff0c730d3ec29bb3b6abc0a4c2e53cddd5131f",
+				"dweb:/ipfs/QmVoWLLbPBsvp5HPd4VZJU7MFRiPBA3jbEqgQy7BHPEDvU"
 			]
 		},
 		"Contracts/interfaces/ITTSwapV1Gator.sol": {
@@ -416,28 +778,52 @@
 				"dweb:/ipfs/QmWyyaWVvSVVduUiS3vKQ4guLHnP4ugcCQp46kNvLsz2iJ"
 			]
 		},
-		"Contracts/interfaces/Marketor/IMarketorV1State.sol": {
-			"keccak256": "0xaad87d4ddb4502c8908f30707db6628834d3df7bef3d68d6d50179d0db672ee7",
+		"Contracts/interfaces/ITTSwapV1Marketor.sol": {
+			"keccak256": "0xcec6819c6010fada016d2adffd3ae7973365e768c6144df626506c5a00873565",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://905d7e65de99ddf8edc93aac5a9e6139e7813ac472abefa987b4ea85c73e4803",
-				"dweb:/ipfs/QmNbEzweLBYEuiTbURiPuoyyqgmx59XtA5Ugo7uEvQXRCS"
+				"bzz-raw://59feb2895b8fda46ab09fd4b63605aef2bd315169102ef43898501dcdb92b3da",
+				"dweb:/ipfs/QmWxs1ftk6xYceq2dRKZ3m5zwrvNYHdLt1xPo1Ntauii9g"
 			]
 		},
-		"Contracts/libraries/base/LCustomer.sol": {
-			"keccak256": "0x6acb4a762f349ab39bd48ff34c150b55f55aabc4826379838391749136f3aee9",
+		"Contracts/interfaces/Marketor/IMarketorV1Events.sol": {
+			"keccak256": "0x1019146e8e3c5f553f93a5f1f7d31c0a7227b25ce87d8d76124fbdaae200615f",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://58552a104e1a046883cf116fe6748600caf7c8ebe341f82a38aa6fbfb09355cb",
-				"dweb:/ipfs/QmQxUAK9fzefN6afoJ2CGyRWtETz1TEcZoJhDFCYJ3WY4V"
+				"bzz-raw://11113d24362e6a66e5e897ad597992660a06e8641cb5bdaebe74823504b0e225",
+				"dweb:/ipfs/QmZY3dqUFb6DkxHUveC3BpyxsyrTHujoSg7q9mWUnwNYzc"
+			]
+		},
+		"Contracts/interfaces/Marketor/IMarketorV1Immutables.sol": {
+			"keccak256": "0x2159e6262a224a3fb19bd304f89fab571d6ddad00a01c5bcbc7699bdca627412",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://6fb78be3604a8d3ad5772db5533a3cf5268607997a5f815b6d8809cc8412d126",
+				"dweb:/ipfs/QmZVF85N81hmsrzofsPLfDjrv2r82z8Xn4ooj6r2rTNM4F"
+			]
+		},
+		"Contracts/interfaces/Marketor/IMarketorV1MarketCreatorActions.sol": {
+			"keccak256": "0x85fe030c431f4ce0818038e673a58d35b30ac6fdb6760b24c105afbd0b94cc15",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://08d50a6cd32a067e30d45964d7d018fbec1b0b34b00529548815b6a98d4e9ee5",
+				"dweb:/ipfs/QmaRBpH3M7vt628KB1UqonAoUD1UcqNXSEsPdeyThZ55VC"
+			]
+		},
+		"Contracts/interfaces/Marketor/IMarketorV1State.sol": {
+			"keccak256": "0x5daacc326d8c629ecd56540a6f1f746ed30450e3fbbb7bb6db9e7645fe5cd4d4",
+			"license": "GPL-2.0-or-later",
+			"urls": [
+				"bzz-raw://98cd366c4ce58b9183f96c9fd3b63e4cc9dfc6020e7f7593b5a45b36fa81b9cc",
+				"dweb:/ipfs/QmTTDzMTgqMUrkVdFcSzwUZx51SH2Cho6911ni299L1oRd"
 			]
 		},
 		"Contracts/libraries/base/LGate.sol": {
-			"keccak256": "0x36d8718264475237175565152c9f3060726c77f851bb02697a51a06909282b72",
+			"keccak256": "0xcd1cf4ce33730754e383376fbedc91ad9698782689773f86a60b9ba8ca712267",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://1aadded42c60a23bb86d8c845f8cd430300ac6a9db9871a741c27968a4410870",
-				"dweb:/ipfs/QmfVvvCPQnrWvLkhyhqbNF1Xb15WE9ocMFw8DnbZT6Pjys"
+				"bzz-raw://c823487003db9d760d0571f0609285cf6c97efbc2bb67e5cca9cb85c8554fcf5",
+				"dweb:/ipfs/QmTNTbGSAaNRMW5Wf9iqAxaCK6Le9PSXs5aFjWCksPmJsB"
 			]
 		}
 	},

@@ -5,29 +5,26 @@ library LGate {
     struct Info {
         // the address of the Market
         // 记录market地址
-        //Gator地址
-        address gateAddress;
-        // the name of the Organization
+        //Gate编号
+        uint8 gateNo;
+        // 门户地址
         // 记录大门的名称
+        address gateAddress;
+        // 门户简称
         string name;
-        // the nation of the Organization
-        // 记录公司与组织的国家
-        // bytes32 website;
-        // the website of the Organization
-        // 记录公司与组织的服务ip
-        // bytes32[10] webserverip;
-        // the create timestamp of the Organization
-        // 记录公司与组织的创建时间
-        // uint32 createtimestamp;
+        //创建时间
+        uint256 createtimestamp;
         // 如果门户违反行为准则,进行冻结限制
-        bool marketunlock;
+        bool marketunlock; //true 表示已解冻 false表示已冻结
         // config by the gater
-        bool gateunlock;
+        bool gateunlock; //true 表示已解冻 false表示已冻结
         bool isUsed;
     }
 
+    //相应接口
     struct DetailInfo {
-        address contractAddress; //合约地址
+        address gateAddress; //合约地址
+        string full_name; //全称
         string WhitePaperUrl; //白皮书地址
         string OfficalWebsite; //官网
         string blockExplorerUrl; //区块查询

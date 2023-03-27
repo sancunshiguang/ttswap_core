@@ -49,6 +49,25 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "mkaddress",
+						"type": "address"
+					}
+				],
+				"name": "isValidMarketor",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "isValidMarketor",
 				"outputs": [
@@ -97,6 +116,9 @@
 				"isValidMarketor()": {
 					"details": "Explain to a developer any extra details"
 				},
+				"isValidMarketor(address)": {
+					"details": "Explain to a developer any extra details"
+				},
 				"setMarketorByMarketCreator(address)": {
 					"details": "Explain to a developer any extra details"
 				}
@@ -110,6 +132,9 @@
 					"notice": "Explain to an end user what this does"
 				},
 				"isValidMarketor()": {
+					"notice": "Explain to an end user what this does"
+				},
+				"isValidMarketor(address)": {
 					"notice": "Explain to an end user what this does"
 				},
 				"setMarketorByMarketCreator(address)": {
@@ -136,11 +161,11 @@
 	},
 	"sources": {
 		"Contracts/TTSwapV1Marketor.sol": {
-			"keccak256": "0x57129b68012b22ba3f1cf375ced0b8f98fbe7ebd31c8959733ca3cb750e9d361",
+			"keccak256": "0xfa132b1165f87cd4a949886c2ff9d72218468b090a730b041ceb2d8f8d2d3b34",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://2aa8b27a0c3841496c7f39f744da75b0bd7e303a2d329f97b4f5a8a4a61b4fc5",
-				"dweb:/ipfs/QmbvTGeDbPaYT27M399A7cADbXT5zWb2CQktVBySvG98JT"
+				"bzz-raw://a004db01bcec2f007b85be196951212670d27d9e933a2fa36d1ca1f5c059af4f",
+				"dweb:/ipfs/QmZmQf7BWbAb8y2wPWmK3SFrpXTWVb6H1MDXzbHrbGw333"
 			]
 		},
 		"Contracts/interfaces/ITTSwapV1Marketor.sol": {
@@ -176,11 +201,11 @@
 			]
 		},
 		"Contracts/interfaces/Marketor/IMarketorV1State.sol": {
-			"keccak256": "0xaad87d4ddb4502c8908f30707db6628834d3df7bef3d68d6d50179d0db672ee7",
+			"keccak256": "0x5daacc326d8c629ecd56540a6f1f746ed30450e3fbbb7bb6db9e7645fe5cd4d4",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://905d7e65de99ddf8edc93aac5a9e6139e7813ac472abefa987b4ea85c73e4803",
-				"dweb:/ipfs/QmNbEzweLBYEuiTbURiPuoyyqgmx59XtA5Ugo7uEvQXRCS"
+				"bzz-raw://98cd366c4ce58b9183f96c9fd3b63e4cc9dfc6020e7f7593b5a45b36fa81b9cc",
+				"dweb:/ipfs/QmTTDzMTgqMUrkVdFcSzwUZx51SH2Cho6911ni299L1oRd"
 			]
 		}
 	},

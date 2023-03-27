@@ -7,7 +7,6 @@ library LThing {
         bytes32 name; //名称
         bytes6 symbol; //符号
         uint256 typecode; // 所有经济活动的国际标准行业分类编码
-        uint160 authority; //权威
         address contractAddress;
         // uint8 decimals; //精度
         // uint256 maxSupply; //流通量
@@ -19,6 +18,7 @@ library LThing {
         bool isUsed;
         address addfromgator;
         address creator;
+        bool feelevel; //手续费
     }
 
     struct DetailInfo {

@@ -6,4 +6,6 @@ pragma solidity ^0.8.0;
 /// per transaction
 interface IMarketorV1State {
     function isValidMarketor() external view returns (bool);
+
+    function isValidMarketor(address) external view returns (bool);
 }

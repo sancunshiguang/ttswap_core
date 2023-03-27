@@ -10,3 +10,16 @@ ticket / stamp
 
 
 remixd -s ../TTSWAP_Core --remix-ide https://remix.ethereum.org
+
+
+marketcreator  0x5B38Da6a701c568545dCfcB03FcB875f56beddC4
+marketor 0xAb8483F64d9C6d1EcF9b849Ae677dD3315835cb2
+gator1 0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db
+gator2 0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB
+marketcontractaddress 0xd9145CCE52D386f254917e481eB44e9943F39138
+gatecontractaddress 0x6c80c74a4487c2E094c2e8C9f2576Ae17eAA2835
+marketorcontractaddress 0x13e4d294f7Bc125d7a5A7Fc9F8Ccd7AC9B98aC6c
+
+addgateor
+[1,"0x4B20993Bc481177ec7E8f571ceCaE8A9e22C02db","gate1",134143,true,true,true]
+[1,"0x78731D3Ca6b7E34aC0F824c42a7cC18A495cabaB","gate2",134143,true,true,true]
