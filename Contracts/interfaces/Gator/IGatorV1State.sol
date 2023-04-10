@@ -13,5 +13,5 @@ interface IGatorV1State {
         uint8 _gateNumber
     ) external view returns (LGate.Info memory);
 
-    function getMaxGateNumber() external view returns (uint8);
+    function getMaxGateNumber() external view returns (uint128);
 }

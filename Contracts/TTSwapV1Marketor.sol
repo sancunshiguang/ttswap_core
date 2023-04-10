@@ -7,11 +7,16 @@ contract TTSwapV1Marketor is ITTSwapV1Marketor {
     //市场管理员
     //marketMarketors
     mapping(address => bool) public Marketors;
+    //记录管理号编号
+    mapping(address => uint128) public MarketorsNo;
+
+    uint128 public maxMarketorNo;
 
     address public marketCreator;
 
     constructor(address _marketCreator) {
         marketCreator = _marketCreator;
+        maxMarketorNo = 1;
     }
 
     modifier onlyMarketCreator() {
@@ -25,6 +30,11 @@ contract TTSwapV1Marketor is ITTSwapV1Marketor {
         address _owner
     ) external override onlyMarketCreator {
         Marketors[_owner] = true;
+        require(
+            maxMarketorNo + 1 >= maxMarketorNo,
+            "maxMarketorNo connot increase"
+        );
+        maxMarketorNo += 1;
     }
 
     /// @notice Explain to an end user what this does
@@ -47,5 +57,19 @@ contract TTSwapV1Marketor is ITTSwapV1Marketor {
         address mkaddress
     ) external view override returns (bool) {
         return Marketors[mkaddress];
+    }
+
+    function getMarketorNo() external view returns (uint128) {
+        return MarketorsNo[msg.sender];
+    }
+
+    function getMarketorNo(
+        address _marketorAddress
+    ) external view returns (uint128) {
+        return MarketorsNo[_marketorAddress];
+    }
+
+    function getMaxGateNumber() external view returns (uint128) {
+        return maxMarketorNo;
     }
 }

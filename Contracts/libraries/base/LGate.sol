@@ -6,9 +6,8 @@ library LGate {
         // the address of the Market
         // 记录market地址
         //Gate编号
-        uint8 gateNo;
+        uint128 gateNo;
         // 门户地址
-        // 记录大门的名称
         address gateAddress;
         // 门户简称
         string name;

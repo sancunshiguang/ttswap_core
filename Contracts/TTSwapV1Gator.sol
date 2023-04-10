@@ -12,9 +12,9 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
 
     mapping(address => LGate.Info) public gateList;
     //记录门户编号
-    mapping(uint8 => address) public gateNumbers;
+    mapping(uint128 => address) public gateNumbers;
     //记录门户最大编号
-    uint8 public maxGateNumbers;
+    uint128 public maxGateNumbers;
 
     address public immutable marketorContractAddress;
     address public marketCreator;
@@ -143,6 +143,7 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
         _gator.gateunlock = false; //默认是被冻结状态
         _gator.gateNo = maxGateNumbers; //门户编号
         _gator.createtimestamp = block.timestamp; //创建时间
+        require(maxGateNumbers + 1 > maxGateNumbers, "the gator is your");
         gateList[_gator.gateAddress] = _gator; //添加门户信息到门户列表
         gateNumbers[maxGateNumbers] = _gator.gateAddress;
         maxGateNumbers += 1;
@@ -153,11 +154,15 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
         return gateList[msg.sender].marketunlock;
     }
 
-    function geteNo() external view returns (uint8) {
+    function isValidGator(address vgaddress) external view returns (bool) {
+        return gateList[vgaddress].marketunlock;
+    }
+
+    function getGaterNo() external view returns (uint128) {
         return gateList[msg.sender].gateNo;
     }
 
-    function geteNo(address _gateAddress) external view returns (uint8) {
+    function getGaterNo(address _gateAddress) external view returns (uint128) {
         return gateList[_gateAddress].gateNo;
     }
 
@@ -167,7 +172,7 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
         return gateList[gateNumbers[_gateNumber]];
     }
 
-    function getMaxGateNumber() external view returns (uint8) {
+    function getMaxGateNumber() external view returns (uint128) {
         return maxGateNumbers;
     }
 }

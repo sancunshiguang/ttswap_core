@@ -5,18 +5,18 @@ import "./interfaces/Marketor/IMarketorV1State.sol";
 import "./interfaces/Gator/IGatorV1State.sol";
 import "./interfaces/ITTSwapV1Thing.sol";
 
-contract TTSwapV1Thing is ITTSwapV1Thing {
-    //标准物品地址 => 标准物品信息
-    //standardThingsaddress => standard Things detail info
-    mapping(address => address) public marketThingsList;
-
-    //门户标准物品地址 => 标准物品信息
-    //gateaddress => standradThingsaddress => standradThingsaddress
-    mapping(address => mapping(address => address)) public gateThingsList;
+abstract contract TTSwapV1Thing is ITTSwapV1Thing {
+    //owneraddress => thingMaxNo
+    mapping(address => uint128) public thingMaxNo;
+    //门户物品信息
+    //owneraddress => thingNo => thingaddress
+    mapping(address => mapping(uint128 => address)) public ownerThingList;
+    //owneraddress => thingaddress=>thingNo
+    mapping(address => mapping(address => uint128)) public ownerThingNo;
 
     //标准物品
     //标准物品地址 => 标准物品信息
-    //coinaddress => coinInfo
+    //thingaddress => thingInfo
     mapping(address => LThing.Info) public ThingsList;
 
     address public gatorContractAddress;
@@ -47,25 +47,36 @@ contract TTSwapV1Thing is ITTSwapV1Thing {
     /////////////////////////物品设置-市场/////////////////////
     /////////////////////////things Manage/////////////////////
     function addThingbyMarketor(
-        LThing.Info memory _ThingsInfo
+        LThing.Info memory _thingsInfo
     ) external onlyMarketor {
-        if (ThingsList[_ThingsInfo.contractAddress].isUsed != true) {
-            _ThingsInfo.addfromgator = msg.sender;
-            _ThingsInfo.creator = msg.sender;
-            _ThingsInfo.marketunlock = false;
-            _ThingsInfo.gateunlock = false;
-            _ThingsInfo.isUsed = true;
-            ThingsList[_ThingsInfo.contractAddress] = _ThingsInfo;
-            marketThingsList[_ThingsInfo.contractAddress] = _ThingsInfo
-                .contractAddress;
+        require(
+            ThingsList[_thingsInfo.contractAddress].isUsed != true,
+            "the things exist"
+        );
+        _thingsInfo.creator = msg.sender;
+        _thingsInfo.marketunlock = true;
+        _thingsInfo.gateunlock = true;
+        _thingsInfo.isUsed = true;
+        if (
+            thingMaxNo[marketorContractAddress] >= 1 &&
+            thingMaxNo[marketorContractAddress] + 1 >=
+            thingMaxNo[marketorContractAddress]
+        ) {
+            thingMaxNo[marketorContractAddress] += 1;
         } else {
-            require(
-                marketThingsList[_ThingsInfo.contractAddress] == address(0),
-                "the stgoods exists in the market"
-            );
-            marketThingsList[_ThingsInfo.contractAddress] = _ThingsInfo
-                .contractAddress;
+            thingMaxNo[marketorContractAddress] = 1;
         }
+        ownerThingList[marketorContractAddress][
+            thingMaxNo[marketorContractAddress]
+        ] = _thingsInfo.contractAddress;
+
+        ownerThingList[marketorContractAddress][
+            thingMaxNo[marketorContractAddress]
+        ] = _thingsInfo.contractAddress;
+        ownerThingNo[marketorContractAddress][
+            _thingsInfo.contractAddress
+        ] = thingMaxNo[marketorContractAddress];
+        ThingsList[_thingsInfo.contractAddress] = _thingsInfo;
     }
 
     function lockThingbyMarketor(
@@ -81,54 +92,45 @@ contract TTSwapV1Thing is ITTSwapV1Thing {
     }
 
     function updateThingbyMarketor(
-        LThing.Info memory _ThingsInfo
-    ) external onlyMarketor {
-        require(marketThingsList[_ThingsInfo.contractAddress] != address(0));
-        _ThingsInfo.marketunlock = false;
-        _ThingsInfo.gateunlock = false;
-        _ThingsInfo.isUsed = true;
-        _ThingsInfo.creator = ThingsList[_ThingsInfo.contractAddress].creator;
-        ThingsList[_ThingsInfo.contractAddress] = _ThingsInfo;
-    }
-
-    function impoveGateThingbyMarketor(
-        address _contractaddress,
-        address _gateaddress
+        LThing.Info memory _thingsInfo
     ) external onlyMarketor {
         require(
-            gateThingsList[_gateaddress][_contractaddress] != address(0),
-            "the Things is not exists"
+            ownerThingNo[marketorContractAddress][
+                _thingsInfo.contractAddress
+            ] >= 0,
+            "the coin don't exist in the market"
         );
-        require(
-            marketThingsList[_contractaddress] == address(0),
-            "the Things is  exists in market"
-        );
-        marketThingsList[_contractaddress] = gateThingsList[_gateaddress][
-            _contractaddress
-        ];
-
-        delete gateThingsList[_gateaddress][_contractaddress];
+        _thingsInfo.marketunlock = true;
+        _thingsInfo.gateunlock = false;
+        _thingsInfo.isUsed = true;
+        _thingsInfo.creator = ThingsList[_thingsInfo.contractAddress].creator;
+        ThingsList[_thingsInfo.contractAddress] = _thingsInfo;
     }
 
     function delMarketThingbyMarketor(
-        LThing.Info memory _ThingsInfo
+        address _contractaddress
     ) external onlyMarketor {
         require(
-            marketThingsList[_ThingsInfo.contractAddress] == address(0),
-            "the Things is not exists"
+            ownerThingNo[marketorContractAddress][_contractaddress] >= 1,
+            "the coin is not exists"
         );
-        delete marketThingsList[_ThingsInfo.contractAddress];
+
+        delete ownerThingList[marketorContractAddress][
+            ownerThingNo[marketorContractAddress][_contractaddress]
+        ];
+        delete ownerThingNo[marketorContractAddress][_contractaddress];
     }
 
-    function delGateThingbyMarketor(
-        address _contractaddress,
-        address _gateaddress
-    ) external onlyMarketor {
+    function delMarketThingbyMarketor(uint128 _thingNo) external onlyMarketor {
         require(
-            gateThingsList[_gateaddress][_contractaddress] == address(0),
-            "the Things is not exists"
+            ownerThingList[marketorContractAddress][_thingNo] != address(0),
+            "the coin is not exists"
         );
-        delete gateThingsList[_gateaddress][_contractaddress];
+
+        delete ownerThingNo[marketorContractAddress][
+            ownerThingList[marketorContractAddress][_thingNo]
+        ];
+        delete ownerThingList[marketorContractAddress][_thingNo];
     }
 
     /////////////////////////物品设置-门户/////////////////////
@@ -161,7 +163,7 @@ contract TTSwapV1Thing is ITTSwapV1Thing {
             ThingsList[_ThingsInfo.contractAddress].addfromgator == msg.sender,
             "you have not the right"
         );
-       
+
         _ThingsInfo.marketunlock = false;
         _ThingsInfo.gateunlock = false;
         _ThingsInfo.isUsed = true;
@@ -171,52 +173,52 @@ contract TTSwapV1Thing is ITTSwapV1Thing {
 
     /////////////////////////物品设置-创建者/////////////////////
     /////////////////////////things Manage/////////////////////
-    function lockGateThingbyCreater(
-        address _internalThingsAddress,
-        address _gateaddress
-    ) external {
+    function lockGateThingbyCreater(address _internalThingsAddress) external {
         require(
-            ThingsList[_internalThingsAddress].creator == msg.sender &&
-                gateThingsList[_gateaddress][_internalThingsAddress] ==
-                address(0),
+            ThingsList[_internalThingsAddress].creator == msg.sender,
             "you have not the privileges of this"
         );
         ThingsList[_internalThingsAddress].createrunlock = false;
     }
 
-    function unlockGateThingbyCreater(
-        address _internalThingsAddress,
-        address _gateaddress
-    ) external {
+    function unlockGateThingbyCreater(address _internalThingsAddress) external {
         require(
-            ThingsList[_internalThingsAddress].creator == msg.sender &&
-                gateThingsList[_gateaddress][_internalThingsAddress] ==
-                address(0),
+            ThingsList[_internalThingsAddress].creator == msg.sender,
             "you have not the privileges of this"
         );
         ThingsList[_internalThingsAddress].createrunlock = true;
     }
 
     function addGateThingbyCreator(
-        LThing.Info memory _ThingsInfo,
+        LThing.Info memory _thingsInfo,
         address _gateaddress
     ) external {
         require(
-            ThingsList[_ThingsInfo.contractAddress].isUsed != true &&
-                gateThingsList[_gateaddress][_ThingsInfo.contractAddress] ==
-                address(0),
+            ThingsList[_thingsInfo.contractAddress].isUsed != true,
             "you have not the right"
         );
 
-        _ThingsInfo.marketunlock = false;
-        _ThingsInfo.gateunlock = true;
-        _ThingsInfo.createrunlock = false;
-        _ThingsInfo.isUsed = true;
-        _ThingsInfo.addfromgator = _gateaddress;
-        _ThingsInfo.creator = msg.sender;
-        ThingsList[_ThingsInfo.contractAddress] = _ThingsInfo;
-        gateThingsList[_gateaddress][_ThingsInfo.contractAddress] = _ThingsInfo
+        _thingsInfo.marketunlock = true;
+        _thingsInfo.gateunlock = false;
+        _thingsInfo.createrunlock = false;
+        _thingsInfo.isUsed = true;
+        _thingsInfo.addfromgator = _gateaddress;
+        _thingsInfo.creator = msg.sender;
+        if (
+            thingMaxNo[_gateaddress] >= 1 &&
+            thingMaxNo[_gateaddress] + 1 >= thingMaxNo[_gateaddress]
+        ) {
+            thingMaxNo[_gateaddress] += 1;
+        } else {
+            thingMaxNo[_gateaddress] = 1;
+        }
+
+        ownerThingList[_gateaddress][thingMaxNo[_gateaddress]] = _thingsInfo
             .contractAddress;
+        ownerThingNo[_gateaddress][_thingsInfo.contractAddress] = thingMaxNo[
+            _gateaddress
+        ];
+        ThingsList[_thingsInfo.contractAddress] = _thingsInfo;
     }
 
     function updateGateThingbyCreator(
@@ -224,9 +226,7 @@ contract TTSwapV1Thing is ITTSwapV1Thing {
         address _gateaddress
     ) external {
         require(
-            ThingsList[_ThingsInfo.contractAddress].isUsed != true &&
-                gateThingsList[_gateaddress][_ThingsInfo.contractAddress] ==
-                address(0),
+            ThingsList[_ThingsInfo.contractAddress].isUsed != true,
             "you have not the right"
         );
 
@@ -237,8 +237,6 @@ contract TTSwapV1Thing is ITTSwapV1Thing {
         _ThingsInfo.addfromgator = _gateaddress;
         _ThingsInfo.creator = msg.sender;
         ThingsList[_ThingsInfo.contractAddress] = _ThingsInfo;
-        gateThingsList[_gateaddress][_ThingsInfo.contractAddress] = _ThingsInfo
-            .contractAddress;
     }
 
     function getThingInfo(
