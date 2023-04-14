@@ -5,7 +5,7 @@ import "./interfaces/Marketor/IMarketorV1State.sol";
 import "./interfaces/Gator/IGatorV1State.sol";
 import "./interfaces/ITTSwapV1Thing.sol";
 
-abstract contract TTSwapV1Thing is ITTSwapV1Thing {
+contract TTSwapV1Thing is ITTSwapV1Thing {
     //owneraddress => thingMaxNo
     mapping(address => uint128) public thingMaxNo;
     //门户物品信息
@@ -48,7 +48,7 @@ abstract contract TTSwapV1Thing is ITTSwapV1Thing {
     /////////////////////////things Manage/////////////////////
     function addThingbyMarketor(
         LThing.Info memory _thingsInfo
-    ) external onlyMarketor {
+    ) external override onlyMarketor {
         require(
             ThingsList[_thingsInfo.contractAddress].isUsed != true,
             "the things exist"
@@ -57,80 +57,82 @@ abstract contract TTSwapV1Thing is ITTSwapV1Thing {
         _thingsInfo.marketunlock = true;
         _thingsInfo.gateunlock = true;
         _thingsInfo.isUsed = true;
-        if (
-            thingMaxNo[marketorContractAddress] >= 1 &&
-            thingMaxNo[marketorContractAddress] + 1 >=
-            thingMaxNo[marketorContractAddress]
-        ) {
-            thingMaxNo[marketorContractAddress] += 1;
-        } else {
-            thingMaxNo[marketorContractAddress] = 1;
-        }
-        ownerThingList[marketorContractAddress][
-            thingMaxNo[marketorContractAddress]
-        ] = _thingsInfo.contractAddress;
-
-        ownerThingList[marketorContractAddress][
-            thingMaxNo[marketorContractAddress]
-        ] = _thingsInfo.contractAddress;
-        ownerThingNo[marketorContractAddress][
-            _thingsInfo.contractAddress
-        ] = thingMaxNo[marketorContractAddress];
         ThingsList[_thingsInfo.contractAddress] = _thingsInfo;
+        emit e_addThingbyMarketor(_thingsInfo);
     }
 
     function lockThingbyMarketor(
         address _internalThingsAddress
-    ) external onlyMarketor {
+    ) external override onlyMarketor {
         ThingsList[_internalThingsAddress].marketunlock = false;
+        emit e_lockThingbyMarketor(_internalThingsAddress);
     }
 
     function unlockThingbyMarketor(
         address _internalThingsAddress
-    ) external onlyMarketor {
+    ) external override onlyMarketor {
         ThingsList[_internalThingsAddress].marketunlock = true;
+        emit e_unlockThingbyMarketor(_internalThingsAddress);
     }
 
     function updateThingbyMarketor(
         LThing.Info memory _thingsInfo
-    ) external onlyMarketor {
+    ) external override onlyMarketor {
         require(
             ownerThingNo[marketorContractAddress][
                 _thingsInfo.contractAddress
             ] >= 0,
-            "the coin don't exist in the market"
+            "the Thing don't exist in the market"
         );
         _thingsInfo.marketunlock = true;
         _thingsInfo.gateunlock = false;
         _thingsInfo.isUsed = true;
-        _thingsInfo.creator = ThingsList[_thingsInfo.contractAddress].creator;
         ThingsList[_thingsInfo.contractAddress] = _thingsInfo;
+        emit e_updateThingbyMarketor(_thingsInfo);
+    }
+
+    function impoveThingbyMarketor(
+        address _contractaddress
+    ) external override onlyMarketor {
+        uint128 thing_MaxNo = thingMaxNo[marketorContractAddress];
+        if (thing_MaxNo >= 1 && thing_MaxNo + 1 >= thing_MaxNo) {
+            thing_MaxNo += 1;
+        } else {
+            thing_MaxNo = 1;
+        }
+        thingMaxNo[marketorContractAddress] = thing_MaxNo;
+        ownerThingList[marketorContractAddress][thing_MaxNo] = _contractaddress;
+
+        ownerThingNo[marketorContractAddress][_contractaddress] = thing_MaxNo;
+        emit e_impoveThingbyMarketor(_contractaddress);
     }
 
     function delMarketThingbyMarketor(
         address _contractaddress
-    ) external onlyMarketor {
+    ) external override onlyMarketor {
         require(
             ownerThingNo[marketorContractAddress][_contractaddress] >= 1,
-            "the coin is not exists"
+            "the Thing is not exists"
         );
 
         delete ownerThingList[marketorContractAddress][
             ownerThingNo[marketorContractAddress][_contractaddress]
         ];
         delete ownerThingNo[marketorContractAddress][_contractaddress];
+        emit e_delMarketThingbyMarketor(_contractaddress);
     }
 
     function delMarketThingbyMarketor(uint128 _thingNo) external onlyMarketor {
         require(
             ownerThingList[marketorContractAddress][_thingNo] != address(0),
-            "the coin is not exists"
+            "the Thing is not exists"
         );
 
         delete ownerThingNo[marketorContractAddress][
             ownerThingList[marketorContractAddress][_thingNo]
         ];
         delete ownerThingList[marketorContractAddress][_thingNo];
+        emit e_delMarketThingbyMarketor(_thingNo);
     }
 
     /////////////////////////物品设置-门户/////////////////////
@@ -138,27 +140,29 @@ abstract contract TTSwapV1Thing is ITTSwapV1Thing {
 
     function unlockThingbyGator(
         address _internalThingsAddress
-    ) external onlyGator {
+    ) external override onlyGator {
         require(
             ThingsList[_internalThingsAddress].addfromgator == msg.sender,
             "you have not the right"
         );
         ThingsList[_internalThingsAddress].gateunlock = true;
+        emit e_unlockThingbyGator(msg.sender, _internalThingsAddress);
     }
 
     function lockThingbyGator(
         address _internalThingsAddress
-    ) external onlyGator {
+    ) external override onlyGator {
         require(
             ThingsList[_internalThingsAddress].addfromgator == msg.sender,
             "you have not the right"
         );
         ThingsList[_internalThingsAddress].gateunlock = false;
+        emit e_lockThingbyGator(msg.sender, _internalThingsAddress);
     }
 
     function updateThingbyGator(
         LThing.Info memory _ThingsInfo
-    ) external onlyGator {
+    ) external override onlyGator {
         require(
             ThingsList[_ThingsInfo.contractAddress].addfromgator == msg.sender,
             "you have not the right"
@@ -169,30 +173,37 @@ abstract contract TTSwapV1Thing is ITTSwapV1Thing {
         _ThingsInfo.isUsed = true;
         _ThingsInfo.addfromgator = msg.sender;
         ThingsList[_ThingsInfo.contractAddress] = _ThingsInfo;
+        emit e_updateThingbyGator(msg.sender, _ThingsInfo);
     }
 
     /////////////////////////物品设置-创建者/////////////////////
     /////////////////////////things Manage/////////////////////
-    function lockGateThingbyCreater(address _internalThingsAddress) external {
+    function lockThingbyCreater(
+        address _internalThingsAddress
+    ) external override {
         require(
             ThingsList[_internalThingsAddress].creator == msg.sender,
             "you have not the privileges of this"
         );
         ThingsList[_internalThingsAddress].createrunlock = false;
+        emit e_lockThingbyCreater(msg.sender, _internalThingsAddress);
     }
 
-    function unlockGateThingbyCreater(address _internalThingsAddress) external {
+    function unlockThingbyCreater(
+        address _internalThingsAddress
+    ) external override {
         require(
             ThingsList[_internalThingsAddress].creator == msg.sender,
             "you have not the privileges of this"
         );
         ThingsList[_internalThingsAddress].createrunlock = true;
+        emit e_unlockThingbyCreater(msg.sender, _internalThingsAddress);
     }
 
-    function addGateThingbyCreator(
+    function addThingbyCreator(
         LThing.Info memory _thingsInfo,
         address _gateaddress
-    ) external {
+    ) external override {
         require(
             ThingsList[_thingsInfo.contractAddress].isUsed != true,
             "you have not the right"
@@ -219,38 +230,61 @@ abstract contract TTSwapV1Thing is ITTSwapV1Thing {
             _gateaddress
         ];
         ThingsList[_thingsInfo.contractAddress] = _thingsInfo;
+        emit e_addThingbyCreator(_thingsInfo, _gateaddress);
     }
 
-    function updateGateThingbyCreator(
-        LThing.Info memory _ThingsInfo,
-        address _gateaddress
-    ) external {
+    function updateThingbyCreator(
+        LThing.Info memory _ThingsInfo
+    ) external override {
         require(
-            ThingsList[_ThingsInfo.contractAddress].isUsed != true,
+            ThingsList[_ThingsInfo.contractAddress].isUsed == true &&
+                _ThingsInfo.creator == msg.sender,
             "you have not the right"
         );
 
-        _ThingsInfo.marketunlock = false;
-        _ThingsInfo.gateunlock = true;
+        _ThingsInfo.marketunlock = ThingsList[_ThingsInfo.contractAddress]
+            .marketunlock;
+        _ThingsInfo.gateunlock = ThingsList[_ThingsInfo.contractAddress]
+            .gateunlock;
         _ThingsInfo.createrunlock = false;
         _ThingsInfo.isUsed = true;
-        _ThingsInfo.addfromgator = _gateaddress;
+        _ThingsInfo.addfromgator = ThingsList[_ThingsInfo.contractAddress]
+            .addfromgator;
         _ThingsInfo.creator = msg.sender;
         ThingsList[_ThingsInfo.contractAddress] = _ThingsInfo;
+        emit e_updateThingbyCreator(msg.sender, _ThingsInfo);
     }
 
     function getThingInfo(
         address _contractaddress
-    ) external view returns (LThing.Info memory) {
+    ) external view override returns (LThing.Info memory) {
         require(
             ThingsList[_contractaddress].isUsed == true,
-            "the Things is not exists"
+            "the Thing is not exists"
         );
-
         return ThingsList[_contractaddress];
     }
 
-    function isValidThing(address _thing) external view returns (bool) {
+    function getThingInfo(
+        address _owneraddress,
+        uint128 _ThingNo
+    ) external view override returns (LThing.Info memory) {
+        require(
+            ThingsList[_owneraddress].isUsed == true,
+            "the Thing is not exists"
+        );
+        return ThingsList[ownerThingList[_owneraddress][_ThingNo]];
+    }
+
+    function getThingMaxNo(
+        address _owneraddress
+    ) external view override returns (uint128) {
+        return thingMaxNo[_owneraddress];
+    }
+
+    function isValidThing(
+        address _thing
+    ) external view override returns (bool) {
         return ThingsList[_thing].marketunlock;
     }
 }

@@ -13,10 +13,10 @@ library LCustomer {
         // 记录用户的推荐人
         address recommender;
         // 记录用户的唯一号
-        uint40 customerKey;
+        uint128 customerKey;
         // 记录用户的推荐人
         address Gater;
-        uint32 GaterKey;
+        uint128 GaterKey;
         // 客户地址
         address contractAddress;
         bool isUsed;

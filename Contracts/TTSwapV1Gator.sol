@@ -47,7 +47,9 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
 
     /////////////////////////门户管理-市场////////////////////////////
     ///////////////////////// Gate Manage///////////////////////////
-    function lockGatebyMarketor(address _gatoraddress) external onlyMarketor {
+    function lockGatebyMarketor(
+        address _gatoraddress
+    ) external override onlyMarketor {
         require(
             gateList[_gatoraddress].isUsed == true,
             "the gator isnot exist"
@@ -56,7 +58,9 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
         emit e_lockGatebyMarketor(_gatoraddress, msg.sender);
     }
 
-    function unlockGatebyMarketor(address _gatoraddress) external onlyMarketor {
+    function unlockGatebyMarketor(
+        address _gatoraddress
+    ) external override onlyMarketor {
         require(
             gateList[_gatoraddress].isUsed == true,
             "the gator isnot exist"
@@ -70,7 +74,7 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
     //更新门户内容
     function updateGatebyMarketor(
         LGate.Info memory _gator
-    ) external onlyMarketor {
+    ) external override onlyMarketor {
         require(
             gateList[_gator.gateAddress].isUsed == true,
             "the gator is exister"
@@ -85,7 +89,7 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
         );
     }
 
-    function delGatebyMarketor(address _gator) external onlyMarketor {
+    function delGatebyMarketor(address _gator) external override onlyMarketor {
         require(gateList[_gator].isUsed == true, "the gator is exister");
 
         delete gateList[_gator];
@@ -95,7 +99,7 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
     ///////////////////////// 门户管理-门户////////////////////////////
     ///////////////////////// Gate Manage///////////////////////////
 
-    function lockGatebyGater() external onlyGator {
+    function lockGatebyGater() external override onlyGator {
         require(
             gateList[msg.sender].isUsed == true &&
                 gateList[msg.sender].gateAddress == msg.sender,
@@ -106,7 +110,7 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
         emit e_lockGatebyGater(msg.sender);
     }
 
-    function unlockGatebyGater() external onlyGator {
+    function unlockGatebyGater() external override onlyGator {
         require(
             gateList[msg.sender].isUsed == true &&
                 gateList[msg.sender].gateAddress == msg.sender,
@@ -117,7 +121,9 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
     }
 
     //更新门户内容
-    function updateGatebyGator(LGate.Info memory _gator) external onlyGator {
+    function updateGatebyGator(
+        LGate.Info memory _gator
+    ) external override onlyGator {
         require(
             gateList[_gator.gateAddress].isUsed == true,
             "the gator is exister"
@@ -132,7 +138,7 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
         emit e_updateGatebyGator(_gator.gateAddress, _gator.name);
     }
 
-    function addGater(LGate.Info memory _gator) external {
+    function addGater(LGate.Info memory _gator) external override {
         require(
             gateList[_gator.gateAddress].isUsed != true,
             "the gator is exister"
@@ -150,29 +156,33 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
         emit e_addGater(_gator.gateAddress, _gator.name);
     }
 
-    function isValidGator() external view returns (bool) {
+    function isValidGator() external view override returns (bool) {
         return gateList[msg.sender].marketunlock;
     }
 
-    function isValidGator(address vgaddress) external view returns (bool) {
+    function isValidGator(
+        address vgaddress
+    ) external view override returns (bool) {
         return gateList[vgaddress].marketunlock;
     }
 
-    function getGaterNo() external view returns (uint128) {
+    function getGaterNo() external view override returns (uint128) {
         return gateList[msg.sender].gateNo;
     }
 
-    function getGaterNo(address _gateAddress) external view returns (uint128) {
+    function getGaterNo(
+        address _gateAddress
+    ) external view override returns (uint128) {
         return gateList[_gateAddress].gateNo;
     }
 
     function getGaterInfo(
         uint8 _gateNumber
-    ) external view returns (LGate.Info memory) {
+    ) external view override returns (LGate.Info memory) {
         return gateList[gateNumbers[_gateNumber]];
     }
 
-    function getMaxGateNumber() external view returns (uint128) {
+    function getMaxGateNumber() external view override returns (uint128) {
         return maxGateNumbers;
     }
 }

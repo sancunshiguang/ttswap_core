@@ -6,7 +6,7 @@ import "./interfaces/ITTSwapV1Coin.sol";
 import "./interfaces/Marketor/IMarketorV1State.sol";
 import "./interfaces/Gator/IGatorV1State.sol";
 
-abstract contract TTSwapV1Coin is ITTSwapV1Coin {
+contract TTSwapV1Coin is ITTSwapV1Coin {
     //owneraddress => coinMaxNo
     mapping(address => uint128) public coinMaxNo;
     //门户币种信息
@@ -53,7 +53,7 @@ abstract contract TTSwapV1Coin is ITTSwapV1Coin {
     /// @dev Explain to a developer any extra details
     function addCoinbyMarketor(
         LCoin.Info memory _coinInfo
-    ) external onlyMarketor {
+    ) external override onlyMarketor {
         require(
             coinList[_coinInfo.contractAddress].isUsed != true,
             "the coin exist"
@@ -62,43 +62,41 @@ abstract contract TTSwapV1Coin is ITTSwapV1Coin {
         _coinInfo.marketunlock = false;
         _coinInfo.gateunlock = true;
         _coinInfo.isUsed = true;
-        if (
-            coinMaxNo[marketorContractAddress] >= 1 &&
-            coinMaxNo[marketorContractAddress] + 1 >=
-            coinMaxNo[marketorContractAddress]
-        ) {
-            coinMaxNo[marketorContractAddress] += 1;
+        uint128 coin_MaxNo = coinMaxNo[marketorContractAddress];
+        if (coin_MaxNo >= 1 && coin_MaxNo + 1 >= coin_MaxNo) {
+            coin_MaxNo += 1;
         } else {
-            coinMaxNo[marketorContractAddress] = 1;
+            coin_MaxNo = 1;
         }
-        ownerCoinList[marketorContractAddress][
-            coinMaxNo[marketorContractAddress]
-        ] = _coinInfo.contractAddress;
+        coinMaxNo[marketorContractAddress] = coin_MaxNo;
 
-        coinList[_coinInfo.contractAddress] = _coinInfo;
-        ownerCoinList[marketorContractAddress][
-            coinMaxNo[marketorContractAddress]
-        ] = _coinInfo.contractAddress;
+        ownerCoinList[marketorContractAddress][coin_MaxNo] = _coinInfo
+            .contractAddress;
         ownerCoinNo[marketorContractAddress][
             _coinInfo.contractAddress
-        ] = coinMaxNo[marketorContractAddress];
+        ] = coin_MaxNo;
+
+        coinList[_coinInfo.contractAddress] = _coinInfo;
+        emit e_addCoinbyMarketor(_coinInfo);
     }
 
     function lockCoinbyMarketor(
-        address _internalCoinAddress
-    ) external onlyMarketor {
-        coinList[_internalCoinAddress].marketunlock = false;
+        address _CoinAddress
+    ) external override onlyMarketor {
+        coinList[_CoinAddress].marketunlock = false;
+        emit e_lockCoinbyMarketor(_CoinAddress);
     }
 
     function unlockCoinbyMarketor(
-        address _internalCoinAddress
-    ) external onlyMarketor {
-        coinList[_internalCoinAddress].marketunlock = true;
+        address _CoinAddress
+    ) external override onlyMarketor {
+        coinList[_CoinAddress].marketunlock = true;
+        emit e_unlockCoinbyMarketor(_CoinAddress);
     }
 
     function updateCoinbyMarketor(
         LCoin.Info memory _coinInfo
-    ) external onlyMarketor {
+    ) external override onlyMarketor {
         require(
             ownerCoinNo[marketorContractAddress][_coinInfo.contractAddress] >=
                 0,
@@ -109,11 +107,12 @@ abstract contract TTSwapV1Coin is ITTSwapV1Coin {
         _coinInfo.isUsed = true;
         _coinInfo.creator = coinList[_coinInfo.contractAddress].creator;
         coinList[_coinInfo.contractAddress] = _coinInfo;
+        emit e_updateCoinbyMarketor(_coinInfo);
     }
 
     function impoveGateCoinbyMarketor(
         address _contractaddress
-    ) external onlyMarketor {
+    ) external override onlyMarketor {
         require(
             coinList[_contractaddress].isUsed = true,
             "the coin is not exists"
@@ -122,26 +121,21 @@ abstract contract TTSwapV1Coin is ITTSwapV1Coin {
             ownerCoinNo[marketorContractAddress][_contractaddress] > 0,
             "the coin is  exists in market"
         );
-
-        if (
-            coinMaxNo[marketorContractAddress] >= 1 &&
-            coinMaxNo[marketorContractAddress] + 1 >=
-            coinMaxNo[marketorContractAddress]
-        ) {
-            coinMaxNo[marketorContractAddress] += 1;
+        uint128 coin_MaxNo = coinMaxNo[marketorContractAddress];
+        if (coin_MaxNo >= 1 && coin_MaxNo + 1 >= coin_MaxNo) {
+            coin_MaxNo += 1;
         } else {
-            coinMaxNo[marketorContractAddress] = 1;
+            coin_MaxNo = 1;
         }
-        ownerCoinList[marketorContractAddress][
-            coinMaxNo[marketorContractAddress]
-        ] = _contractaddress;
-
-        ownerCoinNo[marketorContractAddress][_contractaddress] = coinMaxNo[
-            marketorContractAddress
-        ];
+        coinMaxNo[marketorContractAddress] = coin_MaxNo;
+        ownerCoinList[marketorContractAddress][coin_MaxNo] = _contractaddress;
+        ownerCoinNo[marketorContractAddress][_contractaddress] = coin_MaxNo;
+        emit e_impoveGateCoinbyMarketor(_contractaddress);
     }
 
-    function delCoinbyMarketor(address _contractaddress) external onlyMarketor {
+    function delCoinbyMarketor(
+        address _contractaddress
+    ) external override onlyMarketor {
         require(
             ownerCoinNo[marketorContractAddress][_contractaddress] >= 1,
             "the coin is not exists"
@@ -151,9 +145,11 @@ abstract contract TTSwapV1Coin is ITTSwapV1Coin {
             ownerCoinNo[marketorContractAddress][_contractaddress]
         ];
         delete ownerCoinNo[marketorContractAddress][_contractaddress];
+
+        emit e_delCoinbyMarketor(_contractaddress);
     }
 
-    function delCoinbyMarketor(uint128 _coinNo) external onlyMarketor {
+    function delCoinbyMarketor(uint128 _coinNo) external override onlyMarketor {
         require(
             ownerCoinList[marketorContractAddress][_coinNo] != address(0),
             "the coin is not exists"
@@ -163,11 +159,14 @@ abstract contract TTSwapV1Coin is ITTSwapV1Coin {
             ownerCoinList[marketorContractAddress][_coinNo]
         ];
         delete ownerCoinList[marketorContractAddress][_coinNo];
+        emit e_delCoinbyMarketor(_coinNo);
     }
 
     /////////////////////////币种设置-门户/////////////////////
     /////////////////////////Coin Manage/////////////////////
-    function addCoinbyGator(LCoin.Info memory _coinInfo) external onlyGator {
+    function addCoinbyGator(
+        LCoin.Info memory _coinInfo
+    ) external override onlyGator {
         require(
             coinList[_coinInfo.contractAddress].isUsed != true,
             "the coin is  exist"
@@ -190,27 +189,36 @@ abstract contract TTSwapV1Coin is ITTSwapV1Coin {
             msg.sender
         ];
         coinList[_coinInfo.contractAddress] = _coinInfo;
+        emit e_addCoinbyGator(msg.sender, _coinInfo);
     }
 
     function unlockCoinbyGator(
         address _internalCoinAddress
-    ) external onlyGator {
+    ) external override onlyGator {
         require(
             coinList[_internalCoinAddress].creator == msg.sender,
             "you have not the right"
         );
         coinList[_internalCoinAddress].gateunlock = true;
+
+        emit e_unlockCoinbyGator(msg.sender, _internalCoinAddress);
     }
 
-    function lockCoinbyGator(address _internalCoinAddress) external onlyGator {
+    function lockCoinbyGator(
+        address _internalCoinAddress
+    ) external override onlyGator {
         require(
             coinList[_internalCoinAddress].creator == msg.sender,
             "you have not the right"
         );
         coinList[_internalCoinAddress].gateunlock = false;
+
+        emit e_lockCoinbyGator(msg.sender, _internalCoinAddress);
     }
 
-    function updateCoinbyGator(LCoin.Info memory _coinInfo) external onlyGator {
+    function updateCoinbyGator(
+        LCoin.Info memory _coinInfo
+    ) external override onlyGator {
         require(
             coinList[_coinInfo.contractAddress].creator == msg.sender,
             "you have not the right"
@@ -221,11 +229,41 @@ abstract contract TTSwapV1Coin is ITTSwapV1Coin {
         _coinInfo.isUsed = true;
         _coinInfo.creator = msg.sender;
         coinList[_coinInfo.contractAddress] = _coinInfo;
+
+        emit e_updateCoinbyGator(msg.sender, _coinInfo);
+    }
+
+    function delCoinbyGator(
+        address _contractaddress
+    ) external override onlyGator {
+        require(
+            ownerCoinNo[msg.sender][_contractaddress] >= 1,
+            "the coin is not exists"
+        );
+
+        delete ownerCoinList[msg.sender][
+            ownerCoinNo[msg.sender][_contractaddress]
+        ];
+        delete ownerCoinNo[msg.sender][_contractaddress];
+
+        emit e_delCoinbyGator(msg.sender, _contractaddress);
+    }
+
+    function delCoinbyGator(uint128 _coinNo) external override onlyGator {
+        require(
+            ownerCoinList[msg.sender][_coinNo] != address(0),
+            "the coin is not exists"
+        );
+
+        delete ownerCoinNo[msg.sender][ownerCoinList[msg.sender][_coinNo]];
+        delete ownerCoinList[msg.sender][_coinNo];
+
+        emit e_delCoinbyGator(msg.sender, _coinNo);
     }
 
     function getCoinInfo(
         address _contractaddress
-    ) external view returns (LCoin.Info memory) {
+    ) external view override returns (LCoin.Info memory) {
         require(
             coinList[_contractaddress].isUsed == true,
             "the coin is not exists"
@@ -236,7 +274,7 @@ abstract contract TTSwapV1Coin is ITTSwapV1Coin {
     function getCoinInfo(
         address _owneraddress,
         uint128 _coinNo
-    ) external view returns (LCoin.Info memory) {
+    ) external view override returns (LCoin.Info memory) {
         require(
             coinList[_owneraddress].isUsed == true,
             "the coin is not exists"
@@ -244,11 +282,15 @@ abstract contract TTSwapV1Coin is ITTSwapV1Coin {
         return coinList[ownerCoinList[_owneraddress][_coinNo]];
     }
 
-    function isValidCoin(address _coinAddress) public view returns (bool) {
+    function isValidCoin(
+        address _coinAddress
+    ) external view override returns (bool) {
         return coinList[_coinAddress].marketunlock;
     }
 
-    function getcoinMaxNo(address _owneraddress) public view returns (uint128) {
+    function getCoinMaxNo(
+        address _owneraddress
+    ) external view override returns (uint128) {
         return coinMaxNo[_owneraddress];
     }
 }

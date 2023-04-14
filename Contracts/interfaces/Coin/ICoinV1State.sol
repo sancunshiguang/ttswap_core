@@ -7,8 +7,18 @@ import "../../libraries/base/LCoin.sol";
 /// @notice These methods compose the pool's state, and can change with any frequency including multiple times
 /// per transaction
 interface ICoinV1State {
-    function getCoinInfo(address _contractaddress)
-        external
-        view
-        returns (LCoin.Info memory);
+    function getCoinInfo(
+        address _contractaddress
+    ) external view returns (LCoin.Info memory);
+
+    function getCoinInfo(
+        address _owneraddress,
+        uint128 _coinNo
+    ) external view returns (LCoin.Info memory);
+
+    function isValidCoin(address _coinAddress) external view returns (bool);
+
+    function getCoinMaxNo(
+        address _owneraddress
+    ) external view returns (uint128);
 }

@@ -11,23 +11,15 @@ interface IThingV1MarketorActions {
     */
     function addThingbyMarketor(LThing.Info memory _coinInfo) external;
 
-   
-
     function lockThingbyMarketor(address _internalThingAddress) external;
 
     function unlockThingbyMarketor(address _internalThingAddress) external;
 
     function updateThingbyMarketor(LThing.Info memory _coinInfo) external;
 
-    function impoveGateThingbyMarketor(
-        address _contractaddress,
-        address _gateaddress
-    ) external;
+    function impoveThingbyMarketor(address _contractaddress) external;
 
-    function delMarketThingbyMarketor(LThing.Info memory _ThingsInfo) external;
+    function delMarketThingbyMarketor(address _contractaddress) external;
 
-    function delGateThingbyMarketor(
-        address _contractaddress,
-        address _gateaddress
-    ) external;
+    function delMarketThingbyMarketor(uint128 _thingNo) external;
 }

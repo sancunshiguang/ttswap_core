@@ -16,4 +16,8 @@ interface ICoinV1GatorActions {
     function lockCoinbyGator(address _internalCoinAddress) external;
 
     function updateCoinbyGator(LCoin.Info memory _coinInfo) external;
+
+    function delCoinbyGator(uint128 _coinNo) external;
+
+    function delCoinbyGator(address _contractaddress) external;
 }

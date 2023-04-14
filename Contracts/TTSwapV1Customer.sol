@@ -14,29 +14,33 @@ contract TTSwapV1Customer is ITTSwapV1Customer {
     //customeraddress =>customer detail info
     mapping(address => LCustomer.Info) public customerList;
 
-    //平台用户号->用户信息
-    mapping(uint40 => address) public customerUniKey; //用户号
     //下一位用户号的编号
-    uint40 public customerUniNextKey; //用户下个编号
+    uint128 public customerUniNextKey; //用户下个编号
+    //平台用户号->用户信息
+    mapping(uint128 => address) public customerUniKey; //用户号
 
     //推荐人->被推荐人的序号
-    mapping(address => uint32) public recommenderraltionkey;
+    mapping(address => uint128) public recommander_MaxCustomerNo;
     //推荐人->被推荐人的序号->推荐人的用户地址
-    mapping(address => mapping(uint32 => address))
-        public recommenderraltionlist;
+    mapping(address => mapping(uint128 => address))
+        public recommender_CustomerList;
 
     //门户地址->下一个门户用户的序号
-    mapping(address => uint32) public gateCustomerNextKey;
+    mapping(address => uint128) public gateMaxCustomerNo;
     //门户地址->门户用户序号->用户地址
-    mapping(address => mapping(uint32 => address)) public gateCustomerList;
+    mapping(address => mapping(uint128 => address)) public gateCustomerList;
+    //门户地址->门户用户序号->用户地址
+    mapping(address => mapping(address => uint128)) public gateCustomerNo;
 
     //门户合约地址
     address public immutable gatorContractAddress;
     //平台合约地址
     address public immutable marketorContractAddress;
 
-    constructor(address _gatorContractAddress, address _marketorContractAddress)
-    {
+    constructor(
+        address _gatorContractAddress,
+        address _marketorContractAddress
+    ) {
         gatorContractAddress = _gatorContractAddress;
         marketorContractAddress = _marketorContractAddress;
     }
@@ -53,61 +57,48 @@ contract TTSwapV1Customer is ITTSwapV1Customer {
         _;
     }
 
-    function lockCustomerbyMarketor(address _CustomerAddress)
-        external
-        onlyMarketor
-    {
+    function lockCustomerbyMarketor(
+        address _CustomerAddress
+    ) external override onlyMarketor {
         require(
             customerList[_CustomerAddress].isUsed != true,
             "customer is not exists"
         );
         customerList[_CustomerAddress].unlock = false;
+        emit e_lockCustomerbyMarketor(_CustomerAddress);
     }
 
-    function unlockCustomerbyMarketor(address _CustomerAddress)
-        external
-        onlyMarketor
-    {
+    function unlockCustomerbyMarketor(
+        address _CustomerAddress
+    ) external override onlyMarketor {
         require(
             customerList[_CustomerAddress].isUsed != true,
             "customer is not exists"
         );
         customerList[_CustomerAddress].unlock = true;
+        emit e_unlockCustomerbyMarketor(_CustomerAddress);
     }
 
     //推荐者提供码,用户进行扫码或者输入推荐者的信息
-    function addRelation(uint40 _recommanderUnikey) external {
+    function addRelation(uint128 _recommanderUnikey) external override {
         require(
-            customerList[msg.sender].recommender == address(0),
+            customerList[msg.sender].recommender != address(0),
             "the customer recommender exists"
         );
         address recom_address = customerUniKey[_recommanderUnikey];
-        if (recommenderraltionkey[recom_address] >= 1) {
-            recommenderraltionkey[recom_address] += 1;
+        uint128 temp_maxNO = recommander_MaxCustomerNo[recom_address];
+        if (temp_maxNO >= 1 && temp_maxNO + 1 > temp_maxNO) {
+            temp_maxNO += 1;
         } else {
-            recommenderraltionkey[recom_address] = 1;
+            temp_maxNO = 1;
         }
-        recommenderraltionlist[recom_address][
-            recommenderraltionkey[recom_address]
-        ] = msg.sender;
+        recommander_MaxCustomerNo[recom_address] = temp_maxNO;
+        recommender_CustomerList[recom_address][temp_maxNO] = msg.sender;
         customerList[msg.sender].recommender = recom_address;
+        emit e_addRelation(msg.sender, _recommanderUnikey);
     }
 
-    //用户增加
-    function addCustomer(LCustomer.Info memory _customer) external {
-        require(
-            customerList[_customer.contractAddress].isUsed != true &&
-                _customer.contractAddress == msg.sender,
-            "customer is exists"
-        );
-
-        customerUniNextKey += 1;
-        customerUniKey[customerUniNextKey] = msg.sender;
-        _customer.customerKey = customerUniNextKey;
-        customerList[_customer.contractAddress] = _customer;
-    }
-
-    function updateCustomerNeckName(bytes32 _newname) external {
+    function updateCustomerNeckName(bytes32 _newname) external override {
         require(
             customerList[msg.sender].isUsed =
                 true &&
@@ -115,13 +106,12 @@ contract TTSwapV1Customer is ITTSwapV1Customer {
             "customer is not exists"
         );
         customerList[msg.sender].neckname = _newname;
+        emit e_updateCustomerNeckName(msg.sender, _newname);
     }
 
-    function getCustomer(address _CustomerAddress)
-        external
-        view
-        returns (LCustomer.Info memory)
-    {
+    function getCustomer(
+        address _CustomerAddress
+    ) external view override returns (LCustomer.Info memory) {
         require(
             customerList[_CustomerAddress].isUsed == true,
             " Customer is not exists"
@@ -129,19 +119,15 @@ contract TTSwapV1Customer is ITTSwapV1Customer {
         return customerList[_CustomerAddress];
     }
 
-    function isValidCustomer(address _CustomerAddress)
-        external
-        view
-        returns (bool)
-    {
+    function isValidCustomer(
+        address _CustomerAddress
+    ) external view override returns (bool) {
         return customerList[_CustomerAddress].isUsed;
     }
 
-    function getCustomerRecommander(address _customer)
-        external
-        view
-        returns (address)
-    {
+    function getCustomerRecommander(
+        address _customer
+    ) external view override returns (address) {
         require(
             customerList[_customer].isUsed == true,
             " Customer is not exists"
@@ -149,40 +135,47 @@ contract TTSwapV1Customer is ITTSwapV1Customer {
         return customerList[_customer].recommender;
     }
 
-    function getCustomerNumbyRecommander(address _recommander)
-        external
-        view
-        returns (uint32)
-    {
+    function getCustomerNumbyRecommander(
+        address _recommander
+    ) external view override returns (uint128) {
         require(_recommander != address(0), "customer address is null");
-        return recommenderraltionkey[_recommander];
+        return recommander_MaxCustomerNo[_recommander];
     }
 
     function getCustomerInfobyRecommander(
         address _recommander,
-        uint32 _cumstomerindex
-    ) external view returns (address) {
+        uint128 _cumstomerindex
+    ) external view override returns (LCustomer.Info memory) {
         require(_recommander != address(0), "customer address is null");
-        return recommenderraltionlist[_recommander][_cumstomerindex];
+        return
+            customerList[
+                recommender_CustomerList[_recommander][_cumstomerindex]
+            ];
     }
 
-    function addCustomer(LCustomer.Info memory _customer, address _gator)
-        external
-    {
+    function addCustomer(
+        LCustomer.Info memory _customer,
+        address _gator
+    ) external {
         require(
             customerList[_customer.contractAddress].isUsed != true &&
                 _customer.contractAddress == msg.sender,
             "customer is exists"
         );
-        if (gateCustomerNextKey[_gator] >= 1) {
-            gateCustomerNextKey[_gator] += 1;
-        } else gateCustomerNextKey[_gator] = 1;
+        uint128 tmp_gateMaxNO = gateMaxCustomerNo[_gator];
+        if (tmp_gateMaxNO >= 1 && tmp_gateMaxNO + 1 > tmp_gateMaxNO) {
+            tmp_gateMaxNO += 1;
+        } else tmp_gateMaxNO = 1;
+
         _customer.Gater = _gator;
-        _customer.GaterKey = gateCustomerNextKey[_gator];
+        _customer.GaterKey = tmp_gateMaxNO;
         customerUniNextKey += 1;
         customerUniKey[customerUniNextKey] = msg.sender;
         _customer.customerKey = customerUniNextKey;
         customerList[_customer.contractAddress] = _customer;
-        gateCustomerList[_gator][gateCustomerNextKey[_gator]] = msg.sender;
+
+        gateCustomerNo[_gator][_customer.contractAddress] = tmp_gateMaxNO;
+        gateCustomerList[_gator][tmp_gateMaxNO] = _customer.contractAddress;
+        emit e_addCustomer(_customer, _gator);
     }
 }

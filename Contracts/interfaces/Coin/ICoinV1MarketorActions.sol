@@ -17,15 +17,9 @@ interface ICoinV1MarketorActions {
 
     function updateCoinbyMarketor(LCoin.Info memory _coinInfo) external;
 
-    function impoveGateCoinbyMarketor(
-        address _contractaddress,
-        address _gateaddress
-    ) external;
+    function impoveGateCoinbyMarketor(address _contractaddress) external;
 
     function delCoinbyMarketor(address _contractaddress) external;
 
-    function delGateCoinbyMarketor(
-        address _contractaddress,
-        address _gateaddress
-    ) external;
+    function delCoinbyMarketor(uint128 _coinNo) external;
 }
