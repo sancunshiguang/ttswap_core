@@ -6,9 +6,12 @@ pragma solidity ^0.8.0;
 interface ITTSwapV1ShopOwnerActions {
     /// @notice Collect the protocol fee accrued to the pool
     /// @return amount0 The protocol fee collected in token0
-    function collectProtocol() external returns (uint128 amount0);
+    function collectProtocol(
+        address recipient
+    ) external returns (uint128 amount0);
 
     function setShopFeeProfitSharesbyMarketor(
+        uint8 _investshare,
         uint8 _marketshare,
         uint8 _gatershare,
         uint8 _commandershare,

@@ -18,7 +18,7 @@ library LThing {
         bool isUsed;
         address addfromgator;
         address creator;
-        bool feelevel; //手续费
+        uint8 internal_fee; //10000单位,1表示万分之一
     }
 
     struct DetailInfo {

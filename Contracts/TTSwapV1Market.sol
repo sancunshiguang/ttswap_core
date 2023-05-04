@@ -116,6 +116,7 @@ contract TTSwapV1Market {
     //config the default fee share'pay
     LProfitShares.Info public marketProfitshares =
         LProfitShares.Info({
+            investshare: 20,
             marketshare: 20,
             gatorshare: 40,
             commandershare: 20,

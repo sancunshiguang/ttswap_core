@@ -83,14 +83,12 @@ interface ITTSwapV1ShopEvents {
     /// @param amount0 The amount of token0 that was flashed
     /// @param amount1 The amount of token1 that was flashed
     /// @param paid0 The amount of token0 paid for the flash, which can exceed the amount0 plus the fee
-    /// @param paid1 The amount of token1 paid for the flash, which can exceed the amount1 plus the fee
     event Flash(
         address indexed sender,
         address indexed recipient,
         uint256 amount0,
         uint256 amount1,
-        uint256 paid0,
-        uint256 paid1
+        uint256 paid0
     );
 
     /// @notice Emitted by the pool for increases to the number of observations that can be stored
@@ -116,12 +114,7 @@ interface ITTSwapV1ShopEvents {
     );
 
     /// @notice Emitted when the collected protocol fees are withdrawn by the factory owner
-    /// @param sender The address that collects the protocol fees
     /// @param recipient The address that receives the collected protocol fees
-    /// @param amount0 The amount of token0 protocol fees that is withdrawn
-    event CollectProtocol(
-        address indexed sender,
-        address indexed recipient,
-        uint128 amount0
-    );
+    /// @param coinamount The address that receives the collected protocol fees
+    event CollectProtocol(address indexed recipient, uint128 coinamount);
 }

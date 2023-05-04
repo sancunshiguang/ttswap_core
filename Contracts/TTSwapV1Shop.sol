@@ -19,6 +19,10 @@ import "./TTSwapV1Customer.sol";
 import "./TTSwapV1ShopCreate.sol";
 import "./interfaces/IERC20Minimal.sol";
 
+import "./interfaces/callback/ITTSwapV1MintCallback.sol";
+import "./interfaces/callback/ITTSwapV1SwapCallback.sol";
+import "./interfaces/callback/ITTSwapV1FlashCallback.sol";
+
 import "./NoDelegateCall.sol";
 
 contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
@@ -36,7 +40,7 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
     address public immutable override coin;
     address public immutable override thing;
     uint24 public immutable override profit;
-    int24 public override unitSpacing;
+    int24 public immutable override unitSpacing;
     uint128 public override maxInvestionPerUnit;
     LProfitShares.Info public profitshares;
     //思考,关于门店的创建
@@ -508,11 +512,11 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
         uint256 balance1Before;
         if (coinamount > 0) balance0Before = coinbalance();
         if (thingamount > 0) balance1Before = thingbalance();
-        /// IUniswapV3MintCallback(msg.sender).uniswapV3MintCallback(
-        ///     coinamount,
-        ///     thingamount,
-        ///      data
-        /// );
+        ITTSwapV1MintCallback(msg.sender).TTSwapV1MintCallback(
+            coinamount,
+            thingamount,
+            data
+        );
         if (coinamount > 0)
             require(balance0Before.add(coinamount) <= coinbalance(), "M0");
         if (thingamount > 0)
@@ -613,6 +617,7 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
         // the global fee growth of the input token
         uint256 profitGrowthGlobalX128;
         // the current investion in range
+        uint128 protocolFee;
         uint128 investion;
     }
 
@@ -629,6 +634,8 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
         uint256 amountIn;
         // how much is being swapped out
         uint256 amountOut;
+        // how much fee is being paid in
+        uint256 feeAmount;
     }
 
     //// @inheritdoc ITTSwapV1ShopActions
@@ -662,8 +669,7 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
         require(marketlock == false, "market lock");
         State0 memory state0Start = state0;
         address commanderaddress = TTSwapV1Customer(market)
-            .getCustomerRecommander(msg.sender);
-        address gateraddress = _gateraddress;
+            .getCustomerRecommander(recipient);
         require(state0Start.unlocked, "LOK");
         require(
             zeroForOne
@@ -692,6 +698,7 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
             sqrtPriceX96: state0Start.sqrtPriceX96,
             unit: state0Start.unit,
             profitGrowthGlobalX128: profitGrowthGlobalCoinX128,
+            protocolFee: 0,
             investion: cache.investionStart
         });
 
@@ -735,33 +742,33 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
                     state.amountSpecifiedRemaining
                 );
 
-            // if (exactInput) {
-            //     state.amountSpecifiedRemaining -= (step.amountIn +
-            //         step.feeAmount).toInt256();
-            //     state.amountCalculated = state.amountCalculated.sub(
-            //         step.amountOut.toInt256()
-            //     );
-            // } else {
-            //     state.amountSpecifiedRemaining += step.amountOut.toInt256();
-            //     state.amountCalculated = state.amountCalculated.add(
-            //         (step.amountIn + step.feeAmount).toInt256()
-            //     );
-            // }
+            if (exactInput) {
+                state.amountSpecifiedRemaining -= (step.amountIn +
+                    step.feeAmount).toInt256();
+                state.amountCalculated = state.amountCalculated.sub(
+                    step.amountOut.toInt256()
+                );
+            } else {
+                state.amountSpecifiedRemaining += step.amountOut.toInt256();
+                state.amountCalculated = state.amountCalculated.add(
+                    (step.amountIn + step.feeAmount).toInt256()
+                );
+            }
 
             // if the protocol fee is on, calculate how much is owed, decrement feeAmount, and increment protocolFee
-            // if (cache.profitProtocol > 0) {
-            //     uint256 delta = step.feeAmount / cache.profitProtocol;
-            //     step.feeAmount -= delta;
-            //     state.protocolFee += uint128(delta);
-            // }
+
+            uint256 delta = (step.feeAmount *
+                (100 - profitshares.investshare)) / 100;
+            step.feeAmount -= delta;
+            state.protocolFee += uint128(delta);
 
             // update global fee tracker
-            // if (state.investion > 0)
-            //     state.profitGrowthGlobalX128 += LFullMath.mulDiv(
-            //         step.feeAmount,
-            //         FixedPoint128.Q128,
-            //         state.investion
-            //     );
+            if (state.investion > 0)
+                state.profitGrowthGlobalX128 += LFullMath.mulDiv(
+                    step.feeAmount,
+                    FixedPoint128.Q128,
+                    state.investion
+                );
 
             // shift tick if we reached the next price
             if (state.sqrtPriceX96 == step.sqrtPriceNextX96) {
@@ -804,7 +811,6 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
                         investionNet
                     );
                 }
-
                 state.unit = zeroForOne ? step.unitNext - 1 : step.unitNext;
             } else if (state.sqrtPriceX96 != step.sqrtPriceStartX96) {
                 // recompute unless we're on a lower tick boundary (i.e. already transitioned ticks), and haven't moved
@@ -917,11 +923,11 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
                 );
 
             uint256 balance0Before = coinbalance();
-            ///  IUniswapV3SwapCallback(msg.sender).uniswapV3SwapCallback(
-            ///      amount0,
-            ///     amount1,
-            ///     data
-            ///  );
+            ITTSwapV1SwapCallback(msg.sender).TTSwapV1SwapCallback(
+                amount0,
+                amount1,
+                data
+            );
             require(
                 balance0Before.add(uint256(amount0)) <= coinbalance(),
                 "IIA"
@@ -935,11 +941,11 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
                 );
 
             uint256 balance1Before = thingbalance();
-            /// IUniswapV3SwapCallback(msg.sender).uniswapV3SwapCallback(
-            ///    amount0,
-            ///    amount1,
-            ///    data
-            ///);
+            ITTSwapV1SwapCallback(msg.sender).TTSwapV1SwapCallback(
+                amount0,
+                amount1,
+                data
+            );
             require(
                 balance1Before.add(uint256(amount1)) <= thingbalance(),
                 "IIA"
@@ -958,32 +964,64 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
         state0.unlocked = true;
     }
 
+    struct FlashParas {
+        address recipient;
+        address gateraddress;
+        uint256 amount0;
+        uint256 amount1;
+        uint256 investion;
+    }
+
     //// @inheritdoc ITTSwapV1ShopActions
     function flash(
         address recipient,
-        address _gateraddress,
+        address gateraddress,
         uint256 amount0,
         uint256 amount1,
         bytes calldata data
     ) external override lock noDelegateCall {
+        FlashParas memory tmp_param = FlashParas(
+            recipient,
+            gateraddress,
+            amount0,
+            amount1,
+            investion
+        );
         uint128 _investion = investion;
         require(_investion > 0, "L");
         address commanderaddress = TTSwapV1Customer(market)
-            .getCustomerRecommander(msg.sender);
-        address gateraddress = _gateraddress;
-        uint256 fee0 = LFullMath.mulDivRoundingUp(amount0, profit, 1e6);
-        uint256 fee1 = LFullMath.mulDivRoundingUp(amount1, profit, 1e6);
+            .getCustomerRecommander(tmp_param.recipient);
+        uint256 fee0 = LFullMath.mulDivRoundingUp(
+            tmp_param.amount0,
+            profit,
+            1e6
+        );
+        uint256 fee1 = LFullMath.mulDivRoundingUp(
+            tmp_param.amount1,
+            profit,
+            1e6
+        );
         uint256 balance0Before = coinbalance();
         uint256 balance1Before = thingbalance();
 
-        if (amount0 > 0) TransferHelper.safeTransfer(coin, recipient, amount0);
-        if (amount1 > 0) TransferHelper.safeTransfer(thing, recipient, amount1);
+        if (amount0 > 0)
+            TransferHelper.safeTransfer(
+                coin,
+                tmp_param.recipient,
+                tmp_param.amount0
+            );
+        if (amount1 > 0)
+            TransferHelper.safeTransfer(
+                thing,
+                tmp_param.recipient,
+                tmp_param.amount1
+            );
 
-        ///IUniswapV3FlashCallback(msg.sender).uniswapV3FlashCallback(
-        ///    fee0,
-        ///    fee1,
-        ///    data
-        ///);
+        ITTSwapV1FlashCallback(msg.sender).TTSwapV1FlashCallback(
+            fee0,
+            fee1,
+            data
+        );
 
         uint256 balance0After = coinbalance();
         uint256 balance1After = thingbalance();
@@ -993,35 +1031,35 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
 
         // sub is safe because we know balanceAfter is gt balanceBefore by at least fee
         uint256 paid0 = balance0After - balance0Before;
-        //uint256 paid1 = balance1After - balance1Before;
 
-        // if (paid0 > 0) {
-        //     uint8 profitProtocol0 = state0.profitProtocol % 16;
-        //     uint256 fees0 = profitProtocol0 == 0 ? 0 : paid0 / profitProtocol0;
-        //     if (uint128(fees0) > 0) {
-        //         shopfee[gateraddress].coin += uint128(
-        //             (fees0 / 100) * profitshares.gatorshare
-        //         );
-        //         shopfee[market].coin += uint128(
-        //             (fees0 / 100) * profitshares.marketshare
-        //         );
-        //         if (commanderaddress != address(0)) {
-        //             shopfee[commanderaddress].coin += uint128(
-        //                 fees0 * profitshares.commandershare
-        //             );
-        //             shopfee[market].coin += uint128(
-        //                 fees0 * profitshares.usershare
-        //             );
-        //         } else {
-        //             shopfee[gateraddress].coin += uint128(
-        //                 fees0 * profitshares.commandershare
-        //             );
-        //             shopfee[msg.sender].coin += uint8(
-        //                 fees0 * profitshares.usershare
-        //             );
-        //         }
-        //     }
-        // }
+        // uint256 paid1 = balance1After - balance1Before;
+        if (paid0 > 0) {
+            shopfee[tmp_param.gateraddress] += uint128(paid0);
+            // shopfee[_gateraddress] += uint128(
+            //     paid0  * profitshares.gatorshare
+            // );
+            shopfee[market] += uint128(
+                (paid0 / 100) * profitshares.marketshare
+            );
+            if (commanderaddress != address(0)) {
+                shopfee[commanderaddress] += uint128(
+                    (paid0 / 100) * profitshares.commandershare
+                );
+                shopfee[market] += uint128(paid0 * profitshares.usershare);
+            } else {
+                shopfee[tmp_param.gateraddress] += uint128(
+                    (paid0 / 100) * profitshares.commandershare
+                );
+                shopfee[tmp_param.recipient] += uint128(
+                    (paid0 / 100) * profitshares.usershare
+                );
+            }
+            profitGrowthGlobalCoinX128 += LFullMath.mulDiv(
+                (paid0 / 100) * profitshares.investshare,
+                FixedPoint128.Q128,
+                tmp_param.investion
+            );
+        }
         // if (paid1 > 0) {
         //     uint8 profitProtocol1 = state0.profitProtocol >> 4;
         //     uint256 fees1 = profitProtocol1 == 0 ? 0 : paid1 / profitProtocol1;
@@ -1056,10 +1094,17 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
         //     }
         // }
 
-        // emit Flash(msg.sender, recipient, amount0, amount1, paid0, paid1);
+        emit Flash(
+            msg.sender,
+            tmp_param.recipient,
+            tmp_param.amount0,
+            tmp_param.amount1,
+            paid0
+        );
     }
 
     function setShopFeeProfitSharesbyMarketor(
+        uint8 _investshare,
         uint8 _marketshare,
         uint8 _gatershare,
         uint8 _commandershare,
@@ -1070,6 +1115,7 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
             "profitshare config error"
         );
         profitshares = LProfitShares.Info({
+            investshare: _investshare,
             marketshare: _marketshare,
             gatorshare: _gatershare,
             commandershare: _commandershare,
@@ -1078,20 +1124,17 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
     }
 
     //// @inheritdoc ITTSwapV1ShopOwnerActions
-    function collectProtocol()
-        external
-        override
-        lock
-        returns (uint128 coinamount)
-    {
-        coinamount = shopfee[msg.sender];
+    function collectProtocol(
+        address recipient
+    ) external override lock returns (uint128 coinamount) {
+        coinamount = shopfee[recipient];
 
         if (coinamount > 0) {
             coinamount = coinamount - 1; // ensure that the slot is not cleared, for gas savings
-            shopfee[msg.sender] -= coinamount;
-            TransferHelper.safeTransfer(coin, msg.sender, coinamount);
+            shopfee[recipient] -= coinamount;
+            TransferHelper.safeTransfer(coin, recipient, coinamount);
         }
 
-        emit CollectProtocol(msg.sender, msg.sender, coinamount);
+        emit CollectProtocol(recipient, coinamount);
     }
 }

@@ -172,9 +172,9 @@
 					{
 						"components": [
 							{
-								"internalType": "uint8",
+								"internalType": "uint128",
 								"name": "gateNo",
-								"type": "uint8"
+								"type": "uint128"
 							},
 							{
 								"internalType": "address",
@@ -241,9 +241,9 @@
 				"name": "gateList",
 				"outputs": [
 					{
-						"internalType": "uint8",
+						"internalType": "uint128",
 						"name": "gateNo",
-						"type": "uint8"
+						"type": "uint128"
 					},
 					{
 						"internalType": "address",
@@ -282,9 +282,9 @@
 			{
 				"inputs": [
 					{
-						"internalType": "uint8",
+						"internalType": "uint128",
 						"name": "",
-						"type": "uint8"
+						"type": "uint128"
 					}
 				],
 				"name": "gateNumbers",
@@ -311,9 +311,9 @@
 					{
 						"components": [
 							{
-								"internalType": "uint8",
+								"internalType": "uint128",
 								"name": "gateNo",
-								"type": "uint8"
+								"type": "uint128"
 							},
 							{
 								"internalType": "address",
@@ -355,13 +355,19 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "getMaxGateNumber",
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_gateAddress",
+						"type": "address"
+					}
+				],
+				"name": "getGaterNo",
 				"outputs": [
 					{
-						"internalType": "uint8",
+						"internalType": "uint128",
 						"name": "",
-						"type": "uint8"
+						"type": "uint128"
 					}
 				],
 				"stateMutability": "view",
@@ -369,12 +375,38 @@
 			},
 			{
 				"inputs": [],
-				"name": "geteNo",
+				"name": "getGaterNo",
 				"outputs": [
 					{
-						"internalType": "uint8",
+						"internalType": "uint128",
 						"name": "",
-						"type": "uint8"
+						"type": "uint128"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getMaxGateNumber",
+				"outputs": [
+					{
+						"internalType": "uint128",
+						"name": "",
+						"type": "uint128"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "isValidGator",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
 					}
 				],
 				"stateMutability": "view",
@@ -384,23 +416,10 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "_gateAddress",
+						"name": "vgaddress",
 						"type": "address"
 					}
 				],
-				"name": "geteNo",
-				"outputs": [
-					{
-						"internalType": "uint8",
-						"name": "",
-						"type": "uint8"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
 				"name": "isValidGator",
 				"outputs": [
 					{
@@ -463,9 +482,9 @@
 				"name": "maxGateNumbers",
 				"outputs": [
 					{
-						"internalType": "uint8",
+						"internalType": "uint128",
 						"name": "",
-						"type": "uint8"
+						"type": "uint128"
 					}
 				],
 				"stateMutability": "view",
@@ -496,9 +515,9 @@
 					{
 						"components": [
 							{
-								"internalType": "uint8",
+								"internalType": "uint128",
 								"name": "gateNo",
-								"type": "uint8"
+								"type": "uint128"
 							},
 							{
 								"internalType": "address",
@@ -546,9 +565,9 @@
 					{
 						"components": [
 							{
-								"internalType": "uint8",
+								"internalType": "uint128",
 								"name": "gateNo",
-								"type": "uint8"
+								"type": "uint128"
 							},
 							{
 								"internalType": "address",
@@ -700,26 +719,26 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": false,
+			"enabled": true,
 			"runs": 200
 		},
 		"remappings": []
 	},
 	"sources": {
 		"Contracts/TTSwapV1Gator.sol": {
-			"keccak256": "0x00f479efa08aeb01e4159700e9e8ff529c2398efaddd219dfc7994ad2c8faec4",
+			"keccak256": "0x8ea8d32a328fafce23417baca4bf336b3ed743a5b91a7d04d2009d92cf79c3da",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://b0aa523f73fd96e689308551bfa1f3d5772d306caba5c7db5fb2e74a3ce0993c",
-				"dweb:/ipfs/QmUWyvkVZ23AUaC2nEHmfqDw5QmuXgjLYYRoyf7eoS4c9C"
+				"bzz-raw://a40be608657d1c5291372efe82524764c048b14e686329448f4ea65a2457c461",
+				"dweb:/ipfs/QmZisLCzZBW9ShVsC9aTsU658wJADCxv5Benq6CTmub8ht"
 			]
 		},
 		"Contracts/TTSwapV1Marketor.sol": {
-			"keccak256": "0xfa132b1165f87cd4a949886c2ff9d72218468b090a730b041ceb2d8f8d2d3b34",
+			"keccak256": "0xfdaf3d2d82af7444e2220f679cc998d6e7ca7b29ac3e2b2adbd8fd018372e342",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://a004db01bcec2f007b85be196951212670d27d9e933a2fa36d1ca1f5c059af4f",
-				"dweb:/ipfs/QmZmQf7BWbAb8y2wPWmK3SFrpXTWVb6H1MDXzbHrbGw333"
+				"bzz-raw://1d93e56c8a12e16cad14f0bdf9448c540509b3e9b934c45cdfd86989aeb8dc01",
+				"dweb:/ipfs/QmZ6yF94HcJ5Mjk5JLGnm69DCgK8uxtfLBH7F8hZwSZb69"
 			]
 		},
 		"Contracts/interfaces/Gator/IGatorV1CustomerActions.sol": {
@@ -763,11 +782,11 @@
 			]
 		},
 		"Contracts/interfaces/Gator/IGatorV1State.sol": {
-			"keccak256": "0xcaa550fdeb2699223bfef9bb96186cf356cc63a7234fc1c0c2278fc8d3333413",
+			"keccak256": "0xa949ea977e27e58f507d084c5f6b92c88655e8651a77063935b54dd72722bae9",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://ca84bfe141ceb4ffb764ed9481ff0c730d3ec29bb3b6abc0a4c2e53cddd5131f",
-				"dweb:/ipfs/QmVoWLLbPBsvp5HPd4VZJU7MFRiPBA3jbEqgQy7BHPEDvU"
+				"bzz-raw://c35e05c3ea802144751519d981b932c65eaa2493a6328afcc5bfb630a1702eb7",
+				"dweb:/ipfs/QmY7vTMZHRVvFfT1NJ2crLd73g6J6Sn116NEc5ZHpvq1MQ"
 			]
 		},
 		"Contracts/interfaces/ITTSwapV1Gator.sol": {
@@ -787,11 +806,11 @@
 			]
 		},
 		"Contracts/interfaces/Marketor/IMarketorV1Events.sol": {
-			"keccak256": "0x1019146e8e3c5f553f93a5f1f7d31c0a7227b25ce87d8d76124fbdaae200615f",
+			"keccak256": "0x803231eb164204e023a2a11855e0db775df14e181ca68bda8d2b44271ded241f",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://11113d24362e6a66e5e897ad597992660a06e8641cb5bdaebe74823504b0e225",
-				"dweb:/ipfs/QmZY3dqUFb6DkxHUveC3BpyxsyrTHujoSg7q9mWUnwNYzc"
+				"bzz-raw://f0dd22561cfc8e32748dbe1adafeefbe93e46baa94797a3e584b03e8777386ea",
+				"dweb:/ipfs/QmR38VzdTn3DRiYAdV8FTENp3qcsxKmukSfivisHuFCNbY"
 			]
 		},
 		"Contracts/interfaces/Marketor/IMarketorV1Immutables.sol": {
@@ -819,11 +838,11 @@
 			]
 		},
 		"Contracts/libraries/base/LGate.sol": {
-			"keccak256": "0xcd1cf4ce33730754e383376fbedc91ad9698782689773f86a60b9ba8ca712267",
+			"keccak256": "0x2bda4a9e847cd9673762cd00f4a1f90d880634b828ff0f2ec3f84435bfa0bc8d",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://c823487003db9d760d0571f0609285cf6c97efbc2bb67e5cca9cb85c8554fcf5",
-				"dweb:/ipfs/QmTNTbGSAaNRMW5Wf9iqAxaCK6Le9PSXs5aFjWCksPmJsB"
+				"bzz-raw://bf34fafa59ec445dd5e6d1386593b6b70841fa7c2f2c608b0293dce48db43f8d",
+				"dweb:/ipfs/QmZ3REfTtgdPuBTjYKNrV4C5qAs65kaHGK7jgapBgW7ewU"
 			]
 		}
 	},
