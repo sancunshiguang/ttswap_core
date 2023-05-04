@@ -37,6 +37,7 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
     using LPriceLog for LPriceLog.PriceLog[65535];
 
     address public immutable override market;
+    address public immutable cust_contract;
     address public immutable override coin;
     address public immutable override thing;
     uint24 public immutable override profit;
@@ -91,6 +92,7 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
         maxInvestionPerUnit = LUnit.unitSpacingToMaxinvestionPerUnit(
             unitSpacing
         );
+        cust_contract = market;
     }
 
     modifier isopen() {
@@ -638,11 +640,19 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
         uint256 feeAmount;
     }
 
+    struct SwapParam {
+        address recipient;
+        address gateraddress;
+        bool zeroForOne;
+        int256 amountSpecified;
+        uint160 sqrtPriceLimitX96;
+    }
+
     //// @inheritdoc ITTSwapV1ShopActions
     /// @notice Swap token0 for token1, or token1 for token0
     /// @dev The caller of this method receives a callback in the form of IUniswapV3SwapCallback#uniswapV3SwapCallback
     /// @param recipient The address to receive the output of the swap
-    /// @param _gateraddress The address to receive the output of the swap
+    /// @param gateraddress The address to receive the output of the swap
     /// @param zeroForOne The direction of the swap, true for token0 to token1, false for token1 to token0
     /// @param amountSpecified The amount of the swap, which implicitly configures the swap as exact input (positive), or exact output (negative)
     /// @param sqrtPriceLimitX96 The Q64.96 sqrt price limit. If zero for one, the price cannot be less than this
@@ -652,7 +662,7 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
     /// @return amount1 The delta of the balance of token1 of the pool, exact when negative, minimum when positive
     function swap(
         address recipient,
-        address _gateraddress,
+        address gateraddress,
         bool zeroForOne, //true :buy:use coin to buy thing,false:sell thing  to get coin
         int256 amountSpecified,
         uint160 sqrtPriceLimitX96,
@@ -663,16 +673,21 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
         noDelegateCall
         returns (int256 amount0, int256 amount1)
     {
-        bool _zeroForOne = zeroForOne;
-        address _recipient = recipient;
+        SwapParam memory swapParam = SwapParam(
+            recipient,
+            gateraddress,
+            zeroForOne,
+            amountSpecified,
+            sqrtPriceLimitX96
+        );
         require(amountSpecified != 0, "AS");
         require(marketlock == false, "market lock");
         State0 memory state0Start = state0;
-        address commanderaddress = TTSwapV1Customer(market)
-            .getCustomerRecommander(recipient);
+        address commanderaddress = TTSwapV1Customer(cust_contract)
+            .getCustomerRecommander(swapParam.recipient);
         require(state0Start.unlocked, "LOK");
         require(
-            zeroForOne
+            swapParam.zeroForOne
                 ? sqrtPriceLimitX96 < state0Start.sqrtPriceX96 &&
                     sqrtPriceLimitX96 > LUnitMath.MIN_SQRT_RATIO
                 : sqrtPriceLimitX96 > state0Start.sqrtPriceX96 &&
@@ -714,7 +729,7 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
                 .nextInitializedTickWithinOneWord(
                     state.unit,
                     unitSpacing,
-                    _zeroForOne
+                    swapParam.zeroForOne
                 );
 
             // ensure that we do not overshoot the min/max tick, as the tick bitmap is not aware of these bounds
@@ -732,7 +747,7 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
                 .computeSwapStep(
                     state.sqrtPriceX96,
                     (
-                        _zeroForOne
+                        swapParam.zeroForOne
                             ? step.sqrtPriceNextX96 < sqrtPriceLimitX96
                             : step.sqrtPriceNextX96 > sqrtPriceLimitX96
                     )
@@ -794,7 +809,7 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
                     int128 investionNet = units.cross(
                         step.unitNext,
                         (
-                            _zeroForOne
+                            swapParam.zeroForOne
                                 ? state.profitGrowthGlobalX128
                                 : profitGrowthGlobalCoinX128
                         ),
@@ -804,14 +819,16 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
                     );
                     // if we're moving leftward, we interpret investionNet as the opposite sign
                     // safe because investionNet cannot be type(int128).min
-                    if (_zeroForOne) investionNet = -investionNet;
+                    if (swapParam.zeroForOne) investionNet = -investionNet;
 
                     state.investion = LInvestionMath.addDelta(
                         state.investion,
                         investionNet
                     );
                 }
-                state.unit = zeroForOne ? step.unitNext - 1 : step.unitNext;
+                state.unit = swapParam.zeroForOne
+                    ? step.unitNext - 1
+                    : step.unitNext;
             } else if (state.sqrtPriceX96 != step.sqrtPriceStartX96) {
                 // recompute unless we're on a lower tick boundary (i.e. already transitioned ticks), and haven't moved
                 state.unit = LUnitMath.getUnitAtSqrtRatio(state.sqrtPriceX96);
@@ -850,32 +867,34 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
 
         // update fee growth global and, if necessary, protocol fees
         // overflow is acceptable, protocol has to withdraw before it hits type(uint128).max fees
-        // if (zeroForOne) {
-        //     profitGrowthGlobalCoinX128 = state.profitGrowthGlobalX128;
-        //     if (state.protocolFee > 0) {
-        //         shopfee[gateraddress].coin +=
-        //             (state.protocolFee / 100) *
-        //             profitshares.gatorshare;
-        //         shopfee[market].coin +=
-        //             (state.protocolFee / 100) *
-        //             profitshares.marketshare;
-        //         if (commanderaddress != address(0)) {
-        //             shopfee[commanderaddress].coin +=
-        //                 state.protocolFee *
-        //                 profitshares.commandershare;
-        //             shopfee[market].coin +=
-        //                 state.protocolFee *
-        //                 profitshares.usershare;
-        //         } else {
-        //             shopfee[gateraddress].coin +=
-        //                 state.protocolFee *
-        //                 profitshares.commandershare;
-        //             shopfee[msg.sender].coin +=
-        //                 state.protocolFee *
-        //                 profitshares.usershare;
-        //         }
-        //     }
-        // } else {
+
+        if (swapParam.zeroForOne) {
+            profitGrowthGlobalCoinX128 = state.profitGrowthGlobalX128;
+            if (state.protocolFee > 0) {
+                shopfee[swapParam.gateraddress] +=
+                    (state.protocolFee / 100) *
+                    profitshares.gatorshare;
+                shopfee[market] +=
+                    (state.protocolFee / 100) *
+                    profitshares.marketshare;
+                if (commanderaddress != address(0)) {
+                    shopfee[commanderaddress] +=
+                        state.protocolFee *
+                        profitshares.commandershare;
+                    shopfee[market] +=
+                        state.protocolFee *
+                        profitshares.usershare;
+                } else {
+                    shopfee[swapParam.gateraddress] +=
+                        state.protocolFee *
+                        profitshares.commandershare;
+                    shopfee[swapParam.recipient] +=
+                        state.protocolFee *
+                        profitshares.usershare;
+                }
+            }
+        }
+        //else {
         //     //  profitGrowthGlobalThingX128 = state.profitGrowthGlobalX128;
         //     if (state.protocolFee > 0) {
         //         shopfee[gateraddress].thing +=
@@ -903,7 +922,7 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
         //     }
         // }
 
-        (amount0, amount1) = zeroForOne == exactInput
+        (amount0, amount1) = swapParam.zeroForOne == exactInput
             ? (
                 amountSpecified - state.amountSpecifiedRemaining,
                 state.amountCalculated
@@ -918,7 +937,7 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
             if (amount1 < 0)
                 TransferHelper.safeTransfer(
                     thing,
-                    _recipient,
+                    swapParam.recipient,
                     uint256(-amount1)
                 );
 
@@ -936,7 +955,7 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
             if (amount0 < 0)
                 TransferHelper.safeTransfer(
                     coin,
-                    _recipient,
+                    swapParam.recipient,
                     uint256(-amount0)
                 );
 
@@ -954,7 +973,7 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
 
         emit Swap(
             msg.sender,
-            _recipient,
+            swapParam.recipient,
             amount0,
             amount1,
             state.sqrtPriceX96,
@@ -989,7 +1008,7 @@ contract TTSwapV1Shop is ITTSwapV1Shop, NoDelegateCall {
         );
         uint128 _investion = investion;
         require(_investion > 0, "L");
-        address commanderaddress = TTSwapV1Customer(market)
+        address commanderaddress = TTSwapV1Customer(cust_contract)
             .getCustomerRecommander(tmp_param.recipient);
         uint256 fee0 = LFullMath.mulDivRoundingUp(
             tmp_param.amount0,
