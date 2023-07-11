@@ -14,8 +14,9 @@ import "./TTSwapV1Coin.sol";
 import "./TTSwapV1Thing.sol";
 import "./TTSwapV1Customer.sol";
 import "./TTSwapV1Marketor.sol";
+import "./TTSwapV1ShopCreate.sol";
 
-contract TTSwapV1Market {
+contract TTSwapV1Market is TTSwapV1ShopCreate, NoDelegateCall {
     //市场门店信息
     //币种-物品-店铺地址
     //ShopAddress
@@ -28,9 +29,10 @@ contract TTSwapV1Market {
     mapping(address => mapping(address => bool)) public gateShopList;
 
     //门户门店信息
-    mapping(address => mapping(address => address)) public shopaddress;
+    mapping(address => mapping(address => mapping(uint24 => address)))
+        public shopaddress;
 
-    //   mapping(address => LShop.Info) public shopList;
+    mapping(address => LShop.Info) public shopList;
 
     mapping(uint24 => int24) public profitUnitSpacing;
 
@@ -139,48 +141,58 @@ contract TTSwapV1Market {
     // @param _coin the coin of the shop
     // @param _thing the things of the shop
     // @param _profit  交易手续费费率fee percentage of swap
-    // function createShopbyGator(
-    //     address _coin,
-    //     address _thing,
-    //     uint24 _profit
-    // ) external noDelegateCall onlyGator returns (address shop) {
-    //     require(_coin != _thing, "the coin is same as the thing ");
-    //     require(
-    //         TTSwapV1Coin(coinContractAddress).isValidCoin(_coin) == true &&
-    //             TTSwapV1Thing(thingContractAddress).isValidThing(_thing) ==
-    //             true,
-    //         "coin or thing is not valid"
-    //     );
+    function createShopbyGator(
+        address _coin,
+        address _thing,
+        uint24 _profit
+    ) external noDelegateCall onlyGator returns (address shop) {
+        require(_coin != _thing, "the coin is same as the thing ");
 
-    //     if (
-    //         shopaddress[_coin][_thing] == address(0) &&
-    //         shopaddress[_thing][_coin] == address(0)
-    //     ) {
-    //         /* shop = deploy(
-    //             marketContractAddress,
-    //             _coin,
-    //             _thing,
-    //             _profit,
-    //             profitUnitSpacing[_profit],
-    //             marketProfitshares
-    //         );*/
+        bool token1_coin_true = TTSwapV1Coin(coinContractAddress).isValidCoin(
+            _coin
+        );
 
-    //         shopaddress[_coin][_thing] = shop;
-    //         shopList[shop].Market = marketContractAddress;
-    //         shopList[shop].coin = _coin;
-    //         shopList[shop].thing = _thing;
-    //         shopList[shop].profit = _profit;
-    //         shopList[shop].unitSpacing = profitUnitSpacing[_profit];
-    //         gateShopList[msg.sender][shop] = true;
-    //         delete shop;
-    //     } else {}
-    // }
+        bool token1_thing_true = TTSwapV1Coin(coinContractAddress).isValidCoin(
+            _thing
+        );
 
-    //     function raiseShopLevelbyMarketor(address shop) external onlyMarketor {
-    //         require(
-    //             marketShopList[shop] = true && shopList[shop].isUsed == true,
-    //             "the shop not exists in the gate"
-    //         );
-    //         marketShopList[shop] = true;
-    //     }
+        bool token2_coin_true = TTSwapV1Thing(thingContractAddress)
+            .isValidThing(_coin);
+
+        bool token2_thing_true = TTSwapV1Thing(thingContractAddress)
+            .isValidThing(_thing);
+
+        if (
+            shopaddress[_coin][_thing][_profit] == address(0) &&
+            shopaddress[_thing][_coin][_profit] == address(0)
+        ) {
+            shop = deploy(
+                marketContractAddress,
+                _coin,
+                _thing,
+                _profit,
+                profitUnitSpacing[_profit],
+                marketProfitshares
+            );
+
+            shopaddress[_coin][_thing][_profit] = shop;
+            shopaddress[_thing][_coin][_profit] = shop;
+
+            shopList[shop].Market = marketContractAddress;
+            shopList[shop].coin = _coin;
+            shopList[shop].thing = _thing;
+            shopList[shop].profit = _profit;
+            shopList[shop].unitSpacing = profitUnitSpacing[_profit];
+            gateShopList[msg.sender][shop] = true;
+            delete shop;
+        } else {}
+    }
+
+    function raiseShopLevelbyMarketor(address shop) external onlyMarketor {
+        require(
+            marketShopList[shop] = true && shopList[shop].isUsed == true,
+            "the shop not exists in the gate"
+        );
+        marketShopList[shop] = true;
+    }
 }
