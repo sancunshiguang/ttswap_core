@@ -33,9 +33,11 @@ contract TTSwapV1Customer is ITTSwapV1Customer {
     mapping(address => mapping(address => uint128)) public gateCustomerNo;
 
     //门户合约地址
-    address public immutable gatorContractAddress;
+    address public gatorContractAddress;
     //平台合约地址
-    address public immutable marketorContractAddress;
+    address public marketorContractAddress;
+
+    address public marketCreator;
 
     constructor(
         address _gatorContractAddress,
@@ -43,6 +45,7 @@ contract TTSwapV1Customer is ITTSwapV1Customer {
     ) {
         gatorContractAddress = _gatorContractAddress;
         marketorContractAddress = _marketorContractAddress;
+        marketCreator = msg.sender;
     }
 
     /// @notice Explain to an end user what this does
@@ -55,6 +58,21 @@ contract TTSwapV1Customer is ITTSwapV1Customer {
     modifier onlyMarketor() {
         require(IMarketorV1State(marketorContractAddress).isValidMarketor());
         _;
+    }
+
+    modifier onlyMarketCreator() {
+        require(marketCreator == msg.sender, "you are not marketcreater");
+        _;
+    }
+
+    function setCustomerEnv(
+        address _marketorContractAddress,
+        address _gatorContractAddress,
+        address _marketCreator
+    ) external onlyMarketCreator {
+        marketorContractAddress = _marketorContractAddress;
+        gatorContractAddress = _gatorContractAddress;
+        marketCreator = _marketCreator;
     }
 
     function lockCustomerbyMarketor(

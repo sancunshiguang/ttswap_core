@@ -21,6 +21,7 @@ contract TTSwapV1Thing is ITTSwapV1Thing {
 
     address public gatorContractAddress;
     address public marketorContractAddress;
+    address public marketCreator;
 
     constructor(
         address _gatorContractAddress,
@@ -28,6 +29,7 @@ contract TTSwapV1Thing is ITTSwapV1Thing {
     ) {
         gatorContractAddress = _gatorContractAddress;
         marketorContractAddress = _marketorContractAddress;
+        marketCreator = msg.sender;
     }
 
     /// @notice Explain to an end user what this does
@@ -42,6 +44,20 @@ contract TTSwapV1Thing is ITTSwapV1Thing {
     modifier onlyMarketor() {
         require(IMarketorV1State(marketorContractAddress).isValidMarketor());
         _;
+    }
+    modifier onlyMarketCreator() {
+        require(marketCreator == msg.sender, "you are not marketcreater");
+        _;
+    }
+
+    function setThingEnv(
+        address _marketorContractAddress,
+        address _gatorContractAddress,
+        address _marketCreator
+    ) external onlyMarketCreator {
+        marketorContractAddress = _marketorContractAddress;
+        gatorContractAddress = _gatorContractAddress;
+        marketCreator = _marketCreator;
     }
 
     /////////////////////////物品设置-市场/////////////////////

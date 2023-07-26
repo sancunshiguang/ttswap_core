@@ -21,8 +21,9 @@ contract TTSwapV1Coin is ITTSwapV1Coin {
     //coinaddress => coinInfo
     mapping(address => LCoin.Info) public coinList;
 
-    address public immutable gatorContractAddress;
-    address public immutable marketorContractAddress;
+    address public gatorContractAddress;
+    address public marketorContractAddress;
+    address public marketCreator;
 
     constructor(
         address _gatorContractAddress,
@@ -30,6 +31,7 @@ contract TTSwapV1Coin is ITTSwapV1Coin {
     ) {
         gatorContractAddress = _gatorContractAddress;
         marketorContractAddress = _marketorContractAddress;
+        marketCreator = msg.sender;
     }
 
     /// @notice Explain to an end user what this does
@@ -44,6 +46,21 @@ contract TTSwapV1Coin is ITTSwapV1Coin {
     modifier onlyMarketor() {
         require(IMarketorV1State(marketorContractAddress).isValidMarketor());
         _;
+    }
+
+    modifier onlyMarketCreator() {
+        require(marketCreator == msg.sender, "you are not marketcreater");
+        _;
+    }
+
+    function setCoinEnv(
+        address _marketorContractAddress,
+        address _gatorContractAddress,
+        address _marketCreator
+    ) external onlyMarketCreator {
+        marketorContractAddress = _marketorContractAddress;
+        gatorContractAddress = _gatorContractAddress;
+        marketCreator = _marketCreator;
     }
 
     /////////////////////////币种设置-市场/////////////////////

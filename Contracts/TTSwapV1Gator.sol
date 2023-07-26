@@ -16,7 +16,7 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
     //记录门户最大编号
     uint128 public maxGateNumbers;
 
-    address public immutable marketorContractAddress;
+    address public marketorContractAddress;
     address public marketCreator;
 
     constructor(address _marketorContractAddress, address _marketCreator) {
@@ -31,7 +31,12 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
         require(gateList[msg.sender].marketunlock == true);
         _;
     }
-
+    /// @notice Explain to an end user what this does
+    /// @dev Explain to a developer any extra details
+    modifier onlyMarketCreator() {
+        require(marketCreator == msg.sender, "you are not marketcreater");
+        _;
+    }
     /// @notice Explain to an end user what this does
     /// @dev Explain to a developer any extra details
 
@@ -43,6 +48,14 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
             "you are marketor"
         );
         _;
+    }
+
+    function setGaterEnv(
+        address _marketorContractAddress,
+        address _marketCreator
+    ) external onlyMarketCreator {
+        marketorContractAddress = _marketorContractAddress;
+        marketCreator = _marketCreator;
     }
 
     /////////////////////////门户管理-市场////////////////////////////
