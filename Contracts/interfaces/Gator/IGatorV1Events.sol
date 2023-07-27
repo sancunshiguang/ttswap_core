@@ -48,4 +48,6 @@ interface IGatorV1Events {
     /// @param marketoraddress The address that minted the liquidity
 
     event e_lockGatebyMarketor(address gateAddress, address marketoraddress);
+
+    event e_addGaterDetail(address gateaddress);
 }

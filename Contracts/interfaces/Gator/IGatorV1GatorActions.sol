@@ -11,4 +11,9 @@ interface IGatorV1GatorActions {
 
     //更新门户内容
     function updateGatebyGator(LGate.Info memory _gator) external;
+
+    //更新门户详情
+    function addGaterDetailInfo(
+        LGate.DetailInfo memory _gatorDatailinfo
+    ) external;
 }

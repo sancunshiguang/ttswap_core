@@ -491,6 +491,24 @@
 				"type": "function"
 			},
 			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_marketorContractAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_marketCreator",
+						"type": "address"
+					}
+				],
+				"name": "setGaterEnv",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"inputs": [],
 				"name": "unlockGatebyGater",
 				"outputs": [],
@@ -726,11 +744,11 @@
 	},
 	"sources": {
 		"Contracts/TTSwapV1Gator.sol": {
-			"keccak256": "0x8ea8d32a328fafce23417baca4bf336b3ed743a5b91a7d04d2009d92cf79c3da",
+			"keccak256": "0x77ef6572e48ecc345d22a30a77d13170c846c8c434e60a81f10f3da6380cefbe",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://a40be608657d1c5291372efe82524764c048b14e686329448f4ea65a2457c461",
-				"dweb:/ipfs/QmZisLCzZBW9ShVsC9aTsU658wJADCxv5Benq6CTmub8ht"
+				"bzz-raw://42bee260bac80c72a343085c7a45e8de9cc41e3443f90e272edcb4a9e2fcb590",
+				"dweb:/ipfs/QmPsfZSqyxz1puDZBXGaJYaPXyxrcEGvF8kuZvoFU91VDr"
 			]
 		},
 		"Contracts/TTSwapV1Marketor.sol": {

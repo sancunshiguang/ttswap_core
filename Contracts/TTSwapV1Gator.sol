@@ -11,6 +11,7 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
     //Gate Parameter
 
     mapping(address => LGate.Info) public gateList;
+    mapping(address => LGate.DetailInfo) public gateDetailList;
     //记录门户编号
     mapping(uint128 => address) public gateNumbers;
     //记录门户最大编号
@@ -169,11 +170,25 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
         emit e_addGater(_gator.gateAddress, _gator.name);
     }
 
+    function addGaterDetailInfo(
+        LGate.DetailInfo memory _gatorDatailinfo
+    ) external override {
+        require(gateList[msg.sender].isUsed == true, "the gator is not exist");
+        gateDetailList[msg.sender] = _gatorDatailinfo;
+        emit e_addGaterDetail(msg.sender);
+    }
+
+    function getGaterDetailInfo(
+        address _gateaddress
+    ) external view override returns (LGate.DetailInfo memory) {
+        return gateDetailList[_gateaddress];
+    }
+
     function isValidGator() external view override returns (bool) {
         return gateList[msg.sender].marketunlock;
     }
 
-    function isValidGator(
+    function isValidGatorFromAddress(
         address vgaddress
     ) external view override returns (bool) {
         return gateList[vgaddress].marketunlock;
@@ -183,7 +198,7 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
         return gateList[msg.sender].gateNo;
     }
 
-    function getGaterNo(
+    function getGaterNoFromAddress(
         address _gateAddress
     ) external view override returns (uint128) {
         return gateList[_gateAddress].gateNo;

@@ -9,15 +9,23 @@ import "../../libraries/base/LGate.sol";
 interface IGatorV1State {
     function isValidGator() external view returns (bool);
 
-    function isValidGator(address vgaddress) external view returns (bool);
+    function isValidGatorFromAddress(
+        address vgaddress
+    ) external view returns (bool);
 
     function getGaterNo() external view returns (uint128);
 
-    function getGaterNo(address _gateAddress) external view returns (uint128);
+    function getGaterNoFromAddress(
+        address _gateAddress
+    ) external view returns (uint128);
 
     function getGaterInfo(
         uint8 _gateNumber
     ) external view returns (LGate.Info memory);
 
     function getMaxGateNumber() external view returns (uint128);
+
+    function getGaterDetailInfo(
+        address _gateaddress
+    ) external view returns (LGate.DetailInfo memory);
 }

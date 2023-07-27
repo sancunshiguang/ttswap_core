@@ -17,6 +17,32 @@
 				"type": "constructor"
 			},
 			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "e_delMarketorByMarketCreator",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "e_setMarketorByMarketCreator",
+				"type": "event"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -39,6 +65,25 @@
 				"inputs": [
 					{
 						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "MarketorsNo",
+				"outputs": [
+					{
+						"internalType": "uint128",
+						"name": "",
+						"type": "uint128"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
 						"name": "_owner",
 						"type": "address"
 					}
@@ -46,6 +91,51 @@
 				"name": "delMarketorByMarketCreator",
 				"outputs": [],
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getMarketorNo",
+				"outputs": [
+					{
+						"internalType": "uint128",
+						"name": "",
+						"type": "uint128"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_marketorAddress",
+						"type": "address"
+					}
+				],
+				"name": "getMarketorNo",
+				"outputs": [
+					{
+						"internalType": "uint128",
+						"name": "",
+						"type": "uint128"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getMaxMarketorNo",
+				"outputs": [
+					{
+						"internalType": "uint128",
+						"name": "",
+						"type": "uint128"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -94,6 +184,19 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "maxMarketorNo",
+				"outputs": [
+					{
+						"internalType": "uint128",
+						"name": "",
+						"type": "uint128"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -112,15 +215,6 @@
 			"methods": {
 				"delMarketorByMarketCreator(address)": {
 					"details": "Explain to a developer any extra details"
-				},
-				"isValidMarketor()": {
-					"details": "Explain to a developer any extra details"
-				},
-				"isValidMarketor(address)": {
-					"details": "Explain to a developer any extra details"
-				},
-				"setMarketorByMarketCreator(address)": {
-					"details": "Explain to a developer any extra details"
 				}
 			},
 			"version": 1
@@ -129,15 +223,6 @@
 			"kind": "user",
 			"methods": {
 				"delMarketorByMarketCreator(address)": {
-					"notice": "Explain to an end user what this does"
-				},
-				"isValidMarketor()": {
-					"notice": "Explain to an end user what this does"
-				},
-				"isValidMarketor(address)": {
-					"notice": "Explain to an end user what this does"
-				},
-				"setMarketorByMarketCreator(address)": {
 					"notice": "Explain to an end user what this does"
 				}
 			},
@@ -154,18 +239,18 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": false,
+			"enabled": true,
 			"runs": 200
 		},
 		"remappings": []
 	},
 	"sources": {
 		"Contracts/TTSwapV1Marketor.sol": {
-			"keccak256": "0xfa132b1165f87cd4a949886c2ff9d72218468b090a730b041ceb2d8f8d2d3b34",
+			"keccak256": "0xfdaf3d2d82af7444e2220f679cc998d6e7ca7b29ac3e2b2adbd8fd018372e342",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://a004db01bcec2f007b85be196951212670d27d9e933a2fa36d1ca1f5c059af4f",
-				"dweb:/ipfs/QmZmQf7BWbAb8y2wPWmK3SFrpXTWVb6H1MDXzbHrbGw333"
+				"bzz-raw://1d93e56c8a12e16cad14f0bdf9448c540509b3e9b934c45cdfd86989aeb8dc01",
+				"dweb:/ipfs/QmZ6yF94HcJ5Mjk5JLGnm69DCgK8uxtfLBH7F8hZwSZb69"
 			]
 		},
 		"Contracts/interfaces/ITTSwapV1Marketor.sol": {
@@ -177,11 +262,11 @@
 			]
 		},
 		"Contracts/interfaces/Marketor/IMarketorV1Events.sol": {
-			"keccak256": "0x1019146e8e3c5f553f93a5f1f7d31c0a7227b25ce87d8d76124fbdaae200615f",
+			"keccak256": "0x803231eb164204e023a2a11855e0db775df14e181ca68bda8d2b44271ded241f",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://11113d24362e6a66e5e897ad597992660a06e8641cb5bdaebe74823504b0e225",
-				"dweb:/ipfs/QmZY3dqUFb6DkxHUveC3BpyxsyrTHujoSg7q9mWUnwNYzc"
+				"bzz-raw://f0dd22561cfc8e32748dbe1adafeefbe93e46baa94797a3e584b03e8777386ea",
+				"dweb:/ipfs/QmR38VzdTn3DRiYAdV8FTENp3qcsxKmukSfivisHuFCNbY"
 			]
 		},
 		"Contracts/interfaces/Marketor/IMarketorV1Immutables.sol": {

@@ -22,7 +22,6 @@ library LGate {
 
     //相应接口
     struct DetailInfo {
-        address gateAddress; //合约地址
         string full_name; //全称
         string WhitePaperUrl; //白皮书地址
         string OfficalWebsite; //官网
