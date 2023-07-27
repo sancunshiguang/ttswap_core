@@ -22,4 +22,8 @@ interface IThingV1MarketorActions {
     function delMarketThingbyMarketor(address _contractaddress) external;
 
     function delMarketThingbyMarketor(uint128 _thingNo) external;
+
+    function addThingDetailInforbyMarketor(
+        LThing.DetailInfo memory _thingDetailinfo
+    ) external;
 }

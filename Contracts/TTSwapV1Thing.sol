@@ -18,6 +18,8 @@ contract TTSwapV1Thing is ITTSwapV1Thing {
     //标准物品地址 => 标准物品信息
     //thingaddress => thingInfo
     mapping(address => LThing.Info) public ThingsList;
+    //thingaddress => thingDetailInfo
+    mapping(address => LThing.DetailInfo) public ThingsDetailList;
 
     address public gatorContractAddress;
     address public marketorContractAddress;
@@ -249,6 +251,36 @@ contract TTSwapV1Thing is ITTSwapV1Thing {
         emit e_addThingbyCreator(_thingsInfo, _gateaddress);
     }
 
+    function addThingDetailInforbyCreator(
+        LThing.DetailInfo memory _thingDetailinfo
+    ) external override {
+        require(
+            ThingsList[_thingDetailinfo.contractAddress].creator == msg.sender,
+            "you is not the thing creater"
+        );
+        ThingsDetailList[_thingDetailinfo.contractAddress] = _thingDetailinfo;
+        emit e_addThingDetailbyCreator(_thingDetailinfo.contractAddress);
+    }
+
+    function addThingDetailInforbyGator(
+        LThing.DetailInfo memory _thingDetailinfo
+    ) external override {
+        require(
+            ThingsList[_thingDetailinfo.contractAddress].addfromgator ==
+                msg.sender,
+            "you is not the thing creater"
+        );
+        ThingsDetailList[_thingDetailinfo.contractAddress] = _thingDetailinfo;
+        emit e_addThingDetailbyGator(_thingDetailinfo.contractAddress);
+    }
+
+    function addThingDetailInforbyMarketor(
+        LThing.DetailInfo memory _thingDetailinfo
+    ) external override onlyMarketor {
+        ThingsDetailList[_thingDetailinfo.contractAddress] = _thingDetailinfo;
+        emit e_addThingDetailbyMarketor(_thingDetailinfo.contractAddress);
+    }
+
     function updateThingbyCreator(
         LThing.Info memory _ThingsInfo
     ) external override {
@@ -271,7 +303,7 @@ contract TTSwapV1Thing is ITTSwapV1Thing {
         emit e_updateThingbyCreator(msg.sender, _ThingsInfo);
     }
 
-    function getThingInfo(
+    function getThingInfoFromaddress(
         address _contractaddress
     ) external view override returns (LThing.Info memory) {
         require(
@@ -281,7 +313,7 @@ contract TTSwapV1Thing is ITTSwapV1Thing {
         return ThingsList[_contractaddress];
     }
 
-    function getThingInfo(
+    function getThingInfoOwnerNo(
         address _owneraddress,
         uint128 _ThingNo
     ) external view override returns (LThing.Info memory) {

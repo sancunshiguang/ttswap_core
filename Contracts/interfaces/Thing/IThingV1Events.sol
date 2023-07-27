@@ -33,4 +33,10 @@ interface IThingV1Events {
     event e_addThingbyCreator(LThing.Info, address _gateaddress);
 
     event e_updateThingbyCreator(address, LThing.Info);
+
+    event e_addThingDetailbyCreator(address);
+
+    event e_addThingDetailbyGator(address);
+
+    event e_addThingDetailbyMarketor(address);
 }

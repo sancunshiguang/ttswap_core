@@ -16,4 +16,12 @@ interface IThingV1CreaterActions {
     ) external;
 
     function updateThingbyCreator(LThing.Info memory _ThingsInfo) external;
+
+    function addThingDetailInforbyCreator(
+        LThing.DetailInfo memory _thingDetailinfo
+    ) external;
+
+    function addThingDetailInforbyGator(
+        LThing.DetailInfo memory _thingDetailinfo
+    ) external;
 }
