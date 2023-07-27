@@ -30,4 +30,6 @@ interface ICoinV1Events {
     event e_delCoinbyMarketor(address);
 
     event e_delCoinbyMarketor(uint128);
+
+    event e_addCoinDetailbyGator(address);
 }

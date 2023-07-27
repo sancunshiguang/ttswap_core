@@ -11,7 +11,7 @@ interface IThingV1State {
         address _contractaddress
     ) external view returns (LThing.Info memory);
 
-    function getThingInfoOwnerNo(
+    function getThingInfoOwnerThingNo(
         address _owneraddress,
         uint128 _ThingNo
     ) external view returns (LThing.Info memory);

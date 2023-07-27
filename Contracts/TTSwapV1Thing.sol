@@ -289,7 +289,6 @@ contract TTSwapV1Thing is ITTSwapV1Thing {
                 _ThingsInfo.creator == msg.sender,
             "you have not the right"
         );
-
         _ThingsInfo.marketunlock = ThingsList[_ThingsInfo.contractAddress]
             .marketunlock;
         _ThingsInfo.gateunlock = ThingsList[_ThingsInfo.contractAddress]
@@ -313,7 +312,7 @@ contract TTSwapV1Thing is ITTSwapV1Thing {
         return ThingsList[_contractaddress];
     }
 
-    function getThingInfoOwnerNo(
+    function getThingInfoOwnerThingNo(
         address _owneraddress,
         uint128 _ThingNo
     ) external view override returns (LThing.Info memory) {

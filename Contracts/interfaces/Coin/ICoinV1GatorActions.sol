@@ -20,4 +20,8 @@ interface ICoinV1GatorActions {
     function delCoinbyGator(uint128 _coinNo) external;
 
     function delCoinbyGator(address _contractaddress) external;
+
+    function addCoinDetailInfobyGator(
+        LCoin.DetailInfo memory _coinDetailInfo
+    ) external;
 }

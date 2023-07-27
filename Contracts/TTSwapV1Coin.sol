@@ -20,6 +20,7 @@ contract TTSwapV1Coin is ITTSwapV1Coin {
     //币种地址 => 币种信息
     //coinaddress => coinInfo
     mapping(address => LCoin.Info) public coinList;
+    mapping(address => LCoin.DetailInfo) public coinDetailList;
 
     address public gatorContractAddress;
     address public marketorContractAddress;
@@ -209,6 +210,24 @@ contract TTSwapV1Coin is ITTSwapV1Coin {
         emit e_addCoinbyGator(msg.sender, _coinInfo);
     }
 
+    function addCoinDetailInfobyGator(
+        LCoin.DetailInfo memory _coinDetailInfo
+    ) external override onlyGator {
+        require(
+            coinList[_coinDetailInfo.contractAddress].creator == msg.sender,
+            "you is not the thing creater"
+        );
+        coinDetailList[_coinDetailInfo.contractAddress] = _coinDetailInfo;
+        emit e_addCoinDetailbyGator(_coinDetailInfo.contractAddress);
+    }
+
+    function addCoinDetailInfobyMarketor(
+        LCoin.DetailInfo memory _coinDetailInfo
+    ) external override onlyMarketor {
+        coinDetailList[_coinDetailInfo.contractAddress] = _coinDetailInfo;
+        emit e_addCoinDetailbyGator(_coinDetailInfo.contractAddress);
+    }
+
     function unlockCoinbyGator(
         address _internalCoinAddress
     ) external override onlyGator {
@@ -278,7 +297,7 @@ contract TTSwapV1Coin is ITTSwapV1Coin {
         emit e_delCoinbyGator(msg.sender, _coinNo);
     }
 
-    function getCoinInfo(
+    function getCoinInfoFromaddress(
         address _contractaddress
     ) external view override returns (LCoin.Info memory) {
         require(
@@ -288,7 +307,7 @@ contract TTSwapV1Coin is ITTSwapV1Coin {
         return coinList[_contractaddress];
     }
 
-    function getCoinInfo(
+    function getCoinInfoFromOwnerCoinNo(
         address _owneraddress,
         uint128 _coinNo
     ) external view override returns (LCoin.Info memory) {

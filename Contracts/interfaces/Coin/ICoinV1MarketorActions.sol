@@ -22,4 +22,8 @@ interface ICoinV1MarketorActions {
     function delCoinbyMarketor(address _contractaddress) external;
 
     function delCoinbyMarketor(uint128 _coinNo) external;
+
+    function addCoinDetailInfobyMarketor(
+        LCoin.DetailInfo memory _coinDetailInfo
+    ) external;
 }
