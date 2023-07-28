@@ -210,6 +210,12 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
         return gateList[gateNumbers[_gateNumber]];
     }
 
+    function getGaterInfo(
+        address _gateaddress
+    ) external view override returns (LGate.Info memory) {
+        return gateList[_gateaddress];
+    }
+
     function getMaxGateNumber() external view override returns (uint128) {
         return maxGateNumbers;
     }
