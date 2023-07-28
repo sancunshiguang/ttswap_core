@@ -5,8 +5,10 @@ import "./interfaces/ITTSwapV1Marketor.sol";
 
 contract TTSwapV1Marketor is ITTSwapV1Marketor {
     //市场管理员
+    //Marketoraddress=>boolean
     mapping(address => bool) public Marketors;
     //记录管理号编号
+    //Marketoraddress=>MarketorNo
     mapping(address => uint128) public MarketorsNo;
     //记录市场管理员人数(包含已加人员)
     uint128 public maxMarketorNo;

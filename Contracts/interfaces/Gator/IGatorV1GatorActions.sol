@@ -5,15 +5,15 @@ import "../../libraries/base/LGate.sol";
 /// @title Permissioned pool actions
 /// @notice Contains pool methods that may only be called by the factory owner
 interface IGatorV1GatorActions {
+    /// @notice 市场认证后的门户临时冻结自己
+    /// @dev 市场认证后的门户临时冻结自己
     function lockGatebyGater() external;
 
+    /// @notice 市场认证后的门户临时解冻自己
+    /// @dev 市场认证后的门户临时解冻自己
     function unlockGatebyGater() external;
 
-    //更新门户内容
+    /// @notice 市场认证后的门户临时更新自己
+    /// @dev 市场认证后的门户临时更新自己
     function updateGatebyGator(LGate.Info memory _gator) external;
-
-    //更新门户详情
-    function addGaterDetailInfo(
-        LGate.DetailInfo memory _gatorDatailinfo
-    ) external;
 }
