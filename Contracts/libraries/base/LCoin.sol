@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 library LCoin {
     struct Info {
-        string coinFullName; //币种全称
+        string coinFullName; //代币全称
         string symbol; //币种简称
         string typecode; //币种类型代码
         uint8 decimals; //精度

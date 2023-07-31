@@ -23,10 +23,10 @@ library LGate {
     //相应接口
     struct DetailInfo {
         string full_name; //全称
-        string WhitePaperUrl; //白皮书地址
+        string country; //国家
         string OfficalWebsite; //官网
-        string blockExplorerUrl; //区块查询
-        string twriterUrl; //区块查询
+        string OfficalIp; //Ip
+        string twriterUrl; //推特
         string bbsUrl; //bbs论坛地址
     }
 }
