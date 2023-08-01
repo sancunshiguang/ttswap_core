@@ -3,9 +3,9 @@ pragma solidity ^0.8.0;
 
 library LCoin {
     struct Info {
-        string coinFullName; //代币全称
-        string symbol; //币种简称
-        string typecode; //币种类型代码
+        bytes32 coinFullName; //代币全称
+        bytes32 symbol; //币种简称
+        bytes32 typecode; //币种类型代码
         uint8 decimals; //精度
         uint256 maxSupply; //流通量
         uint256 totalSupply; //发行量
@@ -20,7 +20,7 @@ library LCoin {
         bytes32 WhitePaperUrl; //白皮书地址
         bytes32 OfficalWebsite; //官网
         bytes32 blockExplorerUrl; //区块查询
-        bytes32 twriterUrl; //区块查询
+        bytes32 twriterUrl; //推特
         bytes32 bbsUrl; //bbs论坛地址
     }
 }

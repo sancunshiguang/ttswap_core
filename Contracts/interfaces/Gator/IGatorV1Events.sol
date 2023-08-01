@@ -7,12 +7,12 @@ interface IGatorV1Events {
     /// @notice Emitted when liquidity is minted for a given position
     /// @param gateAddress The address that minted the liquidity
     /// @param name The owner of the position and recipient of any minted liquidity
-    event e_addGater(address gateAddress, string name);
+    event e_addGater(address gateAddress, bytes32 name);
 
     /// @notice Emitted when liquidity is minted for a given position
     /// @param gateAddress The address that minted the liquidity
     /// @param name The owner of the position and recipient of any minted liquidity
-    event e_updateGatebyGator(address gateAddress, string name);
+    event e_updateGatebyGator(address gateAddress, bytes32 name);
 
     /// @notice Emitted when liquidity is minted for a given position
     /// @param gateAddress The address that minted the liquidity
@@ -34,7 +34,7 @@ interface IGatorV1Events {
     /// @param marketoraddress The owner of the position and recipient of any minted liquidity
     event e_updateGatebyMarketor(
         address gateAddress,
-        string name,
+        bytes32 name,
         address marketoraddress
     );
 

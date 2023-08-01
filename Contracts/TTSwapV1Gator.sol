@@ -158,20 +158,10 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
     /// @notice 市场认证后的门户临时更新自己
     /// @dev 市场认证后的门户临时更新自己
     function updateGatebyGator(
-        LGate.Info memory _gator
+        bytes32  _name
     ) external override onlyGator {
-        require(
-            gateList[_gator.gateAddress].isUsed == true,
-            "the gator is exister"
-        );
-        require(
-            gateList[_gator.gateAddress].gateAddress == msg.sender,
-            "the gator is your"
-        );
-        _gator.marketunlock = gateList[_gator.gateAddress].marketunlock;
-        _gator.gateunlock = gateList[_gator.gateAddress].gateunlock;
-        gateList[_gator.gateAddress] = _gator;
-        emit e_updateGatebyGator(_gator.gateAddress, _gator.name);
+        gateList[msg.sender].name = _name;
+        emit e_updateGatebyGator(msg.sender, _name);
     }
 
     /// @notice 申请成为门户

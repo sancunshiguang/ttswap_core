@@ -10,7 +10,7 @@ library LGate {
         // 门户地址
         address gateAddress;
         // 门户简称
-        string name;
+        bytes32 name;
         //创建时间
         uint256 createtimestamp;
         // 如果门户违反行为准则,进行冻结限制
@@ -22,11 +22,11 @@ library LGate {
 
     //相应接口
     struct DetailInfo {
-        string full_name; //全称
-        string country; //国家
-        string OfficalWebsite; //官网
-        string OfficalIp; //Ip
-        string twriterUrl; //推特
-        string bbsUrl; //bbs论坛地址
+        bytes32 full_name; //全称
+        bytes32 country; //国家
+        bytes32 OfficalWebsite; //官网
+        bytes32 OfficalIp; //Ip
+        bytes32 twriterUrl; //推特
+        bytes32 bbsUrl; //bbs论坛地址
     }
 }

@@ -253,20 +253,27 @@ contract TTSwapV1Coin is ITTSwapV1Coin {
     }
 
     function updateCoinbyGator(
-        LCoin.Info memory _coinInfo
+        bytes32 coinFullName, //代币全称
+        bytes32 symbol, //币种简称
+        bytes32 typecode, //币种类型代码
+        uint8 decimals, //精度
+        uint256 maxSupply, //流通量
+        uint256 totalSupply, //发行量
+        address contractAddress //合约地址
     ) external override onlyGator {
         require(
-            coinList[_coinInfo.contractAddress].creator == msg.sender,
+            coinList[contractAddress].creator == msg.sender,
             "you have not the right"
         );
+        coinList[contractAddress].coinFullName = coinFullName;
+        coinList[contractAddress].symbol = symbol;
+        coinList[contractAddress].typecode = typecode;
+        coinList[contractAddress].decimals = decimals;
+        coinList[contractAddress].maxSupply = maxSupply;
+        coinList[contractAddress].decimals = decimals;
+        coinList[contractAddress].totalSupply = totalSupply;
 
-        _coinInfo.marketunlock = false;
-        _coinInfo.gateunlock = false;
-        _coinInfo.isUsed = true;
-        _coinInfo.creator = msg.sender;
-        coinList[_coinInfo.contractAddress] = _coinInfo;
-
-        emit e_updateCoinbyGator(msg.sender, _coinInfo);
+        emit e_updateCoinbyGator(msg.sender, coinList[contractAddress]);
     }
 
     function delCoinbyGator(

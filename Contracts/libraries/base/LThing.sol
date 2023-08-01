@@ -26,7 +26,7 @@ library LThing {
         bytes32 WhitePaperUrl; //白皮书地址
         bytes32 OfficalWebsite; //官网
         bytes32 blockExplorerUrl; //区块查询
-        bytes32 twriterUrl; //区块查询
-        bytes32 bbsUrl; //区块查询
+        string twriterUrl; //推特
+        string bbsUrl; //bbs论坛地址
     }
 }

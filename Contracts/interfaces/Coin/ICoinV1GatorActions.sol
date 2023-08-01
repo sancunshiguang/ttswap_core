@@ -15,7 +15,15 @@ interface ICoinV1GatorActions {
 
     function lockCoinbyGator(address _internalCoinAddress) external;
 
-    function updateCoinbyGator(LCoin.Info memory _coinInfo) external;
+    function updateCoinbyGator(
+        bytes32 coinFullName, //代币全称
+        bytes32 symbol, //币种简称
+        bytes32 typecode, //币种类型代码
+        uint8 decimals, //精度
+        uint256 maxSupply, //流通量
+        uint256 totalSupply, //发行量
+        address contractAddress //合约地址
+    ) external;
 
     function delCoinbyGator(uint128 _coinNo) external;
 
