@@ -98,6 +98,47 @@ contract TTSwapV1Coin is ITTSwapV1Coin {
         emit e_addCoinbyMarketor(_coinInfo);
     }
 
+    function addCoinDetailInfobyMarketor(
+        LCoin.DetailInfo memory _coinDetailInfo
+    ) external override onlyMarketor {
+        coinDetailList[_coinDetailInfo.contractAddress] = _coinDetailInfo;
+        emit e_addCoinDetailbyGator(_coinDetailInfo.contractAddress);
+    }
+
+    /// @notice Explain to an end user what this does
+    /// @dev Explain to a developer any extra details
+    function addCoinFullinfobyMarketor(
+        LCoin.Info memory _coinInfo,
+        LCoin.DetailInfo memory _coinDetailInfo
+    ) external override onlyMarketor {
+        require(
+            coinList[_coinInfo.contractAddress].isUsed != true,
+            "the coin exist"
+        );
+        _coinInfo.creator = msg.sender;
+        _coinInfo.marketunlock = false;
+        _coinInfo.gateunlock = true;
+        _coinInfo.isUsed = true;
+        uint128 coin_MaxNo = coinMaxNo[marketorContractAddress];
+        if (coin_MaxNo >= 1 && coin_MaxNo + 1 >= coin_MaxNo) {
+            coin_MaxNo += 1;
+        } else {
+            coin_MaxNo = 1;
+        }
+        coinMaxNo[marketorContractAddress] = coin_MaxNo;
+
+        ownerCoinList[marketorContractAddress][coin_MaxNo] = _coinInfo
+            .contractAddress;
+        ownerCoinNo[marketorContractAddress][
+            _coinInfo.contractAddress
+        ] = coin_MaxNo;
+
+        coinList[_coinInfo.contractAddress] = _coinInfo;
+        emit e_addCoinbyMarketor(_coinInfo);
+        coinDetailList[_coinDetailInfo.contractAddress] = _coinDetailInfo;
+        emit e_addCoinDetailbyGator(_coinDetailInfo.contractAddress);
+    }
+
     function lockCoinbyMarketor(
         address _CoinAddress
     ) external override onlyMarketor {
@@ -221,9 +262,37 @@ contract TTSwapV1Coin is ITTSwapV1Coin {
         emit e_addCoinDetailbyGator(_coinDetailInfo.contractAddress);
     }
 
-    function addCoinDetailInfobyMarketor(
+    function addCoinFullinfobyGator(
+        LCoin.Info memory _coinInfo,
         LCoin.DetailInfo memory _coinDetailInfo
-    ) external override onlyMarketor {
+    ) external override onlyGator {
+        require(
+            coinList[_coinInfo.contractAddress].isUsed != true,
+            "the coin is  exist"
+        );
+        _coinInfo.creator = msg.sender;
+        _coinInfo.marketunlock = false;
+        _coinInfo.gateunlock = false;
+        _coinInfo.isUsed = true;
+        if (
+            coinMaxNo[msg.sender] >= 1 &&
+            coinMaxNo[msg.sender] + 1 >= coinMaxNo[msg.sender]
+        ) {
+            coinMaxNo[msg.sender] += 1;
+        } else {
+            coinMaxNo[msg.sender] = 1;
+        }
+        ownerCoinList[msg.sender][coinMaxNo[msg.sender]] = _coinInfo
+            .contractAddress;
+        ownerCoinNo[msg.sender][_coinInfo.contractAddress] = coinMaxNo[
+            msg.sender
+        ];
+        coinList[_coinInfo.contractAddress] = _coinInfo;
+        emit e_addCoinbyGator(msg.sender, _coinInfo);
+        require(
+            coinList[_coinDetailInfo.contractAddress].creator == msg.sender,
+            "you is not the thing creater"
+        );
         coinDetailList[_coinDetailInfo.contractAddress] = _coinDetailInfo;
         emit e_addCoinDetailbyGator(_coinDetailInfo.contractAddress);
     }

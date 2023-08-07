@@ -12,4 +12,9 @@ interface IGatorV1CustomerActions {
     /// @notice 门户添加门户详情信息(需要是申请成为的门户的地址才能调用)
     /// @dev 门户添加门户详情信息(需要是申请成为的门户的地址才能调用)
     function addGaterDetailInfo(LGate.DetailInfo memory) external;
+
+    function addfullGater(
+        LGate.Info memory _gator,
+        LGate.DetailInfo memory _gatorDatailinfo
+    ) external;
 }

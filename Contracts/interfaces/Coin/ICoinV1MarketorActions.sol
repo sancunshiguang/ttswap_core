@@ -26,4 +26,9 @@ interface ICoinV1MarketorActions {
     function addCoinDetailInfobyMarketor(
         LCoin.DetailInfo memory _coinDetailInfo
     ) external;
+
+    function addCoinFullinfobyMarketor(
+        LCoin.Info memory _coinInfo,
+        LCoin.DetailInfo memory _coinDetailInfo
+    ) external;
 }

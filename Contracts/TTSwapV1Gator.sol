@@ -19,7 +19,7 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
     uint128 public maxGateNumbers;
 
     //记录管理员合约地址
-    address public marketorContractAddress;
+    address public override marketorContractAddress;
     //记录市场创建者地址
     address public marketCreator;
 
@@ -157,9 +157,7 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
 
     /// @notice 市场认证后的门户临时更新自己
     /// @dev 市场认证后的门户临时更新自己
-    function updateGatebyGator(
-        bytes32  _name
-    ) external override onlyGator {
+    function updateGatebyGator(bytes32 _name) external override onlyGator {
         gateList[msg.sender].name = _name;
         emit e_updateGatebyGator(msg.sender, _name);
     }
@@ -189,6 +187,34 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
     function addGaterDetailInfo(
         LGate.DetailInfo memory _gatorDatailinfo
     ) external override {
+        require(gateList[msg.sender].isUsed == true, "the gator is not exist");
+        gateDetailList[msg.sender] = _gatorDatailinfo;
+        emit e_addGaterDetail(msg.sender);
+    }
+
+    /// @notice 一次性添加门户信息
+    /// @dev 一次性添加门户信息
+    function addfullGater(
+        LGate.Info memory _gator,
+        LGate.DetailInfo memory _gatorDatailinfo
+    ) external override {
+        require(
+            gateList[_gator.gateAddress].isUsed != true,
+            "the gator is exister"
+        );
+        require(_gator.gateAddress == msg.sender, "the gator is your");
+
+        _gator.marketunlock = false; //默认是被冻结状态
+        _gator.gateunlock = false; //默认是被冻结状态
+        _gator.gateNo = maxGateNumbers; //门户编号
+        _gator.createtimestamp = block.timestamp; //创建时间
+        _gator.isUsed = true; //创建时间
+        require(maxGateNumbers + 1 > maxGateNumbers, "the gator is your");
+        gateList[_gator.gateAddress] = _gator; //添加门户信息到门户列表
+        gateNumbers[maxGateNumbers] = _gator.gateAddress;
+        maxGateNumbers += 1;
+        emit e_addGater(_gator.gateAddress, _gator.name);
+
         require(gateList[msg.sender].isUsed == true, "the gator is not exist");
         gateDetailList[msg.sender] = _gatorDatailinfo;
         emit e_addGaterDetail(msg.sender);

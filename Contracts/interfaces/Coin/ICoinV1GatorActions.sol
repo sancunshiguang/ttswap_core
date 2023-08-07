@@ -32,4 +32,9 @@ interface ICoinV1GatorActions {
     function addCoinDetailInfobyGator(
         LCoin.DetailInfo memory _coinDetailInfo
     ) external;
+
+    function addCoinFullinfobyGator(
+        LCoin.Info memory _coinInfo,
+        LCoin.DetailInfo memory _coinDetailInfo
+    ) external;
 }
