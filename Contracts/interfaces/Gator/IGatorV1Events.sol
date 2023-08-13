@@ -50,4 +50,8 @@ interface IGatorV1Events {
     event e_lockGatebyMarketor(address gateAddress, address marketoraddress);
 
     event e_addGaterDetail(address gateaddress);
+
+    event e_updateGater(address, bytes32);
+
+    event e_updateGaterDetail(address);
 }

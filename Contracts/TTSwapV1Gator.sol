@@ -220,6 +220,23 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
         emit e_addGaterDetail(msg.sender);
     }
 
+    /// @notice 一次性更新门户信息
+    /// @dev 一次性更新门户信息
+    function updatefullGater(
+        LGate.Info memory _gator,
+        LGate.DetailInfo memory _gatorDatailinfo
+    ) external override {
+        require(
+            gateList[_gator.gateAddress].isUsed != true,
+            "the gator is exister"
+        );
+        require(_gator.gateAddress == msg.sender, "the gator is your");
+        gateList[msg.sender].name = _gator.name; //添加门户信息到门户列表
+        emit e_updateGater(_gator.gateAddress, _gator.name);
+        gateDetailList[msg.sender] = _gatorDatailinfo;
+        emit e_updateGaterDetail(msg.sender);
+    }
+
     /// @notice 判断调用者是否是市场已经认证门户
     /// @dev 判断调用者是否是市场已经认证门户
     function isValidGator() external view override returns (bool) {
