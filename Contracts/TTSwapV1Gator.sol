@@ -227,8 +227,8 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
         LGate.DetailInfo memory _gatorDatailinfo
     ) external override {
         require(
-            gateList[_gator.gateAddress].isUsed != true,
-            "the gator is exister"
+            gateList[_gator.gateAddress].isUsed == true,
+            "the gator is not exist"
         );
         require(_gator.gateAddress == msg.sender, "the gator is your");
         gateList[msg.sender].name = _gator.name; //添加门户信息到门户列表
