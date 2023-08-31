@@ -11,6 +11,8 @@ interface IGatorV1State {
     /// @dev 判断调用者是否是市场已经认证门户
     function isValidGator() external view returns (bool);
 
+    function isValidGator(address caller) external view returns (bool);
+
     /// @notice 调用者判断传入地址是否是市场已经认证门户
     /// @dev 调用者判断传入地址是否是市场已经认证门户
     function isValidGatorFromAddress(

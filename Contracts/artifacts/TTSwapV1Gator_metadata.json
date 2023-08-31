@@ -32,12 +32,25 @@
 					},
 					{
 						"indexed": false,
-						"internalType": "string",
+						"internalType": "bytes32",
 						"name": "name",
-						"type": "string"
+						"type": "bytes32"
 					}
 				],
 				"name": "e_addGater",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "gateaddress",
+						"type": "address"
+					}
+				],
+				"name": "e_addGaterDetail",
 				"type": "event"
 			},
 			{
@@ -134,9 +147,9 @@
 					},
 					{
 						"indexed": false,
-						"internalType": "string",
+						"internalType": "bytes32",
 						"name": "name",
-						"type": "string"
+						"type": "bytes32"
 					}
 				],
 				"name": "e_updateGatebyGator",
@@ -153,9 +166,9 @@
 					},
 					{
 						"indexed": false,
-						"internalType": "string",
+						"internalType": "bytes32",
 						"name": "name",
-						"type": "string"
+						"type": "bytes32"
 					},
 					{
 						"indexed": false,
@@ -165,6 +178,38 @@
 					}
 				],
 				"name": "e_updateGatebyMarketor",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"name": "e_updateGater",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "e_updateGaterDetail",
 				"type": "event"
 			},
 			{
@@ -182,9 +227,9 @@
 								"type": "address"
 							},
 							{
-								"internalType": "string",
+								"internalType": "bytes32",
 								"name": "name",
-								"type": "string"
+								"type": "bytes32"
 							},
 							{
 								"internalType": "uint256",
@@ -220,6 +265,138 @@
 			{
 				"inputs": [
 					{
+						"components": [
+							{
+								"internalType": "bytes32",
+								"name": "full_name",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "country",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "OfficalWebsite",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "OfficalIp",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "twriterUrl",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "bbsUrl",
+								"type": "bytes32"
+							}
+						],
+						"internalType": "struct LGate.DetailInfo",
+						"name": "_gatorDatailinfo",
+						"type": "tuple"
+					}
+				],
+				"name": "addGaterDetailInfo",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint128",
+								"name": "gateNo",
+								"type": "uint128"
+							},
+							{
+								"internalType": "address",
+								"name": "gateAddress",
+								"type": "address"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "name",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "uint256",
+								"name": "createtimestamp",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "marketunlock",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "gateunlock",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "isUsed",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct LGate.Info",
+						"name": "_gator",
+						"type": "tuple"
+					},
+					{
+						"components": [
+							{
+								"internalType": "bytes32",
+								"name": "full_name",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "country",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "OfficalWebsite",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "OfficalIp",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "twriterUrl",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "bbsUrl",
+								"type": "bytes32"
+							}
+						],
+						"internalType": "struct LGate.DetailInfo",
+						"name": "_gatorDatailinfo",
+						"type": "tuple"
+					}
+				],
+				"name": "addfullGater",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "address",
 						"name": "_gator",
 						"type": "address"
@@ -228,6 +405,50 @@
 				"name": "delGatebyMarketor",
 				"outputs": [],
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "gateDetailList",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "full_name",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "country",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "OfficalWebsite",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "OfficalIp",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "twriterUrl",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "bbsUrl",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -251,9 +472,9 @@
 						"type": "address"
 					},
 					{
-						"internalType": "string",
+						"internalType": "bytes32",
 						"name": "name",
-						"type": "string"
+						"type": "bytes32"
 					},
 					{
 						"internalType": "uint256",
@@ -306,6 +527,108 @@
 						"type": "uint8"
 					}
 				],
+				"name": "getGaterDetailInfo",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "bytes32",
+								"name": "full_name",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "country",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "OfficalWebsite",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "OfficalIp",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "twriterUrl",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "bbsUrl",
+								"type": "bytes32"
+							}
+						],
+						"internalType": "struct LGate.DetailInfo",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_gateaddress",
+						"type": "address"
+					}
+				],
+				"name": "getGaterDetailInfo",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "bytes32",
+								"name": "full_name",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "country",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "OfficalWebsite",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "OfficalIp",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "twriterUrl",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "bbsUrl",
+								"type": "bytes32"
+							}
+						],
+						"internalType": "struct LGate.DetailInfo",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_gateaddress",
+						"type": "address"
+					}
+				],
 				"name": "getGaterInfo",
 				"outputs": [
 					{
@@ -321,9 +644,9 @@
 								"type": "address"
 							},
 							{
-								"internalType": "string",
+								"internalType": "bytes32",
 								"name": "name",
-								"type": "string"
+								"type": "bytes32"
 							},
 							{
 								"internalType": "uint256",
@@ -357,11 +680,61 @@
 			{
 				"inputs": [
 					{
-						"internalType": "address",
-						"name": "_gateAddress",
-						"type": "address"
+						"internalType": "uint8",
+						"name": "_gateNumber",
+						"type": "uint8"
 					}
 				],
+				"name": "getGaterInfo",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint128",
+								"name": "gateNo",
+								"type": "uint128"
+							},
+							{
+								"internalType": "address",
+								"name": "gateAddress",
+								"type": "address"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "name",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "uint256",
+								"name": "createtimestamp",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "marketunlock",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "gateunlock",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "isUsed",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct LGate.Info",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "getGaterNo",
 				"outputs": [
 					{
@@ -374,8 +747,14 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "getGaterNo",
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_gateAddress",
+						"type": "address"
+					}
+				],
+				"name": "getGaterNoFromAddress",
 				"outputs": [
 					{
 						"internalType": "uint128",
@@ -420,7 +799,7 @@
 						"type": "address"
 					}
 				],
-				"name": "isValidGator",
+				"name": "isValidGatorFromAddress",
 				"outputs": [
 					{
 						"internalType": "bool",
@@ -531,46 +910,9 @@
 			{
 				"inputs": [
 					{
-						"components": [
-							{
-								"internalType": "uint128",
-								"name": "gateNo",
-								"type": "uint128"
-							},
-							{
-								"internalType": "address",
-								"name": "gateAddress",
-								"type": "address"
-							},
-							{
-								"internalType": "string",
-								"name": "name",
-								"type": "string"
-							},
-							{
-								"internalType": "uint256",
-								"name": "createtimestamp",
-								"type": "uint256"
-							},
-							{
-								"internalType": "bool",
-								"name": "marketunlock",
-								"type": "bool"
-							},
-							{
-								"internalType": "bool",
-								"name": "gateunlock",
-								"type": "bool"
-							},
-							{
-								"internalType": "bool",
-								"name": "isUsed",
-								"type": "bool"
-							}
-						],
-						"internalType": "struct LGate.Info",
-						"name": "_gator",
-						"type": "tuple"
+						"internalType": "bytes32",
+						"name": "_name",
+						"type": "bytes32"
 					}
 				],
 				"name": "updateGatebyGator",
@@ -593,9 +935,9 @@
 								"type": "address"
 							},
 							{
-								"internalType": "string",
+								"internalType": "bytes32",
 								"name": "name",
-								"type": "string"
+								"type": "bytes32"
 							},
 							{
 								"internalType": "uint256",
@@ -627,11 +969,98 @@
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint128",
+								"name": "gateNo",
+								"type": "uint128"
+							},
+							{
+								"internalType": "address",
+								"name": "gateAddress",
+								"type": "address"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "name",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "uint256",
+								"name": "createtimestamp",
+								"type": "uint256"
+							},
+							{
+								"internalType": "bool",
+								"name": "marketunlock",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "gateunlock",
+								"type": "bool"
+							},
+							{
+								"internalType": "bool",
+								"name": "isUsed",
+								"type": "bool"
+							}
+						],
+						"internalType": "struct LGate.Info",
+						"name": "_gator",
+						"type": "tuple"
+					},
+					{
+						"components": [
+							{
+								"internalType": "bytes32",
+								"name": "full_name",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "country",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "OfficalWebsite",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "OfficalIp",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "twriterUrl",
+								"type": "bytes32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "bbsUrl",
+								"type": "bytes32"
+							}
+						],
+						"internalType": "struct LGate.DetailInfo",
+						"name": "_gatorDatailinfo",
+						"type": "tuple"
+					}
+				],
+				"name": "updatefullGater",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
 			}
 		],
 		"devdoc": {
 			"events": {
-				"e_addGater(address,string)": {
+				"e_addGater(address,bytes32)": {
 					"params": {
 						"gateAddress": "The address that minted the liquidity",
 						"name": "The owner of the position and recipient of any minted liquidity"
@@ -665,13 +1094,13 @@
 						"marketoraddress": "The address that minted the liquidity"
 					}
 				},
-				"e_updateGatebyGator(address,string)": {
+				"e_updateGatebyGator(address,bytes32)": {
 					"params": {
 						"gateAddress": "The address that minted the liquidity",
 						"name": "The owner of the position and recipient of any minted liquidity"
 					}
 				},
-				"e_updateGatebyMarketor(address,string,address)": {
+				"e_updateGatebyMarketor(address,bytes32,address)": {
 					"params": {
 						"gateAddress": "The address that minted the liquidity",
 						"marketoraddress": "The owner of the position and recipient of any minted liquidity",
@@ -680,20 +1109,76 @@
 				}
 			},
 			"kind": "dev",
-			"methods": {},
-			"stateVariables": {
-				"marketorContractAddress": {
-					"return": "The contract address",
-					"returns": {
-						"_0": "The contract address"
-					}
+			"methods": {
+				"addGater((uint128,address,bytes32,uint256,bool,bool,bool))": {
+					"details": "申请成为门户"
+				},
+				"addGaterDetailInfo((bytes32,bytes32,bytes32,bytes32,bytes32,bytes32))": {
+					"details": "门户添加门户详情信息"
+				},
+				"addfullGater((uint128,address,bytes32,uint256,bool,bool,bool),(bytes32,bytes32,bytes32,bytes32,bytes32,bytes32))": {
+					"details": "一次性添加门户信息"
+				},
+				"delGatebyMarketor(address)": {
+					"details": "市场管理员删除门户"
+				},
+				"getGaterDetailInfo(address)": {
+					"details": "通过门户地址获取门户详情"
+				},
+				"getGaterDetailInfo(uint8)": {
+					"details": "通过门户编号获取门户详情"
+				},
+				"getGaterInfo(address)": {
+					"details": "调用者获取门户地址对应的门户信息"
+				},
+				"getGaterInfo(uint8)": {
+					"details": "调用者获取门户编号对应的门户信息"
+				},
+				"getGaterNo()": {
+					"details": "获取门户调用者的门户编号"
+				},
+				"getGaterNoFromAddress(address)": {
+					"details": "调用者获取传入地址对应的门户编号"
+				},
+				"getMaxGateNumber()": {
+					"details": "调用者获取市场最大门户编号、或者是下一个门户申请者的编号"
+				},
+				"isValidGator()": {
+					"details": "判断调用者是否是市场已经认证门户"
+				},
+				"isValidGatorFromAddress(address)": {
+					"details": "调用者判断传入地址是否是市场已经认证门户"
+				},
+				"lockGatebyGater()": {
+					"details": "市场认证后的门户临时冻结自己"
+				},
+				"lockGatebyMarketor(address)": {
+					"details": "市场管理员冻结门户"
+				},
+				"setGaterEnv(address,address)": {
+					"details": "设置门户合约的管理员合约"
+				},
+				"unlockGatebyGater()": {
+					"details": "市场认证后的门户临时解冻自己"
+				},
+				"unlockGatebyMarketor(address)": {
+					"details": "市场管理员解冻门户"
+				},
+				"updateGatebyGator(bytes32)": {
+					"details": "市场认证后的门户临时更新自己"
+				},
+				"updateGatebyMarketor((uint128,address,bytes32,uint256,bool,bool,bool))": {
+					"details": "市场管理员更新门户"
+				},
+				"updatefullGater((uint128,address,bytes32,uint256,bool,bool,bool),(bytes32,bytes32,bytes32,bytes32,bytes32,bytes32))": {
+					"details": "一次性更新门户信息"
 				}
 			},
 			"version": 1
 		},
 		"userdoc": {
 			"events": {
-				"e_addGater(address,string)": {
+				"e_addGater(address,bytes32)": {
 					"notice": "Emitted when liquidity is minted for a given position"
 				},
 				"e_delGatebyMarketor(address,address)": {
@@ -711,17 +1196,77 @@
 				"e_unlockGatebyMarketor(address,address)": {
 					"notice": "Emitted when liquidity is minted for a given position"
 				},
-				"e_updateGatebyGator(address,string)": {
+				"e_updateGatebyGator(address,bytes32)": {
 					"notice": "Emitted when liquidity is minted for a given position"
 				},
-				"e_updateGatebyMarketor(address,string,address)": {
+				"e_updateGatebyMarketor(address,bytes32,address)": {
 					"notice": "Emitted when liquidity is minted for a given position"
 				}
 			},
 			"kind": "user",
 			"methods": {
-				"marketorContractAddress()": {
-					"notice": "The contract that deployed the pool, which must adhere to the IUniswapV3Factory interface"
+				"addGater((uint128,address,bytes32,uint256,bool,bool,bool))": {
+					"notice": "申请成为门户"
+				},
+				"addGaterDetailInfo((bytes32,bytes32,bytes32,bytes32,bytes32,bytes32))": {
+					"notice": "门户添加门户详情信息"
+				},
+				"addfullGater((uint128,address,bytes32,uint256,bool,bool,bool),(bytes32,bytes32,bytes32,bytes32,bytes32,bytes32))": {
+					"notice": "一次性添加门户信息"
+				},
+				"delGatebyMarketor(address)": {
+					"notice": "市场管理员删除门户"
+				},
+				"getGaterDetailInfo(address)": {
+					"notice": "通过门户地址获取门户详情"
+				},
+				"getGaterDetailInfo(uint8)": {
+					"notice": "通过门户编号获取门户详情"
+				},
+				"getGaterInfo(address)": {
+					"notice": "调用者获取门户地址对应的门户信息"
+				},
+				"getGaterInfo(uint8)": {
+					"notice": "调用者获取门户编号对应的门户信息"
+				},
+				"getGaterNo()": {
+					"notice": "获取门户调用者的门户编号"
+				},
+				"getGaterNoFromAddress(address)": {
+					"notice": "调用者获取传入地址对应的门户编号"
+				},
+				"getMaxGateNumber()": {
+					"notice": "调用者获取市场最大门户编号、或者是下一个门户申请者的编号"
+				},
+				"isValidGator()": {
+					"notice": "判断调用者是否是市场已经认证门户"
+				},
+				"isValidGatorFromAddress(address)": {
+					"notice": "调用者判断传入地址是否是市场已经认证门户"
+				},
+				"lockGatebyGater()": {
+					"notice": "市场认证后的门户临时冻结自己"
+				},
+				"lockGatebyMarketor(address)": {
+					"notice": "市场管理员冻结门户"
+				},
+				"setGaterEnv(address,address)": {
+					"notice": "设置门户合约的管理员合约"
+				},
+				"unlockGatebyGater()": {
+					"notice": "市场认证后的门户临时解冻自己"
+				},
+				"unlockGatebyMarketor(address)": {
+					"notice": "市场管理员解冻门户"
+				},
+				"updateGatebyGator(bytes32)": {
+					"notice": "市场认证后的门户临时更新自己"
+				},
+				"updateGatebyMarketor((uint128,address,bytes32,uint256,bool,bool,bool))": {
+					"notice": "市场管理员更新门户"
+				},
+				"updatefullGater((uint128,address,bytes32,uint256,bool,bool,bool),(bytes32,bytes32,bytes32,bytes32,bytes32,bytes32))": {
+					"notice": "一次性更新门户信息"
 				}
 			},
 			"version": 1
@@ -744,67 +1289,67 @@
 	},
 	"sources": {
 		"Contracts/TTSwapV1Gator.sol": {
-			"keccak256": "0x77ef6572e48ecc345d22a30a77d13170c846c8c434e60a81f10f3da6380cefbe",
+			"keccak256": "0x1384824e85baf9b03dfddb5ec8a170e185de423f6ad8cd3ed4dd9353d0b510d2",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://42bee260bac80c72a343085c7a45e8de9cc41e3443f90e272edcb4a9e2fcb590",
-				"dweb:/ipfs/QmPsfZSqyxz1puDZBXGaJYaPXyxrcEGvF8kuZvoFU91VDr"
+				"bzz-raw://50ded68fd89de9906f6005ab7ff9694d37969a40d6fa1b4c6e45303ba077100a",
+				"dweb:/ipfs/QmYe5TyMFdgohfup3f8qLj8sQCLUqfonZbfDmpgTfrFtXt"
 			]
 		},
 		"Contracts/TTSwapV1Marketor.sol": {
-			"keccak256": "0xfdaf3d2d82af7444e2220f679cc998d6e7ca7b29ac3e2b2adbd8fd018372e342",
+			"keccak256": "0xc213c1e14cab69ab306b1df7fbf854727dfb6e82fd7d4db8bbc9b7b6aa674bdf",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://1d93e56c8a12e16cad14f0bdf9448c540509b3e9b934c45cdfd86989aeb8dc01",
-				"dweb:/ipfs/QmZ6yF94HcJ5Mjk5JLGnm69DCgK8uxtfLBH7F8hZwSZb69"
+				"bzz-raw://fe4ec063f1e43b0c810c101a196e837f76ce1fbac24c86ce076fd82f8277f967",
+				"dweb:/ipfs/QmcyaRCKx4DJVKN1ByQUaWSucS3KPcwptEBUcoeZNKJKyQ"
 			]
 		},
 		"Contracts/interfaces/Gator/IGatorV1CustomerActions.sol": {
-			"keccak256": "0x5166995889ad764ce7379845df7e6f55f5114294f18795a07da173466418c010",
+			"keccak256": "0xc4d9f131c078b5e48f5df0257bbe0850cf0d8d9210bff59c3abdc523f728d0e6",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://c101332272e023fd17dd3e96270424a42aa257e02f14650314bf133ff3105221",
-				"dweb:/ipfs/QmUznHitEEPeBRc7PxrUMggmyLveBtW2MJyKGUt8KDrjUn"
+				"bzz-raw://10ca6f61392ab43e23bed84b002d1f9169047e85c67eeed22545dbddc64ec33b",
+				"dweb:/ipfs/QmejU5oSfv9936G6oELfC6jMrkobwFdYqbsy7Z69zjA3Va"
 			]
 		},
 		"Contracts/interfaces/Gator/IGatorV1Events.sol": {
-			"keccak256": "0xace58e51abbb96256abd8c2a356d318ed1145b39b9d4a77fb635abb26ebfd4af",
+			"keccak256": "0x997fb668d66f5dead653a2e876429ec23deea010f438ac2ea28fc64bde961019",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://509999e221e8873c6bc4a01a9a4dfe46a6c9846d54e07f137c07e477ad99d22a",
-				"dweb:/ipfs/QmWE5XXbYxeTx1B18Vg27WM8uSmshgkVfU1WuRwxEYA4kZ"
+				"bzz-raw://ab56552493111f45ed7cc52619b2b4b5eb6350d102bb20190f90008c52731b94",
+				"dweb:/ipfs/QmNytoto2bfDft3z5YdwTAiTqsdGH8pvQ9goAAihqcnPEs"
 			]
 		},
 		"Contracts/interfaces/Gator/IGatorV1GatorActions.sol": {
-			"keccak256": "0x43e783a765bf4f5a4de8591ceb9556c215372e068e80827637f22aec41460359",
+			"keccak256": "0xf718bff8126af4d75f1e58eb9c212f9384a04dd46eff45d472916ee3d87d63df",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://23b287fe77c961c6f7dc7b7a1591eddd0772b687faf41e7c0400c66114e8a452",
-				"dweb:/ipfs/QmVKaaxjY7ya3HSkdUt7zqw2J8BqxMDGvUbUjobVCcUsHk"
+				"bzz-raw://28f05ea6af40657c6978edebaa206710158ed60d041616a47d988ad6781b3e20",
+				"dweb:/ipfs/QmTA8hRuzAm11omYF7Q9UHhRmX9CDohuGME4ALZY8dFvo2"
 			]
 		},
 		"Contracts/interfaces/Gator/IGatorV1Immutables.sol": {
-			"keccak256": "0x8cbeb007a8321dee1ef73ed11e1af76c30acb64c6829d2c0d02c6f6cb4e8fdc3",
+			"keccak256": "0x23a8910160e619dfd61aec873a1ac9557a12a1c0913b212fa462d6d0d4f38156",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://00b5dc4c7cbcec92fdfa6e6d512209d63cf2cac6a1ae6969b853172fc9fb8319",
-				"dweb:/ipfs/QmYoRZuN8XvT6eESqy5BFEDxbs12beWtBHgkjxna3Jy7CF"
+				"bzz-raw://e04e7e89b700c14c61df3fcc15482730c5db9eb9a4b81ba9b42664e2dc332391",
+				"dweb:/ipfs/QmU7kd2W7AMKbhGzBxMsYSQwGabZ4orABRUmh1GCLSi8tG"
 			]
 		},
 		"Contracts/interfaces/Gator/IGatorV1MarketorActions.sol": {
-			"keccak256": "0xcd27934c7288dbf950975c629280d20b5d2b79f3f1d4cda94e866f2b24255fa9",
+			"keccak256": "0xa1614880a7698d1bab5838c4affd7f31ef48307e49240d51a0db35124edce982",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://7ea87e856a6e52e3171e4395b05feff4264454f7e5a106117f4f49328aa72492",
-				"dweb:/ipfs/QmYZkYNsqvEnKsqN5HLjo2JsWJqksniSkRXkC8bJsPKGJp"
+				"bzz-raw://dc159c9ee400d1a3ab4e00ec1c8660a1205d310fbc9fdd5c092e9328afe894f4",
+				"dweb:/ipfs/QmTbBfNvQxzPwE2N3ifbDXFD9RgeXqGP7rVFF7dJ7TQoRv"
 			]
 		},
 		"Contracts/interfaces/Gator/IGatorV1State.sol": {
-			"keccak256": "0xa949ea977e27e58f507d084c5f6b92c88655e8651a77063935b54dd72722bae9",
+			"keccak256": "0x8c822dffaab4195ba6f7415abdd79b71b00761dd1a55d3f1fd5f4866283be772",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://c35e05c3ea802144751519d981b932c65eaa2493a6328afcc5bfb630a1702eb7",
-				"dweb:/ipfs/QmY7vTMZHRVvFfT1NJ2crLd73g6J6Sn116NEc5ZHpvq1MQ"
+				"bzz-raw://83741b1e798ed0e1219b85a7434838a886b5b8624199fcf64b9c5806a5c36f99",
+				"dweb:/ipfs/QmV77MWKKnRBAHTKesaHG5ekADzn4Mr9KCgw4Nn7QZdoLR"
 			]
 		},
 		"Contracts/interfaces/ITTSwapV1Gator.sol": {
@@ -856,11 +1401,11 @@
 			]
 		},
 		"Contracts/libraries/base/LGate.sol": {
-			"keccak256": "0x2bda4a9e847cd9673762cd00f4a1f90d880634b828ff0f2ec3f84435bfa0bc8d",
+			"keccak256": "0x6a7bb4bdb87290d1284818c04081615fc5d98649095ede141f58524e90491062",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://bf34fafa59ec445dd5e6d1386593b6b70841fa7c2f2c608b0293dce48db43f8d",
-				"dweb:/ipfs/QmZ3REfTtgdPuBTjYKNrV4C5qAs65kaHGK7jgapBgW7ewU"
+				"bzz-raw://f7d17cb2b31c30770eee50fbab7505e9b568969fd2a9f872c6892c0e68c3a5a3",
+				"dweb:/ipfs/Qmak2qC95zHq89kmXhwPV1CrHTep6Vg1hvYKer3e7bxFNx"
 			]
 		}
 	},

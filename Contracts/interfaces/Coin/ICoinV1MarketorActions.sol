@@ -9,7 +9,7 @@ interface ICoinV1MarketorActions {
     /*
         门户管理币
     */
-    function addCoinbyMarketor(LCoin.Info memory _coinInfo) external;
+    /// function addCoinbyMarketor(LCoin.Info memory _coinInfo) external;
 
     function lockCoinbyMarketor(address _internalCoinAddress) external;
 
@@ -23,9 +23,9 @@ interface ICoinV1MarketorActions {
 
     function delCoinbyMarketor(uint128 _coinNo) external;
 
-    function addCoinDetailInfobyMarketor(
-        LCoin.DetailInfo memory _coinDetailInfo
-    ) external;
+    // function addCoinDetailInfobyMarketor(
+    //     LCoin.DetailInfo memory _coinDetailInfo
+    // ) external;
 
     function addCoinFullinfobyMarketor(
         LCoin.Info memory _coinInfo,

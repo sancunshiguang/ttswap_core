@@ -9,7 +9,7 @@ interface ICoinV1GatorActions {
     /*
         门户管理币
     */
-    function addCoinbyGator(LCoin.Info memory _coinInfo) external;
+    // function addCoinbyGator(LCoin.Info memory _coinInfo) external;
 
     function unlockCoinbyGator(address _internalCoinAddress) external;
 
@@ -29,9 +29,9 @@ interface ICoinV1GatorActions {
 
     function delCoinbyGator(address _contractaddress) external;
 
-    function addCoinDetailInfobyGator(
-        LCoin.DetailInfo memory _coinDetailInfo
-    ) external;
+    // function addCoinDetailInfobyGator(
+    //     LCoin.DetailInfo memory _coinDetailInfo
+    // ) external;
 
     function addCoinFullinfobyGator(
         LCoin.Info memory _coinInfo,

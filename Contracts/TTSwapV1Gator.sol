@@ -175,6 +175,7 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
         _gator.gateunlock = false; //默认是被冻结状态
         _gator.gateNo = maxGateNumbers; //门户编号
         _gator.createtimestamp = block.timestamp; //创建时间
+        _gator.isUsed = true;
         require(maxGateNumbers + 1 > maxGateNumbers, "the gator is your");
         gateList[_gator.gateAddress] = _gator; //添加门户信息到门户列表
         gateNumbers[maxGateNumbers] = _gator.gateAddress;
@@ -241,6 +242,14 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
     /// @dev 判断调用者是否是市场已经认证门户
     function isValidGator() external view override returns (bool) {
         return gateList[msg.sender].marketunlock;
+    }
+
+    /// @notice 判断调用者是否是市场已经认证门户
+    /// @dev 判断调用者是否是市场已经认证门户
+    function isValidGator(
+        address caller
+    ) external view override returns (bool) {
+        return gateList[caller].marketunlock;
     }
 
     /// @notice 调用者判断传入地址是否是市场已经认证门户

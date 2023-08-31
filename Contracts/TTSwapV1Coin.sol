@@ -28,11 +28,12 @@ contract TTSwapV1Coin is ITTSwapV1Coin {
 
     constructor(
         address _gatorContractAddress,
-        address _marketorContractAddress
+        address _marketorContractAddress,
+        address _marketCreator
     ) {
         gatorContractAddress = _gatorContractAddress;
         marketorContractAddress = _marketorContractAddress;
-        marketCreator = msg.sender;
+        marketCreator = _marketCreator;
     }
 
     /// @notice Explain to an end user what this does
@@ -40,12 +41,20 @@ contract TTSwapV1Coin is ITTSwapV1Coin {
     /// @notice Explain to an end user what this does
     /// @dev Explain to a developer any extra details
     modifier onlyGator() {
-        require(IGatorV1State(gatorContractAddress).isValidGator());
+        require(
+            IGatorV1State(gatorContractAddress).isValidGator(msg.sender),
+            "the caller must be valid market manager"
+        );
         _;
     }
 
     modifier onlyMarketor() {
-        require(IMarketorV1State(marketorContractAddress).isValidMarketor());
+        require(
+            IMarketorV1State(marketorContractAddress).isValidMarketor(
+                msg.sender
+            ),
+            "the caller must be valid market manager"
+        );
         _;
     }
 
@@ -69,74 +78,37 @@ contract TTSwapV1Coin is ITTSwapV1Coin {
 
     /// @notice Explain to an end user what this does
     /// @dev Explain to a developer any extra details
-    function addCoinbyMarketor(
-        LCoin.Info memory _coinInfo
-    ) external override onlyMarketor {
-        require(
-            coinList[_coinInfo.contractAddress].isUsed != true,
-            "the coin exist"
-        );
-        _coinInfo.creator = msg.sender;
-        _coinInfo.marketunlock = false;
-        _coinInfo.gateunlock = true;
-        _coinInfo.isUsed = true;
-        uint128 coin_MaxNo = coinMaxNo[marketorContractAddress];
-        if (coin_MaxNo >= 1 && coin_MaxNo + 1 >= coin_MaxNo) {
-            coin_MaxNo += 1;
-        } else {
-            coin_MaxNo = 1;
-        }
-        coinMaxNo[marketorContractAddress] = coin_MaxNo;
-
-        ownerCoinList[marketorContractAddress][coin_MaxNo] = _coinInfo
-            .contractAddress;
-        ownerCoinNo[marketorContractAddress][
-            _coinInfo.contractAddress
-        ] = coin_MaxNo;
-
-        coinList[_coinInfo.contractAddress] = _coinInfo;
-        emit e_addCoinbyMarketor(_coinInfo);
-    }
-
-    function addCoinDetailInfobyMarketor(
-        LCoin.DetailInfo memory _coinDetailInfo
-    ) external override onlyMarketor {
-        coinDetailList[_coinDetailInfo.contractAddress] = _coinDetailInfo;
-        emit e_addCoinDetailbyGator(_coinDetailInfo.contractAddress);
-    }
-
-    /// @notice Explain to an end user what this does
-    /// @dev Explain to a developer any extra details
     function addCoinFullinfobyMarketor(
         LCoin.Info memory _coinInfo,
         LCoin.DetailInfo memory _coinDetailInfo
     ) external override onlyMarketor {
-        require(
-            coinList[_coinInfo.contractAddress].isUsed != true,
-            "the coin exist"
-        );
-        _coinInfo.creator = msg.sender;
-        _coinInfo.marketunlock = false;
-        _coinInfo.gateunlock = true;
-        _coinInfo.isUsed = true;
-        uint128 coin_MaxNo = coinMaxNo[marketorContractAddress];
-        if (coin_MaxNo >= 1 && coin_MaxNo + 1 >= coin_MaxNo) {
-            coin_MaxNo += 1;
-        } else {
-            coin_MaxNo = 1;
+        if (coinList[_coinInfo.contractAddress].isUsed != true) {
+            _coinInfo.creator = msg.sender;
+            _coinInfo.marketunlock = false;
+            _coinInfo.gateunlock = true;
+            _coinInfo.isUsed = true;
+            coinList[_coinInfo.contractAddress] = _coinInfo;
+            coinDetailList[_coinDetailInfo.contractAddress] = _coinDetailInfo;
+
+            emit e_addCoinbyMarketor(_coinInfo);
+            emit e_addCoinDetailbyGator(_coinDetailInfo.contractAddress);
         }
-        coinMaxNo[marketorContractAddress] = coin_MaxNo;
-
-        ownerCoinList[marketorContractAddress][coin_MaxNo] = _coinInfo
-            .contractAddress;
-        ownerCoinNo[marketorContractAddress][
-            _coinInfo.contractAddress
-        ] = coin_MaxNo;
-
-        coinList[_coinInfo.contractAddress] = _coinInfo;
-        emit e_addCoinbyMarketor(_coinInfo);
-        coinDetailList[_coinDetailInfo.contractAddress] = _coinDetailInfo;
-        emit e_addCoinDetailbyGator(_coinDetailInfo.contractAddress);
+        if (
+            ownerCoinNo[marketorContractAddress][_coinInfo.contractAddress] > 0
+        ) {} else {
+            uint128 coin_MaxNo = coinMaxNo[marketorContractAddress];
+            if (coin_MaxNo >= 1 && coin_MaxNo + 1 >= coin_MaxNo) {
+                coin_MaxNo += 1;
+            } else {
+                coin_MaxNo = 1;
+            }
+            coinMaxNo[marketorContractAddress] = coin_MaxNo;
+            ownerCoinList[marketorContractAddress][coin_MaxNo] = _coinInfo
+                .contractAddress;
+            ownerCoinNo[marketorContractAddress][
+                _coinInfo.contractAddress
+            ] = coin_MaxNo;
+        }
     }
 
     function lockCoinbyMarketor(
@@ -223,78 +195,71 @@ contract TTSwapV1Coin is ITTSwapV1Coin {
 
     /////////////////////////币种设置-门户/////////////////////
     /////////////////////////Coin Manage/////////////////////
-    function addCoinbyGator(
-        LCoin.Info memory _coinInfo
-    ) external override onlyGator {
-        require(
-            coinList[_coinInfo.contractAddress].isUsed != true,
-            "the coin is  exist"
-        );
-        _coinInfo.creator = msg.sender;
-        _coinInfo.marketunlock = false;
-        _coinInfo.gateunlock = false;
-        _coinInfo.isUsed = true;
-        if (
-            coinMaxNo[msg.sender] >= 1 &&
-            coinMaxNo[msg.sender] + 1 >= coinMaxNo[msg.sender]
-        ) {
-            coinMaxNo[msg.sender] += 1;
-        } else {
-            coinMaxNo[msg.sender] = 1;
-        }
-        ownerCoinList[msg.sender][coinMaxNo[msg.sender]] = _coinInfo
-            .contractAddress;
-        ownerCoinNo[msg.sender][_coinInfo.contractAddress] = coinMaxNo[
-            msg.sender
-        ];
-        coinList[_coinInfo.contractAddress] = _coinInfo;
-        emit e_addCoinbyGator(msg.sender, _coinInfo);
-    }
+    // function addCoinbyGator(
+    //     LCoin.Info memory _coinInfo
+    // ) external override onlyGator {
+    //     require(
+    //         coinList[_coinInfo.contractAddress].isUsed != true,
+    //         "the coin is  exist"
+    //     );
+    //     _coinInfo.creator = msg.sender;
+    //     _coinInfo.marketunlock = false;
+    //     _coinInfo.gateunlock = false;
+    //     _coinInfo.isUsed = true;
+    //     if (
+    //         coinMaxNo[msg.sender] >= 1 &&
+    //         coinMaxNo[msg.sender] + 1 >= coinMaxNo[msg.sender]
+    //     ) {
+    //         coinMaxNo[msg.sender] += 1;
+    //     } else {
+    //         coinMaxNo[msg.sender] = 1;
+    //     }
+    //     ownerCoinList[msg.sender][coinMaxNo[msg.sender]] = _coinInfo
+    //         .contractAddress;
+    //     ownerCoinNo[msg.sender][_coinInfo.contractAddress] = coinMaxNo[
+    //         msg.sender
+    //     ];
+    //     coinList[_coinInfo.contractAddress] = _coinInfo;
+    //     emit e_addCoinbyGator(msg.sender, _coinInfo);
+    // }
 
-    function addCoinDetailInfobyGator(
-        LCoin.DetailInfo memory _coinDetailInfo
-    ) external override onlyGator {
-        require(
-            coinList[_coinDetailInfo.contractAddress].creator == msg.sender,
-            "you is not the thing creater"
-        );
-        coinDetailList[_coinDetailInfo.contractAddress] = _coinDetailInfo;
-        emit e_addCoinDetailbyGator(_coinDetailInfo.contractAddress);
-    }
+    // function addCoinDetailInfobyGator(
+    //     LCoin.DetailInfo memory _coinDetailInfo
+    // ) external override onlyGator {
+    //     require(
+    //         coinList[_coinDetailInfo.contractAddress].creator == msg.sender,
+    //         "you is not the thing creater"
+    //     );
+    //     coinDetailList[_coinDetailInfo.contractAddress] = _coinDetailInfo;
+    //     emit e_addCoinDetailbyGator(_coinDetailInfo.contractAddress);
+    // }
 
     function addCoinFullinfobyGator(
         LCoin.Info memory _coinInfo,
         LCoin.DetailInfo memory _coinDetailInfo
     ) external override onlyGator {
-        require(
-            coinList[_coinInfo.contractAddress].isUsed != true,
-            "the coin is  exist"
-        );
-        _coinInfo.creator = msg.sender;
-        _coinInfo.marketunlock = false;
-        _coinInfo.gateunlock = false;
-        _coinInfo.isUsed = true;
-        if (
-            coinMaxNo[msg.sender] >= 1 &&
-            coinMaxNo[msg.sender] + 1 >= coinMaxNo[msg.sender]
-        ) {
-            coinMaxNo[msg.sender] += 1;
-        } else {
-            coinMaxNo[msg.sender] = 1;
+        if (coinList[_coinInfo.contractAddress].isUsed != true) {
+            _coinInfo.creator = msg.sender;
+            _coinInfo.marketunlock = false;
+            _coinInfo.gateunlock = false;
+            _coinInfo.isUsed = true;
+            coinList[_coinInfo.contractAddress] = _coinInfo;
+            coinDetailList[_coinDetailInfo.contractAddress] = _coinDetailInfo;
+
+            emit e_addCoinbyGator(msg.sender, _coinInfo);
+            emit e_addCoinDetailbyGator(_coinDetailInfo.contractAddress);
         }
-        ownerCoinList[msg.sender][coinMaxNo[msg.sender]] = _coinInfo
-            .contractAddress;
-        ownerCoinNo[msg.sender][_coinInfo.contractAddress] = coinMaxNo[
-            msg.sender
-        ];
-        coinList[_coinInfo.contractAddress] = _coinInfo;
-        emit e_addCoinbyGator(msg.sender, _coinInfo);
-        require(
-            coinList[_coinDetailInfo.contractAddress].creator == msg.sender,
-            "you is not the thing creater"
-        );
-        coinDetailList[_coinDetailInfo.contractAddress] = _coinDetailInfo;
-        emit e_addCoinDetailbyGator(_coinDetailInfo.contractAddress);
+        if (ownerCoinNo[msg.sender][_coinInfo.contractAddress] > 0) {} else {
+            uint128 coin_MaxNo = coinMaxNo[msg.sender];
+            if (coin_MaxNo >= 1 && coin_MaxNo + 1 >= coin_MaxNo) {
+                coin_MaxNo += 1;
+            } else {
+                coin_MaxNo = 1;
+            }
+            coinMaxNo[msg.sender] = coin_MaxNo;
+            ownerCoinList[msg.sender][coin_MaxNo] = _coinInfo.contractAddress;
+            ownerCoinNo[msg.sender][_coinInfo.contractAddress] = coin_MaxNo;
+        }
     }
 
     function unlockCoinbyGator(

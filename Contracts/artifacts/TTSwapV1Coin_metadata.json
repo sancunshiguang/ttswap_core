@@ -16,6 +16,11 @@
 						"internalType": "address",
 						"name": "_marketorContractAddress",
 						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_marketCreator",
+						"type": "address"
 					}
 				],
 				"stateMutability": "nonpayable",
@@ -1641,11 +1646,11 @@
 	},
 	"sources": {
 		"Contracts/TTSwapV1Coin.sol": {
-			"keccak256": "0x152b62ac98656919439df27f57776748f5a951f6e29b55a7405609178b8f35cd",
+			"keccak256": "0x1945057d8450640df3730780fac46aa370abd7efe92ad1976b8c37ecd1b30fae",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://dfa48a8698299a63128f75d65d63cc29dae56332b694b313041b4d2216326508",
-				"dweb:/ipfs/QmWrZeyGBLYikfU94DkPUUJYLkpYV4kCYeBwotpsWYp9SR"
+				"bzz-raw://2b0a3827e06a53650d660e608e23c474ca441e32e2f0a2db1af885c8eed9abad",
+				"dweb:/ipfs/QmU1RgQgd38zEkNVY6ioJFGHs7pXB64ribmHpf3KBydvCr"
 			]
 		},
 		"Contracts/interfaces/Coin/ICoinV1Events.sol": {
@@ -1689,11 +1694,11 @@
 			]
 		},
 		"Contracts/interfaces/Gator/IGatorV1State.sol": {
-			"keccak256": "0x8c822dffaab4195ba6f7415abdd79b71b00761dd1a55d3f1fd5f4866283be772",
+			"keccak256": "0x2b15f6e8fa4db1f53c28973a5a482c7e70fe2618841390178d2b7399a6ee698c",
 			"license": "GPL-2.0-or-later",
 			"urls": [
-				"bzz-raw://83741b1e798ed0e1219b85a7434838a886b5b8624199fcf64b9c5806a5c36f99",
-				"dweb:/ipfs/QmV77MWKKnRBAHTKesaHG5ekADzn4Mr9KCgw4Nn7QZdoLR"
+				"bzz-raw://5eedbf1812db47289824ac0ae1c8d043698d1e46af4f3743353f5ac6eacda18a",
+				"dweb:/ipfs/QmVFPcR4Ddjzi2tVvGkgHJ776gqCPEG49yZ8wsYkj27kzS"
 			]
 		},
 		"Contracts/interfaces/ITTSwapV1Coin.sol": {
