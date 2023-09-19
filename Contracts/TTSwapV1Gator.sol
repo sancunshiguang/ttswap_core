@@ -260,6 +260,19 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
         return gateList[vgaddress].marketunlock;
     }
 
+    /// @notice 调用者判断传入地址是否是市场已经认证门户
+    /// @dev 调用者判断传入地址是否是市场已经认证门户
+    function isValidGatorWebFromAddress(
+        address vgaddress,
+        bytes32 webaddress
+    ) external view override returns (bool) {
+        require(
+            webaddress == gateDetailList[vgaddress].OfficalWebsite,
+            "address does not match the website"
+        );
+        return gateList[vgaddress].marketunlock;
+    }
+
     /// @notice 获取门户调用者的门户编号
     /// @dev 获取门户调用者的门户编号
     function getGaterNo() external view override returns (uint128) {

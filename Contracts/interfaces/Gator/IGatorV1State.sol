@@ -19,6 +19,13 @@ interface IGatorV1State {
         address vgaddress
     ) external view returns (bool);
 
+    /// @notice 调用者判断传入地址是否是市场已经认证门户
+    /// @dev 调用者判断传入地址是否是市场已经认证门户
+    function isValidGatorWebFromAddress(
+        address vgaddress,
+        bytes32 webaddress
+    ) external view returns (bool);
+
     /// @notice 获取门户调用者的门户编号
     /// @dev 获取门户调用者的门户编号
     function getGaterNo() external view returns (uint128);
