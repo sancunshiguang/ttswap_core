@@ -267,7 +267,7 @@ contract TTSwapV1Gator is ITTSwapV1Gator {
         bytes32 webaddress
     ) external view override returns (bool) {
         require(
-            webaddress == gateDetailList[vgaddress].OfficalWebsite,
+            webaddress == gateDetailList[vgaddress].OfficalIp,
             "address does not match the website"
         );
         return gateList[vgaddress].marketunlock;
