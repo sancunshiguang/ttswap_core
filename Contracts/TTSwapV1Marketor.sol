@@ -5,8 +5,7 @@ import "./interfaces/ITTSwapV1Marketor.sol";
 
 contract TTSwapV1Marketor is ITTSwapV1Marketor {
     //市场管理员
-    //Marketoraddress=>boolean
-    mapping(address => bool) public Marketors;
+    mapping(uint128 => address) public Marketors;
     //记录管理号编号
     //Marketoraddress=>MarketorNo
     mapping(address => uint128) public MarketorsNo;
@@ -31,13 +30,13 @@ contract TTSwapV1Marketor is ITTSwapV1Marketor {
     function setMarketorByMarketCreator(
         address _owner
     ) external override onlyMarketCreator {
-        Marketors[_owner] = true;
         require(
             maxMarketorNo + 1 >= maxMarketorNo,
             "maxMarketorNo connot increase"
         );
         maxMarketorNo += 1;
         MarketorsNo[_owner] = maxMarketorNo;
+        Marketors[maxMarketorNo] = _owner;
         emit e_setMarketorByMarketCreator(_owner);
     }
 
@@ -45,21 +44,21 @@ contract TTSwapV1Marketor is ITTSwapV1Marketor {
     function delMarketorByMarketCreator(
         address _owner
     ) external override onlyMarketCreator {
-        delete Marketors[_owner];
+        delete Marketors[MarketorsNo[_owner]];
         delete MarketorsNo[_owner];
         emit e_delMarketorByMarketCreator(_owner);
     }
 
     //判定执行者是否是管理员
     function isValidMarketor() external view override returns (bool) {
-        return Marketors[msg.sender];
+        return MarketorsNo[msg.sender] > 0 ? true : false;
     }
 
     //判定特定地址是否是管理员
     function isValidMarketor(
         address mkaddress
     ) external view override returns (bool) {
-        return Marketors[mkaddress];
+        return MarketorsNo[mkaddress] > 0 ? true : false;
     }
 
     //获取调用者的管理员编号
